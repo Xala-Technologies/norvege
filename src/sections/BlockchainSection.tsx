@@ -3,47 +3,35 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-// Custom SVG Icons
-const TokenIcon = ({ className = "w-8 h-8" }: { className?: string }) => (
+const LeafIcon = ({ className = "w-8 h-8" }: { className?: string }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}
-      d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
     />
   </svg>
 );
 
-const GlobeIcon = ({ className = "w-8 h-8" }: { className?: string }) => (
+const BoltIcon = ({ className = "w-8 h-8" }: { className?: string }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}
-      d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+      d="M13 10V3L4 14h7v7l9-11h-7z"
     />
   </svg>
 );
 
-const ShieldIcon = ({ className = "w-8 h-8" }: { className?: string }) => (
+const CurrencyIcon = ({ className = "w-8 h-8" }: { className?: string }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}
-      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-    />
-  </svg>
-);
-
-const ChartIcon = ({ className = "w-8 h-8" }: { className?: string }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
     />
   </svg>
 );
@@ -59,38 +47,25 @@ const ArrowRightIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   </svg>
 );
 
-const features = [
+const benefits = [
   {
-    icon: TokenIcon,
-    title: "Tokenized Assets",
+    icon: LeafIcon,
+    title: "Sustainable",
     description:
-      "Fractional ownership and liquidity through blockchain tokenization of mineral assets. Each asset is represented as a secure, tradeable token.",
-    gradient: "from-blue-500 to-indigo-600",
-    bgColor: "rgba(59, 130, 246, 0.1)",
+      "Reduces CO₂ emissions by 20–40 tons per kg of minerals compared to traditional mining.",
+    bgColor: "color-mix(in srgb, var(--color-accent-main) 10%, transparent)",
   },
   {
-    icon: GlobeIcon,
-    title: "Global Access",
-    description:
-      "Opening investment opportunities to a global audience, breaking down traditional barriers and enabling borderless participation.",
-    gradient: "from-green-500 to-emerald-600",
-    bgColor: "rgba(34, 197, 94, 0.1)",
+    icon: BoltIcon,
+    title: "Efficient",
+    description: "Recovers 750–1,500 kg of minerals per cycle.",
+    bgColor: "color-mix(in srgb, var(--color-primary-main) 10%, transparent)",
   },
   {
-    icon: ShieldIcon,
-    title: "Secure & Transparent",
-    description:
-      "Immutable records and verifiable ownership through blockchain technology. Every transaction is transparent and auditable.",
-    gradient: "from-purple-500 to-pink-600",
-    bgColor: "rgba(168, 85, 247, 0.1)",
-  },
-  {
-    icon: ChartIcon,
-    title: "Direct Investment",
-    description:
-      "Direct investment in exploration projects with transparent tracking and returns. Real-time visibility into project performance.",
-    gradient: "from-orange-500 to-amber-600",
-    bgColor: "rgba(249, 115, 22, 0.1)",
+    icon: CurrencyIcon,
+    title: "Revenue",
+    description: "Estimated €2.5M – €6.5M revenue per cycle.",
+    bgColor: "color-mix(in srgb, var(--color-accent-main) 10%, transparent)",
   },
 ];
 
@@ -99,21 +74,32 @@ export default function BlockchainSection() {
     <section
       className="section relative overflow-hidden"
       style={{
-        background:
-          "linear-gradient(180deg, var(--color-sand-50) 0%, #ffffff 50%, var(--color-sand-50) 100%)",
+        background: `linear-gradient(180deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 30%, var(--color-bg-default) 70%, var(--color-bg-subtle) 100%)`,
       }}
     >
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 opacity-5">
+      {/* Enhanced decorative background elements */}
+      <div className="absolute inset-0 opacity-[0.08]">
         <div
-          className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl"
-          style={{ background: "var(--color-copper-400)" }}
+          className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-3xl"
+          style={{ background: "var(--color-accent-main)" }}
         />
         <div
-          className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl"
-          style={{ background: "var(--color-navy-900)" }}
+          className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl"
+          style={{ background: "var(--color-primary-main)" }}
         />
       </div>
+
+      {/* Subtle grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, var(--color-primary-main) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--color-primary-main) 1px, transparent 1px)
+          `,
+          backgroundSize: "60px 60px",
+        }}
+      />
 
       <div className="container max-w-7xl relative z-10">
         {/* Header */}
@@ -122,64 +108,91 @@ export default function BlockchainSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20 lg:mb-24"
+          className="text-center mb-16 lg:mb-20"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.5 }}
-            className="inline-block px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-6"
+            className="text-eyebrow inline-block px-5 py-2.5 rounded-full mb-8"
             style={{
-              background: "rgba(212, 165, 116, 0.1)",
-              color: "var(--color-copper-600)",
-              border: "1px solid rgba(212, 165, 116, 0.2)",
+              background: "color-mix(in srgb, var(--color-accent-main) 12%, transparent)",
+              color: "var(--color-accent-main)",
+              border: `1px solid color-mix(in srgb, var(--color-accent-main) 25%, transparent)`,
+              boxShadow: "var(--shadow-accent)",
             }}
           >
-            Blockchain Technology
+            Innovation
           </motion.span>
           <h2
-            className="text-[10rem] md:text-[12rem] lg:text-[14rem] xl:text-[16rem] 2xl:text-[18rem]"
+            className="text-display mb-6"
             style={{
-              color: "var(--color-navy-900)",
-              lineHeight: "0.95",
-              letterSpacing: "-0.04em",
-              fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-              fontWeight: 900,
-              fontStyle: "normal",
-              textShadow: "0 2px 8px rgba(10, 22, 40, 0.08)",
-              marginBottom: "2.5rem",
+              color: "var(--color-text-body)",
+              fontFamily: "var(--font-family-heading)",
+              fontWeight: "var(--font-weight-black)",
+              letterSpacing: "-0.03em",
             }}
           >
-            Tokenized on <span style={{ color: "var(--color-copper-600)" }}>NorChain</span>
+            The Malm Mine{" "}
+            <span
+              style={{
+                color: "var(--color-accent-main)",
+              }}
+            >
+              Water Project
+            </span>
           </h2>
           <p
-            className="text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto text-center block"
+            className="text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto text-center block mb-8"
             style={{
-              color: "var(--color-navy-800)",
-              lineHeight: "1.7",
-              fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-              fontWeight: 400,
+              color: "var(--color-text-secondary)",
+              lineHeight: "var(--line-height-loose)",
+              fontFamily: "var(--font-family-body)",
+              fontWeight: "var(--font-weight-medium)",
               letterSpacing: "-0.01em",
-              textAlign: "center",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginTop: "0",
             }}
           >
-            Norvege Minerals has partnered with NorChain to bring transparency and accessibility to
-            mineral exploration. Our assets are tokenized, enabling secure, verifiable ownership and
-            investment opportunities powered by blockchain technology.
+            Turning Environmental Liability into Sustainable Assets
+          </p>
+          <p
+            className="text-base md:text-lg max-w-4xl mx-auto text-center block mb-6"
+            style={{
+              color: "var(--color-text-body)",
+              lineHeight: "var(--line-height-loose)",
+              fontFamily: "var(--font-family-body)",
+              fontWeight: "var(--font-weight-regular)",
+            }}
+          >
+            We are revolutionizing extraction by utilizing{" "}
+            <strong>7–10 million m³ of 26°C ion-rich mine water</strong> from the flooded Malm
+            mines. By applying Selective Ion Exchange (IX) and Electro-winning (EW), we extract
+            valuable metals while removing heavy metals from highly contaminated water,
+            significantly reducing emissions compared to conventional mining.
+          </p>
+          <p
+            className="text-sm md:text-base max-w-4xl mx-auto text-center block"
+            style={{
+              color: "var(--color-text-secondary)",
+              lineHeight: "var(--line-height-base)",
+              fontFamily: "var(--font-family-body)",
+              fontWeight: "var(--font-weight-regular)",
+            }}
+          >
+            Combined with a thermo powerplant based on Double Flash technology (similar to
+            Hellisheiði, Iceland), this creates a self-sustainable mineral processing process. The
+            hot purified water is heated to 120°C using heat exchangers for power generation, then
+            cooled and recirculated in a closed-loop system.
           </p>
         </motion.div>
 
-        {/* Feature Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12">
-          {features.map((feature, index) => {
-            const IconComponent = feature.icon;
+        {/* Benefit Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 mb-16">
+          {benefits.map((benefit, index) => {
+            const IconComponent = benefit.icon;
             return (
               <motion.div
-                key={feature.title}
+                key={benefit.title}
                 initial={{ opacity: 0, y: 40, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
@@ -198,47 +211,92 @@ export default function BlockchainSection() {
               >
                 {/* Card */}
                 <div
-                  className="relative p-8 lg:p-10 rounded-3xl transition-all duration-500 overflow-hidden h-full"
+                  className="relative p-8 lg:p-10 rounded-3xl transition-all duration-500 overflow-hidden h-full card-elevated"
                   style={{
-                    background: "white",
-                    border: "1px solid rgba(0, 0, 0, 0.08)",
-                    boxShadow: "0 10px 40px rgba(0, 0, 0, 0.08)",
+                    background: "var(--color-surface-card)",
+                    border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
+                    boxShadow: "var(--shadow-md)",
                   }}
                 >
                   {/* Hover glow effect */}
                   <motion.div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     style={{
-                      background: `radial-gradient(circle at center, ${feature.bgColor} 0%, transparent 70%)`,
+                      background: `radial-gradient(circle at center, color-mix(in srgb, var(--color-accent-main) 8%, transparent) 0%, transparent 70%)`,
+                    }}
+                  />
+
+                  {/* Subtle border glow on hover */}
+                  <motion.div
+                    className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      border: `2px solid color-mix(in srgb, var(--color-accent-main) 20%, transparent)`,
+                      pointerEvents: "none",
                     }}
                   />
 
                   {/* Icon */}
                   <motion.div
-                    className={`relative mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.gradient} text-white shadow-lg`}
+                    className="relative mb-6 inline-flex items-center justify-center w-18 h-18 lg:w-20 lg:h-20 rounded-2xl"
+                    style={{
+                      background:
+                        benefit.title === "Sustainable"
+                          ? "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)"
+                          : benefit.title === "Efficient"
+                            ? "linear-gradient(135deg, var(--color-primary-main) 0%, var(--color-navy-800) 100%)"
+                            : "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)",
+                      color: "var(--color-text-on-dark)",
+                      boxShadow: "var(--shadow-accent-lg)",
+                    }}
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <IconComponent className="w-8 h-8" />
+                    <span
+                      style={{
+                        color:
+                          benefit.title === "Efficient"
+                            ? "var(--color-accent-main)"
+                            : "var(--color-text-on-dark)",
+                      }}
+                    >
+                      <IconComponent className="w-9 h-9 lg:w-10 lg:h-10" />
+                    </span>
                   </motion.div>
 
                   {/* Title */}
                   <h3
                     className="text-xl md:text-2xl font-bold mb-4"
-                    style={{ color: "var(--color-navy-900)" }}
+                    style={{
+                      color: "var(--color-text-body)",
+                      fontFamily: "var(--font-family-heading)",
+                      fontWeight: "var(--font-weight-bold)",
+                    }}
                   >
-                    {feature.title}
+                    {benefit.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-600 leading-relaxed text-sm md:text-base">
-                    {feature.description}
+                  <p
+                    className="leading-relaxed text-sm md:text-base"
+                    style={{
+                      color: "var(--color-text-secondary)",
+                      fontFamily: "var(--font-family-body)",
+                      lineHeight: "var(--line-height-base)",
+                    }}
+                  >
+                    {benefit.description}
                   </p>
 
                   {/* Decorative corner accent */}
                   <div
-                    className={`absolute top-0 right-0 w-32 h-32 opacity-10 bg-gradient-to-br ${feature.gradient}`}
+                    className="absolute top-0 right-0 w-32 h-32 opacity-10"
                     style={{
+                      background:
+                        benefit.title === "Sustainable"
+                          ? "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)"
+                          : benefit.title === "Efficient"
+                            ? "linear-gradient(135deg, var(--color-primary-main) 0%, var(--color-navy-800) 100%)"
+                            : "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)",
                       transform: "translate(30%, -30%)",
                       borderRadius: "50%",
                     }}
@@ -259,31 +317,33 @@ export default function BlockchainSection() {
         >
           <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center items-center">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <a
-                href="https://www.norchain.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300"
+              <Link
+                href="/projects"
+                className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300"
                 style={{
                   background:
-                    "linear-gradient(135deg, var(--color-copper-600) 0%, var(--color-copper-500) 100%)",
-                  color: "white",
-                  boxShadow: "0 10px 40px rgba(182, 125, 66, 0.4)",
+                    "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)",
+                  color: "var(--color-accent-contrast)",
+                  boxShadow: "var(--shadow-accent-lg)",
+                  fontFamily: "var(--font-family-body)",
+                  fontWeight: "var(--font-weight-bold)",
                 }}
               >
-                Invest on NorChain
+                Learn More About Our Projects
                 <ArrowRightIcon className="w-5 h-5" />
-              </a>
+              </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 px-10 py-5 rounded-xl font-bold text-lg border-2 transition-all duration-300"
+                className="btn-secondary inline-flex items-center gap-3 px-10 py-5 rounded-xl font-bold text-lg border-2 transition-all duration-300"
                 style={{
-                  borderColor: "var(--color-navy-900)",
-                  color: "var(--color-navy-900)",
-                  background: "white",
-                  boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
+                  borderColor: "var(--color-primary-main)",
+                  color: "var(--color-primary-main)",
+                  background: "var(--color-bg-default)",
+                  boxShadow: "var(--shadow-md)",
+                  fontFamily: "var(--font-family-body)",
+                  fontWeight: "var(--font-weight-bold)",
                 }}
               >
                 Learn More
@@ -302,7 +362,7 @@ export default function BlockchainSection() {
           className="mt-16 h-1 rounded-full mx-auto max-w-2xl"
           style={{
             background:
-              "linear-gradient(90deg, transparent 0%, var(--color-copper-400) 50%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0%, var(--color-accent-main) 50%, transparent 100%)",
           }}
         />
       </div>

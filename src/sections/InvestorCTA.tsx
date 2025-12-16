@@ -7,7 +7,7 @@ export default function InvestorCTA() {
   return (
     <section
       className="section relative overflow-hidden"
-      style={{ background: "var(--color-navy-900)" }}
+      style={{ background: "var(--color-navy-deep)" }}
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">

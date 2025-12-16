@@ -5,9 +5,9 @@ export const companyInfo: ICompanyInfo = {
   legalName: "NORVEGE MINERALS AS",
   orgNumber: "[Company Number]",
   address: {
-    street: "[Street Address]",
-    postalCode: "[Postal Code]",
-    city: "Oslo",
+    street: "Morellveien 26B",
+    postalCode: "3228",
+    city: "SANDEFJORD",
     country: "Norway",
   },
   contact: {
@@ -15,29 +15,39 @@ export const companyInfo: ICompanyInfo = {
     phone: "[Phone Number]",
   },
   description:
-    "Norwegian exploration company focused on sustainable mineral development and critical minerals for the energy transition.",
+    "Norvege Minerals AS explores for and documents valuable minerals for extraction. The company's vision is to become a significant player in responsible mining in Norway.",
 };
 
 export const companyMetrics: ICompanyMetrics[] = [
   {
-    number: "18",
-    label: "Mining Licenses",
-    description: "Rare Earths • Phosphate • Graphite",
+    number: "72",
+    label: "Exploration Licenses",
+    description: "Active exploration licenses across Norway",
   },
   {
-    number: "179",
-    label: "km² Exploration Area",
-    description: "Total license area",
+    number: "2,400",
+    label: "km² Licensed Area",
+    description: "Total licensed exploration area",
   },
   {
-    number: "70",
-    label: "Elements Analyzed",
-    description: "Exploration targets",
+    number: "31",
+    label: "Viable Finds",
+    description: "Viable finds discovered so far",
   },
   {
-    number: "50+",
-    label: "Historic Mines",
-    description: "Documented workings dating back to 1760",
+    number: "1,200",
+    label: "Billion NOK Est. Value",
+    description: "Estimated mineral value across our portfolio",
+  },
+  {
+    number: "11",
+    label: "Significant REE Finds",
+    description: "Significant Rare Earth Element discoveries",
+  },
+  {
+    number: "8",
+    label: "Public Partnerships",
+    description: "Strategic public collaborations",
   },
 ];
 
@@ -64,8 +74,20 @@ export const companyTimeline: ITimelineItem[] = [
   },
   {
     year: "2024",
-    title: "Ongoing Development",
-    description: "Ongoing exploration and resource definition",
+    title: "Major Discoveries",
+    description:
+      "Significant REE finds including Snøfjell deposit with 350,000 tonnes ore documented",
+  },
+  {
+    year: "2025",
+    title: "Mine Water Project Launch",
+    description:
+      "Launch of innovative Malm Mine Water Resource Project utilizing 7-10 million m³ of ion-rich mine water",
+  },
+  {
+    year: "2026+",
+    title: "Production & Growth",
+    description: "Targeting production start and continued expansion of exploration portfolio",
   },
 ];
 

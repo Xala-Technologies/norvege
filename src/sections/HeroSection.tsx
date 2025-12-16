@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { projects } from "@/content/projects";
 
 // Hero slides with different content and project links
 const heroSlides = [
@@ -12,20 +11,21 @@ const heroSlides = [
     src: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop",
     alt: "Mineral exploration site with geological formations",
     gradient:
-      "linear-gradient(135deg, rgba(10, 22, 40, 0.7) 0%, rgba(15, 31, 58, 0.6) 50%, rgba(26, 47, 77, 0.7) 100%)",
-    badge: "Active Exploration",
-    title: "Skrattås-Byafossen",
-    highlight: "Exceptional Grades",
+      "linear-gradient(135deg, rgba(10, 14, 20, 0.85) 0%, rgba(15, 20, 25, 0.8) 50%, rgba(26, 31, 38, 0.85) 100%)",
+    badge: "Responsible Mining",
+    title: "Responsible Mining for the",
+    highlight: "Green Transition",
     description:
-      "Primary focus area with exceptional grades: 28.8% Zn, 539 ppm Ag, 10 ppm Au. Historic production of 34% Zn ore.",
-    projectSlug: "skrattasen",
-    ctaText: "Explore Skrattåsen",
+      "Securing Europe's supply of vital resources. We hold 72 exploration licenses across 2,400 km², focusing on high-value minerals essential for renewable energy and geopolitical stability.",
+    projectSlug: "projects",
+    ctaText: "Explore Our Assets",
+    secondaryCtaText: "Our Technology",
   },
   {
     src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&auto=format&fit=crop",
     alt: "Mining operations and heavy machinery",
     gradient:
-      "linear-gradient(135deg, rgba(15, 31, 58, 0.7) 0%, rgba(10, 22, 40, 0.6) 50%, rgba(26, 47, 77, 0.7) 100%)",
+      "linear-gradient(135deg, rgba(15, 20, 25, 0.85) 0%, rgba(10, 14, 20, 0.8) 50%, rgba(26, 31, 38, 0.85) 100%)",
     badge: "Historic Mining District",
     title: "Gaulstad/Mokk",
     highlight: "Proven Mineralization",
@@ -38,7 +38,7 @@ const heroSlides = [
     src: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?q=80&w=2025&auto=format&fit=crop",
     alt: "Rare earth minerals and geological samples",
     gradient:
-      "linear-gradient(135deg, rgba(26, 47, 77, 0.7) 0%, rgba(10, 22, 40, 0.6) 50%, rgba(15, 31, 58, 0.7) 100%)",
+      "linear-gradient(135deg, rgba(26, 31, 38, 0.85) 0%, rgba(10, 14, 20, 0.8) 50%, rgba(15, 20, 25, 0.85) 100%)",
     badge: "Critical Minerals",
     title: "Rare Earth Elements",
     highlight: "Strategic Resources",
@@ -51,7 +51,7 @@ const heroSlides = [
     src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
     alt: "Norwegian mining landscape with mountains",
     gradient:
-      "linear-gradient(135deg, rgba(20, 35, 60, 0.7) 0%, rgba(15, 31, 58, 0.6) 50%, rgba(10, 22, 40, 0.7) 100%)",
+      "linear-gradient(135deg, rgba(21, 27, 35, 0.85) 0%, rgba(15, 20, 25, 0.8) 50%, rgba(10, 14, 20, 0.85) 100%)",
     badge: "Norwegian Excellence",
     title: "Trøndelag Region",
     highlight: "Mineral Rich",
@@ -105,7 +105,7 @@ export default function HeroSection() {
             >
               {/* Fallback gradient background */}
               <div
-                className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
+                className="absolute inset-0 bg-gradient-to-br from-charcoal-950 via-charcoal-900 to-charcoal-950"
                 style={{
                   backgroundImage: slide.gradient,
                 }}
@@ -120,8 +120,13 @@ export default function HeroSection() {
                 quality={90}
                 unoptimized={slide.src.startsWith("http")}
               />
-              {/* Dark Overlay for better text readability */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+              {/* Deep Navy Overlay for better text readability */}
+              <div
+                className="absolute inset-0 hero-overlay"
+                style={{
+                  background: `linear-gradient(to bottom, color-mix(in srgb, var(--color-primary-main) 85%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 65%, transparent) 100%)`,
+                }}
+              />
               {/* Subtle pattern overlay */}
               <div
                 className="absolute inset-0 opacity-20"
@@ -155,12 +160,12 @@ export default function HeroSection() {
                 className="inline-block mb-6 lg:mb-8"
               >
                 <span
-                  className="px-5 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider backdrop-blur-sm"
+                  className="text-eyebrow px-5 py-2.5 rounded-full backdrop-blur-sm"
                   style={{
-                    background: "rgba(212, 165, 116, 0.2)",
-                    color: "var(--color-copper-400)",
-                    border: "1px solid rgba(212, 165, 116, 0.4)",
-                    boxShadow: "0 4px 20px rgba(212, 165, 116, 0.2)",
+                    background: "color-mix(in srgb, var(--color-accent-main) 15%, transparent)",
+                    color: "var(--color-accent-main)",
+                    border: `1px solid color-mix(in srgb, var(--color-accent-main) 30%, transparent)`,
+                    boxShadow: "var(--shadow-accent)",
                   }}
                 >
                   {currentSlide.badge}
@@ -173,13 +178,12 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
                 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 lg:mb-6 leading-tight"
-                style={{ color: "var(--color-sand-50)" }}
+                style={{ color: "var(--color-gray-50)" }}
               >
                 {currentSlide.title}{" "}
                 <span
                   style={{
-                    color: "var(--color-copper-400)",
-                    textShadow: "0 0 40px rgba(212, 165, 116, 0.5)",
+                    color: "var(--color-accent-main)",
                   }}
                 >
                   {currentSlide.highlight}
@@ -192,7 +196,11 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
                 className="text-xl md:text-2xl lg:text-3xl mb-10 lg:mb-12 max-w-4xl mx-auto lg:mx-0 leading-relaxed"
-                style={{ color: "var(--color-sand-100)" }}
+                style={{
+                  color: "var(--color-text-on-dark)",
+                  fontFamily: "var(--font-family-body)",
+                  lineHeight: "var(--line-height-loose)",
+                }}
               >
                 {currentSlide.description}
               </motion.p>
@@ -207,11 +215,12 @@ export default function HeroSection() {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
                     href={`/${currentSlide.projectSlug}`}
-                    className="inline-block px-10 py-5 rounded-lg font-bold text-lg lg:text-xl transition-all duration-300 shadow-2xl"
+                    className="inline-block px-10 py-5 rounded-lg font-bold text-lg lg:text-xl transition-all duration-300"
                     style={{
-                      background: "var(--color-copper-600)",
-                      color: "white",
-                      boxShadow: "0 8px 30px rgba(182, 125, 66, 0.5)",
+                      background: "var(--color-accent-main)",
+                      color: "var(--color-accent-contrast)",
+                      boxShadow: "var(--shadow-accent-lg)",
+                      fontFamily: "var(--font-family-heading)",
                     }}
                   >
                     {currentSlide.ctaText}
@@ -219,16 +228,16 @@ export default function HeroSection() {
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
-                    href="/projects"
+                    href={currentSlide.secondaryCtaText ? "/about" : "/projects"}
                     className="inline-block px-10 py-5 rounded-lg font-bold text-lg lg:text-xl border-2 transition-all duration-300 backdrop-blur-sm"
                     style={{
-                      borderColor: "var(--color-sand-100)",
-                      color: "var(--color-sand-50)",
-                      background: "rgba(255, 255, 255, 0.1)",
+                      borderColor: "var(--color-gray-200)",
+                      color: "var(--color-gray-50)",
+                      background: "rgba(255, 255, 255, 0.08)",
                       boxShadow: "0 8px 30px rgba(0, 0, 0, 0.3)",
                     }}
                   >
-                    View All Projects
+                    {currentSlide.secondaryCtaText || "View All Projects"}
                   </Link>
                 </motion.div>
               </motion.div>
@@ -243,10 +252,9 @@ export default function HeroSection() {
           <button
             key={index}
             className={`h-2 rounded-full transition-all duration-300 ${
-              index === currentSlideIndex
-                ? "w-10 bg-[var(--color-copper-400)] shadow-lg"
-                : "w-2 bg-white/40 hover:bg-white/60"
+              index === currentSlideIndex ? "w-10 shadow-lg" : "w-2 bg-white/40 hover:bg-white/60"
             }`}
+            style={index === currentSlideIndex ? { background: "var(--color-accent-main)" } : {}}
             onClick={() => setCurrentSlideIndex(index)}
             aria-label={`View slide ${index + 1}: ${heroSlides[index].title}`}
           />
@@ -263,7 +271,7 @@ export default function HeroSection() {
         <div className="flex flex-col items-center gap-3">
           <span
             className="text-sm font-medium uppercase tracking-wider"
-            style={{ color: "var(--color-sand-200)" }}
+            style={{ color: "var(--color-gray-300)" }}
           >
             Scroll to explore
           </span>
@@ -271,7 +279,7 @@ export default function HeroSection() {
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
           >
-            <svg className="w-8 h-8" fill="none" stroke="var(--color-sand-200)" viewBox="0 0 24 24">
+            <svg className="w-8 h-8" fill="none" stroke="var(--color-gray-300)" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

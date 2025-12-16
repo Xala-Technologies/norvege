@@ -89,14 +89,11 @@ export default function ContactStrip() {
   // Google Maps embed URL - Update with actual coordinates
   const mapEmbedUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31910.500000000004!2d10.752245399999999!3d59.9138688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e61f267f039%3A0x7e92605fd3231e85!2sOslo%2C%20Norway!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus`;
 
-  // Gold accent color matching the design
-  const goldAccent = "#d4a574"; // Rich gold/copper color
-
   return (
     <section
       className="section relative overflow-hidden"
       style={{
-        background: "var(--color-navy-900)",
+        background: "var(--color-bg-dark)",
       }}
     >
       {/* Separator Line - Top Border */}
@@ -105,18 +102,28 @@ export default function ContactStrip() {
         <div
           className="h-[2px] w-full"
           style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, rgba(249, 115, 22, 0.4) 15%, rgba(249, 115, 22, 0.9) 50%, rgba(249, 115, 22, 0.4) 85%, transparent 100%)",
+            background: `linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-accent-main) 40%, transparent) 15%, var(--color-accent-main) 50%, color-mix(in srgb, var(--color-accent-main) 40%, transparent) 85%, transparent 100%)`,
           }}
         />
         {/* Subtle glow effect */}
         <div
           className="h-[1px] w-full mt-[-1px]"
           style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, rgba(249, 115, 22, 0.6) 20%, rgba(249, 115, 22, 1) 50%, rgba(249, 115, 22, 0.6) 80%, transparent 100%)",
-            boxShadow: "0 0 8px rgba(249, 115, 22, 0.4)",
+            background: `linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-accent-main) 60%, transparent) 20%, var(--color-accent-main) 50%, color-mix(in srgb, var(--color-accent-main) 60%, transparent) 80%, transparent 100%)`,
+            boxShadow: "var(--shadow-accent)",
           }}
+        />
+      </div>
+
+      {/* Enhanced decorative background elements */}
+      <div className="absolute inset-0 opacity-[0.08]">
+        <div
+          className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl"
+          style={{ background: "var(--color-accent-main)" }}
+        />
+        <div
+          className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full blur-3xl"
+          style={{ background: "var(--color-primary-main)" }}
         />
       </div>
 
@@ -125,29 +132,40 @@ export default function ContactStrip() {
         className="absolute inset-0"
         style={{
           backgroundImage: `
-            radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.15) 1px, transparent 0),
-            radial-gradient(circle at 3px 3px, rgba(255, 255, 255, 0.1) 1px, transparent 0),
-            radial-gradient(circle at 5px 5px, rgba(255, 255, 255, 0.08) 1px, transparent 0)
+            radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.12) 1px, transparent 0),
+            radial-gradient(circle at 3px 3px, rgba(255, 255, 255, 0.08) 1px, transparent 0),
+            radial-gradient(circle at 5px 5px, rgba(255, 255, 255, 0.06) 1px, transparent 0)
           `,
           backgroundSize: "20px 20px, 40px 40px, 60px 60px",
-          opacity: 0.4,
+          opacity: 0.5,
         }}
       />
 
-      {/* Subtle gradient overlay with middle accent */}
+      {/* Enhanced gradient overlay */}
       <div
         className="absolute inset-0"
         style={{
-          background:
-            "linear-gradient(135deg, rgba(10, 22, 40, 0.95) 0%, rgba(15, 23, 42, 0.92) 50%, rgba(10, 22, 40, 0.95) 100%)",
+          background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 98%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 95%, transparent) 50%, color-mix(in srgb, var(--color-primary-main) 98%, transparent) 100%)`,
         }}
       />
-      {/* Weak middle gradient accent */}
+
+      {/* Enhanced radial gradient accent with gold tint */}
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-[0.25]"
         style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(212, 165, 116, 0.08) 0%, transparent 70%)",
+          background: `radial-gradient(ellipse at center, color-mix(in srgb, var(--color-accent-main) 8%, transparent) 0%, transparent 70%)`,
+        }}
+      />
+
+      {/* Subtle grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, var(--color-accent-main) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--color-accent-main) 1px, transparent 1px)
+          `,
+          backgroundSize: "60px 60px",
         }}
       />
 
@@ -158,35 +176,33 @@ export default function ContactStrip() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20 lg:mb-24"
+          className="text-center mb-16 lg:mb-20"
         >
           <h2
-            className="text-[10rem] md:text-[12rem] lg:text-[14rem] xl:text-[16rem] 2xl:text-[18rem]"
+            className="text-display mb-6"
             style={{
-              lineHeight: "0.95",
-              letterSpacing: "-0.04em",
-              fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-              fontWeight: 900,
-              fontStyle: "normal",
-              textShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
-              marginBottom: "2.5rem",
+              fontFamily: "var(--font-family-heading)",
+              fontWeight: "var(--font-weight-black)",
+              letterSpacing: "-0.03em",
             }}
           >
-            <span style={{ color: "var(--color-sand-50)" }}>Ready to Explore </span>
-            <span style={{ color: goldAccent }}>Opportunities?</span>
+            <span style={{ color: "var(--color-text-on-dark)" }}>Ready to Explore </span>
+            <span
+              style={{
+                color: "var(--color-accent-main)",
+              }}
+            >
+              Opportunities?
+            </span>
           </h2>
           <p
             className="text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto text-center block"
             style={{
-              color: "var(--color-sand-100)",
-              lineHeight: "1.7",
-              fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-              fontWeight: 400,
+              color: "color-mix(in srgb, var(--color-text-on-dark) 85%, transparent)",
+              lineHeight: "var(--line-height-loose)",
+              fontFamily: "var(--font-family-body)",
+              fontWeight: "var(--font-weight-medium)",
               letterSpacing: "-0.01em",
-              textAlign: "center",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginTop: "0",
             }}
           >
             Connect with our team to discuss exploration projects, investment opportunities, or
@@ -197,10 +213,10 @@ export default function ContactStrip() {
         {/* Split Layout: Left (Dark) + Right (Light) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-0">
           {/* Left Panel - Dark Background with Contact Info Cards + Map */}
-          <div className="relative p-8 lg:p-12">
+          <div className="relative p-8 lg:p-12 xl:p-16">
             <div className="relative z-10">
               {/* Contact Info Cards - 2x2 Grid */}
-              <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="grid grid-cols-2 gap-5 lg:gap-6 mb-10">
                 {contactCards.map((card, index) => {
                   const IconComponent = card.icon;
                   return (
@@ -211,48 +227,65 @@ export default function ContactStrip() {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1, duration: 0.5 }}
                       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                      className="group relative p-6 rounded-xl overflow-hidden"
+                      className="group relative p-6 lg:p-8 rounded-xl overflow-hidden card-elevated"
                       style={{
-                        background: "linear-gradient(135deg, #1e293b 0%, #1a2332 100%)",
-                        border: "1px solid rgba(255, 255, 255, 0.1)",
-                        boxShadow: "0 8px 30px rgba(0, 0, 0, 0.4)",
+                        background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 90%, transparent) 0%, color-mix(in srgb, var(--color-navy-800) 85%, transparent) 100%)`,
+                        border: `1px solid color-mix(in srgb, var(--color-accent-main) 20%, transparent)`,
+                        boxShadow: "var(--shadow-primary-lg)",
                       }}
                     >
                       {/* Hover glow effect */}
                       <motion.div
                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         style={{
-                          background: `radial-gradient(circle at center, ${goldAccent}15 0%, transparent 70%)`,
+                          background: `radial-gradient(circle at center, color-mix(in srgb, var(--color-accent-main) 15%, transparent) 0%, transparent 70%)`,
+                        }}
+                      />
+
+                      {/* Subtle border glow on hover */}
+                      <motion.div
+                        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{
+                          border: `2px solid color-mix(in srgb, var(--color-accent-main) 30%, transparent)`,
+                          pointerEvents: "none",
                         }}
                       />
 
                       {/* Icon with enhanced styling */}
                       <motion.div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 relative z-10"
+                        className="w-14 h-14 lg:w-16 lg:h-16 rounded-xl flex items-center justify-center mb-5 relative z-10"
                         style={{
-                          background: `linear-gradient(135deg, ${goldAccent}20 0%, ${goldAccent}10 100%)`,
-                          color: goldAccent,
-                          border: `1px solid ${goldAccent}30`,
-                          boxShadow: `0 4px 15px ${goldAccent}20`,
+                          background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 25%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 100%)`,
+                          color: "var(--color-accent-main)",
+                          border: `1px solid color-mix(in srgb, var(--color-accent-main) 30%, transparent)`,
+                          boxShadow: "var(--shadow-accent)",
                         }}
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                       >
-                        <IconComponent className="w-6 h-6" />
+                        <IconComponent className="w-7 h-7 lg:w-8 lg:h-8" />
                       </motion.div>
 
                       {/* Label - Gold accent */}
                       <p
                         className="text-xs font-bold uppercase tracking-wider mb-3 relative z-10"
-                        style={{ color: goldAccent }}
+                        style={{
+                          color: "var(--color-accent-main)",
+                          fontFamily: "var(--font-family-body)",
+                          fontWeight: "var(--font-weight-bold)",
+                        }}
                       >
                         {card.label}
                       </p>
 
                       {/* Title - White text with better typography */}
                       <h4
-                        className="text-base font-bold mb-2 leading-tight relative z-10"
-                        style={{ color: "var(--color-sand-50)" }}
+                        className="text-base lg:text-lg font-bold mb-2 leading-tight relative z-10"
+                        style={{
+                          color: "var(--color-text-on-dark)",
+                          fontFamily: "var(--font-family-heading)",
+                          fontWeight: "var(--font-weight-bold)",
+                        }}
                       >
                         {card.title}
                       </h4>
@@ -260,8 +293,12 @@ export default function ContactStrip() {
                       {/* Subtitle - Light grey text with better spacing */}
                       {card.subtitle && (
                         <p
-                          className="text-xs leading-relaxed relative z-10"
-                          style={{ color: "rgba(255, 255, 255, 0.6)" }}
+                          className="text-xs lg:text-sm leading-relaxed relative z-10"
+                          style={{
+                            color: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
+                            fontFamily: "var(--font-family-body)",
+                            lineHeight: "var(--line-height-base)",
+                          }}
                         >
                           {card.subtitle}
                         </p>
@@ -272,7 +309,7 @@ export default function ContactStrip() {
               </div>
 
               {/* Map Section */}
-              <div className="mt-8">
+              <div className="mt-10">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -280,8 +317,8 @@ export default function ContactStrip() {
                   transition={{ delay: 0.4, duration: 0.6 }}
                   className="relative h-64 lg:h-80 rounded-xl overflow-hidden"
                   style={{
-                    border: "1px solid rgba(255, 255, 255, 0.1)",
-                    boxShadow: "0 10px 40px rgba(0, 0, 0, 0.4)",
+                    border: `1px solid color-mix(in srgb, var(--color-accent-main) 20%, transparent)`,
+                    boxShadow: "var(--shadow-primary-lg)",
                   }}
                 >
                   {/* Google Maps Embed */}
@@ -301,8 +338,7 @@ export default function ContactStrip() {
                   <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                      background:
-                        "linear-gradient(180deg, rgba(10, 22, 40, 0.2) 0%, transparent 50%, rgba(10, 22, 40, 0.2) 100%)",
+                      background: `linear-gradient(180deg, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 0%, transparent 50%, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 100%)`,
                     }}
                   />
                 </motion.div>
@@ -312,9 +348,9 @@ export default function ContactStrip() {
 
           {/* Right Panel - Light Background with Contact Form */}
           <div
-            className="relative p-8 lg:p-12 rounded-2xl lg:rounded-3xl"
+            className="relative p-8 lg:p-12 xl:p-16 rounded-2xl lg:rounded-3xl"
             style={{
-              background: "linear-gradient(135deg, #ffffff 0%, #fafafa 100%)",
+              background: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
             }}
           >
             <div className="max-w-2xl mx-auto relative z-10">
@@ -327,12 +363,24 @@ export default function ContactStrip() {
                 className="mb-8"
               >
                 <h3
-                  className="text-3xl md:text-4xl font-bold mb-3"
-                  style={{ color: "var(--color-navy-900)" }}
+                  className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+                  style={{
+                    color: "var(--color-text-body)",
+                    fontFamily: "var(--font-family-heading)",
+                    fontWeight: "var(--font-weight-black)",
+                    letterSpacing: "-0.02em",
+                  }}
                 >
                   Send Us a Message
                 </h3>
-                <p className="text-base leading-relaxed" style={{ color: "var(--color-gray-600)" }}>
+                <p
+                  className="text-base lg:text-lg leading-relaxed"
+                  style={{
+                    color: "var(--color-text-secondary)",
+                    fontFamily: "var(--font-family-body)",
+                    lineHeight: "var(--line-height-base)",
+                  }}
+                >
                   Fill out the form and our team will respond promptly.
                 </p>
               </motion.div>
@@ -350,17 +398,15 @@ export default function ContactStrip() {
         <div
           className="h-[2px] w-full"
           style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, rgba(212, 165, 116, 0.4) 15%, rgba(212, 165, 116, 0.9) 50%, rgba(212, 165, 116, 0.4) 85%, transparent 100%)",
+            background: `linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-accent-main) 40%, transparent) 15%, var(--color-accent-main) 50%, color-mix(in srgb, var(--color-accent-main) 40%, transparent) 85%, transparent 100%)`,
           }}
         />
         {/* Subtle glow effect */}
         <div
           className="h-[1px] w-full mt-[-1px]"
           style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, rgba(212, 165, 116, 0.6) 20%, rgba(212, 165, 116, 1) 50%, rgba(212, 165, 116, 0.6) 80%, transparent 100%)",
-            boxShadow: "0 0 8px rgba(212, 165, 116, 0.4)",
+            background: `linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-accent-main) 60%, transparent) 20%, var(--color-accent-main) 50%, color-mix(in srgb, var(--color-accent-main) 60%, transparent) 80%, transparent 100%)`,
+            boxShadow: "var(--shadow-accent)",
           }}
         />
       </div>

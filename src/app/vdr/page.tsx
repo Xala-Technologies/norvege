@@ -39,7 +39,7 @@ export default function VDRPage() {
               directly at{" "}
               <a
                 href="mailto:contact@norvegeminerals.no"
-                className="text-[var(--color-copper-600)] hover:underline"
+                className="text-[var(--color-accent-main)] hover:underline"
               >
                 contact@norvegeminerals.no
               </a>

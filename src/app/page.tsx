@@ -6,7 +6,6 @@ import RareEarthSection from "@/sections/RareEarthSection";
 import BlockchainSection from "@/sections/BlockchainSection";
 import ContactStrip from "@/sections/ContactStrip";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
-import { companyInfo } from "@/content/company";
 
 export const metadata: Metadata = generateSEOMetadata({
   title: "Norvege Minerals - Science-Driven Discovery",

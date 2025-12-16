@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { companyMetrics } from "@/content/company";
 
 // Modern icon components
-const MountainIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+const MountainIcon = ({ className = "w-full h-full" }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -15,8 +15,8 @@ const MountainIcon = () => (
   </svg>
 );
 
-const CompassIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+const CompassIcon = ({ className = "w-full h-full" }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -26,8 +26,8 @@ const CompassIcon = () => (
   </svg>
 );
 
-const PickaxeIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+const PickaxeIcon = ({ className = "w-full h-full" }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -37,8 +37,8 @@ const PickaxeIcon = () => (
   </svg>
 );
 
-const MineCartIcon = () => (
-  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+const MineCartIcon = ({ className = "w-full h-full" }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -51,53 +51,79 @@ const MineCartIcon = () => (
 const iconComponents = [MountainIcon, CompassIcon, PickaxeIcon, MineCartIcon];
 
 const labelMap: Record<string, string> = {
+  "Exploration Licenses": "EXPLORATION LICENSES",
+  "km² Licensed Area": "KM² LICENSED AREA",
+  "Viable Finds": "VIABLE FINDS",
+  "Billion NOK Est. Value": "BILLION NOK EST. VALUE",
+  "Significant REE Finds": "SIGNIFICANT REE FINDS",
+  "Public Partnerships": "PUBLIC PARTNERSHIPS",
   "Mining Licenses": "MINERAL HOLDINGS",
   "km² Exploration Area": "EXPLORATION AREA",
   "Elements Analyzed": "ELEMENTS ANALYZED",
   "Historic Mines": "HISTORIC MINES",
 };
 
-// Color schemes for each card
+// Color schemes for each card - Deep Navy & Mustard Gold palette
 const cardStyles = [
   {
-    // Card 1: Navy with copper accent
-    bg: "linear-gradient(135deg, var(--color-navy-900) 0%, var(--color-navy-800) 100%)",
-    iconBg: "linear-gradient(135deg, rgba(212, 165, 116, 0.2) 0%, rgba(182, 125, 66, 0.1) 100%)",
-    iconColor: "var(--color-copper-400)",
-    numberColor: "var(--color-copper-400)",
-    textColor: "white",
-    descriptionColor: "rgba(255, 255, 255, 0.7)",
-    border: "1px solid rgba(212, 165, 116, 0.2)",
+    // Card 1: Deep Navy with Mustard Gold accent
+    bg: "linear-gradient(135deg, var(--color-primary-main) 0%, var(--color-navy-800) 100%)",
+    iconBg: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-hover) 10%, transparent) 100%)`,
+    iconColor: "var(--color-accent-main)",
+    numberColor: "var(--color-accent-main)",
+    textColor: "var(--color-text-on-dark)",
+    descriptionColor: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
+    border: `1px solid color-mix(in srgb, var(--color-accent-main) 20%, transparent)`,
   },
   {
-    // Card 2: White with navy accent
-    bg: "linear-gradient(135deg, #ffffff 0%, var(--color-sand-50) 100%)",
-    iconBg: "linear-gradient(135deg, rgba(10, 22, 40, 0.1) 0%, rgba(15, 31, 58, 0.05) 100%)",
-    iconColor: "var(--color-navy-900)",
-    numberColor: "var(--color-copper-600)",
-    textColor: "var(--color-navy-900)",
-    descriptionColor: "var(--color-gray-600)",
-    border: "1px solid rgba(10, 22, 40, 0.1)",
+    // Card 2: White with Mustard Gold accent
+    bg: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
+    iconBg: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 5%, transparent) 100%)`,
+    iconColor: "var(--color-primary-main)",
+    numberColor: "var(--color-accent-main)",
+    textColor: "var(--color-primary-main)",
+    descriptionColor: "var(--color-text-secondary)",
+    border: `1px solid color-mix(in srgb, var(--color-accent-main) 10%, transparent)`,
   },
   {
-    // Card 3: Copper gradient
-    bg: "linear-gradient(135deg, rgba(212, 165, 116, 0.15) 0%, rgba(182, 125, 66, 0.1) 100%)",
-    iconBg: "linear-gradient(135deg, var(--color-copper-600) 0%, var(--color-copper-500) 100%)",
-    iconColor: "white",
-    numberColor: "var(--color-navy-900)",
-    textColor: "var(--color-navy-900)",
-    descriptionColor: "var(--color-gray-700)",
-    border: "1px solid rgba(212, 165, 116, 0.3)",
+    // Card 3: Mustard Gold gradient
+    bg: `linear-gradient(135deg, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
+    iconBg: "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)",
+    iconColor: "var(--color-text-on-dark)",
+    numberColor: "var(--color-primary-main)",
+    textColor: "var(--color-primary-main)",
+    descriptionColor: "var(--color-text-secondary)",
+    border: `1px solid color-mix(in srgb, var(--color-accent-main) 30%, transparent)`,
   },
   {
-    // Card 4: Navy with slate accent
+    // Card 4: Deep Navy with Mustard Gold accent
     bg: "linear-gradient(135deg, var(--color-navy-800) 0%, var(--color-navy-700) 100%)",
-    iconBg: "linear-gradient(135deg, rgba(124, 154, 181, 0.2) 0%, rgba(90, 122, 154, 0.1) 100%)",
-    iconColor: "var(--color-slate-400)",
-    numberColor: "var(--color-slate-400)",
-    textColor: "white",
-    descriptionColor: "rgba(255, 255, 255, 0.7)",
-    border: "1px solid rgba(124, 154, 181, 0.2)",
+    iconBg: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-hover) 10%, transparent) 100%)`,
+    iconColor: "var(--color-accent-main)",
+    numberColor: "var(--color-accent-main)",
+    textColor: "var(--color-text-on-dark)",
+    descriptionColor: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
+    border: `1px solid color-mix(in srgb, var(--color-accent-main) 20%, transparent)`,
+  },
+  {
+    // Card 5: White with Deep Navy accent
+    bg: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
+    iconBg: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 15%, transparent) 0%, color-mix(in srgb, var(--color-navy-800) 10%, transparent) 100%)`,
+    iconColor: "var(--color-primary-main)",
+    numberColor: "var(--color-primary-main)",
+    textColor: "var(--color-primary-main)",
+    descriptionColor: "var(--color-text-secondary)",
+    border: `1px solid color-mix(in srgb, var(--color-primary-main) 15%, transparent)`,
+  },
+  {
+    // Card 6: Mustard Gold with Deep Navy text
+    bg: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 100%)`,
+    iconBg: "linear-gradient(135deg, var(--color-primary-main) 0%, var(--color-navy-800) 100%)",
+    iconColor: "var(--color-accent-main)",
+    numberColor: "var(--color-primary-main)",
+    textColor: "var(--color-primary-main)",
+    descriptionColor: "var(--color-text-secondary)",
+    border: `1px solid color-mix(in srgb, var(--color-accent-main) 25%, transparent)`,
   },
 ];
 
@@ -107,18 +133,18 @@ export default function StatsSection() {
       className="section relative overflow-hidden"
       style={{
         background:
-          "linear-gradient(180deg, var(--color-sand-50) 0%, #ffffff 50%, var(--color-sand-50) 100%)",
+          "linear-gradient(180deg, var(--color-gray-50) 0%, #ffffff 50%, var(--color-gray-50) 100%)",
       }}
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 opacity-5">
         <div
           className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl"
-          style={{ background: "var(--color-copper-400)" }}
+          style={{ background: "var(--color-accent-main)", opacity: 0.1 }}
         />
         <div
           className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl"
-          style={{ background: "var(--color-navy-900)" }}
+          style={{ background: "var(--color-accent-main)", opacity: 0.1 }}
         />
       </div>
 
@@ -135,26 +161,20 @@ export default function StatsSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.5 }}
-            className="inline-block px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-6"
+            className="text-eyebrow inline-block px-4 py-2 rounded-full mb-6"
             style={{
-              background: "rgba(212, 165, 116, 0.1)",
-              color: "var(--color-copper-600)",
-              border: "1px solid rgba(212, 165, 116, 0.2)",
+              background: "color-mix(in srgb, var(--color-accent-main) 10%, transparent)",
+              color: "var(--color-accent-main)",
+              border: `1px solid color-mix(in srgb, var(--color-accent-main) 20%, transparent)`,
             }}
           >
             Our Impact
           </motion.span>
           <h2
-            className="text-[10rem] md:text-[12rem] lg:text-[14rem] xl:text-[16rem] 2xl:text-[18rem]"
+            className="text-display"
             style={{
-              color: "var(--color-navy-900)",
-              lineHeight: "0.95",
-              letterSpacing: "-0.04em",
-              fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-              fontWeight: 900,
-              fontStyle: "normal",
-              textShadow: "0 2px 8px rgba(10, 22, 40, 0.08)",
-              marginBottom: "2.5rem",
+              color: "var(--color-text-body)",
+              marginBottom: "var(--space-8)",
             }}
           >
             Exploration at Scale
@@ -162,15 +182,11 @@ export default function StatsSection() {
           <p
             className="text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto text-center block"
             style={{
-              color: "var(--color-navy-800)",
-              lineHeight: "1.7",
-              fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-              fontWeight: 400,
+              color: "var(--color-text-secondary)",
+              lineHeight: "var(--line-height-loose)",
+              fontFamily: "var(--font-family-body)",
+              fontWeight: "var(--font-weight-regular)",
               letterSpacing: "-0.01em",
-              textAlign: "center",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginTop: "0",
             }}
           >
             Norvege Minerals is a leading mineral exploration company in Europe, with significant
@@ -179,7 +195,7 @@ export default function StatsSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {companyMetrics.map((stat, index) => {
             const IconComponent = iconComponents[index % iconComponents.length];
             const style = cardStyles[index % cardStyles.length];
@@ -201,15 +217,14 @@ export default function StatsSection() {
                   scale: 1.02,
                   transition: { duration: 0.3 },
                 }}
-                className="relative group"
+                className="relative group w-full"
               >
                 {/* Card */}
                 <div
-                  className="relative p-8 lg:p-10 rounded-3xl transition-all duration-500 overflow-hidden"
+                  className="card card-elevated relative p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl overflow-hidden h-full flex flex-col"
                   style={{
                     background: style.bg,
                     border: style.border,
-                    boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
                   }}
                 >
                   {/* Hover glow effect */}
@@ -222,21 +237,21 @@ export default function StatsSection() {
 
                   {/* Icon */}
                   <motion.div
-                    className="relative mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl"
+                    className="relative mb-4 sm:mb-6 inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl flex-shrink-0"
                     style={{
                       background: style.iconBg,
                     }}
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <div style={{ color: style.iconColor }}>
-                      <IconComponent />
+                    <div style={{ color: style.iconColor }} className="w-full h-full">
+                      <IconComponent className="w-full h-full" />
                     </div>
                   </motion.div>
 
                   {/* Number */}
                   <motion.div
-                    className="text-6xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-none"
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold mb-3 sm:mb-4 leading-none break-words"
                     style={{ color: style.numberColor }}
                     initial={{ opacity: 0, scale: 0.5 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -248,7 +263,7 @@ export default function StatsSection() {
 
                   {/* Label */}
                   <div
-                    className="text-base md:text-lg font-bold mb-3 tracking-wider uppercase"
+                    className="text-xs sm:text-sm md:text-base lg:text-lg font-bold mb-2 sm:mb-3 tracking-wider uppercase leading-tight"
                     style={{ color: style.textColor }}
                   >
                     {labelMap[stat.label] || stat.label}
@@ -256,7 +271,7 @@ export default function StatsSection() {
 
                   {/* Description */}
                   <p
-                    className="text-sm md:text-base leading-relaxed"
+                    className="text-xs sm:text-sm md:text-base leading-relaxed mt-auto"
                     style={{ color: style.descriptionColor }}
                   >
                     {stat.description}
@@ -285,7 +300,7 @@ export default function StatsSection() {
           className="mt-16 h-1 rounded-full mx-auto max-w-2xl"
           style={{
             background:
-              "linear-gradient(90deg, transparent 0%, var(--color-copper-400) 50%, transparent 100%)",
+              "linear-gradient(90deg, transparent 0%, var(--color-accent-main) 50%, transparent 100%)",
           }}
         />
       </div>

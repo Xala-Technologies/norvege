@@ -60,7 +60,7 @@ export function generateOrganizationSchema() {
     "@type": "Organization",
     name: "NORVEGE MINERALS AS",
     url: process.env.NEXT_PUBLIC_SITE_URL || "https://norvegeminerals.no",
-    logo: `${process.env.NEXT_PUBLIC_SITE_URL || "https://pureminerals.no"}/logo.png`,
+    logo: `${process.env.NEXT_PUBLIC_SITE_URL || "https://norvegeminerals.no"}/images/logo.png`,
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "Customer Service",

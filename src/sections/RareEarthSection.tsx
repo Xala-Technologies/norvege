@@ -76,8 +76,8 @@ const dependencyStats = [
     description:
       "Europe depends on external sources for rare earth refining, creating significant supply chain vulnerabilities and geopolitical risks.",
     icon: WarningIcon,
-    color: "from-red-500 to-orange-500",
-    bgColor: "rgba(239, 68, 68, 0.1)",
+    color: "from-gold-500 to-gold-400",
+    bgColor: "color-mix(in srgb, var(--color-accent-main) 10%, transparent)",
   },
   {
     number: "100%",
@@ -85,8 +85,8 @@ const dependencyStats = [
     description:
       "The EU currently imports 100% of its rare earth elements with no domestic extraction, exposing Europe to supply disruptions.",
     icon: GlobeAltIcon,
-    color: "from-blue-500 to-indigo-500",
-    bgColor: "rgba(59, 130, 246, 0.1)",
+    color: "from-gold-500 to-gold-400",
+    bgColor: "rgba(104, 211, 136, 0.1)",
   },
   {
     number: "5×",
@@ -94,8 +94,8 @@ const dependencyStats = [
     description:
       "EU demand for REEs in strategic technologies—electric vehicles, wind turbines, defense systems—is projected to increase 5 times by 2030.",
     icon: GrowthIcon,
-    color: "from-orange-500 to-amber-500",
-    bgColor: "rgba(249, 115, 22, 0.1)",
+    color: "from-gold-500 to-gold-400",
+    bgColor: "color-mix(in srgb, var(--color-accent-main) 10%, transparent)",
   },
 ];
 
@@ -103,17 +103,14 @@ const responseTargets = [
   {
     label: "Extraction Target (2030)",
     value: 10,
-    color: "from-green-500 to-emerald-600",
   },
   {
     label: "Processing Target (2030)",
     value: 40,
-    color: "from-green-500 to-emerald-600",
   },
   {
     label: "Recycling Target (2030)",
     value: 25,
-    color: "from-green-500 to-emerald-600",
   },
 ];
 
@@ -122,20 +119,32 @@ export default function RareEarthSection() {
     <section
       className="section relative overflow-hidden"
       style={{
-        background: "linear-gradient(180deg, #ffffff 0%, var(--color-sand-50) 50%, #ffffff 100%)",
+        background: `linear-gradient(180deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 30%, var(--color-bg-subtle) 70%, var(--color-bg-default) 100%)`,
       }}
     >
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 opacity-5">
+      {/* Enhanced decorative background elements */}
+      <div className="absolute inset-0 opacity-[0.08]">
         <div
-          className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl"
-          style={{ background: "var(--color-navy-900)" }}
+          className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-3xl"
+          style={{ background: "var(--color-primary-main)" }}
         />
         <div
-          className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl"
-          style={{ background: "var(--color-copper-400)" }}
+          className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl"
+          style={{ background: "var(--color-accent-main)" }}
         />
       </div>
+
+      {/* Subtle grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, var(--color-primary-main) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--color-primary-main) 1px, transparent 1px)
+          `,
+          backgroundSize: "60px 60px",
+        }}
+      />
 
       <div className="container max-w-7xl relative z-10">
         {/* Header */}
@@ -144,57 +153,56 @@ export default function RareEarthSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20 lg:mb-24"
+          className="text-center mb-16 lg:mb-20"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.5 }}
-            className="inline-block px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-6"
+            className="text-eyebrow inline-block px-5 py-2.5 rounded-full mb-8"
             style={{
-              background: "rgba(212, 165, 116, 0.1)",
-              color: "var(--color-copper-600)",
-              border: "1px solid rgba(212, 165, 116, 0.2)",
+              background: "color-mix(in srgb, var(--color-accent-main) 12%, transparent)",
+              color: "var(--color-accent-main)",
+              border: `1px solid color-mix(in srgb, var(--color-accent-main) 25%, transparent)`,
+              boxShadow: "var(--shadow-accent)",
             }}
           >
             Strategic Context
           </motion.span>
           <h2
-            className="text-[10rem] md:text-[12rem] lg:text-[14rem] xl:text-[16rem] 2xl:text-[18rem]"
+            className="text-display mb-6"
             style={{
-              color: "var(--color-navy-900)",
-              lineHeight: "0.95",
-              letterSpacing: "-0.04em",
-              fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-              fontWeight: 900,
-              fontStyle: "normal",
-              textShadow: "0 2px 8px rgba(10, 22, 40, 0.08)",
-              marginBottom: "2.5rem",
+              color: "var(--color-text-body)",
+              fontFamily: "var(--font-family-heading)",
+              fontWeight: "var(--font-weight-black)",
+              letterSpacing: "-0.03em",
             }}
           >
             Europe&apos;s Race for{" "}
-            <span style={{ color: "var(--color-copper-600)" }}>Rare Earths</span>
+            <span
+              style={{
+                color: "var(--color-accent-main)",
+              }}
+            >
+              Rare Earths
+            </span>
           </h2>
           <p
             className="text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto text-center block"
             style={{
-              color: "var(--color-navy-800)",
-              lineHeight: "1.7",
-              fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-              fontWeight: 400,
+              color: "var(--color-text-secondary)",
+              lineHeight: "var(--line-height-loose)",
+              fontFamily: "var(--font-family-body)",
+              fontWeight: "var(--font-weight-medium)",
               letterSpacing: "-0.01em",
-              textAlign: "center",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginTop: "0",
             }}
           >
             From Dependency to Dominance
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
           {/* Left Column - The Critical Dependency */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -202,24 +210,53 @@ export default function RareEarthSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center gap-3 mb-10">
+            <div className="flex items-center gap-4 mb-12">
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center"
+                className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
                 style={{
-                  background:
-                    "linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(249, 115, 22, 0.1) 100%)",
-                  color: "var(--color-copper-600)",
+                  background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 25%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 100%)`,
+                  color: "var(--color-accent-main)",
+                  boxShadow: "var(--shadow-accent)",
                 }}
               >
-                <ExclamationTriangleIcon className="w-6 h-6" />
+                <ExclamationTriangleIcon className="w-7 h-7" />
               </div>
               <h3
-                className="text-3xl md:text-4xl font-bold"
-                style={{ color: "var(--color-navy-900)" }}
+                className="text-3xl md:text-4xl lg:text-5xl font-bold"
+                style={{
+                  color: "var(--color-text-body)",
+                  fontFamily: "var(--font-family-heading)",
+                  fontWeight: "var(--font-weight-black)",
+                  letterSpacing: "-0.02em",
+                }}
               >
                 The Critical Dependency
               </h3>
             </div>
+
+            <p
+              className="text-base md:text-lg leading-relaxed mb-8"
+              style={{
+                color: "var(--color-text-body)",
+                fontFamily: "var(--font-family-body)",
+                lineHeight: "var(--line-height-base)",
+              }}
+            >
+              Europe is heavily dependent on imports for strategic resources. Renewable energy and
+              5G infrastructure require large amounts of{" "}
+              <strong>Copper, Nickel, Lithium, Cobalt, and Rare Earth Elements (REEs)</strong>.
+            </p>
+            <p
+              className="text-base md:text-lg leading-relaxed mb-8"
+              style={{
+                color: "var(--color-text-body)",
+                fontFamily: "var(--font-family-body)",
+                lineHeight: "var(--line-height-base)",
+              }}
+            >
+              Recycling alone cannot cover the demand. Responsible, domestic mining is crucial for
+              Norway&apos;s security of supply and independence.
+            </p>
 
             <div className="space-y-6">
               {dependencyStats.map((stat, index) => {
@@ -235,51 +272,80 @@ export default function RareEarthSection() {
                     className="group relative"
                   >
                     <div
-                      className="relative p-8 rounded-3xl transition-all duration-500 overflow-hidden"
+                      className="relative p-8 lg:p-10 rounded-3xl transition-all duration-500 overflow-hidden card-elevated"
                       style={{
-                        background: "white",
-                        border: "1px solid rgba(0, 0, 0, 0.08)",
-                        boxShadow: "0 10px 40px rgba(0, 0, 0, 0.08)",
+                        background: "var(--color-surface-card)",
+                        border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
+                        boxShadow: "var(--shadow-md)",
                       }}
                     >
                       {/* Hover glow */}
                       <motion.div
                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                         style={{
-                          background: `radial-gradient(circle at center, ${stat.bgColor} 0%, transparent 70%)`,
+                          background: `radial-gradient(circle at center, color-mix(in srgb, var(--color-accent-main) 8%, transparent) 0%, transparent 70%)`,
+                        }}
+                      />
+
+                      {/* Subtle border glow on hover */}
+                      <motion.div
+                        className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                        style={{
+                          border: `2px solid color-mix(in srgb, var(--color-accent-main) 20%, transparent)`,
+                          pointerEvents: "none",
                         }}
                       />
 
                       <div className="relative flex items-start gap-6">
                         {/* Number Badge */}
                         <div className="flex-shrink-0">
-                          <div
-                            className={`w-24 h-24 rounded-2xl flex items-center justify-center text-3xl font-extrabold bg-gradient-to-br ${stat.color} text-white shadow-lg`}
+                          <motion.div
+                            className="w-24 h-24 lg:w-28 lg:h-28 rounded-2xl flex items-center justify-center text-3xl lg:text-4xl font-extrabold text-white"
+                            style={{
+                              background:
+                                "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)",
+                              boxShadow: "var(--shadow-accent-lg)",
+                            }}
+                            whileHover={{ scale: 1.05, rotate: [0, -5, 5, -5, 0] }}
+                            transition={{ duration: 0.3 }}
                           >
                             {stat.number}
-                          </div>
+                          </motion.div>
                         </div>
 
                         {/* Content */}
                         <div className="flex-1 pt-2">
-                          <div className="flex items-center gap-3 mb-3">
+                          <div className="flex items-center gap-3 mb-4">
                             <div
-                              className="w-10 h-10 rounded-lg flex items-center justify-center"
+                              className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
                               style={{
                                 background: stat.bgColor,
-                                color: "var(--color-navy-900)",
+                                color: "var(--color-primary-main)",
                               }}
                             >
-                              <IconComponent className="w-5 h-5" />
+                              <IconComponent className="w-6 h-6" />
                             </div>
                             <h4
                               className="text-xl md:text-2xl font-bold"
-                              style={{ color: "var(--color-navy-900)" }}
+                              style={{
+                                color: "var(--color-text-body)",
+                                fontFamily: "var(--font-family-heading)",
+                                fontWeight: "var(--font-weight-bold)",
+                              }}
                             >
                               {stat.title}
                             </h4>
                           </div>
-                          <p className="text-gray-600 leading-relaxed">{stat.description}</p>
+                          <p
+                            className="leading-relaxed"
+                            style={{
+                              color: "var(--color-text-secondary)",
+                              fontFamily: "var(--font-family-body)",
+                              lineHeight: "var(--line-height-base)",
+                            }}
+                          >
+                            {stat.description}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -296,26 +362,31 @@ export default function RareEarthSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center gap-3 mb-10">
+            <div className="flex items-center gap-4 mb-12">
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center"
+                className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
                 style={{
-                  background:
-                    "linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(16, 185, 129, 0.1) 100%)",
-                  color: "#22c55e",
+                  background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 25%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 100%)`,
+                  color: "var(--color-accent-main)",
+                  boxShadow: "var(--shadow-accent)",
                 }}
               >
-                <CheckCircleIcon className="w-6 h-6" />
+                <CheckCircleIcon className="w-7 h-7" />
               </div>
               <h3
-                className="text-3xl md:text-4xl font-bold"
-                style={{ color: "var(--color-navy-900)" }}
+                className="text-3xl md:text-4xl lg:text-5xl font-bold"
+                style={{
+                  color: "var(--color-text-body)",
+                  fontFamily: "var(--font-family-heading)",
+                  fontWeight: "var(--font-weight-black)",
+                  letterSpacing: "-0.02em",
+                }}
               >
                 The European Response
               </h3>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               {/* Critical Raw Materials Act Card */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -336,29 +407,43 @@ export default function RareEarthSection() {
                   <motion.div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     style={{
-                      background:
-                        "radial-gradient(circle at center, rgba(34, 197, 94, 0.1) 0%, transparent 70%)",
+                      background: `radial-gradient(circle at center, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 0%, transparent 70%)`,
                     }}
                   />
 
                   <div className="relative flex items-start gap-6">
-                    <div
-                      className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
+                    <motion.div
+                      className="w-18 h-18 lg:w-20 lg:h-20 rounded-2xl flex items-center justify-center flex-shrink-0"
                       style={{
-                        background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
-                        color: "white",
+                        background:
+                          "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)",
+                        color: "var(--color-accent-contrast)",
+                        boxShadow: "var(--shadow-accent-lg)",
                       }}
+                      whileHover={{ scale: 1.05, rotate: [0, -5, 5, -5, 0] }}
+                      transition={{ duration: 0.3 }}
                     >
-                      <CheckCircleIcon className="w-8 h-8" />
-                    </div>
+                      <CheckCircleIcon className="w-9 h-9 lg:w-10 lg:h-10" />
+                    </motion.div>
                     <div className="flex-1">
                       <h4
-                        className="text-xl md:text-2xl font-bold mb-3"
-                        style={{ color: "var(--color-navy-900)" }}
+                        className="text-xl md:text-2xl font-bold mb-4"
+                        style={{
+                          color: "var(--color-text-body)",
+                          fontFamily: "var(--font-family-heading)",
+                          fontWeight: "var(--font-weight-bold)",
+                        }}
                       >
                         The Critical Raw Materials Act
                       </h4>
-                      <p className="text-gray-600 leading-relaxed">
+                      <p
+                        className="leading-relaxed"
+                        style={{
+                          color: "var(--color-text-secondary)",
+                          fontFamily: "var(--font-family-body)",
+                          lineHeight: "var(--line-height-base)",
+                        }}
+                      >
                         EU strategic plan to build a secure and resilient domestic supply chain,
                         reducing dependency on third countries for critical raw materials.
                       </p>
@@ -387,31 +472,38 @@ export default function RareEarthSection() {
                   <motion.div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     style={{
-                      background:
-                        "radial-gradient(circle at center, rgba(34, 197, 94, 0.1) 0%, transparent 70%)",
+                      background: `radial-gradient(circle at center, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 0%, transparent 70%)`,
                     }}
                   />
 
                   <div className="relative">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div
-                        className="w-16 h-16 rounded-2xl flex items-center justify-center"
+                    <div className="flex items-center gap-4 mb-8">
+                      <motion.div
+                        className="w-18 h-18 lg:w-20 lg:h-20 rounded-2xl flex items-center justify-center flex-shrink-0"
                         style={{
-                          background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
-                          color: "white",
+                          background:
+                            "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)",
+                          color: "var(--color-accent-contrast)",
+                          boxShadow: "var(--shadow-accent-lg)",
                         }}
+                        whileHover={{ scale: 1.05, rotate: [0, -5, 5, -5, 0] }}
+                        transition={{ duration: 0.3 }}
                       >
-                        <ChartBarIcon className="w-8 h-8" />
-                      </div>
+                        <ChartBarIcon className="w-9 h-9 lg:w-10 lg:h-10" />
+                      </motion.div>
                       <h4
                         className="text-xl md:text-2xl font-bold"
-                        style={{ color: "var(--color-navy-900)" }}
+                        style={{
+                          color: "var(--color-text-body)",
+                          fontFamily: "var(--font-family-heading)",
+                          fontWeight: "var(--font-weight-bold)",
+                        }}
                       >
                         Domestic Production Targets
                       </h4>
                     </div>
 
-                    <div className="space-y-5">
+                    <div className="space-y-6">
                       {responseTargets.map((target, index) => (
                         <motion.div
                           key={target.label}
@@ -420,20 +512,38 @@ export default function RareEarthSection() {
                           viewport={{ once: true }}
                           transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
                         >
-                          <div className="flex justify-between items-center mb-2">
-                            <span className="text-sm font-semibold text-gray-700">
+                          <div className="flex justify-between items-center mb-3">
+                            <span
+                              className="text-sm font-semibold"
+                              style={{
+                                color: "var(--color-text-body)",
+                                fontFamily: "var(--font-family-body)",
+                                fontWeight: "var(--font-weight-semibold)",
+                              }}
+                            >
                               {target.label}
                             </span>
                             <span
                               className="text-lg font-bold"
-                              style={{ color: "var(--color-navy-900)" }}
+                              style={{
+                                color: "var(--color-accent-main)",
+                                fontFamily: "var(--font-family-heading)",
+                                fontWeight: "var(--font-weight-bold)",
+                              }}
                             >
                               {target.value}%
                             </span>
                           </div>
-                          <div className="relative w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                          <div
+                            className="relative w-full h-3 rounded-full overflow-hidden progress-bar-track"
+                            style={{
+                              background:
+                                "color-mix(in srgb, var(--color-primary-main) 10%, transparent)",
+                            }}
+                          >
                             <motion.div
-                              className={`h-full rounded-full bg-gradient-to-r ${target.color}`}
+                              className="h-full rounded-full progress-bar-filled"
+                              style={{ background: "var(--color-accent-main)" }}
                               initial={{ width: 0 }}
                               whileInView={{ width: `${target.value}%` }}
                               viewport={{ once: true }}
@@ -471,36 +581,42 @@ export default function RareEarthSection() {
                   className="relative p-10 rounded-3xl overflow-hidden"
                   style={{
                     background:
-                      "linear-gradient(135deg, var(--color-navy-900) 0%, var(--color-navy-800) 100%)",
+                      "linear-gradient(135deg, var(--color-navy-deep) 0%, var(--color-navy-800) 100%)",
                     boxShadow: "0 20px 60px rgba(0, 0, 0, 0.3)",
                   }}
                 >
                   {/* Decorative elements */}
                   <div
                     className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-20 blur-3xl"
-                    style={{ background: "var(--color-copper-400)" }}
+                    style={{ background: "var(--color-gold-mustard)" }}
                   />
                   <div
                     className="absolute bottom-0 left-0 w-48 h-48 rounded-full opacity-10 blur-2xl"
-                    style={{ background: "var(--color-copper-400)" }}
+                    style={{ background: "var(--color-gold-mustard)" }}
                   />
 
                   <div className="relative flex items-start gap-6">
-                    <div
-                      className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0"
+                    <motion.div
+                      className="w-20 h-20 lg:w-24 lg:h-24 rounded-2xl flex items-center justify-center flex-shrink-0"
                       style={{
                         background:
-                          "linear-gradient(135deg, var(--color-copper-400) 0%, var(--color-copper-600) 100%)",
-                        boxShadow: "0 10px 30px rgba(212, 165, 116, 0.4)",
-                        color: "white",
+                          "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)",
+                        boxShadow: "var(--shadow-accent-lg)",
+                        color: "var(--color-accent-contrast)",
                       }}
+                      whileHover={{ scale: 1.05, rotate: [0, -5, 5, -5, 0] }}
+                      transition={{ duration: 0.3 }}
                     >
-                      <GlobeAltIcon className="w-10 h-10" />
-                    </div>
+                      <GlobeAltIcon className="w-11 h-11 lg:w-12 lg:h-12" />
+                    </motion.div>
                     <div className="flex-1">
                       <motion.div
-                        className="text-5xl md:text-6xl font-extrabold mb-3"
-                        style={{ color: "var(--color-copper-400)" }}
+                        className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4"
+                        style={{
+                          color: "var(--color-accent-main)",
+                          fontFamily: "var(--font-family-heading)",
+                          fontWeight: "var(--font-weight-black)",
+                        }}
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
@@ -508,10 +624,24 @@ export default function RareEarthSection() {
                       >
                         8.8 Mt
                       </motion.div>
-                      <h4 className="text-2xl font-bold mb-3 text-white">
+                      <h4
+                        className="text-2xl lg:text-3xl font-bold mb-4"
+                        style={{
+                          color: "var(--color-text-on-dark)",
+                          fontFamily: "var(--font-family-heading)",
+                          fontWeight: "var(--font-weight-bold)",
+                        }}
+                      >
                         Unlocking Domestic Resources
                       </h4>
-                      <p className="text-gray-300 leading-relaxed">
+                      <p
+                        className="leading-relaxed"
+                        style={{
+                          color: "color-mix(in srgb, var(--color-text-on-dark) 85%, transparent)",
+                          fontFamily: "var(--font-family-body)",
+                          lineHeight: "var(--line-height-base)",
+                        }}
+                      >
                         Europe&apos;s largest REE deposit discovery in Fen, Norway positions the EU
                         to reduce import dependency. Norvege Minerals is strategically positioned to
                         play a key role in securing Europe&apos;s future supply of critical raw

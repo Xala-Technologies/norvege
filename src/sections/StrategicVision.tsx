@@ -41,7 +41,7 @@ export default function StrategicVision() {
         >
           <h2
             className="text-4xl md:text-5xl font-bold mb-4"
-            style={{ color: "var(--color-navy-900)" }}
+            style={{ color: "var(--color-navy-deep)" }}
           >
             Why NORVEGE MINERALS
           </h2>

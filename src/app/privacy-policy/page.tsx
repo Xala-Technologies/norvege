@@ -33,14 +33,14 @@ export default function PrivacyPolicyPage() {
       {/* Content */}
       <section className="section bg-white">
         <div className="container max-w-4xl prose prose-lg">
-          <h2 style={{ color: "var(--color-navy-900)" }}>Introduction</h2>
+          <h2 style={{ color: "var(--color-primary-main)" }}>Introduction</h2>
           <p className="text-gray-600">
             NORVEGE MINERALS AS (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to
             protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and
             safeguard your information when you visit our website.
           </p>
 
-          <h2 style={{ color: "var(--color-navy-900)" }}>Information We Collect</h2>
+          <h2 style={{ color: "var(--color-primary-main)" }}>Information We Collect</h2>
           <p className="text-gray-600">
             We may collect information about you in a variety of ways. The information we may
             collect on the website includes:
@@ -56,7 +56,7 @@ export default function PrivacyPolicyPage() {
             </li>
           </ul>
 
-          <h2 style={{ color: "var(--color-navy-900)" }}>Use of Your Information</h2>
+          <h2 style={{ color: "var(--color-primary-main)" }}>Use of Your Information</h2>
           <p className="text-gray-600">We use the information we collect to:</p>
           <ul className="text-gray-600">
             <li>Respond to your inquiries and provide customer support</li>
@@ -65,20 +65,20 @@ export default function PrivacyPolicyPage() {
             <li>Comply with legal obligations</li>
           </ul>
 
-          <h2 style={{ color: "var(--color-navy-900)" }}>Disclosure of Your Information</h2>
+          <h2 style={{ color: "var(--color-primary-main)" }}>Disclosure of Your Information</h2>
           <p className="text-gray-600">
             We do not sell, trade, or otherwise transfer your personal information to third parties
             without your consent, except as required by law or as necessary to provide our services.
           </p>
 
-          <h2 style={{ color: "var(--color-navy-900)" }}>Data Security</h2>
+          <h2 style={{ color: "var(--color-primary-main)" }}>Data Security</h2>
           <p className="text-gray-600">
             We use administrative, technical, and physical security measures to protect your
             personal information. However, no method of transmission over the Internet or electronic
             storage is 100% secure.
           </p>
 
-          <h2 style={{ color: "var(--color-navy-900)" }}>Your Rights (GDPR)</h2>
+          <h2 style={{ color: "var(--color-primary-main)" }}>Your Rights (GDPR)</h2>
           <p className="text-gray-600">
             If you are a resident of the European Economic Area (EEA), you have certain data
             protection rights, including:
@@ -91,14 +91,14 @@ export default function PrivacyPolicyPage() {
             <li>The right to withdraw consent</li>
           </ul>
 
-          <h2 style={{ color: "var(--color-navy-900)" }}>Cookies</h2>
+          <h2 style={{ color: "var(--color-primary-main)" }}>Cookies</h2>
           <p className="text-gray-600">
             We may use cookies and similar tracking technologies to track activity on our website.
             You can instruct your browser to refuse all cookies or to indicate when a cookie is
             being sent.
           </p>
 
-          <h2 style={{ color: "var(--color-navy-900)" }}>Contact Us</h2>
+          <h2 style={{ color: "var(--color-primary-main)" }}>Contact Us</h2>
           <p className="text-gray-600">
             If you have questions or comments about this Privacy Policy, please contact us at:
           </p>
@@ -106,7 +106,7 @@ export default function PrivacyPolicyPage() {
             Email:{" "}
             <a
               href="mailto:privacy@norvegeminerals.no"
-              style={{ color: "var(--color-copper-600)" }}
+              style={{ color: "var(--color-accent-main)" }}
             >
               privacy@norvegeminerals.no
             </a>

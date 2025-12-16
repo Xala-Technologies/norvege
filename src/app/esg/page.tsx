@@ -51,7 +51,7 @@ export default function ESGPage() {
           <div className="flex items-center gap-4 mb-6">
             <div
               className="w-16 h-16 rounded-full flex items-center justify-center text-3xl"
-              style={{ background: "var(--color-copper-500)" }}
+              style={{ background: "var(--color-accent-main)" }}
             >
               🌱
             </div>
@@ -64,7 +64,7 @@ export default function ESGPage() {
             <div>
               <h3
                 className="text-2xl font-semibold mb-3"
-                style={{ color: "var(--color-copper-600)" }}
+                style={{ color: "var(--color-accent-main)" }}
               >
                 Land Use & Biodiversity
               </h3>
@@ -78,7 +78,7 @@ export default function ESGPage() {
             <div>
               <h3
                 className="text-2xl font-semibold mb-3"
-                style={{ color: "var(--color-copper-600)" }}
+                style={{ color: "var(--color-accent-main)" }}
               >
                 Water Management
               </h3>
@@ -91,7 +91,7 @@ export default function ESGPage() {
             <div>
               <h3
                 className="text-2xl font-semibold mb-3"
-                style={{ color: "var(--color-copper-600)" }}
+                style={{ color: "var(--color-accent-main)" }}
               >
                 Emissions & Climate
               </h3>
@@ -111,7 +111,7 @@ export default function ESGPage() {
           <div className="flex items-center gap-4 mb-6">
             <div
               className="w-16 h-16 rounded-full flex items-center justify-center text-3xl"
-              style={{ background: "var(--color-copper-500)" }}
+              style={{ background: "var(--color-accent-main)" }}
             >
               🤝
             </div>
@@ -124,7 +124,7 @@ export default function ESGPage() {
             <div>
               <h3
                 className="text-2xl font-semibold mb-3"
-                style={{ color: "var(--color-copper-600)" }}
+                style={{ color: "var(--color-accent-main)" }}
               >
                 Local Communities
               </h3>
@@ -137,7 +137,7 @@ export default function ESGPage() {
             <div>
               <h3
                 className="text-2xl font-semibold mb-3"
-                style={{ color: "var(--color-copper-600)" }}
+                style={{ color: "var(--color-accent-main)" }}
               >
                 Indigenous Rights
               </h3>
@@ -150,7 +150,7 @@ export default function ESGPage() {
             <div>
               <h3
                 className="text-2xl font-semibold mb-3"
-                style={{ color: "var(--color-copper-600)" }}
+                style={{ color: "var(--color-accent-main)" }}
               >
                 Jobs & Safety
               </h3>
@@ -169,7 +169,7 @@ export default function ESGPage() {
           <div className="flex items-center gap-4 mb-6">
             <div
               className="w-16 h-16 rounded-full flex items-center justify-center text-3xl"
-              style={{ background: "var(--color-copper-500)" }}
+              style={{ background: "var(--color-accent-main)" }}
             >
               📊
             </div>
@@ -182,7 +182,7 @@ export default function ESGPage() {
             <div>
               <h3
                 className="text-2xl font-semibold mb-3"
-                style={{ color: "var(--color-copper-600)" }}
+                style={{ color: "var(--color-accent-main)" }}
               >
                 Transparency
               </h3>
@@ -195,7 +195,7 @@ export default function ESGPage() {
             <div>
               <h3
                 className="text-2xl font-semibold mb-3"
-                style={{ color: "var(--color-copper-600)" }}
+                style={{ color: "var(--color-accent-main)" }}
               >
                 Regulatory Compliance
               </h3>
@@ -208,7 +208,7 @@ export default function ESGPage() {
             <div>
               <h3
                 className="text-2xl font-semibold mb-3"
-                style={{ color: "var(--color-copper-600)" }}
+                style={{ color: "var(--color-accent-main)" }}
               >
                 Ethical Business Practices
               </h3>

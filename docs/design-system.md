@@ -2,78 +2,138 @@
 
 ## Color System
 
-### Primary Colors
+### Strategic Design System (60-30-10 Rule)
 
-Inspired by Norwegian geology and minerals:
+Professional, industrial, and trustworthy color palette based on the 60-30-10 rule:
+
+- **60% Neutral (White/Light Grey)**: For space and readability
+- **30% Primary Brand (Deep Navy)**: For structure, headers, and heavy visual weight
+- **10% Accent (Mustard Gold)**: For Call-to-Actions (CTAs), highlights, and data points
+
+### Primary Colors
 
 ```css
 :root {
-  /* Deep Navy - Primary dark background */
-  --color-navy-900: #0a1628;
-  --color-navy-800: #0f1f3a;
-  --color-navy-700: #1a2f4d;
+  /* Primary Brand - Deep Navy (30% of UI) */
+  --color-navy-deep: #183058;
+  --color-navy-900: #183058;
+  --color-navy-800: #1a3a6a;
+  --color-navy-700: #1d4a7c;
 
-  /* Warm Sand - Light neutral background */
-  --color-sand-50: #faf8f5;
-  --color-sand-100: #f5f1ea;
-  --color-sand-200: #e8e0d5;
+  /* Action / Accent - Mustard Gold (10% of UI) */
+  --color-gold-mustard: #dfa044;
+  --color-gold-500: #dfa044;
+  --color-gold-600: #c8903a;
+  --color-gold-400: #e8b05a;
 
-  /* Copper/Gold - Mineral accent */
-  --color-copper-400: #d4a574;
-  --color-copper-500: #c8935a;
-  --color-copper-600: #b67d42;
+  /* Text - Black */
+  --color-text-dark: #0d0e10;
+  --color-text-black: #0d0e10;
 
-  /* Slate Blue - Secondary accent */
-  --color-slate-400: #7c9ab5;
-  --color-slate-500: #5a7a9a;
-  --color-slate-600: #3d5a7a;
+  /* Background - Pure White (60% of UI) */
+  --color-white: #ffffff;
+  --color-bg-white: #ffffff;
+
+  /* Surface - Ice Blue Grey */
+  --color-surface-ice: #f0f4f8;
+  --color-surface-50: #f0f4f8;
+
+  /* Neutral Grays - Clean backgrounds (60% of UI) */
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+
+  /* Dark backgrounds - Black for footer/exploration sections */
+  --color-charcoal-950: #0d0e10;
+  --color-charcoal-900: #0d0e10;
+  --color-charcoal-800: #1a1a1a;
+  --color-charcoal-700: #2a2a2a;
+  --color-charcoal-600: #353535;
+
+  /* Legacy Orange mappings - Redirected to Mustard Gold */
+  --color-orange-bright: #dfa044;
+  --color-orange-soft: #e8b05a;
+  --color-orange-light: #f0c070;
+  --color-orange-dark: #c8903a;
+
+  /* Green - Success & growth (kept for semantic use) */
+  --color-green-live: #68d388;
+  --color-green-light: #c2edda;
+  --color-green-dark: #4fb86a;
+  --color-green-soft: #9ae5b8;
 
   /* Semantic Colors */
-  --color-success: #4a7c59;
-  --color-info: #5a7a9a;
-  --color-warning: #c8935a;
-
-  /* Neutral Grays */
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-200: #e5e7eb;
-  --color-gray-300: #d1d5db;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1f2937;
-  --color-gray-900: #111827;
+  --color-success: #68d388;
+  --color-info: #dfa044;
+  --color-warning: #dfa044;
+  --color-error: #ef4444;
 }
 ```
 
-### Tailwind Theme Extension
+### Color Usage Guidelines
 
-```javascript
-// tailwind.config.ts
-colors: {
-  navy: {
-    900: '#0a1628',
-    800: '#0f1f3a',
-    700: '#1a2f4d',
-  },
-  sand: {
-    50: '#faf8f5',
-    100: '#f5f1ea',
-    200: '#e8e0d5',
-  },
-  copper: {
-    400: '#d4a574',
-    500: '#c8935a',
-    600: '#b67d42',
-  },
-  slate: {
-    400: '#7c9ab5',
-    500: '#5a7a9a',
-    600: '#3d5a7a',
-  },
-}
-```
+#### Navigation Bar
+
+- **Background**: Deep Navy (`#183058`)
+- **Logo**: White/gold version
+- **Links**: White text (`#FFFFFF`)
+- **Hover State**: Mustard Gold (`#DFA044`)
+
+#### Hero Section
+
+- **Overlay**: Deep Navy gradient overlay (40-80% opacity)
+- **Headline**: White
+- **Sub-headline**: Light Grey (`#E2E8F0`)
+- **CTA Button**: Mustard Gold background, Deep Navy text
+
+#### Stats & Cards
+
+- **Card Background**: Deep Navy (`#183058`)
+- **Big Numbers**: Mustard Gold (`#DFA044`)
+- **Icons**: Mustard Gold
+- **Label Text**: White
+- **Active Card**: White background, Deep Navy text, Mustard Gold border
+
+#### Data Visualization
+
+- **Progress Bars**: Deep Navy background track, Mustard Gold filled percentage
+- **Icons**: Flat Mustard Gold icons
+- **Highlight Cards**: Deep Navy background with Gold text
+
+#### Exploration Areas
+
+- **Section Background**: Black (`#0D0E10`)
+- **Card Tags**: Mustard Gold
+- **"Learn More" Links**: Mustard Gold with arrow icon
+
+#### Form & Contact
+
+- **Section Background**: Deep Navy (`#183058`)
+- **Form Container**: White background
+- **Input Fields**: White background, Blue-Grey border, Mustard Gold focus border
+- **Submit Button**: Mustard Gold background, Deep Navy text
+
+#### Footer
+
+- **Background**: Black (`#0D0E10`)
+- **Text**: Light Grey
+- **Social Icons**: White by default, Mustard Gold on hover
+
+### Legacy Color Mappings (Backward Compatibility)
+
+For backward compatibility, old color names map to new colors:
+
+- `--color-navy-*` → Deep Navy colors
+- `--color-sand-*` → `--color-gray-*`
+- `--color-copper-*` → `--color-gold-*` (Mustard Gold)
+- `--color-slate-*` → `--color-green-*`
 
 ## Typography
 
@@ -140,6 +200,12 @@ colors: {
   line-height: 1.5;
 }
 ```
+
+### Typography Hierarchy
+
+- **H1 / Headlines**: Deep Navy (on light backgrounds) or White (on dark backgrounds)
+- **Eyebrows (Small text above headlines)**: Mustard Gold
+- **Body Text**: Dark Grey (never pure black on white, it causes eye strain)
 
 ### Mobile Typography Scale
 
@@ -214,7 +280,7 @@ colors: {
 ### Focus Styles
 
 ```css
---focus-ring: 2px solid var(--color-copper-500);
+--focus-ring: 2px solid var(--color-gold-mustard);
 --focus-offset: 2px;
 ```
 
@@ -234,30 +300,41 @@ colors: {
 
 ### Background Patterns
 
-- **Hero sections**: Deep navy (--color-navy-900) with subtle texture
-- **Content sections**: Alternating sand (--color-sand-50) and white
-- **Footer**: Navy (--color-navy-800)
+- **Hero sections**: Deep Navy (`--color-navy-deep`) with Deep Navy gradient overlay
+- **Content sections**: Alternating white and Ice Blue Grey (`--color-surface-ice`)
+- **Exploration sections**: Black (`--color-text-black`)
+- **Footer**: Black (`--color-text-black`)
 
 ### Text Colors
 
-- **On dark backgrounds**: White or sand-50
-- **On light backgrounds**: Navy-900 or gray-800
-- **Accent text**: Copper-600 for links and highlights
+- **On dark backgrounds**: White or light grey
+- **On light backgrounds**: Deep Navy or dark grey
+- **Accent text**: Mustard Gold for links, highlights, and eyebrow text
 
 ### Interactive Elements
 
-- **Primary buttons**: Copper-600 background, white text
-- **Secondary buttons**: Transparent with copper-600 border
-- **Hover states**: Slight scale (1.02) + shadow increase
+- **Primary buttons**: Mustard Gold background, Deep Navy text
+- **Secondary buttons**: Transparent with Mustard Gold border
+- **Hover states**: Slight scale (1.02) + shadow increase, color change to Mustard Gold
 - **Active states**: Scale (0.98)
 
 ### Cards
 
-- Background: White
-- Border: 1px solid gray-200
+- Background: White or Deep Navy (depending on context)
+- Border: 1px solid gray-200 or Mustard Gold (for active cards)
 - Radius: --radius-lg
 - Shadow: --shadow-md
 - Hover: --shadow-lg + slight lift
+
+### Gradients
+
+- Avoid gradients on Mustard Gold - keep it flat and solid to look like solid metal
+- Can use subtle gradient on Deep Navy (from `#183058` to `#0D0E10`) to add depth
+
+### Glow Effects
+
+- Change all red/orange glows to soft Mustard Gold
+- Creates "Golden Hour" lighting effect that feels valuable and aligned with minerals/mining
 
 ## Accessibility
 

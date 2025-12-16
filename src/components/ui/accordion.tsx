@@ -59,7 +59,7 @@ export default function Accordion({ items, className = "" }: AccordionProps) {
               <button
                 id={buttonId}
                 type="button"
-                className="w-full px-6 py-4 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-[var(--color-copper-600)] focus:ring-offset-2 transition-colors"
+                className="w-full px-6 py-4 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-main)] focus:ring-offset-2 transition-colors"
                 style={{
                   backgroundColor: isOpen ? "var(--color-sand-50)" : "white",
                 }}
@@ -75,7 +75,7 @@ export default function Accordion({ items, className = "" }: AccordionProps) {
                   className={`w-5 h-5 transition-transform flex-shrink-0 ml-4`}
                   style={{
                     transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                    color: "var(--color-copper-600)",
+                    color: "var(--color-accent-main)",
                   }}
                   fill="none"
                   stroke="currentColor"

@@ -26,57 +26,55 @@ export default function ESGTeaser() {
   return (
     <section className="section" style={{ background: "var(--color-sand-50)" }}>
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20 lg:mb-24"
+        >
+          <h2
+            className="text-4xl md:text-5xl font-bold mb-6"
+            style={{ color: "var(--color-navy-900)" }}
           >
-            <h2
-              className="text-4xl md:text-5xl font-bold mb-6"
-              style={{ color: "var(--color-navy-900)" }}
+            Responsible Mining for the Future
+          </h2>
+          <p className="text-lg text-gray-600 mb-6 max-w-3xl mx-auto">
+            At NORVEGE MINERALS AS, sustainability is not an afterthought—it&apos;s fundamental to
+            everything we do. We&apos;re committed to developing Norway&apos;s critical mineral
+            resources while protecting the environment and supporting local communities.
+          </p>
+          <Link href="/esg" className="btn btn-primary">
+            Learn About Our ESG Commitment
+          </Link>
+        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+          {esgHighlights.map((highlight, index) => (
+            <motion.div
+              key={highlight.title}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              className="flex gap-4 items-start"
             >
-              Responsible Mining for the Future
-            </h2>
-            <p className="text-lg text-gray-600 mb-6">
-              At NORVEGE MINERALS AS, sustainability is not an afterthought—it&apos;s fundamental to
-              everything we do. We&apos;re committed to developing Norway&apos;s critical mineral
-              resources while protecting the environment and supporting local communities.
-            </p>
-            <Link href="/esg" className="btn btn-primary">
-              Learn About Our ESG Commitment
-            </Link>
-          </motion.div>
-
-          <div className="space-y-6">
-            {esgHighlights.map((highlight, index) => (
-              <motion.div
-                key={highlight.title}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="flex gap-4 items-start"
+              <div
+                className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center text-2xl"
+                style={{ background: "var(--color-copper-500)" }}
               >
-                <div
-                  className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center text-2xl"
-                  style={{ background: "var(--color-copper-500)" }}
+                {highlight.icon}
+              </div>
+              <div>
+                <h3
+                  className="text-xl font-semibold mb-2"
+                  style={{ color: "var(--color-navy-900)" }}
                 >
-                  {highlight.icon}
-                </div>
-                <div>
-                  <h3
-                    className="text-xl font-semibold mb-2"
-                    style={{ color: "var(--color-navy-900)" }}
-                  >
-                    {highlight.title}
-                  </h3>
-                  <p className="text-gray-600">{highlight.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                  {highlight.title}
+                </h3>
+                <p className="text-gray-600">{highlight.description}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

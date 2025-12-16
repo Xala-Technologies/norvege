@@ -1,64 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
+import { projects } from "@/content/projects";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateSEOMetadata({
   title: "Projects - NORVEGE MINERALS AS",
   description: "Explore our portfolio of critical mineral exploration projects across Norway.",
-};
-
-const projects = [
-  {
-    slug: "nordfjord-project",
-    name: "Nordfjord Project",
-    region: "Sogn og Fjordane",
-    country: "Norway",
-    stage: "Advanced Exploration",
-    licenses: 8,
-    area: "150 km²",
-    minerals: "Copper, Zinc",
-    priority: "High",
-    description:
-      "Our flagship project in western Norway, targeting high-grade copper and zinc mineralization in a historic mining district.",
-  },
-  {
-    slug: "telemark-minerals",
-    name: "Telemark Minerals",
-    region: "Telemark",
-    country: "Norway",
-    stage: "Early Exploration",
-    licenses: 5,
-    area: "120 km²",
-    minerals: "Nickel, Cobalt",
-    priority: "Medium",
-    description:
-      "Exploring nickel and cobalt potential in southern Norway, critical minerals for battery production.",
-  },
-  {
-    slug: "trondelag-resources",
-    name: "Trøndelag Resources",
-    region: "Trøndelag",
-    country: "Norway",
-    stage: "Advanced Exploration",
-    licenses: 6,
-    area: "180 km²",
-    minerals: "Rare Earth Elements",
-    priority: "High",
-    description:
-      "Targeting rare earth elements essential for wind turbines, electric motors, and high-tech applications.",
-  },
-  {
-    slug: "finnmark-exploration",
-    name: "Finnmark Exploration",
-    region: "Finnmark",
-    country: "Norway",
-    stage: "Early Exploration",
-    licenses: 4,
-    area: "95 km²",
-    minerals: "Copper, Gold",
-    priority: "Medium",
-    description: "Early-stage exploration in northern Norway's underexplored mineral belt.",
-  },
-];
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   return (
@@ -130,14 +79,14 @@ export default function ProjectsPage() {
                       className="text-lg font-semibold"
                       style={{ color: "var(--color-copper-600)" }}
                     >
-                      {project.minerals}
+                      {project.minerals.join(", ")}
                     </p>
                   </div>
                 </div>
 
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="inline-flex items-center text-sm font-semibold group-hover:translate-x-1 transition-transform"
+                  className="inline-flex items-center text-sm font-semibold group-hover:translate-x-1 transition-transform focus:outline-none focus:ring-2 focus:ring-[var(--color-copper-600)] focus:ring-offset-2 rounded"
                   style={{ color: "var(--color-copper-600)" }}
                 >
                   View Project Details
@@ -146,6 +95,7 @@ export default function ProjectsPage() {
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"

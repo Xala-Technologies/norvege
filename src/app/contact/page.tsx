@@ -1,53 +1,29 @@
-"use client";
+import type { Metadata } from "next";
+import Script from "next/script";
+import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
+import { companyInfo } from "@/content/company";
+import { contactFAQs } from "@/content/legal";
+import Accordion from "@/components/ui/accordion";
+import { generateFAQSchema } from "@/lib/seo";
+import ContactForm from "@/components/contact/ContactForm";
 
-import { useState } from "react";
-
-const subjects = [
-  "General Inquiry",
-  "Investment Opportunity",
-  "Partnership",
-  "Media Request",
-  "Other",
-];
+export const metadata: Metadata = generateSEOMetadata({
+  title: "Contact Us - NORVEGE MINERALS AS",
+  description:
+    "Get in touch with NORVEGE MINERALS AS. Contact our team for inquiries, partnerships, or investment opportunities.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    subject: subjects[0],
-    message: "",
-  });
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("submitting");
-
-    // Simulate form submission
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        subject: subjects[0],
-        message: "",
-      });
-    }, 1000);
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const faqSchema = generateFAQSchema(contactFAQs);
 
   return (
     <div className="min-h-screen">
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* Hero Section */}
       <section className="section relative" style={{ background: "var(--color-navy-900)" }}>
         <div className="container">
@@ -83,8 +59,8 @@ export default function ContactPage() {
                   >
                     Company Details
                   </h3>
-                  <p className="text-gray-600">NORVEGE MINERALS AS</p>
-                  <p className="text-gray-600">Org. nr: [Company Number]</p>
+                  <p className="text-gray-600">{companyInfo.legalName}</p>
+                  <p className="text-gray-600">Org. nr: {companyInfo.orgNumber}</p>
                 </div>
 
                 <div>
@@ -94,9 +70,11 @@ export default function ContactPage() {
                   >
                     Address
                   </h3>
-                  <p className="text-gray-600">[Street Address]</p>
-                  <p className="text-gray-600">[Postal Code] Oslo</p>
-                  <p className="text-gray-600">Norway</p>
+                  <p className="text-gray-600">{companyInfo.address.street}</p>
+                  <p className="text-gray-600">
+                    {companyInfo.address.postalCode} {companyInfo.address.city}
+                  </p>
+                  <p className="text-gray-600">{companyInfo.address.country}</p>
                 </div>
 
                 <div>
@@ -107,22 +85,29 @@ export default function ContactPage() {
                     Email
                   </h3>
                   <a
-                    href="mailto:contact@norvegeminerals.no"
-                    className="text-gray-600 hover:text-[var(--color-copper-600)]"
+                    href={`mailto:${companyInfo.contact.email}`}
+                    className="text-gray-600 hover:text-[var(--color-copper-600)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-copper-600)] focus:ring-offset-2 rounded"
                   >
-                    contact@norvegeminerals.no
+                    {companyInfo.contact.email}
                   </a>
                 </div>
 
-                <div>
-                  <h3
-                    className="text-xl font-semibold mb-2"
-                    style={{ color: "var(--color-copper-600)" }}
-                  >
-                    Phone
-                  </h3>
-                  <p className="text-gray-600">[Phone Number]</p>
-                </div>
+                {companyInfo.contact.phone && (
+                  <div>
+                    <h3
+                      className="text-xl font-semibold mb-2"
+                      style={{ color: "var(--color-copper-600)" }}
+                    >
+                      Phone
+                    </h3>
+                    <a
+                      href={`tel:${companyInfo.contact.phone}`}
+                      className="text-gray-600 hover:text-[var(--color-copper-600)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-copper-600)] focus:ring-offset-2 rounded"
+                    >
+                      {companyInfo.contact.phone}
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -131,133 +116,22 @@ export default function ContactPage() {
               <h2 className="text-3xl font-bold mb-6" style={{ color: "var(--color-navy-900)" }}>
                 Send us a Message
               </h2>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium mb-2"
-                    style={{ color: "var(--color-navy-900)" }}
-                  >
-                    Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-copper-600)]"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium mb-2"
-                    style={{ color: "var(--color-navy-900)" }}
-                  >
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-copper-600)]"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="company"
-                    className="block text-sm font-medium mb-2"
-                    style={{ color: "var(--color-navy-900)" }}
-                  >
-                    Company (optional)
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-copper-600)]"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium mb-2"
-                    style={{ color: "var(--color-navy-900)" }}
-                  >
-                    Subject *
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    required
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-copper-600)]"
-                  >
-                    {subjects.map((subject) => (
-                      <option key={subject} value={subject}>
-                        {subject}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium mb-2"
-                    style={{ color: "var(--color-navy-900)" }}
-                  >
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={6}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-copper-600)]"
-                  />
-                </div>
-
-                {status === "success" && (
-                  <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                    <p className="text-green-800">
-                      Thank you! Your message has been sent successfully.
-                    </p>
-                  </div>
-                )}
-
-                {status === "error" && (
-                  <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                    <p className="text-red-800">
-                      Sorry, there was an error sending your message. Please try again.
-                    </p>
-                  </div>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={status === "submitting"}
-                  className="btn btn-primary w-full"
-                >
-                  {status === "submitting" ? "Sending..." : "Send Message"}
-                </button>
-              </form>
+              <ContactForm />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="section" style={{ background: "var(--color-sand-50)" }}>
+        <div className="container max-w-4xl">
+          <h2
+            className="text-4xl font-bold mb-8 text-center"
+            style={{ color: "var(--color-navy-900)" }}
+          >
+            Frequently Asked Questions
+          </h2>
+          <Accordion items={contactFAQs} />
         </div>
       </section>
     </div>

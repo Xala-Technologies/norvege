@@ -37,7 +37,7 @@ export default function StrategicVision() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-20 lg:mb-24"
         >
           <h2
             className="text-4xl md:text-5xl font-bold mb-4"

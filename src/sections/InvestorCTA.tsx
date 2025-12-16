@@ -26,7 +26,7 @@ export default function InvestorCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto text-center"
+          className="max-w-4xl mx-auto text-center mb-20 lg:mb-24"
         >
           <h2
             className="text-4xl md:text-5xl font-bold mb-6"

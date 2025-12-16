@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
+import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
+import { companyInfo, companyTimeline, teamMembers } from "@/content/company";
+import Timeline from "@/components/ui/timeline";
+import Table from "@/components/ui/table";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateSEOMetadata({
   title: "About Us - NORVEGE MINERALS AS",
   description:
     "Learn about NORVEGE MINERALS AS, our mission, team, and strategy for sustainable mineral exploration in Norway.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -65,27 +70,7 @@ export default function AboutPage() {
           >
             Key Milestones
           </h2>
-          <div className="space-y-8">
-            {[
-              { year: "2020", event: "Company founded with focus on critical minerals" },
-              { year: "2021", event: "Acquired first exploration licenses in Nordfjord region" },
-              { year: "2022", event: "Expanded portfolio to 15+ licenses across Norway" },
-              { year: "2023", event: "Initiated advanced exploration programs" },
-              { year: "2024", event: "Ongoing exploration and resource definition" },
-            ].map((milestone, index) => (
-              <div key={index} className="flex gap-6">
-                <div
-                  className="flex-shrink-0 w-24 h-24 rounded-full flex items-center justify-center font-bold text-xl"
-                  style={{ background: "var(--color-copper-500)", color: "white" }}
-                >
-                  {milestone.year}
-                </div>
-                <div className="flex-1 pt-4">
-                  <p className="text-lg text-gray-700">{milestone.event}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <Timeline items={companyTimeline} />
         </div>
       </section>
 
@@ -125,7 +110,46 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Management Team Placeholder */}
+      {/* Grade Comparison Table */}
+      <section className="section bg-white">
+        <div className="container max-w-4xl">
+          <h2 className="text-4xl font-bold mb-6" style={{ color: "var(--color-navy-900)" }}>
+            Mineral Grade Comparison
+          </h2>
+          <Table
+            columns={[
+              { header: "Mineral", accessor: "mineral" },
+              { header: "Typical Grade (%)", accessor: "grade" },
+              { header: "Application", accessor: "application" },
+            ]}
+            data={[
+              {
+                mineral: "Copper",
+                grade: "0.5 - 2.0",
+                application: "Electronics, renewable energy",
+              },
+              {
+                mineral: "Nickel",
+                grade: "0.5 - 1.5",
+                application: "Batteries, stainless steel",
+              },
+              {
+                mineral: "Zinc",
+                grade: "3.0 - 10.0",
+                application: "Galvanization, alloys",
+              },
+              {
+                mineral: "Cobalt",
+                grade: "0.1 - 0.5",
+                application: "Batteries, superalloys",
+              },
+            ]}
+            caption="Typical grade ranges for target minerals in our exploration projects"
+          />
+        </div>
+      </section>
+
+      {/* Management Team */}
       <section className="section" style={{ background: "var(--color-sand-50)" }}>
         <div className="container">
           <h2
@@ -135,23 +159,12 @@ export default function AboutPage() {
             Management & Board
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {[
-              { name: "John Doe", role: "CEO", bio: "20+ years in mining and exploration" },
-              {
-                name: "Jane Smith",
-                role: "CFO",
-                bio: "Expert in mining finance and capital markets",
-              },
-              {
-                name: "Erik Hansen",
-                role: "Chief Geologist",
-                bio: "Leading Norwegian exploration geologist",
-              },
-            ].map((person, index) => (
+            {teamMembers.map((person, index) => (
               <div key={index} className="card text-center">
                 <div
                   className="w-24 h-24 mx-auto mb-4 rounded-full flex items-center justify-center text-3xl"
                   style={{ background: "var(--color-gray-200)" }}
+                  aria-hidden="true"
                 >
                   👤
                 </div>

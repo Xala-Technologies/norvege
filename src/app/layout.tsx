@@ -3,14 +3,28 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NORVEGE MINERALS AS - Critical Minerals for the Energy Transition",
+  title: {
+    default: "Norvege Minerals - Science-Driven Discovery",
+    template: "%s | Norvege Minerals",
+  },
   description:
-    "Norwegian mining company focused on sustainable exploration and development of critical minerals. Exploring mineral resources across Norway for the energy transition.",
-  keywords: ["mining", "minerals", "Norway", "critical minerals", "sustainable mining", "ESG"],
+    "Norwegian exploration company focused on sustainable mineral development and critical minerals for the energy transition.",
+  keywords: [
+    "mining",
+    "minerals",
+    "Norway",
+    "critical minerals",
+    "rare earth elements",
+    "zinc",
+    "copper",
+    "exploration",
+  ],
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://norvegeminerals.no"),
 };
 
 export default function RootLayout({
@@ -18,11 +32,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebSiteSchema();
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <body className={`${inter.className} antialiased`}>
         <Header />
-        <main className="pt-20">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

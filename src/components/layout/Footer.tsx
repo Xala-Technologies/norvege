@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { companyInfo } from "@/content/company";
 import Logo from "@/components/ui/Logo";
+import NorChainLogo from "@/components/ui/NorChainLogo";
 import { projects } from "@/content/projects";
 
 export default function Footer() {
@@ -10,7 +11,6 @@ export default function Footer() {
 
   const companyLinks = [
     { href: "/about", label: "About Us" },
-    { href: "/about#team", label: "Our Team" },
     { href: "/privacy", label: "Privacy Policy" },
     { href: "/terms", label: "Terms of Service" },
   ];
@@ -315,33 +315,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-5">
               {/* NorChain Logo */}
-              <div
-                className="w-18 h-18 lg:w-20 lg:h-20 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{
-                  background:
-                    "linear-gradient(135deg, var(--color-primary-main) 0%, var(--color-navy-800) 100%)",
-                  boxShadow: "var(--shadow-primary)",
-                }}
-              >
-                <div
-                  className="w-14 h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center"
-                  style={{
-                    background: "color-mix(in srgb, var(--color-text-on-dark) 20%, transparent)",
-                    border: `2px solid color-mix(in srgb, var(--color-accent-main) 30%, transparent)`,
-                  }}
-                >
-                  <span
-                    className="text-2xl lg:text-3xl font-bold"
-                    style={{
-                      color: "var(--color-accent-main)",
-                      fontFamily: "var(--font-family-heading)",
-                      fontWeight: "var(--font-weight-black)",
-                    }}
-                  >
-                    N
-                  </span>
-                </div>
-              </div>
+              <NorChainLogo />
               <div>
                 <p
                   className="text-base lg:text-lg font-semibold mb-1.5"

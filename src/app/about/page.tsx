@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
-import { companyTimeline, teamMembers } from "@/content/company";
+import { companyTimeline } from "@/content/company";
 import Timeline from "@/components/ui/timeline";
 import AboutHeroImage from "@/components/ui/AboutHeroImage";
 
 export const metadata: Metadata = generateSEOMetadata({
   title: "About Us - NORVEGE MINERALS AS",
   description:
-    "Learn about NORVEGE MINERALS AS, our mission, team, and strategy for sustainable mineral exploration in Norway.",
+    "Learn about NORVEGE MINERALS AS, our mission, and strategy for sustainable mineral exploration in Norway.",
   path: "/about",
 });
 
@@ -662,136 +662,6 @@ export default function AboutPage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Management Team */}
-      <section
-        className="section relative overflow-hidden"
-        style={{ background: "var(--color-bg-subtle)" }}
-      >
-        {/* Subtle background decoration */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl"
-            style={{ background: "var(--color-accent-main)" }}
-          />
-          <div
-            className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl"
-            style={{ background: "var(--color-primary-main)" }}
-          />
-        </div>
-
-        <div className="container relative z-10">
-          <div className="text-center mb-12">
-            <h2
-              className="text-4xl md:text-5xl font-bold mb-4"
-              style={{
-                color: "var(--color-primary-main)",
-                fontFamily: "var(--font-family-heading)",
-                fontWeight: "var(--font-weight-black)",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Management & <span style={{ color: "var(--color-accent-main)" }}>Board</span>
-            </h2>
-            <p
-              className="text-base md:text-lg max-w-2xl mx-auto"
-              style={{ color: "var(--color-text-secondary)" }}
-            >
-              Experienced leadership team driving our exploration and development success
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
-            {teamMembers.map((person, index) => {
-              const roleColors = [
-                { bg: "var(--color-accent-main)", text: "var(--color-accent-contrast)" },
-                { bg: "var(--color-primary-main)", text: "var(--color-text-on-dark)" },
-                { bg: "var(--color-accent-main)", text: "var(--color-accent-contrast)" },
-              ];
-              const roleColor = roleColors[index % roleColors.length];
-
-              return (
-                <div
-                  key={index}
-                  className="group relative p-6 lg:p-8 rounded-3xl transition-all duration-300 hover:shadow-xl hover:-translate-y-2 text-center"
-                  style={{
-                    background: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
-                    border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
-                    boxShadow: "var(--shadow-lg)",
-                  }}
-                >
-                  {/* Hover glow effect */}
-                  <div
-                    className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{
-                      background: `radial-gradient(circle at center, color-mix(in srgb, var(--color-accent-main) 8%, transparent) 0%, transparent 70%)`,
-                    }}
-                  />
-
-                  {/* Avatar */}
-                  <div className="relative mb-6">
-                    <div
-                      className="w-24 h-24 lg:w-28 lg:h-28 mx-auto rounded-full flex items-center justify-center text-4xl lg:text-5xl transition-transform duration-300 group-hover:scale-110"
-                      style={{
-                        background: `linear-gradient(135deg, color-mix(in srgb, ${roleColor.bg} 20%, transparent) 0%, color-mix(in srgb, ${roleColor.bg} 10%, transparent) 100%)`,
-                        boxShadow: "var(--shadow-accent)",
-                      }}
-                    >
-                      <svg
-                        className="w-12 h-12 lg:w-14 lg:h-14"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        style={{ color: roleColor.bg }}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-
-                  {/* Name */}
-                  <h3
-                    className="text-xl lg:text-2xl font-bold mb-2"
-                    style={{
-                      color: "var(--color-primary-main)",
-                      fontFamily: "var(--font-family-heading)",
-                    }}
-                  >
-                    {person.name}
-                  </h3>
-
-                  {/* Role Badge */}
-                  <div className="mb-4">
-                    <span
-                      className="inline-block px-4 py-2 rounded-full text-sm font-bold"
-                      style={{
-                        background: roleColor.bg,
-                        color: roleColor.text,
-                        boxShadow: "var(--shadow-sm)",
-                      }}
-                    >
-                      {person.role}
-                    </span>
-                  </div>
-
-                  {/* Bio */}
-                  <p
-                    className="text-sm md:text-base leading-relaxed"
-                    style={{ color: "var(--color-text-body)" }}
-                  >
-                    {person.bio}
-                  </p>
-                </div>
-              );
-            })}
           </div>
         </div>
       </section>

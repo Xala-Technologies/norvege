@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { getLegalPageBySlug } from "@/content/legal";
+import LegalContent from "@/components/ui/LegalContent";
 
 export const metadata: Metadata = generateSEOMetadata({
   title: "Terms of Service - NORVEGE MINERALS AS",
@@ -37,10 +38,7 @@ export default function TermsPage() {
 
       <section className="section bg-white">
         <div className="container max-w-4xl">
-          <div
-            className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: page.content.replace(/\n/g, "<br />") }}
-          />
+          <LegalContent content={page.content} />
         </div>
       </section>
     </div>

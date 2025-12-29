@@ -119,8 +119,8 @@ export default function BlockchainSection() {
             style={{
               background: "color-mix(in srgb, var(--color-accent-main) 12%, transparent)",
               color: "var(--color-accent-main)",
-              border: `1px solid color-mix(in srgb, var(--color-accent-main) 25%, transparent)`,
-              boxShadow: "var(--shadow-accent)",
+              border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+              boxShadow: "none",
             }}
           >
             Innovation
@@ -211,27 +211,18 @@ export default function BlockchainSection() {
               >
                 {/* Card */}
                 <div
-                  className="relative p-8 lg:p-10 rounded-3xl transition-all duration-500 overflow-hidden h-full card-elevated"
+                  className="relative p-8 lg:p-10 rounded-3xl transition-all duration-500 overflow-hidden h-full"
                   style={{
                     background: "var(--color-surface-card)",
-                    border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
-                    boxShadow: "var(--shadow-md)",
+                    border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                    boxShadow: "none",
                   }}
                 >
-                  {/* Hover glow effect */}
+                  {/* Enhanced border glow on hover */}
                   <motion.div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{
-                      background: `radial-gradient(circle at center, color-mix(in srgb, var(--color-accent-main) 8%, transparent) 0%, transparent 70%)`,
-                    }}
-                  />
-
-                  {/* Subtle border glow on hover */}
-                  <motion.div
-                    className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{
-                      border: `2px solid color-mix(in srgb, var(--color-accent-main) 20%, transparent)`,
-                      pointerEvents: "none",
+                      border: `2px solid var(--color-primary-main)`,
                     }}
                   />
 
@@ -246,7 +237,7 @@ export default function BlockchainSection() {
                             ? "linear-gradient(135deg, var(--color-primary-main) 0%, var(--color-navy-800) 100%)"
                             : "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)",
                       color: "var(--color-text-on-dark)",
-                      boxShadow: "var(--shadow-accent-lg)",
+                      boxShadow: "none",
                     }}
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                     transition={{ duration: 0.5 }}
@@ -286,21 +277,6 @@ export default function BlockchainSection() {
                   >
                     {benefit.description}
                   </p>
-
-                  {/* Decorative corner accent */}
-                  <div
-                    className="absolute top-0 right-0 w-32 h-32 opacity-10"
-                    style={{
-                      background:
-                        benefit.title === "Sustainable"
-                          ? "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)"
-                          : benefit.title === "Efficient"
-                            ? "linear-gradient(135deg, var(--color-primary-main) 0%, var(--color-navy-800) 100%)"
-                            : "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)",
-                      transform: "translate(30%, -30%)",
-                      borderRadius: "50%",
-                    }}
-                  />
                 </div>
               </motion.div>
             );
@@ -324,7 +300,7 @@ export default function BlockchainSection() {
                   background:
                     "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)",
                   color: "var(--color-accent-contrast)",
-                  boxShadow: "var(--shadow-accent-lg)",
+                  boxShadow: "none",
                   fontFamily: "var(--font-family-body)",
                   fontWeight: "var(--font-weight-bold)",
                 }}
@@ -341,7 +317,7 @@ export default function BlockchainSection() {
                   borderColor: "var(--color-primary-main)",
                   color: "var(--color-primary-main)",
                   background: "var(--color-bg-default)",
-                  boxShadow: "var(--shadow-md)",
+                  boxShadow: "none",
                   fontFamily: "var(--font-family-body)",
                   fontWeight: "var(--font-weight-bold)",
                 }}

@@ -7,9 +7,16 @@ interface HeroVideoProps {
   poster?: string;
   className?: string;
   style?: React.CSSProperties;
+  onTimeUpdate?: (currentTime: number) => void;
 }
 
-export default function HeroVideo({ src, poster, className = "", style }: HeroVideoProps) {
+export default function HeroVideo({
+  src,
+  poster,
+  className = "",
+  style,
+  onTimeUpdate,
+}: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -39,9 +46,16 @@ export default function HeroVideo({ src, poster, className = "", style }: HeroVi
       setHasError(true);
     };
 
+    const handleTimeUpdate = () => {
+      if (onTimeUpdate && video.currentTime !== undefined) {
+        onTimeUpdate(video.currentTime);
+      }
+    };
+
     video.addEventListener("loadeddata", handleLoadedData);
     video.addEventListener("canplay", handleCanPlay);
     video.addEventListener("error", handleError);
+    video.addEventListener("timeupdate", handleTimeUpdate);
 
     // Try to load and play the video
     video.load();
@@ -58,10 +72,11 @@ export default function HeroVideo({ src, poster, className = "", style }: HeroVi
       video.removeEventListener("loadeddata", handleLoadedData);
       video.removeEventListener("canplay", handleCanPlay);
       video.removeEventListener("error", handleError);
+      video.removeEventListener("timeupdate", handleTimeUpdate);
       // Pause video when component unmounts
       video.pause();
     };
-  }, [src]);
+  }, [src, onTimeUpdate]);
 
   if (hasError) {
     return null; // Don't render video if it fails to load

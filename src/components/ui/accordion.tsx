@@ -54,12 +54,25 @@ export default function Accordion({ items, className = "" }: AccordionProps) {
         const panelId = `accordion-panel-${index}`;
 
         return (
-          <div key={itemId} className="border border-gray-200 rounded-lg overflow-hidden">
+          <div
+            key={itemId}
+            className="group border rounded-lg overflow-hidden relative"
+            style={{
+              border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+            }}
+          >
+            {/* Enhanced border glow on hover */}
+            <div
+              className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+              style={{
+                border: `2px solid var(--color-primary-main)`,
+              }}
+            />
             <h3>
               <button
                 id={buttonId}
                 type="button"
-                className="w-full px-6 py-4 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-main)] focus:ring-offset-2 transition-colors"
+                className="w-full px-6 py-4 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-main)] focus:ring-offset-2 transition-colors relative z-10"
                 style={{
                   backgroundColor: isOpen ? "var(--color-sand-50)" : "white",
                 }}

@@ -103,7 +103,7 @@ export default function Footer() {
                     "color-mix(in srgb, var(--color-accent-main) 20%, transparent)";
                   e.currentTarget.style.borderColor = "var(--color-accent-main)";
                   e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow = "var(--shadow-accent)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.color = "var(--color-text-on-dark)";
@@ -136,7 +136,7 @@ export default function Footer() {
                     "color-mix(in srgb, var(--color-accent-main) 20%, transparent)";
                   e.currentTarget.style.borderColor = "var(--color-accent-main)";
                   e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow = "var(--shadow-accent)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.color = "var(--color-text-on-dark)";
@@ -318,7 +318,7 @@ export default function Footer() {
               <NorChainLogo />
               <div>
                 <p
-                  className="text-base lg:text-lg font-semibold mb-1.5"
+                  className="text-lg lg:text-xl xl:text-2xl font-semibold mb-1.5"
                   style={{
                     color: "var(--color-text-body)",
                     fontFamily: "var(--font-family-heading)",

@@ -31,7 +31,7 @@ export default function Timeline({ items, className = "" }: TimelineProps) {
                 className="w-16 h-16 md:w-18 md:h-18 rounded-full flex items-center justify-center font-bold text-sm md:text-base text-white transition-all duration-300 group-hover:scale-110"
                 style={{
                   background: `linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)`,
-                  boxShadow: "var(--shadow-accent)",
+                  boxShadow: "none",
                 }}
               >
                 {item.year}
@@ -41,13 +41,20 @@ export default function Timeline({ items, className = "" }: TimelineProps) {
             {/* Content Card */}
             <div className="flex-1 pt-0.5 pb-4">
               <div
-                className="p-5 lg:p-6 rounded-xl transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-0.5"
+                className="p-5 lg:p-6 rounded-xl transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-0.5 relative overflow-hidden"
                 style={{
                   background: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
-                  border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
-                  boxShadow: "var(--shadow-sm)",
+                  border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                  boxShadow: "none",
                 }}
               >
+                {/* Enhanced border glow on hover */}
+                <div
+                  className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    border: `2px solid var(--color-primary-main)`,
+                  }}
+                />
                 <h3
                   className="text-lg md:text-xl lg:text-2xl font-bold mb-2"
                   style={{

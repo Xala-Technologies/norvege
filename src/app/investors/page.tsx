@@ -153,7 +153,7 @@ export default function InvestorsPage() {
         <div className="container max-w-5xl relative z-10">
           <div className="text-center mb-12">
             <h2
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              className="text-display mb-6"
               style={{
                 color: "var(--color-primary-main)",
                 fontFamily: "var(--font-family-heading)",
@@ -168,20 +168,27 @@ export default function InvestorsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Left Column */}
             <div
-              className="p-8 lg:p-10 rounded-3xl"
+              className="group p-8 lg:p-10 rounded-3xl relative overflow-hidden"
               style={{
                 background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
-                border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
-                boxShadow: "var(--shadow-lg)",
+                border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                boxShadow: "none",
               }}
             >
+              {/* Enhanced border glow on hover */}
+              <div
+                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{
+                  border: `2px solid var(--color-primary-main)`,
+                }}
+              />
               <div className="flex items-start gap-4 mb-6">
                 <div
                   className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
                   style={{
                     background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
                     color: "var(--color-accent-main)",
-                    boxShadow: "var(--shadow-accent)",
+                    boxShadow: "none",
                   }}
                 >
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -215,20 +222,27 @@ export default function InvestorsPage() {
 
             {/* Right Column */}
             <div
-              className="p-8 lg:p-10 rounded-3xl"
+              className="group p-8 lg:p-10 rounded-3xl relative overflow-hidden"
               style={{
                 background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
-                border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
-                boxShadow: "var(--shadow-lg)",
+                border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                boxShadow: "none",
               }}
             >
+              {/* Enhanced border glow on hover */}
+              <div
+                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{
+                  border: `2px solid var(--color-primary-main)`,
+                }}
+              />
               <div className="flex items-start gap-4 mb-6">
                 <div
                   className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
                   style={{
                     background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 100%)`,
                     color: "var(--color-primary-main)",
-                    boxShadow: "var(--shadow-primary)",
+                    boxShadow: "none",
                   }}
                 >
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -281,7 +295,7 @@ export default function InvestorsPage() {
         <div className="container relative z-10">
           <div className="text-center mb-16">
             <h2
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+              className="text-display mb-4"
               style={{
                 color: "var(--color-primary-main)",
                 fontFamily: "var(--font-family-heading)",
@@ -308,18 +322,18 @@ export default function InvestorsPage() {
             ].map((fact, index) => (
               <div
                 key={index}
-                className="group relative p-8 lg:p-10 rounded-3xl transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+                className="group relative p-8 lg:p-10 rounded-3xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
                 style={{
                   background: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
-                  border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
-                  boxShadow: "var(--shadow-lg)",
+                  border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                  boxShadow: "none",
                 }}
               >
-                {/* Hover glow effect */}
+                {/* Enhanced border glow on hover */}
                 <div
-                  className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{
-                    background: `radial-gradient(circle at center, color-mix(in srgb, var(--color-accent-main) 8%, transparent) 0%, transparent 70%)`,
+                    border: `2px solid var(--color-primary-main)`,
                   }}
                 />
 
@@ -329,7 +343,7 @@ export default function InvestorsPage() {
                     className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110"
                     style={{
                       background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
-                      boxShadow: "var(--shadow-accent)",
+                      boxShadow: "none",
                     }}
                   >
                     <span className="text-3xl">{fact.icon}</span>
@@ -387,7 +401,7 @@ export default function InvestorsPage() {
         <div className="container max-w-5xl relative z-10">
           <div className="text-center mb-12">
             <h2
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+              className="text-display mb-4"
               style={{
                 color: "var(--color-primary-main)",
                 fontFamily: "var(--font-family-heading)",
@@ -409,18 +423,18 @@ export default function InvestorsPage() {
             {documents.map((doc, index) => (
               <div
                 key={index}
-                className="group relative p-6 lg:p-8 rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                className="group relative p-6 lg:p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
                 style={{
                   background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
-                  border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
-                  boxShadow: "var(--shadow-md)",
+                  border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                  boxShadow: "none",
                 }}
               >
-                {/* Hover glow effect */}
+                {/* Enhanced border glow on hover */}
                 <div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{
-                    background: `radial-gradient(circle at center, color-mix(in srgb, var(--color-accent-main) 8%, transparent) 0%, transparent 70%)`,
+                    border: `2px solid var(--color-primary-main)`,
                   }}
                 />
 
@@ -432,7 +446,7 @@ export default function InvestorsPage() {
                       style={{
                         background: `linear-gradient(135deg, color-mix(in srgb, var(--color-error) 20%, transparent) 0%, color-mix(in srgb, var(--color-error) 10%, transparent) 100%)`,
                         color: "var(--color-error)",
-                        boxShadow: "var(--shadow-md)",
+                        boxShadow: "none",
                       }}
                     >
                       <svg
@@ -504,7 +518,7 @@ export default function InvestorsPage() {
                     style={{
                       background: `linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)`,
                       color: "var(--color-accent-contrast)",
-                      boxShadow: "var(--shadow-accent-lg)",
+                      boxShadow: "none",
                       fontFamily: "var(--font-family-body)",
                     }}
                   >
@@ -540,8 +554,23 @@ export default function InvestorsPage() {
             For more information about investment opportunities, please contact our investor
             relations team.
           </p>
-          <Link href="/contact" className="btn btn-primary">
-            Contact Us
+          <Link href="/contact" className="btn btn-primary group/contact">
+            <span className="inline-flex items-center gap-2">
+              Contact Us
+              <svg
+                className="w-5 h-5 transition-transform duration-300 group-hover/contact:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </span>
           </Link>
         </div>
       </section>

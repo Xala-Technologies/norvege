@@ -159,13 +159,13 @@ export default function RareEarthSection() {
             style={{
               background: "rgba(227, 161, 66, 0.16)",
               color: "var(--color-accent-main)",
-              border: "1px solid rgba(227, 161, 66, 0.22)",
+              border: "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
             }}
           >
             Strategic Context
           </motion.span>
           <h2
-            className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-6"
+            className="text-display mb-6"
             style={{
               color: "var(--color-text-body)",
               fontFamily: "var(--font-family-heading)",
@@ -205,20 +205,30 @@ export default function RareEarthSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08, duration: 0.5 }}
-                className="rounded-3xl p-8 lg:p-9 relative overflow-hidden"
+                whileHover={{ y: -4, transition: { duration: 0.3 } }}
+                className="group rounded-3xl p-8 lg:p-9 relative overflow-hidden transition-all duration-300"
                 style={{
                   background: "rgba(255, 255, 255, 0.78)",
-                  border: "1px solid rgba(15, 23, 42, 0.12)",
-                  boxShadow: "0 22px 60px rgba(15, 23, 42, 0.10)",
+                  border:
+                    "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
+                  boxShadow: "none",
                   backdropFilter: "blur(10px)",
                   WebkitBackdropFilter: "blur(10px)",
                 }}
               >
+                {/* Enhanced border glow on hover */}
+                <motion.div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    border: `2px solid var(--color-primary-main)`,
+                    borderRadius: "inherit",
+                  }}
+                />
                 <div
                   className="absolute -top-24 -right-24 w-[520px] h-[520px] rounded-full opacity-35"
                   style={{
                     background:
-                      "radial-gradient(circle, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, transparent 65%)",
+                      "radial-gradient(circle, color-mix(in srgb, var(--color-text-body) 8%, transparent) 0%, transparent 65%)",
                   }}
                 />
                 <div className="relative flex flex-col gap-5">
@@ -228,7 +238,8 @@ export default function RareEarthSection() {
                       style={{
                         background: "rgba(227, 161, 66, 0.14)",
                         color: "var(--color-accent-main)",
-                        border: "1px solid rgba(227, 161, 66, 0.22)",
+                        border:
+                          "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
                       }}
                     >
                       <IconComponent className="w-7 h-7" />
@@ -288,7 +299,7 @@ export default function RareEarthSection() {
                 style={{
                   background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 25%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 100%)`,
                   color: "var(--color-accent-main)",
-                  boxShadow: "var(--shadow-accent)",
+                  boxShadow: "none",
                 }}
               >
                 <ExclamationTriangleIcon className="w-7 h-7" />
@@ -307,15 +318,23 @@ export default function RareEarthSection() {
             </div>
 
             <div
-              className="rounded-3xl p-8 md:p-9 lg:p-10 relative overflow-hidden"
+              className="group rounded-3xl p-8 md:p-9 lg:p-10 relative overflow-hidden transition-all duration-300"
               style={{
                 background: "rgba(255, 255, 255, 0.78)",
-                border: "1px solid rgba(15, 23, 42, 0.12)",
-                boxShadow: "0 22px 60px rgba(15, 23, 42, 0.10)",
+                border: "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
+                boxShadow: "none",
                 backdropFilter: "blur(10px)",
                 WebkitBackdropFilter: "blur(10px)",
               }}
             >
+              {/* Enhanced border glow on hover */}
+              <motion.div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{
+                  border: `2px solid var(--color-primary-main)`,
+                  borderRadius: "inherit",
+                }}
+              />
               <div
                 className="absolute -bottom-24 -left-24 w-[520px] h-[520px] rounded-full opacity-30"
                 style={{
@@ -350,7 +369,7 @@ export default function RareEarthSection() {
                         color: "var(--color-text-body)",
                         border: "1px solid rgba(15, 23, 42, 0.10)",
                         fontFamily: "var(--font-family-body)",
-                        boxShadow: "0 2px 8px rgba(15, 23, 42, 0.06)",
+                        boxShadow: "none",
                       }}
                     >
                       {m}
@@ -387,7 +406,7 @@ export default function RareEarthSection() {
                 style={{
                   background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 25%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 100%)`,
                   color: "var(--color-accent-main)",
-                  boxShadow: "var(--shadow-accent)",
+                  boxShadow: "none",
                 }}
               >
                 <CheckCircleIcon className="w-7 h-7" />
@@ -408,20 +427,29 @@ export default function RareEarthSection() {
             {/* Act + targets */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div
-                className="rounded-3xl p-8 md:p-9 relative overflow-hidden"
+                className="group rounded-3xl p-8 md:p-9 relative overflow-hidden transition-all duration-300"
                 style={{
                   background: "rgba(255, 255, 255, 0.78)",
-                  border: "1px solid rgba(15, 23, 42, 0.12)",
-                  boxShadow: "0 22px 60px rgba(15, 23, 42, 0.10)",
+                  border:
+                    "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
+                  boxShadow: "none",
                   backdropFilter: "blur(10px)",
                   WebkitBackdropFilter: "blur(10px)",
                 }}
               >
+                {/* Enhanced border glow on hover */}
+                <motion.div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    border: `2px solid var(--color-primary-main)`,
+                    borderRadius: "inherit",
+                  }}
+                />
                 <div
                   className="absolute -top-24 -right-24 w-[520px] h-[520px] rounded-full opacity-30"
                   style={{
                     background:
-                      "radial-gradient(circle, color-mix(in srgb, var(--color-accent-main) 18%, transparent) 0%, transparent 65%)",
+                      "radial-gradient(circle, color-mix(in srgb, var(--color-text-body) 8%, transparent) 0%, transparent 65%)",
                   }}
                 />
                 <div className="relative flex items-start gap-5">
@@ -431,7 +459,7 @@ export default function RareEarthSection() {
                       background:
                         "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)",
                       color: "var(--color-accent-contrast)",
-                      boxShadow: "var(--shadow-accent-lg)",
+                      boxShadow: "none",
                     }}
                   >
                     <CheckCircleIcon className="w-7 h-7" />
@@ -463,15 +491,24 @@ export default function RareEarthSection() {
               </div>
 
               <div
-                className="rounded-3xl p-8 md:p-9 relative overflow-hidden"
+                className="group rounded-3xl p-8 md:p-9 relative overflow-hidden transition-all duration-300"
                 style={{
                   background: "rgba(255, 255, 255, 0.78)",
-                  border: "1px solid rgba(15, 23, 42, 0.12)",
-                  boxShadow: "0 22px 60px rgba(15, 23, 42, 0.10)",
+                  border:
+                    "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
+                  boxShadow: "none",
                   backdropFilter: "blur(10px)",
                   WebkitBackdropFilter: "blur(10px)",
                 }}
               >
+                {/* Enhanced border glow on hover */}
+                <motion.div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    border: `2px solid var(--color-primary-main)`,
+                    borderRadius: "inherit",
+                  }}
+                />
                 <div
                   className="absolute -bottom-24 -left-24 w-[520px] h-[520px] rounded-full opacity-30"
                   style={{
@@ -487,7 +524,7 @@ export default function RareEarthSection() {
                         background:
                           "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)",
                         color: "var(--color-accent-contrast)",
-                        boxShadow: "var(--shadow-accent-lg)",
+                        boxShadow: "none",
                       }}
                     >
                       <ChartBarIcon className="w-7 h-7" />
@@ -554,20 +591,21 @@ export default function RareEarthSection() {
 
             {/* Highlight card */}
             <div
-              className="rounded-3xl p-9 md:p-10 lg:p-12 relative overflow-hidden"
+              className="group rounded-3xl p-9 md:p-10 lg:p-12 relative overflow-hidden transition-all duration-300"
               style={{
                 background:
                   "linear-gradient(135deg, var(--color-navy-deep) 0%, var(--color-navy-800) 100%)",
-                boxShadow: "0 24px 72px rgba(0, 0, 0, 0.32)",
+                border: "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
+                boxShadow: "none",
               }}
             >
-              <div
-                className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-25 blur-3xl"
-                style={{ background: "var(--color-gold-mustard)" }}
-              />
-              <div
-                className="absolute bottom-0 left-0 w-64 h-64 rounded-full opacity-15 blur-2xl"
-                style={{ background: "var(--color-gold-mustard)" }}
+              {/* Enhanced border glow on hover */}
+              <motion.div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{
+                  border: `2px solid var(--color-primary-main)`,
+                  borderRadius: "inherit",
+                }}
               />
 
               <div className="relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
@@ -576,7 +614,7 @@ export default function RareEarthSection() {
                   style={{
                     background:
                       "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)",
-                    boxShadow: "var(--shadow-accent-lg)",
+                    boxShadow: "none",
                     color: "var(--color-accent-contrast)",
                   }}
                 >

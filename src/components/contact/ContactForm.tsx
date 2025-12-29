@@ -76,13 +76,20 @@ export default function ContactForm() {
 
   return (
     <div
-      className="p-8 lg:p-10 rounded-3xl transition-all duration-300"
+      className="group p-8 lg:p-10 rounded-3xl transition-all duration-300 relative overflow-hidden"
       style={{
         background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
-        border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
-        boxShadow: "var(--shadow-xl)",
+        border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+        boxShadow: "none",
       }}
     >
+      {/* Enhanced border glow on hover */}
+      <div
+        className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        style={{
+          border: `2px solid var(--color-primary-main)`,
+        }}
+      />
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Full Name Field */}
         <div>
@@ -110,13 +117,13 @@ export default function ContactForm() {
                 focusedField === "name" ? "var(--color-bg-default)" : "var(--color-bg-default)",
               border:
                 focusedField === "name"
-                  ? "2px solid var(--color-accent-main)"
+                  ? "2px solid var(--color-primary-main)"
                   : errors.name
                     ? "2px solid var(--color-error)"
                     : `2px solid color-mix(in srgb, var(--color-border-light) 60%, transparent)`,
               color: "var(--color-text-body)",
               outline: "none",
-              boxShadow: focusedField === "name" ? "var(--shadow-md)" : "none",
+              boxShadow: "none",
             }}
             placeholder="John Doe"
             aria-required="true"
@@ -160,13 +167,13 @@ export default function ContactForm() {
                 focusedField === "email" ? "var(--color-bg-default)" : "var(--color-bg-default)",
               border:
                 focusedField === "email"
-                  ? "2px solid var(--color-accent-main)"
+                  ? "2px solid var(--color-primary-main)"
                   : errors.email
                     ? "2px solid var(--color-error)"
                     : `2px solid color-mix(in srgb, var(--color-border-light) 60%, transparent)`,
               color: "var(--color-text-body)",
               outline: "none",
-              boxShadow: focusedField === "email" ? "var(--shadow-md)" : "none",
+              boxShadow: "none",
             }}
             placeholder="john@example.com"
             aria-required="true"
@@ -206,11 +213,11 @@ export default function ContactForm() {
               background: "var(--color-bg-default)",
               border:
                 focusedField === "company"
-                  ? "2px solid var(--color-accent-main)"
+                  ? "2px solid var(--color-primary-main)"
                   : `2px solid color-mix(in srgb, var(--color-border-light) 60%, transparent)`,
               color: "var(--color-text-body)",
               outline: "none",
-              boxShadow: focusedField === "company" ? "var(--shadow-md)" : "none",
+              boxShadow: "none",
             }}
             placeholder="Your Company"
           />
@@ -241,13 +248,13 @@ export default function ContactForm() {
                 background: "var(--color-bg-default)",
                 border:
                   focusedField === "subject"
-                    ? "2px solid var(--color-accent-main)"
+                    ? "2px solid var(--color-primary-main)"
                     : errors.subject
                       ? "2px solid var(--color-error)"
                       : `2px solid color-mix(in srgb, var(--color-border-light) 60%, transparent)`,
                 color: formData.subject ? "var(--color-text-body)" : "var(--color-text-secondary)",
                 outline: "none",
-                boxShadow: focusedField === "subject" ? "var(--shadow-md)" : "none",
+                boxShadow: "none",
               }}
               aria-required="true"
             >
@@ -316,13 +323,13 @@ export default function ContactForm() {
               background: "var(--color-bg-default)",
               border:
                 focusedField === "message"
-                  ? "2px solid var(--color-accent-main)"
+                  ? "2px solid var(--color-primary-main)"
                   : errors.message
                     ? "2px solid var(--color-error)"
                     : `2px solid color-mix(in srgb, var(--color-border-light) 60%, transparent)`,
               color: "var(--color-text-body)",
               outline: "none",
-              boxShadow: focusedField === "message" ? "var(--shadow-md)" : "none",
+              boxShadow: "none",
             }}
             placeholder="How can we help you?"
             aria-required="true"
@@ -418,7 +425,7 @@ export default function ContactForm() {
                   ? "color-mix(in srgb, var(--color-accent-main) 50%, transparent)"
                   : `linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)`,
               color: "var(--color-accent-contrast)",
-              boxShadow: status === "submitting" ? "var(--shadow-sm)" : "var(--shadow-accent-lg)",
+              boxShadow: "none",
               fontFamily: "var(--font-family-body)",
               fontWeight: "var(--font-weight-bold)",
             }}

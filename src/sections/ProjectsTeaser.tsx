@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { projects } from "@/content/projects";
 
 // Custom icons
@@ -43,14 +43,15 @@ const ArrowRightIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
 // 3. Update the paths below to use /images/ instead of Unsplash URLs
 
 const getLocalProjectImages = (slug: string): string[] => {
-  // You can add more files (04.jpg, 05.jpg, etc.)
+  // Return available images (at least 3, up to 5)
+  // The image checker will filter out missing files
   return [
     `/images/projects/${slug}/01.jpg`,
     `/images/projects/${slug}/02.jpg`,
     `/images/projects/${slug}/03.jpg`,
     `/images/projects/${slug}/04.jpg`,
     `/images/projects/${slug}/05.jpg`,
-  ];
+  ].filter((_, index) => index < 5); // Limit to 5 max, but let the checker filter missing ones
 };
 
 // Helper to get image candidates: local only (no remote fallbacks)
@@ -69,8 +70,18 @@ function ProjectImageRotator({ images, alt }: { images: string[]; alt: string })
     const check = (src: string) =>
       new Promise<string | null>((resolve) => {
         const img = new window.Image();
-        img.onload = () => resolve(src);
-        img.onerror = () => resolve(null);
+        // Set a timeout to avoid hanging on missing images
+        const timeout = setTimeout(() => {
+          if (!cancelled) resolve(null);
+        }, 2000);
+        img.onload = () => {
+          clearTimeout(timeout);
+          if (!cancelled) resolve(src);
+        };
+        img.onerror = () => {
+          clearTimeout(timeout);
+          if (!cancelled) resolve(null);
+        };
         img.src = src;
       });
 
@@ -78,7 +89,7 @@ function ProjectImageRotator({ images, alt }: { images: string[]; alt: string })
       const results = await Promise.all(candidates.map(check));
       if (cancelled) return;
       const loaded = results.filter(Boolean) as string[];
-      setAvailable(loaded);
+      setAvailable(loaded.length > 0 ? loaded : []);
       setIdx(0);
     })();
 
@@ -103,30 +114,28 @@ function ProjectImageRotator({ images, alt }: { images: string[]; alt: string })
   const src = available[idx % available.length];
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={src}
-        className="absolute inset-0"
-        initial={{ opacity: 0.0, scale: 1.02 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0.0, scale: 1.01 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          className="object-cover z-10"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
-          quality={90}
-          unoptimized={src.startsWith("http")}
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.style.display = "none";
-          }}
-        />
-      </motion.div>
-    </AnimatePresence>
+    <motion.div
+      key={src}
+      className="absolute inset-0"
+      initial={{ opacity: 0.0, scale: 1.02 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0.0, scale: 1.01 }}
+      transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="object-cover z-10"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+        quality={90}
+        unoptimized={src.startsWith("http")}
+        onError={(e) => {
+          const target = e.target as HTMLImageElement;
+          target.style.display = "none";
+        }}
+      />
+    </motion.div>
   );
 }
 
@@ -141,10 +150,6 @@ export default function ProjectsTeaser() {
     >
       {/* Enhanced decorative background elements */}
       <div className="absolute inset-0 opacity-[0.08]">
-        <div
-          className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl"
-          style={{ background: "var(--color-accent-main)" }}
-        />
         <div
           className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full blur-3xl"
           style={{ background: "var(--color-primary-main)" }}
@@ -198,8 +203,8 @@ export default function ProjectsTeaser() {
             style={{
               background: "color-mix(in srgb, var(--color-accent-main) 15%, transparent)",
               color: "var(--color-accent-main)",
-              border: `1px solid color-mix(in srgb, var(--color-accent-main) 30%, transparent)`,
-              boxShadow: "var(--shadow-accent)",
+              border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+              boxShadow: "none",
             }}
           >
             Our Projects
@@ -247,10 +252,12 @@ export default function ProjectsTeaser() {
               <div key={project.slug} className="group">
                 <Link href={`/projects/${project.slug}`} className="block h-full">
                   <div
-                    className="relative bg-white rounded-3xl overflow-hidden transition-all duration-300 h-full card-elevated group-hover:shadow-2xl"
+                    className="relative bg-white rounded-3xl overflow-hidden transition-all duration-300 h-full flex flex-col"
                     style={{
-                      boxShadow: "var(--shadow-xl)",
+                      boxShadow: "none",
                       background: `linear-gradient(180deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
+                      border:
+                        "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
                     }}
                   >
                     {/* Image Container */}
@@ -299,15 +306,6 @@ export default function ProjectsTeaser() {
                           opacity: 0.4,
                           backgroundImage:
                             "radial-gradient(ellipse at center 70%, transparent 0%, rgba(10, 22, 40, 0.95) 100%)",
-                        }}
-                      />
-
-                      {/* Corner accent glow */}
-                      <div
-                        className="absolute top-0 right-0 w-64 h-64 opacity-0 group-hover:opacity-40 transition-opacity duration-300"
-                        style={{
-                          background: `radial-gradient(circle, color-mix(in srgb, var(--color-accent-main) 40%, transparent) 0%, transparent 70%)`,
-                          transform: "translate(30%, -30%)",
                         }}
                       />
 
@@ -376,116 +374,121 @@ export default function ProjectsTeaser() {
                         className="absolute bottom-0 left-0 right-0 h-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         style={{
                           background: `linear-gradient(90deg, transparent 0%, var(--color-accent-main) 20%, var(--color-gold-400) 50%, var(--color-accent-main) 80%, transparent 100%)`,
-                          boxShadow: "var(--shadow-accent-lg)",
+                          boxShadow: "none",
                         }}
                       />
                     </div>
 
                     {/* Content Section - Enhanced Visibility */}
-                    <div className="p-8 lg:p-10" style={{ background: "transparent" }}>
-                      {/* Description - Improved Readability */}
-                      <p
-                        className="mb-8 text-lg leading-relaxed"
-                        style={{
-                          color: "var(--color-text-body)",
-                          fontFamily: "var(--font-family-body)",
-                          fontWeight: "var(--font-weight-medium)",
-                          lineHeight: "var(--line-height-base)",
-                        }}
-                      >
-                        {project.description}
-                      </p>
+                    <div
+                      className="p-8 lg:p-10 flex flex-col flex-grow"
+                      style={{ background: "transparent" }}
+                    >
+                      <div className="flex-grow">
+                        {/* Description - Improved Readability */}
+                        <p
+                          className="mb-8 text-lg leading-relaxed"
+                          style={{
+                            color: "var(--color-text-body)",
+                            fontFamily: "var(--font-family-body)",
+                            fontWeight: "var(--font-weight-medium)",
+                            lineHeight: "var(--line-height-base)",
+                          }}
+                        >
+                          {project.description}
+                        </p>
 
-                      {/* Minerals Tags - Enhanced Visibility */}
-                      <div className="flex flex-wrap gap-2.5 mb-8">
-                        {project.minerals.slice(0, 5).map((mineral, idx) => (
-                          <span
-                            key={idx}
-                            className="px-4 py-2.5 rounded-lg text-sm font-bold"
-                            style={{
-                              background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 100%)`,
-                              color: "var(--color-accent-hover)",
-                              border: `2px solid color-mix(in srgb, var(--color-accent-main) 30%, transparent)`,
-                              boxShadow: "var(--shadow-accent)",
-                              fontFamily: "var(--font-family-body)",
-                              fontWeight: "var(--font-weight-bold)",
-                            }}
-                          >
-                            {mineral}
-                          </span>
-                        ))}
-                        {project.minerals.length > 5 && (
-                          <span
-                            className="px-4 py-2.5 rounded-lg text-sm font-bold"
-                            style={{
-                              background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 8%, transparent) 100%)`,
-                              color: "var(--color-text-secondary)",
-                              border: `2px solid color-mix(in srgb, var(--color-primary-main) 20%, transparent)`,
-                              boxShadow: "var(--shadow-sm)",
-                              fontFamily: "var(--font-family-body)",
-                              fontWeight: "var(--font-weight-bold)",
-                            }}
-                          >
-                            +{project.minerals.length - 5} more
-                          </span>
-                        )}
+                        {/* Minerals Tags - Enhanced Visibility */}
+                        <div className="flex flex-wrap gap-2.5 mb-8">
+                          {project.minerals.slice(0, 5).map((mineral, idx) => (
+                            <span
+                              key={idx}
+                              className="px-4 py-2.5 rounded-lg text-sm font-bold"
+                              style={{
+                                background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 100%)`,
+                                color: "var(--color-accent-hover)",
+                                border: `2px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                                boxShadow: "none",
+                                fontFamily: "var(--font-family-body)",
+                                fontWeight: "var(--font-weight-bold)",
+                              }}
+                            >
+                              {mineral}
+                            </span>
+                          ))}
+                          {project.minerals.length > 5 && (
+                            <span
+                              className="px-4 py-2.5 rounded-lg text-sm font-bold"
+                              style={{
+                                background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 8%, transparent) 100%)`,
+                                color: "var(--color-text-secondary)",
+                                border: `2px solid color-mix(in srgb, var(--color-primary-main) 20%, transparent)`,
+                                boxShadow: "none",
+                                fontFamily: "var(--font-family-body)",
+                                fontWeight: "var(--font-weight-bold)",
+                              }}
+                            >
+                              +{project.minerals.length - 5} more
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Enhanced Stats Row - Improved Visibility */}
+                        <div
+                          className="flex items-center justify-between pt-8 border-t-2"
+                          style={{
+                            borderColor:
+                              "color-mix(in srgb, var(--color-accent-main) 20%, transparent)",
+                          }}
+                        >
+                          <div>
+                            <span
+                              className="text-xs font-bold uppercase tracking-wider block mb-2.5"
+                              style={{
+                                color: "var(--color-text-secondary)",
+                                fontFamily: "var(--font-family-body)",
+                                fontWeight: "var(--font-weight-bold)",
+                              }}
+                            >
+                              License Area
+                            </span>
+                            <span
+                              className="text-2xl font-bold block"
+                              style={{
+                                color: "var(--color-text-body)",
+                                fontFamily: "var(--font-family-heading)",
+                                fontWeight: "var(--font-weight-bold)",
+                              }}
+                            >
+                              {project.area}
+                            </span>
+                          </div>
+                          <div className="text-right">
+                            <span
+                              className="text-xs font-bold uppercase tracking-wider block mb-2.5"
+                              style={{
+                                color: "var(--color-text-secondary)",
+                                fontFamily: "var(--font-family-body)",
+                                fontWeight: "var(--font-weight-bold)",
+                              }}
+                            >
+                              Licenses
+                            </span>
+                            <span
+                              className="text-2xl font-bold block"
+                              style={{
+                                color: "var(--color-text-body)",
+                                fontFamily: "var(--font-family-heading)",
+                                fontWeight: "var(--font-weight-bold)",
+                              }}
+                            >
+                              {project.licenses}
+                            </span>
+                          </div>
+                        </div>
                       </div>
 
-                      {/* Enhanced Stats Row - Improved Visibility */}
-                      <div
-                        className="flex items-center justify-between pt-8 border-t-2"
-                        style={{
-                          borderColor:
-                            "color-mix(in srgb, var(--color-accent-main) 20%, transparent)",
-                        }}
-                      >
-                        <div>
-                          <span
-                            className="text-xs font-bold uppercase tracking-wider block mb-2.5"
-                            style={{
-                              color: "var(--color-text-secondary)",
-                              fontFamily: "var(--font-family-body)",
-                              fontWeight: "var(--font-weight-bold)",
-                            }}
-                          >
-                            License Area
-                          </span>
-                          <span
-                            className="text-2xl font-bold block"
-                            style={{
-                              color: "var(--color-text-body)",
-                              fontFamily: "var(--font-family-heading)",
-                              fontWeight: "var(--font-weight-bold)",
-                            }}
-                          >
-                            {project.area}
-                          </span>
-                        </div>
-                        <div className="text-right">
-                          <span
-                            className="text-xs font-bold uppercase tracking-wider block mb-2.5"
-                            style={{
-                              color: "var(--color-text-secondary)",
-                              fontFamily: "var(--font-family-body)",
-                              fontWeight: "var(--font-weight-bold)",
-                            }}
-                          >
-                            Licenses
-                          </span>
-                          <span
-                            className="text-2xl font-bold block"
-                            style={{
-                              color: "var(--color-text-body)",
-                              fontFamily: "var(--font-family-heading)",
-                              fontWeight: "var(--font-weight-bold)",
-                            }}
-                          >
-                            {project.licenses}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Enhanced CTA Arrow - Improved Visibility */}
+                      {/* Enhanced CTA Arrow - Improved Visibility - Always at bottom */}
                       <div
                         className="flex items-center gap-3 mt-8 pt-8 border-t-2 group/cta"
                         style={{

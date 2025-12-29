@@ -33,10 +33,7 @@ export default function ESGTeaser() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20 lg:mb-24"
         >
-          <h2
-            className="text-4xl md:text-5xl font-bold mb-6"
-            style={{ color: "var(--color-primary-main)" }}
-          >
+          <h2 className="text-display mb-6" style={{ color: "var(--color-primary-main)" }}>
             Responsible Mining for the Future
           </h2>
           <p className="text-lg text-gray-600 mb-6 max-w-3xl mx-auto">

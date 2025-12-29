@@ -44,8 +44,8 @@ export default function CookieConsent() {
         className="fixed bottom-0 left-0 right-0 z-[9999] p-4 sm:p-6"
         style={{
           background: "var(--color-base-black)",
-          borderTop: `2px solid color-mix(in srgb, var(--color-accent-main) 30%, transparent)`,
-          boxShadow: "0 -4px 20px rgba(0, 0, 0, 0.3)",
+          borderTop: `2px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+          boxShadow: "none",
         }}
       >
         <div className="container mx-auto max-w-6xl">
@@ -56,7 +56,7 @@ export default function CookieConsent() {
                 className="w-12 h-12 rounded-xl flex items-center justify-center"
                 style={{
                   background: "color-mix(in srgb, var(--color-accent-main) 20%, transparent)",
-                  border: `1px solid color-mix(in srgb, var(--color-accent-main) 40%, transparent)`,
+                  border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                 }}
               >
                 <svg
@@ -137,15 +137,15 @@ export default function CookieConsent() {
                 style={{
                   background: "var(--color-accent-main)",
                   color: "var(--color-accent-contrast)",
-                  boxShadow: "var(--shadow-accent)",
+                  boxShadow: "none",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow = "var(--shadow-accent-lg)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "var(--shadow-accent)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               >
                 Accept All

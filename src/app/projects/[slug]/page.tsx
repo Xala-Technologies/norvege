@@ -131,7 +131,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <div
               className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t"
               style={{
-                borderColor: "color-mix(in srgb, var(--color-accent-main) 30%, transparent)",
+                borderColor: "color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
               }}
             >
               <div>
@@ -210,7 +210,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="container max-w-5xl relative z-10">
             <div className="mb-8">
               <h2
-                className="text-4xl md:text-5xl font-bold mb-4"
+                className="text-display mb-4"
                 style={{
                   color: "var(--color-primary-main)",
                   fontFamily: "var(--font-family-heading)",
@@ -230,8 +230,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               className="p-8 lg:p-10 rounded-3xl"
               style={{
                 background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
-                border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
-                boxShadow: "var(--shadow-lg)",
+                border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                boxShadow: "none",
               }}
             >
               <p
@@ -288,18 +288,18 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {/* Licenses Card */}
             <div
-              className="p-8 lg:p-10 rounded-3xl text-center group transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              className="p-8 lg:p-10 rounded-3xl text-center group transition-all duration-300 hover:-translate-y-1"
               style={{
                 background: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
-                border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
-                boxShadow: "var(--shadow-lg)",
+                border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                boxShadow: "none",
               }}
             >
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-transform duration-300 group-hover:scale-110"
                 style={{
                   background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 100%)`,
-                  boxShadow: "var(--shadow-primary)",
+                  boxShadow: "none",
                 }}
               >
                 <svg
@@ -336,18 +336,18 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
             {/* Area Card */}
             <div
-              className="p-8 lg:p-10 rounded-3xl text-center group transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              className="p-8 lg:p-10 rounded-3xl text-center group transition-all duration-300 hover:-translate-y-1"
               style={{
                 background: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
-                border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
-                boxShadow: "var(--shadow-lg)",
+                border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                boxShadow: "none",
               }}
             >
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-transform duration-300 group-hover:scale-110"
                 style={{
                   background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
-                  boxShadow: "var(--shadow-accent)",
+                  boxShadow: "none",
                 }}
               >
                 <svg
@@ -384,18 +384,18 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
             {/* Minerals Card */}
             <div
-              className="p-8 lg:p-10 rounded-3xl text-center group transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              className="p-8 lg:p-10 rounded-3xl text-center group transition-all duration-300 hover:-translate-y-1"
               style={{
                 background: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
-                border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
-                boxShadow: "var(--shadow-lg)",
+                border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                boxShadow: "none",
               }}
             >
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-transform duration-300 group-hover:scale-110"
                 style={{
                   background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 100%)`,
-                  boxShadow: "var(--shadow-primary)",
+                  boxShadow: "none",
                 }}
               >
                 <svg
@@ -436,7 +436,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     style={{
                       background: "color-mix(in srgb, var(--color-accent-main) 15%, transparent)",
                       color: "var(--color-accent-main)",
-                      border: `1px solid color-mix(in srgb, var(--color-accent-main) 30%, transparent)`,
+                      border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                     }}
                   >
                     {mineral}
@@ -464,7 +464,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {project.geology && (
         <section className="section bg-white">
           <div className="container max-w-4xl">
-            <h2 className="text-4xl font-bold mb-6" style={{ color: "var(--color-navy-900)" }}>
+            <h2 className="text-display mb-6" style={{ color: "var(--color-navy-900)" }}>
               Geology
             </h2>
             <div className="prose prose-lg max-w-none">
@@ -478,7 +478,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {project.exploration && (
         <section className="section" style={{ background: "var(--color-sand-50)" }}>
           <div className="container max-w-4xl">
-            <h2 className="text-4xl font-bold mb-6" style={{ color: "var(--color-navy-900)" }}>
+            <h2 className="text-display mb-6" style={{ color: "var(--color-navy-900)" }}>
               Exploration Activities
             </h2>
             <div className="prose prose-lg max-w-none">
@@ -493,7 +493,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         <section className="section bg-white">
           <div className="container max-w-4xl">
             <h2
-              className="text-4xl font-bold mb-12 text-center"
+              className="text-display mb-12 text-center"
               style={{ color: "var(--color-primary-main)" }}
             >
               Project Timeline
@@ -507,7 +507,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {project.coverage && (
         <section className="section" style={{ background: "var(--color-sand-50)" }}>
           <div className="container max-w-4xl">
-            <h2 className="text-4xl font-bold mb-6" style={{ color: "var(--color-navy-900)" }}>
+            <h2 className="text-display mb-6" style={{ color: "var(--color-navy-900)" }}>
               License Coverage
             </h2>
             <p className="text-lg text-gray-600">{project.coverage}</p>

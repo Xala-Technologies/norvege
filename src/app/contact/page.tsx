@@ -6,6 +6,7 @@ import { contactFAQs } from "@/content/legal";
 import Accordion from "@/components/ui/accordion";
 import { generateFAQSchema } from "@/lib/seo";
 import ContactForm from "@/components/contact/ContactForm";
+import ContactHeroImage from "@/components/ui/ContactHeroImage";
 
 export const metadata: Metadata = generateSEOMetadata({
   title: "Contact Us - NORVEGE MINERALS AS",
@@ -25,25 +26,13 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {/* Hero Section */}
-      <section
-        className="relative overflow-hidden"
-        style={{ background: "var(--color-primary-main)" }}
-      >
-        {/* Decorative background elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl"
-            style={{ background: "var(--color-accent-main)" }}
-          />
-          <div
-            className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl"
-            style={{ background: "var(--color-accent-main)" }}
-          />
-        </div>
+      <section className="relative overflow-hidden min-h-[600px] lg:min-h-[700px] flex items-center">
+        {/* Background Image */}
+        <ContactHeroImage />
 
-        {/* Subtle grid pattern */}
+        {/* Subtle grid pattern overlay */}
         <div
-          className="absolute inset-0 opacity-5 pointer-events-none"
+          className="absolute inset-0 opacity-5 pointer-events-none z-10"
           style={{
             backgroundImage: `
               linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
@@ -54,7 +43,7 @@ export default function ContactPage() {
         />
 
         {/* Content */}
-        <div className="container relative z-10 pt-32 pb-20 lg:pt-36 lg:pb-28">
+        <div className="container relative z-20 pt-32 pb-20 lg:pt-36 lg:pb-28">
           <div className="max-w-4xl mx-auto text-center">
             {/* Main Heading */}
             <h1
@@ -145,39 +134,87 @@ export default function ContactPage() {
         className="section relative overflow-hidden"
         style={{ background: "var(--color-bg-default)" }}
       >
-        {/* Subtle background decoration */}
-        <div className="absolute inset-0 opacity-5">
+        {/* Refined background decoration */}
+        <div className="absolute inset-0 pointer-events-none">
           <div
-            className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl"
+            className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl opacity-[0.03]"
             style={{ background: "var(--color-primary-main)" }}
           />
           <div
-            className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl"
+            className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full blur-3xl opacity-[0.03]"
             style={{ background: "var(--color-accent-main)" }}
+          />
+          <div
+            className="absolute inset-0 opacity-[0.02]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.08) 1px, transparent 0)",
+              backgroundSize: "32px 32px",
+            }}
           />
         </div>
 
-        <div className="container relative z-10">
+        <div className="container max-w-7xl relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-16 lg:mb-20">
+            <h2
+              className="text-display mb-6"
+              style={{
+                color: "var(--color-primary-main)",
+                fontFamily: "var(--font-family-heading)",
+              }}
+            >
+              Get in <span style={{ color: "var(--color-accent-main)" }}>Touch</span>
+            </h2>
+            <p
+              className="text-lg md:text-xl max-w-3xl mx-auto"
+              style={{
+                color: "var(--color-text-secondary)",
+                fontFamily: "var(--font-family-body)",
+                lineHeight: "var(--line-height-loose)",
+              }}
+            >
+              Reach out to our team for inquiries, partnerships, or investment opportunities.
+              We&apos;re here to help.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Contact Information */}
             <div>
+              <h3
+                className="text-2xl md:text-3xl font-bold mb-8"
+                style={{
+                  color: "var(--color-primary-main)",
+                  fontFamily: "var(--font-family-heading)",
+                }}
+              >
+                Contact Information
+              </h3>
               <div className="space-y-6">
                 {/* Company Details Card */}
                 <div
-                  className="group p-6 lg:p-8 rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                  className="group p-6 lg:p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
                   style={{
                     background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
-                    border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
-                    boxShadow: "var(--shadow-md)",
+                    border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                    boxShadow: "none",
                   }}
                 >
+                  {/* Enhanced border glow on hover */}
+                  <div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{
+                      border: `2px solid var(--color-primary-main)`,
+                    }}
+                  />
                   <div className="flex items-start gap-4">
                     <div
                       className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
                       style={{
                         background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
                         color: "var(--color-accent-main)",
-                        boxShadow: "var(--shadow-accent)",
+                        boxShadow: "none",
                       }}
                     >
                       <svg
@@ -216,20 +253,27 @@ export default function ContactPage() {
 
                 {/* Address Card */}
                 <div
-                  className="group p-6 lg:p-8 rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                  className="group p-6 lg:p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
                   style={{
                     background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
-                    border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
-                    boxShadow: "var(--shadow-md)",
+                    border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                    boxShadow: "none",
                   }}
                 >
+                  {/* Enhanced border glow on hover */}
+                  <div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{
+                      border: `2px solid var(--color-primary-main)`,
+                    }}
+                  />
                   <div className="flex items-start gap-4">
                     <div
                       className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
                       style={{
                         background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
                         color: "var(--color-accent-main)",
-                        boxShadow: "var(--shadow-accent)",
+                        boxShadow: "none",
                       }}
                     >
                       <svg
@@ -278,20 +322,27 @@ export default function ContactPage() {
                 {/* Phone Card */}
                 {companyInfo.contact.phone && (
                   <div
-                    className="group p-6 lg:p-8 rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                    className="group p-6 lg:p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
                     style={{
                       background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
-                      border: `1px solid color-mix(in srgb, var(--color-border-light) 50%, transparent)`,
-                      boxShadow: "var(--shadow-md)",
+                      border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                      boxShadow: "none",
                     }}
                   >
+                    {/* Enhanced border glow on hover */}
+                    <div
+                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{
+                        border: `2px solid var(--color-primary-main)`,
+                      }}
+                    />
                     <div className="flex items-start gap-4">
                       <div
                         className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
                         style={{
                           background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
                           color: "var(--color-accent-main)",
-                          boxShadow: "var(--shadow-accent)",
+                          boxShadow: "none",
                         }}
                       >
                         <svg
@@ -344,15 +395,15 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <div>
-              <h2
-                className="text-3xl md:text-4xl font-bold mb-8"
+              <h3
+                className="text-2xl md:text-3xl font-bold mb-8"
                 style={{
                   color: "var(--color-primary-main)",
                   fontFamily: "var(--font-family-heading)",
                 }}
               >
                 Send us a Message
-              </h2>
+              </h3>
               <ContactForm />
             </div>
           </div>
@@ -363,7 +414,7 @@ export default function ContactPage() {
       <section className="section" style={{ background: "var(--color-sand-50)" }}>
         <div className="container max-w-4xl">
           <h2
-            className="text-4xl font-bold mb-8 text-center"
+            className="text-display mb-8 text-center"
             style={{ color: "var(--color-primary-main)" }}
           >
             Frequently Asked Questions

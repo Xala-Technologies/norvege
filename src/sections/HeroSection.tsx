@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import HeroVideo from "@/components/ui/HeroVideo";
+import Logo from "@/components/ui/Logo";
 
 // Hero slides with different content and project links
 const heroSlides = [
@@ -70,6 +71,7 @@ const heroSlides = [
 
 export default function HeroSection() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [showLogoOverlay, setShowLogoOverlay] = useState(false);
   const currentSlide = heroSlides[currentSlideIndex];
   const isVideoSlide = currentSlide.type === "video";
 
@@ -84,81 +86,114 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, [currentSlideIndex, isVideoSlide]);
 
+  // Handle video time updates to show logo at the end
+  const handleVideoTimeUpdate = (currentTime: number) => {
+    // Video is 8 seconds long, show logo in the last 1.5 seconds (6.5s to 8s)
+    if (isVideoSlide && currentTime >= 6.5 && currentTime <= 8) {
+      setShowLogoOverlay(true);
+    } else {
+      setShowLogoOverlay(false);
+    }
+  };
+
+  // Reset logo overlay when slide changes - track previous slide index
+  const prevSlideIndexRef = useRef(currentSlideIndex);
+  const prevIsVideoSlideRef = useRef(isVideoSlide);
+
+  useEffect(() => {
+    const slideChanged = prevSlideIndexRef.current !== currentSlideIndex;
+    const videoStateChanged = prevIsVideoSlideRef.current !== isVideoSlide;
+
+    if (slideChanged || videoStateChanged) {
+      prevSlideIndexRef.current = currentSlideIndex;
+      prevIsVideoSlideRef.current = isVideoSlide;
+
+      // Only reset if we're not on a video slide
+      if (!isVideoSlide) {
+        // Use setTimeout to avoid synchronous setState in effect
+        setTimeout(() => {
+          setShowLogoOverlay(false);
+        }, 0);
+      }
+    }
+  }, [currentSlideIndex, isVideoSlide]);
+
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Background Media Carousel (Images and Videos) */}
       <div className="absolute inset-0 w-full h-full z-[1]">
         <AnimatePresence mode="wait">
-          {heroSlides.map((slide, index) => (
-            <motion.div
-              key={`${slide.src}-${index}`}
-              initial={{ opacity: 0, scale: 1.1 }}
-              animate={{
-                opacity: index === currentSlideIndex ? 1 : 0,
-                scale: index === currentSlideIndex ? 1 : 1.1,
-              }}
-              exit={{ opacity: 0, scale: 1.1 }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
-              className="absolute inset-0"
-            >
-              {/* Fallback gradient background */}
-              <div
-                className="absolute inset-0 bg-gradient-to-br from-charcoal-950 via-charcoal-900 to-charcoal-950"
-                style={{
-                  backgroundImage: slide.gradient,
-                }}
-              />
-
-              {/* Render Video or Image based on slide type */}
-              {slide.type === "video" ? (
-                <div className="absolute inset-0 overflow-hidden">
-                  <HeroVideo
-                    src={slide.src}
-                    className="object-cover"
-                    style={{
-                      objectPosition: "center top",
-                      transform: "scale(1.15)",
-                    }}
-                  />
-                </div>
-              ) : (
-                <Image
-                  src={slide.src}
-                  alt={slide.alt}
-                  fill
-                  priority={index === 0}
-                  className="object-cover"
-                  sizes="100vw"
-                  quality={90}
-                  onError={(e) => {
-                    // Hide image if it fails to load, show gradient fallback
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = "none";
+          {heroSlides.map((slide, index) => {
+            if (index !== currentSlideIndex) return null;
+            return (
+              <motion.div
+                key={`${slide.src}-${index}`}
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.1 }}
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="absolute inset-0"
+              >
+                {/* Fallback gradient background */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-br from-charcoal-950 via-charcoal-900 to-charcoal-950"
+                  style={{
+                    backgroundImage: slide.gradient,
                   }}
                 />
-              )}
 
-              {/* Deep Navy Overlay for better text readability - only show on image slides */}
-              {slide.type === "image" && (
-                <>
-                  <div
-                    className="absolute inset-0 hero-overlay"
-                    style={{
-                      background: `linear-gradient(to bottom, color-mix(in srgb, var(--color-primary-main) 75%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 55%, transparent) 100%)`,
+                {/* Render Video or Image based on slide type */}
+                {slide.type === "video" ? (
+                  <div className="absolute inset-0 overflow-hidden">
+                    <HeroVideo
+                      src={slide.src}
+                      className="object-cover"
+                      style={{
+                        objectPosition: "center top",
+                        transform: "scale(1.15)",
+                      }}
+                      onTimeUpdate={handleVideoTimeUpdate}
+                    />
+                  </div>
+                ) : (
+                  <Image
+                    src={slide.src}
+                    alt={slide.alt}
+                    fill
+                    priority={index === 0}
+                    className="object-cover"
+                    sizes="100vw"
+                    quality={90}
+                    onError={(e) => {
+                      // Hide image if it fails to load, show gradient fallback
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = "none";
                     }}
                   />
-                  {/* Subtle pattern overlay */}
-                  <div
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                      backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)`,
-                      backgroundSize: "40px 40px",
-                    }}
-                  />
-                </>
-              )}
-            </motion.div>
-          ))}
+                )}
+
+                {/* Deep Navy Overlay for better text readability - only show on image slides */}
+                {slide.type === "image" && (
+                  <>
+                    <div
+                      className="absolute inset-0 hero-overlay"
+                      style={{
+                        background: `linear-gradient(to bottom, color-mix(in srgb, var(--color-primary-main) 75%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 55%, transparent) 100%)`,
+                      }}
+                    />
+                    {/* Subtle pattern overlay */}
+                    <div
+                      className="absolute inset-0 opacity-20"
+                      style={{
+                        backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)`,
+                        backgroundSize: "40px 40px",
+                      }}
+                    />
+                  </>
+                )}
+              </motion.div>
+            );
+          })}
         </AnimatePresence>
       </div>
 
@@ -187,8 +222,8 @@ export default function HeroSection() {
                     style={{
                       background: "color-mix(in srgb, var(--color-accent-main) 15%, transparent)",
                       color: "var(--color-accent-main)",
-                      border: `1px solid color-mix(in srgb, var(--color-accent-main) 30%, transparent)`,
-                      boxShadow: "var(--shadow-accent)",
+                      border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                      boxShadow: "none",
                     }}
                   >
                     {currentSlide.badge}
@@ -242,7 +277,7 @@ export default function HeroSection() {
                       style={{
                         background: "var(--color-accent-main)",
                         color: "var(--color-accent-contrast)",
-                        boxShadow: "var(--shadow-accent-lg)",
+                        boxShadow: "none",
                         fontFamily: "var(--font-family-heading)",
                       }}
                     >
@@ -257,7 +292,7 @@ export default function HeroSection() {
                         borderColor: "var(--color-gray-200)",
                         color: "var(--color-gray-50)",
                         background: "rgba(255, 255, 255, 0.08)",
-                        boxShadow: "0 8px 30px rgba(0, 0, 0, 0.3)",
+                        boxShadow: "none",
                       }}
                     >
                       {currentSlide.secondaryCtaText || "View All Projects"}
@@ -314,6 +349,25 @@ export default function HeroSection() {
           </motion.div>
         </div>
       </motion.div>
+
+      {/* Logo Overlay - Shows at the end of video */}
+      {isVideoSlide && (
+        <AnimatePresence>
+          {showLogoOverlay && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none"
+            >
+              <div className="relative">
+                <Logo className="text-white" />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
     </section>
   );
 }

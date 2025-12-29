@@ -1,14 +1,9 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
-import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { projects } from "@/content/projects";
 import ProjectsHeroImage from "@/components/ui/ProjectsHeroImage";
-
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Projects - NORVEGE MINERALS AS",
-  description: "Explore our portfolio of critical mineral exploration projects across Norway.",
-  path: "/projects",
-});
+import { motion } from "framer-motion";
 
 export default function ProjectsPage() {
   return (
@@ -134,93 +129,173 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="section bg-white">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project) => (
-              <div key={project.slug} className="card group">
-                <div className="mb-4">
-                  <span
-                    className="inline-block px-3 py-1 rounded-full text-xs font-semibold"
+      <section
+        className="section relative overflow-hidden"
+        style={{ background: "var(--color-bg-default)" }}
+      >
+        {/* Refined background decoration */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-3xl opacity-[0.03]"
+            style={{ background: "var(--color-primary-main)" }}
+          />
+          <div
+            className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl opacity-[0.03]"
+            style={{ background: "var(--color-accent-main)" }}
+          />
+          <div
+            className="absolute inset-0 opacity-[0.02]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.08) 1px, transparent 0)",
+              backgroundSize: "32px 32px",
+            }}
+          />
+        </div>
+
+        <div className="container max-w-7xl relative z-10">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16 lg:mb-20"
+          >
+            <h2
+              className="text-display mb-6"
+              style={{
+                color: "var(--color-primary-main)",
+                fontFamily: "var(--font-family-heading)",
+              }}
+            >
+              Exploration <span style={{ color: "var(--color-accent-main)" }}>Portfolio</span>
+            </h2>
+            <p
+              className="text-lg md:text-xl max-w-3xl mx-auto"
+              style={{
+                color: "var(--color-text-secondary)",
+                fontFamily: "var(--font-family-body)",
+                lineHeight: "var(--line-height-loose)",
+              }}
+            >
+              Our strategic portfolio of critical mineral exploration projects across Norway&apos;s
+              most promising geological regions
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.slug}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+              >
+                <div className="card group flex flex-col h-full relative overflow-hidden">
+                  {/* Enhanced border glow on hover */}
+                  <div
+                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{
-                      background:
-                        project.priority === "High"
-                          ? "var(--color-accent-main)"
-                          : "var(--color-slate-500)",
-                      color: "white",
+                      border: `2px solid var(--color-primary-main)`,
+                      borderRadius: "var(--radius-lg)",
                     }}
-                  >
-                    {project.stage}
-                  </span>
-                </div>
-
-                <h2 className="text-3xl font-bold mb-2" style={{ color: "var(--color-navy-900)" }}>
-                  {project.name}
-                </h2>
-
-                <p className="text-lg text-gray-600 mb-4">
-                  {project.region}, {project.country}
-                </p>
-
-                <p className="text-gray-600 mb-4">{project.description}</p>
-
-                {/* Overview preview if available */}
-                {project.overview && (
-                  <p className="text-sm text-gray-500 mb-6 line-clamp-3">{project.overview}</p>
-                )}
-
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div>
-                    <p className="text-sm text-gray-500">Licenses</p>
-                    <p className="text-lg font-semibold" style={{ color: "var(--color-navy-900)" }}>
-                      {project.licenses}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Area</p>
-                    <p className="text-lg font-semibold" style={{ color: "var(--color-navy-900)" }}>
-                      {project.area}
-                    </p>
-                  </div>
-                  <div className="col-span-2">
-                    <p className="text-sm text-gray-500">Target Minerals</p>
-                    <p
-                      className="text-lg font-semibold"
-                      style={{ color: "var(--color-accent-main)" }}
-                    >
-                      {project.minerals.join(", ")}
-                    </p>
-                  </div>
-                  {project.coverage && (
-                    <div className="col-span-2">
-                      <p className="text-sm text-gray-500">Coverage</p>
-                      <p className="text-base font-medium text-gray-700">{project.coverage}</p>
+                  />
+                  <div className="flex-grow flex flex-col relative z-10">
+                    <div className="mb-4">
+                      <span
+                        className="inline-block px-3 py-1 rounded-full text-xs font-semibold"
+                        style={{
+                          background:
+                            project.priority === "High"
+                              ? "var(--color-accent-main)"
+                              : "var(--color-slate-500)",
+                          color: "white",
+                        }}
+                      >
+                        {project.stage}
+                      </span>
                     </div>
-                  )}
-                </div>
 
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="inline-flex items-center text-sm font-semibold group-hover:translate-x-1 transition-transform focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-main)] focus:ring-offset-2 rounded"
-                  style={{ color: "var(--color-copper-600)" }}
-                >
-                  View Project Details
-                  <svg
-                    className="w-4 h-4 ml-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
+                    <h2
+                      className="text-3xl font-bold mb-2"
+                      style={{ color: "var(--color-navy-900)" }}
+                    >
+                      {project.name}
+                    </h2>
+
+                    <p className="text-lg text-gray-600 mb-4">
+                      {project.region}, {project.country}
+                    </p>
+
+                    <p className="text-gray-600 mb-4">{project.description}</p>
+
+                    {/* Overview preview if available */}
+                    {project.overview && (
+                      <p className="text-sm text-gray-500 mb-6 line-clamp-3">{project.overview}</p>
+                    )}
+
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                      <div>
+                        <p className="text-sm text-gray-500">Licenses</p>
+                        <p
+                          className="text-lg font-semibold"
+                          style={{ color: "var(--color-navy-900)" }}
+                        >
+                          {project.licenses}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500">Area</p>
+                        <p
+                          className="text-lg font-semibold"
+                          style={{ color: "var(--color-navy-900)" }}
+                        >
+                          {project.area}
+                        </p>
+                      </div>
+                      <div className="col-span-2">
+                        <p className="text-sm text-gray-500">Target Minerals</p>
+                        <p
+                          className="text-lg font-semibold"
+                          style={{ color: "var(--color-accent-main)" }}
+                        >
+                          {project.minerals.join(", ")}
+                        </p>
+                      </div>
+                      {project.coverage && (
+                        <div className="col-span-2">
+                          <p className="text-sm text-gray-500">Coverage</p>
+                          <p className="text-base font-medium text-gray-700">{project.coverage}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="inline-flex items-center text-sm font-semibold group-hover:translate-x-1 transition-transform focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-main)] focus:ring-offset-2 rounded mt-auto relative z-10"
+                    style={{ color: "var(--color-copper-600)" }}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </Link>
-              </div>
+                    View Project Details
+                    <svg
+                      className="w-4 h-4 ml-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </Link>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>

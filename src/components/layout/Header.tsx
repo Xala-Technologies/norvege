@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,21 +9,11 @@ import { projects } from "@/content/projects";
 import Logo from "@/components/ui/Logo";
 
 export default function Header() {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false);
   const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10); // Trigger earlier for better visibility
-    };
-    window.addEventListener("scroll", handleScroll);
-    // Set initial state
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -58,7 +49,6 @@ export default function Header() {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/investors", label: "Investors" },
     { href: "/contact", label: "Contact" },
@@ -71,110 +61,182 @@ export default function Header() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled
-          ? `${navyColor}`
-          : `linear-gradient(180deg, ${navyColor}f5 0%, ${navyColor}ee 100%)`,
-        backdropFilter: scrolled ? "blur(16px)" : "blur(12px)",
-        WebkitBackdropFilter: scrolled ? "blur(16px)" : "blur(12px)",
-        boxShadow: scrolled
-          ? `0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px color-mix(in srgb, var(--color-accent-main) 25%, transparent)`
-          : `0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px color-mix(in srgb, var(--color-accent-main) 15%, transparent)`,
-        borderBottom: `1px solid color-mix(in srgb, var(--color-accent-main) ${scrolled ? "30%" : "15%"}, transparent)`,
+        background: `${navyColor}`,
+        backdropFilter: "blur(16px)",
+        WebkitBackdropFilter: "blur(16px)",
+        boxShadow: "none",
+        borderBottom: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
       }}
     >
-      {/* Enhanced background pattern - more visible when scrolled */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: `
-            radial-gradient(circle at 1px 1px, rgba(255, 255, 255, ${scrolled ? 0.12 : 0.08}) 1px, transparent 0),
-            radial-gradient(circle at 3px 3px, rgba(255, 255, 255, ${scrolled ? 0.08 : 0.05}) 1px, transparent 0)
-          `,
-          backgroundSize: "20px 20px, 40px 40px",
-          opacity: scrolled ? 0.5 : 0.3,
-        }}
-      />
       <nav className="container-wide mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
-          <div style={{ filter: scrolled ? "none" : "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))" }}>
-            <Logo className="text-white" />
+          <div className="flex items-center h-full">
+            <div className="flex items-center">
+              <Logo className="text-white" />
+            </div>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="relative px-5 py-2.5 text-lg font-semibold transition-all duration-300 rounded-lg group"
-                style={{
-                  color: "var(--color-text-on-dark)",
-                }}
-              >
-                <span className="relative z-10">{link.label}</span>
-                <motion.span
-                  className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100"
+          <div className="hidden lg:flex items-center space-x-1 h-full">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="relative px-5 py-2.5 text-lg font-semibold transition-all duration-300 rounded-lg group"
                   style={{
-                    background: `color-mix(in srgb, var(--color-accent-main) 15%, transparent)`,
+                    color: "var(--color-text-on-dark)",
                   }}
-                  transition={{ duration: 0.2 }}
-                />
-                <motion.span
-                  className="absolute bottom-1 left-1/2 h-0.5 w-0 group-hover:w-3/4"
-                  style={{
-                    transform: "translateX(-50%)",
-                    background: accentColor,
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-              </Link>
-            ))}
+                >
+                  <span className="relative z-10">{link.label}</span>
+                  {/* Active state background */}
+                  <motion.span
+                    className="absolute inset-0 rounded-lg"
+                    style={{
+                      background: isActive
+                        ? `color-mix(in srgb, var(--color-accent-main) 15%, transparent)`
+                        : `transparent`,
+                      opacity: isActive ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.2 }}
+                  />
+                  {/* Hover state background */}
+                  <motion.span
+                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100"
+                    style={{
+                      background: `color-mix(in srgb, var(--color-accent-main) 15%, transparent)`,
+                    }}
+                    transition={{ duration: 0.2 }}
+                  />
+                  {/* Blue border glow on hover or active */}
+                  <motion.span
+                    className="absolute inset-0 rounded-lg pointer-events-none"
+                    style={{
+                      border: `2px solid var(--color-primary-main)`,
+                      opacity: isActive ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.2 }}
+                  />
+                  <motion.span
+                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none"
+                    style={{
+                      border: `2px solid var(--color-primary-main)`,
+                    }}
+                    transition={{ duration: 0.2 }}
+                  />
+                  {/* Active underline */}
+                  <motion.span
+                    className="absolute bottom-1 left-1/2 h-0.5"
+                    style={{
+                      transform: "translateX(-50%)",
+                      background: accentColor,
+                      width: isActive ? "75%" : "0",
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  {/* Hover underline */}
+                  <motion.span
+                    className="absolute bottom-1 left-1/2 h-0.5 w-0 group-hover:w-3/4"
+                    style={{
+                      transform: "translateX(-50%)",
+                      background: accentColor,
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </Link>
+              );
+            })}
 
             {/* Projects Dropdown */}
             <div className="relative" ref={dropdownRef}>
-              <button
-                type="button"
-                className="relative px-5 py-2.5 text-lg font-semibold transition-all duration-300 rounded-lg flex items-center gap-1.5 group"
-                style={{
-                  color: "var(--color-text-on-dark)",
-                }}
-                aria-expanded={projectsDropdownOpen ? "true" : "false"}
-                aria-haspopup="true"
-                onClick={() => setProjectsDropdownOpen(!projectsDropdownOpen)}
-              >
-                <span className="relative z-10">Projects</span>
-                <motion.svg
-                  className="w-4 h-4 relative z-10"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  animate={{ rotate: projectsDropdownOpen ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2.5}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </motion.svg>
-                <motion.span
-                  className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100"
-                  style={{
-                    background: `color-mix(in srgb, var(--color-accent-main) 15%, transparent)`,
-                  }}
-                  transition={{ duration: 0.2 }}
-                />
-                <motion.span
-                  className="absolute bottom-1 left-1/2 h-0.5 w-0 group-hover:w-3/4"
-                  style={{
-                    transform: "translateX(-50%)",
-                    background: accentColor,
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-              </button>
+              {(() => {
+                const isProjectsActive = pathname?.startsWith("/projects");
+                return (
+                  <button
+                    type="button"
+                    className="relative px-5 py-2.5 text-lg font-semibold transition-all duration-300 rounded-lg flex items-center gap-1.5 group"
+                    style={{
+                      color: "var(--color-text-on-dark)",
+                    }}
+                    aria-expanded={projectsDropdownOpen ? "true" : "false"}
+                    aria-haspopup="true"
+                    onClick={() => setProjectsDropdownOpen(!projectsDropdownOpen)}
+                  >
+                    <span className="relative z-10">Projects</span>
+                    <motion.svg
+                      className="w-4 h-4 relative z-10"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      animate={{ rotate: projectsDropdownOpen ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2.5}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </motion.svg>
+                    {/* Active state background */}
+                    <motion.span
+                      className="absolute inset-0 rounded-lg"
+                      style={{
+                        background: isProjectsActive
+                          ? `color-mix(in srgb, var(--color-accent-main) 15%, transparent)`
+                          : `transparent`,
+                        opacity: isProjectsActive ? 1 : 0,
+                      }}
+                      transition={{ duration: 0.2 }}
+                    />
+                    {/* Hover state background */}
+                    <motion.span
+                      className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100"
+                      style={{
+                        background: `color-mix(in srgb, var(--color-accent-main) 15%, transparent)`,
+                      }}
+                      transition={{ duration: 0.2 }}
+                    />
+                    {/* Blue border glow on active or hover */}
+                    <motion.span
+                      className="absolute inset-0 rounded-lg pointer-events-none"
+                      style={{
+                        border: `2px solid var(--color-primary-main)`,
+                        opacity: isProjectsActive ? 1 : 0,
+                      }}
+                      transition={{ duration: 0.2 }}
+                    />
+                    <motion.span
+                      className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none"
+                      style={{
+                        border: `2px solid var(--color-primary-main)`,
+                      }}
+                      transition={{ duration: 0.2 }}
+                    />
+                    {/* Active underline */}
+                    <motion.span
+                      className="absolute bottom-1 left-1/2 h-0.5"
+                      style={{
+                        transform: "translateX(-50%)",
+                        background: accentColor,
+                        width: isProjectsActive ? "75%" : "0",
+                      }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    {/* Hover underline */}
+                    <motion.span
+                      className="absolute bottom-1 left-1/2 h-0.5 w-0 group-hover:w-3/4"
+                      style={{
+                        transform: "translateX(-50%)",
+                        background: accentColor,
+                      }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </button>
+                );
+              })()}
 
               <AnimatePresence>
                 {projectsDropdownOpen && (
@@ -183,28 +245,39 @@ export default function Header() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
                     transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute top-full left-0 mt-3 w-72 rounded-xl shadow-2xl py-2 z-50 overflow-hidden"
+                    className="absolute top-full left-0 mt-1 w-80 shadow-2xl py-2 z-50 overflow-hidden"
                     role="menu"
                     aria-orientation="vertical"
                     style={{
                       background: `${navyColor}`,
                       backdropFilter: "blur(16px)",
                       WebkitBackdropFilter: "blur(16px)",
-                      border: `1px solid color-mix(in srgb, var(--color-accent-main) 25%, transparent)`,
+                      border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                      borderRadius: "0",
                       boxShadow:
-                        "0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px color-mix(in srgb, var(--color-accent-main) 20%, transparent)",
+                        "0 10px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px color-mix(in srgb, var(--color-accent-main) 20%, transparent)",
                     }}
                   >
+                    {/* Subtle background decoration */}
+                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+                      <div
+                        className="absolute top-0 right-0 w-32 h-32 rounded-full blur-2xl"
+                        style={{ background: "var(--color-accent-main)" }}
+                      />
+                    </div>
+
                     <div className="relative">
+                      {/* Overview Link - More Prominent */}
                       <Link
                         href="/projects"
-                        className="block px-5 py-3 text-sm font-semibold transition-all duration-200 hover:pl-6"
+                        className="block px-6 py-3.5 text-sm font-bold transition-all duration-200 group/overview relative"
                         style={{
-                          color: "var(--color-gray-50)",
+                          color: "var(--color-accent-main)",
                           background: "transparent",
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.background = "rgba(223, 160, 68, 0.1)";
+                          e.currentTarget.style.background =
+                            "color-mix(in srgb, var(--color-accent-main) 15%, transparent)";
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.background = "transparent";
@@ -212,54 +285,104 @@ export default function Header() {
                         onClick={() => setProjectsDropdownOpen(false)}
                         role="menuitem"
                       >
-                        Overview
-                      </Link>
-                      <div
-                        className="border-t my-1"
-                        style={{ borderColor: "rgba(223, 160, 68, 0.2)" }}
-                      />
-                      {projects.map((project, idx) => (
-                        <motion.div
-                          key={project.slug}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: idx * 0.05 }}
-                        >
-                          <Link
-                            href={`/projects/${project.slug}`}
-                            className="block px-5 py-2.5 text-sm transition-all duration-200 hover:pl-6 group"
-                            style={{
-                              color: "var(--color-gray-100)",
-                              background: "transparent",
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.background = "rgba(223, 160, 68, 0.1)";
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.background = "transparent";
-                            }}
-                            onClick={() => setProjectsDropdownOpen(false)}
-                            role="menuitem"
+                        <span className="flex items-center gap-2.5 relative z-10">
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
                           >
-                            <span className="flex items-center gap-2">
-                              {project.name === "Skrattås-Byafossen" ? "Skrattåsen" : project.name}
-                              <motion.svg
-                                className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M9 5l7 7-7 7"
-                                />
-                              </motion.svg>
-                            </span>
-                          </Link>
-                        </motion.div>
-                      ))}
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                            />
+                          </svg>
+                          Overview
+                        </span>
+                        {/* Hover indicator */}
+                        <div
+                          className="absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover/overview:opacity-100 transition-opacity"
+                          style={{ background: "var(--color-accent-main)" }}
+                        />
+                      </Link>
+
+                      {/* Divider */}
+                      <div
+                        className="mx-6 my-2 h-px"
+                        style={{
+                          background:
+                            "linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-accent-main) 30%, transparent) 50%, transparent 100%)",
+                        }}
+                      />
+
+                      {/* Project Links */}
+                      <div className="py-1">
+                        {projects.map((project, idx) => (
+                          <motion.div
+                            key={project.slug}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: idx * 0.03 }}
+                          >
+                            <Link
+                              href={`/projects/${project.slug}`}
+                              className="block px-6 py-3 text-sm transition-all duration-200 group/item relative"
+                              style={{
+                                color: "var(--color-gray-100)",
+                                background: "transparent",
+                                fontFamily: "var(--font-family-body)",
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.background =
+                                  "color-mix(in srgb, var(--color-accent-main) 12%, transparent)";
+                                e.currentTarget.style.color = "var(--color-gray-50)";
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.background = "transparent";
+                                e.currentTarget.style.color = "var(--color-gray-100)";
+                              }}
+                              onClick={() => setProjectsDropdownOpen(false)}
+                              role="menuitem"
+                            >
+                              <span className="flex items-center justify-between relative z-10">
+                                <span className="flex items-center gap-3">
+                                  {/* Project indicator dot */}
+                                  <span
+                                    className="w-1.5 h-1.5 rounded-full transition-all duration-200"
+                                    style={{
+                                      background: "var(--color-accent-main)",
+                                      opacity: 0.5,
+                                    }}
+                                  />
+                                  {project.name === "Skrattås-Byafossen"
+                                    ? "Skrattåsen"
+                                    : project.name}
+                                </span>
+                                <motion.svg
+                                  className="w-4 h-4 opacity-0 group-hover/item:opacity-100 transition-opacity"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M9 5l7 7-7 7"
+                                  />
+                                </motion.svg>
+                              </span>
+                              {/* Hover indicator */}
+                              <div
+                                className="absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover/item:opacity-100 transition-opacity"
+                                style={{ background: "var(--color-accent-main)" }}
+                              />
+                            </Link>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -387,10 +510,10 @@ export default function Header() {
                           href="/"
                           className="block py-4 text-base font-bold uppercase tracking-wider transition-opacity hover:opacity-70"
                           style={{
-                            color: "var(--color-gray-50)",
+                            color: pathname === "/" ? accentColor : "var(--color-gray-50)",
                             textDecoration: "underline",
                             textUnderlineOffset: "4px",
-                            textDecorationThickness: "1px",
+                            textDecorationThickness: pathname === "/" ? "2px" : "1px",
                           }}
                           onClick={() => setMobileMenuOpen(false)}
                         >
@@ -408,10 +531,10 @@ export default function Header() {
                           href="/about"
                           className="block py-4 text-base font-bold uppercase tracking-wider transition-opacity hover:opacity-70"
                           style={{
-                            color: "var(--color-gray-50)",
+                            color: pathname === "/about" ? accentColor : "var(--color-gray-50)",
                             textDecoration: "underline",
                             textUnderlineOffset: "4px",
-                            textDecorationThickness: "1px",
+                            textDecorationThickness: pathname === "/about" ? "2px" : "1px",
                           }}
                           onClick={() => setMobileMenuOpen(false)}
                         >
@@ -423,36 +546,62 @@ export default function Header() {
                         />
                       </div>
 
-                      {/* Projects Section with Dropdown */}
+                      {/* Investors */}
                       <div>
-                        <button
-                          type="button"
-                          onClick={() => setMobileProjectsOpen(!mobileProjectsOpen)}
-                          className="w-full flex items-center justify-between py-4 text-base font-bold uppercase tracking-wider transition-opacity hover:opacity-70"
+                        <Link
+                          href="/investors"
+                          className="block py-4 text-base font-bold uppercase tracking-wider transition-opacity hover:opacity-70"
                           style={{
-                            color: "var(--color-gray-50)",
+                            color: pathname === "/investors" ? accentColor : "var(--color-gray-50)",
                             textDecoration: "underline",
                             textUnderlineOffset: "4px",
-                            textDecorationThickness: "1px",
+                            textDecorationThickness: pathname === "/investors" ? "2px" : "1px",
                           }}
+                          onClick={() => setMobileMenuOpen(false)}
                         >
-                          <span>PROJECTS</span>
-                          <motion.svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            animate={{ rotate: mobileProjectsOpen ? 180 : 0 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M19 9l-7 7-7-7"
-                            />
-                          </motion.svg>
-                        </button>
+                          INVESTORS
+                        </Link>
+                        <div
+                          className="h-px my-2"
+                          style={{ background: "rgba(255, 255, 255, 0.2)" }}
+                        />
+                      </div>
+
+                      {/* Projects Section with Dropdown */}
+                      <div>
+                        {(() => {
+                          const isProjectsActive = pathname?.startsWith("/projects");
+                          return (
+                            <button
+                              type="button"
+                              onClick={() => setMobileProjectsOpen(!mobileProjectsOpen)}
+                              className="w-full flex items-center justify-between py-4 text-base font-bold uppercase tracking-wider transition-opacity hover:opacity-70"
+                              style={{
+                                color: isProjectsActive ? accentColor : "var(--color-gray-50)",
+                                textDecoration: "underline",
+                                textUnderlineOffset: "4px",
+                                textDecorationThickness: isProjectsActive ? "2px" : "1px",
+                              }}
+                            >
+                              <span>PROJECTS</span>
+                              <motion.svg
+                                className="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                animate={{ rotate: mobileProjectsOpen ? 180 : 0 }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M19 9l-7 7-7-7"
+                                />
+                              </motion.svg>
+                            </button>
+                          );
+                        })()}
 
                         <AnimatePresence>
                           {mobileProjectsOpen && (
@@ -468,7 +617,10 @@ export default function Header() {
                                   href="/projects"
                                   className="block text-sm font-medium transition-opacity hover:opacity-70"
                                   style={{
-                                    color: "rgba(255, 255, 255, 0.8)",
+                                    color:
+                                      pathname === "/projects"
+                                        ? accentColor
+                                        : "rgba(255, 255, 255, 0.8)",
                                   }}
                                   onClick={() => setMobileMenuOpen(false)}
                                 >
@@ -480,7 +632,10 @@ export default function Header() {
                                     href={`/projects/${project.slug}`}
                                     className="block text-sm font-medium transition-opacity hover:opacity-70"
                                     style={{
-                                      color: "rgba(255, 255, 255, 0.8)",
+                                      color:
+                                        pathname === `/projects/${project.slug}`
+                                          ? accentColor
+                                          : "rgba(255, 255, 255, 0.8)",
                                     }}
                                     onClick={() => setMobileMenuOpen(false)}
                                   >
@@ -506,10 +661,10 @@ export default function Header() {
                           href="/contact"
                           className="block py-4 text-base font-bold uppercase tracking-wider transition-opacity hover:opacity-70"
                           style={{
-                            color: "var(--color-gray-50)",
+                            color: pathname === "/contact" ? accentColor : "var(--color-gray-50)",
                             textDecoration: "underline",
                             textUnderlineOffset: "4px",
-                            textDecorationThickness: "1px",
+                            textDecorationThickness: pathname === "/contact" ? "2px" : "1px",
                           }}
                           onClick={() => setMobileMenuOpen(false)}
                         >

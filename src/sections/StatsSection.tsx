@@ -73,7 +73,7 @@ const cardStyles = [
     numberColor: "var(--color-accent-main)",
     textColor: "var(--color-text-on-dark)",
     descriptionColor: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
-    border: `1px solid color-mix(in srgb, var(--color-accent-main) 20%, transparent)`,
+    border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
   },
   {
     // Card 2: White with Mustard Gold accent
@@ -83,7 +83,7 @@ const cardStyles = [
     numberColor: "var(--color-accent-main)",
     textColor: "var(--color-primary-main)",
     descriptionColor: "var(--color-text-secondary)",
-    border: `1px solid color-mix(in srgb, var(--color-accent-main) 10%, transparent)`,
+    border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
   },
   {
     // Card 3: Mustard Gold gradient
@@ -93,7 +93,7 @@ const cardStyles = [
     numberColor: "var(--color-primary-main)",
     textColor: "var(--color-primary-main)",
     descriptionColor: "var(--color-text-secondary)",
-    border: `1px solid color-mix(in srgb, var(--color-accent-main) 30%, transparent)`,
+    border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
   },
   {
     // Card 4: Deep Navy with Mustard Gold accent
@@ -103,7 +103,7 @@ const cardStyles = [
     numberColor: "var(--color-accent-main)",
     textColor: "var(--color-text-on-dark)",
     descriptionColor: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
-    border: `1px solid color-mix(in srgb, var(--color-accent-main) 20%, transparent)`,
+    border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
   },
   {
     // Card 5: White with Deep Navy accent
@@ -113,7 +113,7 @@ const cardStyles = [
     numberColor: "var(--color-primary-main)",
     textColor: "var(--color-primary-main)",
     descriptionColor: "var(--color-text-secondary)",
-    border: `1px solid color-mix(in srgb, var(--color-primary-main) 15%, transparent)`,
+    border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
   },
   {
     // Card 6: Mustard Gold with Deep Navy text
@@ -123,7 +123,7 @@ const cardStyles = [
     numberColor: "var(--color-primary-main)",
     textColor: "var(--color-primary-main)",
     descriptionColor: "var(--color-text-secondary)",
-    border: `1px solid color-mix(in srgb, var(--color-accent-main) 25%, transparent)`,
+    border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
   },
 ];
 
@@ -165,7 +165,7 @@ export default function StatsSection() {
             style={{
               background: "color-mix(in srgb, var(--color-accent-main) 10%, transparent)",
               color: "var(--color-accent-main)",
-              border: `1px solid color-mix(in srgb, var(--color-accent-main) 20%, transparent)`,
+              border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
             }}
           >
             Our Impact
@@ -221,17 +221,20 @@ export default function StatsSection() {
               >
                 {/* Card */}
                 <div
-                  className="card card-elevated relative p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl overflow-hidden h-full flex flex-col"
+                  className="card relative p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl overflow-hidden h-full flex flex-col transition-all duration-300"
                   style={{
                     background: style.bg,
                     border: style.border,
+                    boxShadow: "none",
                   }}
                 >
-                  {/* Hover glow effect */}
+                  {/* Hover glow effect with border - Enhanced visibility */}
                   <motion.div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{
-                      background: `radial-gradient(circle at center, ${style.iconColor}15 0%, transparent 70%)`,
+                      background: `radial-gradient(circle at center, ${style.iconColor}30 0%, transparent 70%)`,
+                      border: `2px solid var(--color-primary-main)`,
+                      borderRadius: "inherit",
                     }}
                   />
 
@@ -276,15 +279,6 @@ export default function StatsSection() {
                   >
                     {stat.description}
                   </p>
-
-                  {/* Decorative corner accent */}
-                  <div
-                    className="absolute top-0 right-0 w-32 h-32 opacity-10"
-                    style={{
-                      background: `radial-gradient(circle, ${style.iconColor} 0%, transparent 70%)`,
-                      transform: "translate(30%, -30%)",
-                    }}
-                  />
                 </div>
               </motion.div>
             );

@@ -28,10 +28,7 @@ export default function InvestorCTA() {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto text-center mb-20 lg:mb-24"
         >
-          <h2
-            className="text-4xl md:text-5xl font-bold mb-6"
-            style={{ color: "var(--color-sand-50)" }}
-          >
+          <h2 className="text-display mb-6" style={{ color: "var(--color-sand-50)" }}>
             Partner With Us
           </h2>
           <p className="text-xl mb-8" style={{ color: "var(--color-sand-100)" }}>

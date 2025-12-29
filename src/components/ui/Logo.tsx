@@ -1,41 +1,47 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 interface LogoProps {
   className?: string;
 }
 
 export default function Logo({ className = "" }: LogoProps) {
+  const [isActive, setIsActive] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isHomePage) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <Link
       href="/"
-      className={`relative flex items-center gap-3 group ${className}`}
+      className={`relative flex items-center gap-3 transition-all duration-200 ${className}`}
       aria-label="Norvege Minerals Home"
+      style={{
+        WebkitTapHighlightColor: "transparent",
+      }}
+      onClick={handleClick}
+      scroll={!isHomePage}
+      onMouseDown={() => setIsActive(true)}
+      onMouseUp={() => setIsActive(false)}
+      onMouseLeave={() => setIsActive(false)}
     >
-      {/* Enhanced glow effect matching navbar accent */}
       <div
-        className="absolute -inset-3 blur-2xl rounded-full opacity-0 group-hover:opacity-50 transition-opacity duration-500"
+        className="relative h-28 md:h-32 lg:h-40 w-auto flex items-center transition-all duration-200"
         style={{
-          background: "radial-gradient(circle, var(--color-accent-main) 0%, transparent 70%)",
+          filter: isActive ? "drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))" : "none",
         }}
-      />
-
-      {/* Subtle background glow for better visibility */}
-      <div
-        className="absolute -inset-1 blur-lg rounded-full opacity-20"
-        style={{
-          background: "radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%)",
-        }}
-      />
-
-      <div className="relative h-28 md:h-32 lg:h-40 w-auto transition-all duration-300 group-hover:scale-105 flex items-center">
-        <div
-          className="relative w-full h-full flex items-center"
-          style={{
-            filter:
-              "drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2))",
-          }}
-        >
+      >
+        <div className="relative w-full h-full flex items-center">
           <Image
             src="/images/logo.png"
             alt="Norvege Minerals"
@@ -43,7 +49,6 @@ export default function Logo({ className = "" }: LogoProps) {
             height={0}
             sizes="100vw"
             className="h-full w-auto object-contain"
-            style={{ lineHeight: "30px" }}
             priority
           />
         </div>

@@ -110,7 +110,7 @@ export default function ContactStrip() {
           className="h-[1px] w-full mt-[-1px]"
           style={{
             background: `linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-accent-main) 60%, transparent) 20%, var(--color-accent-main) 50%, color-mix(in srgb, var(--color-accent-main) 60%, transparent) 80%, transparent 100%)`,
-            boxShadow: "var(--shadow-accent)",
+            boxShadow: "none",
           }}
         />
       </div>
@@ -227,27 +227,18 @@ export default function ContactStrip() {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1, duration: 0.5 }}
                       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                      className="group relative p-6 lg:p-8 rounded-xl overflow-hidden card-elevated min-w-0"
+                      className="group relative p-6 lg:p-8 rounded-xl overflow-hidden min-w-0"
                       style={{
                         background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 90%, transparent) 0%, color-mix(in srgb, var(--color-navy-800) 85%, transparent) 100%)`,
-                        border: `1px solid color-mix(in srgb, var(--color-accent-main) 20%, transparent)`,
-                        boxShadow: "var(--shadow-primary-lg)",
+                        border: `2px solid rgba(255, 255, 255, 0.4)`,
+                        boxShadow: "none",
                       }}
                     >
-                      {/* Hover glow effect */}
+                      {/* Enhanced border glow on hover */}
                       <motion.div
-                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                         style={{
-                          background: `radial-gradient(circle at center, color-mix(in srgb, var(--color-accent-main) 15%, transparent) 0%, transparent 70%)`,
-                        }}
-                      />
-
-                      {/* Subtle border glow on hover */}
-                      <motion.div
-                        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        style={{
-                          border: `2px solid color-mix(in srgb, var(--color-accent-main) 30%, transparent)`,
-                          pointerEvents: "none",
+                          border: `2px solid var(--color-primary-main)`,
                         }}
                       />
 
@@ -257,8 +248,8 @@ export default function ContactStrip() {
                         style={{
                           background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 25%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 100%)`,
                           color: "var(--color-accent-main)",
-                          border: `1px solid color-mix(in srgb, var(--color-accent-main) 30%, transparent)`,
-                          boxShadow: "var(--shadow-accent)",
+                          border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                          boxShadow: "none",
                         }}
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -331,8 +322,8 @@ export default function ContactStrip() {
                   transition={{ delay: 0.4, duration: 0.6 }}
                   className="relative h-64 lg:h-80 rounded-xl overflow-hidden"
                   style={{
-                    border: `1px solid color-mix(in srgb, var(--color-accent-main) 20%, transparent)`,
-                    boxShadow: "var(--shadow-primary-lg)",
+                    border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                    boxShadow: "none",
                   }}
                 >
                   {/* Google Maps Embed */}
@@ -420,7 +411,7 @@ export default function ContactStrip() {
           className="h-[1px] w-full mt-[-1px]"
           style={{
             background: `linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-accent-main) 60%, transparent) 20%, var(--color-accent-main) 50%, color-mix(in srgb, var(--color-accent-main) 60%, transparent) 80%, transparent 100%)`,
-            boxShadow: "var(--shadow-accent)",
+            boxShadow: "none",
           }}
         />
       </div>

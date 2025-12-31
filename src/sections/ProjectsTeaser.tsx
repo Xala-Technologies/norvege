@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { projects } from "@/content/projects";
 
@@ -41,21 +42,102 @@ const ArrowRightIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
 // 2. Name them: project-skrattasen.jpg, project-gaulstad-mokk.jpg
 // 3. Update the paths below to use /images/ instead of Unsplash URLs
 
-const projectImages: { [key: string]: string } = {
-  // Skrattås-Byafossen - Zinc/Lead mining exploration
-  skrattasen:
-    "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop",
-  // Gaulstad/Mokk - Copper mining, historic district
-  "gaulstad-mokk":
-    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&auto=format&fit=crop",
+const getLocalProjectImages = (slug: string): string[] => {
+  // Return available images (at least 3, up to 5)
+  // The image checker will filter out missing files
+  return [
+    `/images/projects/${slug}/01.jpg`,
+    `/images/projects/${slug}/02.jpg`,
+    `/images/projects/${slug}/03.jpg`,
+    `/images/projects/${slug}/04.jpg`,
+    `/images/projects/${slug}/05.jpg`,
+  ].filter((_, index) => index < 5); // Limit to 5 max, but let the checker filter missing ones
 };
 
-// Helper to get image path (supports both local and remote)
-const getProjectImage = (slug: string): string => {
-  // Check if local image exists (you can implement a check here)
-  // For now, return the mapped image or fallback
-  return projectImages[slug] || projectImages.skrattasen;
+// Helper to get image candidates: local only (no remote fallbacks)
+const getProjectImages = (slug: string): string[] => {
+  return getLocalProjectImages(slug);
 };
+
+function ProjectImageRotator({ images, alt }: { images: string[]; alt: string }) {
+  const candidates = useMemo(() => images, [images]);
+  const [available, setAvailable] = useState<string[]>([]);
+  const [idx, setIdx] = useState(0);
+
+  // Filter candidates to ones that actually load (so missing local files don't show broken images)
+  useEffect(() => {
+    let cancelled = false;
+    const check = (src: string) =>
+      new Promise<string | null>((resolve) => {
+        const img = new window.Image();
+        // Set a timeout to avoid hanging on missing images
+        const timeout = setTimeout(() => {
+          if (!cancelled) resolve(null);
+        }, 2000);
+        img.onload = () => {
+          clearTimeout(timeout);
+          if (!cancelled) resolve(src);
+        };
+        img.onerror = () => {
+          clearTimeout(timeout);
+          if (!cancelled) resolve(null);
+        };
+        img.src = src;
+      });
+
+    (async () => {
+      const results = await Promise.all(candidates.map(check));
+      if (cancelled) return;
+      const loaded = results.filter(Boolean) as string[];
+      setAvailable(loaded.length > 0 ? loaded : []);
+      setIdx(0);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [candidates]);
+
+  useEffect(() => {
+    if (available.length <= 1) return;
+    const id = window.setInterval(() => {
+      setIdx((prev) => (prev + 1) % available.length);
+    }, 6000); // Switch every 6 seconds
+    return () => window.clearInterval(id);
+  }, [available.length]);
+
+  if (!available.length) {
+    // No local images found; keep the card's gradient fallback visible.
+    return null;
+  }
+
+  const src = available[idx % available.length];
+
+  return (
+    <motion.div
+      key={src}
+      className="absolute inset-0"
+      initial={{ opacity: 0.0, scale: 1.02 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0.0, scale: 1.01 }}
+      transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="object-cover z-10"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+        quality={90}
+        unoptimized={src.startsWith("http")}
+        onError={(e) => {
+          const target = e.target as HTMLImageElement;
+          target.style.display = "none";
+        }}
+      />
+    </motion.div>
+  );
+}
 
 export default function ProjectsTeaser() {
   return (
@@ -63,451 +145,398 @@ export default function ProjectsTeaser() {
       className="section relative overflow-hidden"
       style={{
         background:
-          "linear-gradient(180deg, var(--color-navy-900) 0%, var(--color-navy-800) 50%, var(--color-navy-900) 100%)",
+          "linear-gradient(180deg, var(--color-charcoal-900) 0%, var(--color-charcoal-800) 50%, var(--color-charcoal-900) 100%)",
       }}
     >
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 opacity-5">
+      {/* Enhanced decorative background elements */}
+      <div className="absolute inset-0 opacity-[0.08]">
         <div
-          className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl"
-          style={{ background: "var(--color-copper-400)" }}
-        />
-        <div
-          className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl"
-          style={{ background: "var(--color-slate-400)" }}
+          className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full blur-3xl"
+          style={{ background: "var(--color-primary-main)" }}
         />
       </div>
 
-      {/* Subtle gradient overlay with middle accent */}
+      {/* Enhanced gradient overlay */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(135deg, rgba(10, 22, 40, 0.95) 0%, rgba(15, 23, 42, 0.92) 50%, rgba(10, 22, 40, 0.95) 100%)",
+            "linear-gradient(135deg, color-mix(in srgb, var(--color-base-black) 98%, transparent) 0%, color-mix(in srgb, var(--color-base-black) 95%, transparent) 50%, color-mix(in srgb, var(--color-base-black) 98%, transparent) 100%)",
         }}
       />
-      {/* Weak middle gradient accent */}
+
+      {/* Enhanced radial gradient accent with gold tint */}
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-[0.18] pointer-events-none"
         style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(212, 165, 116, 0.08) 0%, transparent 70%)",
+          background: `
+              radial-gradient(900px 520px at 50% 35%,
+                color-mix(in srgb, var(--color-accent-main) 14%, transparent) 0%,
+                color-mix(in srgb, var(--color-accent-main) 6%, transparent) 35%,
+                transparent 70%
+              ),
+              radial-gradient(1200px 800px at 50% 110%,
+                rgba(0, 0, 0, 0.55) 0%,
+                transparent 60%
+              )
+            `,
+        }}
+      />
+
+      {/* Subtle grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, var(--color-accent-main) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--color-accent-main) 1px, transparent 1px)
+          `,
+          backgroundSize: "60px 60px",
         }}
       />
 
       <div className="container relative z-10">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20 lg:mb-24"
-        >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="inline-block px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-6"
+        <div className="text-center mb-16 lg:mb-20">
+          <span
+            className="text-eyebrow inline-block px-5 py-2.5 rounded-full mb-8"
             style={{
-              background: "rgba(212, 165, 116, 0.2)",
-              color: "var(--color-copper-400)",
-              border: "1px solid rgba(212, 165, 116, 0.3)",
+              background: "color-mix(in srgb, var(--color-accent-main) 15%, transparent)",
+              color: "var(--color-accent-main)",
+              border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+              boxShadow: "none",
             }}
           >
             Our Projects
-          </motion.span>
+          </span>
           <h2
-            className="text-[10rem] md:text-[12rem] lg:text-[14rem] xl:text-[16rem] 2xl:text-[18rem]"
+            className="text-display mb-6"
             style={{
-              color: "var(--color-sand-50)",
-              lineHeight: "0.95",
-              letterSpacing: "-0.04em",
-              fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-              fontWeight: 900,
-              fontStyle: "normal",
-              textShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
-              marginBottom: "2.5rem",
+              color: "var(--color-text-on-dark)",
+              fontFamily: "var(--font-family-heading)",
+              fontWeight: "var(--font-weight-black)",
+              letterSpacing: "-0.03em",
             }}
           >
-            Exploration Areas
+            Exploration{" "}
+            <span
+              style={{
+                color: "var(--color-accent-main)",
+              }}
+            >
+              Areas
+            </span>
           </h2>
           <p
             className="text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto text-center block"
             style={{
-              color: "var(--color-sand-100)",
-              lineHeight: "1.7",
-              fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-              fontWeight: 400,
+              color: "color-mix(in srgb, var(--color-text-on-dark) 85%, transparent)",
+              lineHeight: "var(--line-height-loose)",
+              fontFamily: "var(--font-family-body)",
+              fontWeight: "var(--font-weight-medium)",
               letterSpacing: "-0.01em",
-              textAlign: "center",
-              marginLeft: "auto",
-              marginRight: "auto",
-              marginTop: "0",
             }}
           >
             Strategic license holdings in Fensfeltet – the world&apos;s largest rare earth deposit
             in Norway.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Project Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-12">
-          {projects.map((project, index) => {
-            const projectImage = getProjectImage(project.slug);
+        {/* Project Cards - Show only first 2 projects */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 mb-16">
+          {projects.slice(0, 2).map((project, index) => {
+            const projectImageList = getProjectImages(project.slug);
             const isFirst = index === 0;
 
             return (
-              <motion.div
-                key={project.slug}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2, duration: 0.7, type: "spring", stiffness: 100 }}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="group"
-              >
+              <div key={project.slug} className="group">
                 <Link href={`/projects/${project.slug}`} className="block h-full">
-                  <motion.div
-                    className="relative bg-white rounded-3xl overflow-hidden transition-all duration-500 h-full"
+                  <div
+                    className="relative bg-white rounded-3xl overflow-hidden transition-all duration-300 h-full flex flex-col"
                     style={{
-                      boxShadow: "0 20px 60px rgba(0, 0, 0, 0.3)",
-                      background: "linear-gradient(180deg, #ffffff 0%, #fafafa 100%)",
-                    }}
-                    whileHover={{
-                      boxShadow: "0 30px 80px rgba(0, 0, 0, 0.4)",
-                      background: "linear-gradient(180deg, #ffffff 0%, #ffffff 100%)",
+                      boxShadow: "none",
+                      background: `linear-gradient(180deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
+                      border:
+                        "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
                     }}
                   >
                     {/* Image Container */}
                     <div className="relative h-80 overflow-hidden">
                       {/* Background Image */}
-                      <motion.div
-                        className="absolute inset-0"
-                        whileHover={{ scale: 1.15 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                      >
+                      <div className="absolute inset-0">
                         {/* Fallback gradient - shown behind image */}
                         <div
                           className="absolute inset-0 z-0"
                           style={{
                             background: isFirst
-                              ? "linear-gradient(135deg, var(--color-navy-800) 0%, var(--color-navy-700) 50%, var(--color-navy-800) 100%)"
-                              : "linear-gradient(135deg, var(--color-navy-700) 0%, var(--color-navy-800) 50%, var(--color-navy-700) 100%)",
+                              ? "linear-gradient(135deg, var(--color-charcoal-800) 0%, var(--color-charcoal-700) 50%, var(--color-charcoal-800) 100%)"
+                              : "linear-gradient(135deg, var(--color-charcoal-700) 0%, var(--color-charcoal-800) 50%, var(--color-charcoal-700) 100%)",
                           }}
                         />
                         {/* Actual Image */}
-                        <Image
-                          src={projectImage}
+                        <ProjectImageRotator
+                          images={projectImageList}
                           alt={`${project.name} - ${project.region}, ${project.country}`}
-                          fill
-                          className="object-cover z-10"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
-                          quality={90}
-                          priority={index === 0}
-                          unoptimized={projectImage.startsWith("http")}
-                          onError={(e) => {
-                            // Hide image if it fails to load, show gradient fallback
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = "none";
-                          }}
                         />
-                      </motion.div>
+                      </div>
 
                       {/* Enhanced Multi-layer Overlays */}
                       {/* Base dark overlay */}
-                      <motion.div
-                        className="absolute inset-0"
-                        initial={{ opacity: 0.6 }}
-                        whileHover={{ opacity: 0.4 }}
-                        transition={{ duration: 0.5 }}
+                      <div
+                        className="absolute inset-0 group-hover:opacity-40 transition-opacity duration-300"
                         style={{
+                          opacity: 0.6,
                           backgroundImage:
                             "linear-gradient(135deg, rgba(10, 22, 40, 0.9) 0%, rgba(15, 31, 58, 0.8) 50%, rgba(10, 22, 40, 0.9) 100%)",
                         }}
                       />
 
-                      {/* Copper accent overlay on hover */}
-                      <motion.div
-                        className="absolute inset-0 opacity-0 group-hover:opacity-40"
-                        transition={{ duration: 0.6 }}
+                      {/* Mustard Gold accent overlay on hover */}
+                      <div
+                        className="absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-300"
                         style={{
-                          backgroundImage:
-                            "linear-gradient(135deg, rgba(212, 165, 116, 0.4) 0%, rgba(182, 125, 66, 0.3) 50%, rgba(212, 165, 116, 0.4) 100%)",
+                          background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 40%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 30%, transparent) 50%, color-mix(in srgb, var(--color-accent-main) 40%, transparent) 100%)`,
                         }}
                       />
 
                       {/* Enhanced radial gradient for focus */}
-                      <motion.div
-                        className="absolute inset-0"
-                        initial={{ opacity: 0.4 }}
-                        whileHover={{ opacity: 0.6 }}
-                        transition={{ duration: 0.5 }}
+                      <div
+                        className="absolute inset-0 group-hover:opacity-60 transition-opacity duration-300"
                         style={{
+                          opacity: 0.4,
                           backgroundImage:
                             "radial-gradient(ellipse at center 70%, transparent 0%, rgba(10, 22, 40, 0.95) 100%)",
                         }}
                       />
 
-                      {/* Shimmer effect on hover */}
-                      <motion.div
-                        className="absolute inset-0 opacity-0 group-hover:opacity-20"
-                        initial={{ x: "-100%", rotate: -25 }}
-                        whileHover={{ x: "200%", rotate: -25 }}
-                        transition={{ duration: 1.2, ease: "easeInOut" }}
-                        style={{
-                          backgroundImage:
-                            "linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.5) 50%, transparent 100%)",
-                          width: "50%",
-                          height: "200%",
-                          top: "-50%",
-                        }}
-                      />
-
-                      {/* Corner accent glow */}
-                      <motion.div
-                        className="absolute top-0 right-0 w-64 h-64 opacity-0 group-hover:opacity-30 transition-opacity duration-700"
-                        style={{
-                          background:
-                            "radial-gradient(circle, rgba(212, 165, 116, 0.4) 0%, transparent 70%)",
-                          transform: "translate(30%, -30%)",
-                        }}
-                      />
-
                       {/* Stage Badge - Enhanced */}
                       <div className="absolute top-6 left-6 z-10">
-                        <motion.span
+                        <span
                           className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider backdrop-blur-lg"
                           style={{
                             background:
-                              "linear-gradient(135deg, rgba(212, 165, 116, 0.95) 0%, rgba(182, 125, 66, 0.9) 100%)",
-                            color: "white",
+                              "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)",
+                            color: "var(--color-accent-contrast)",
                             boxShadow:
-                              "0 8px 24px rgba(212, 165, 116, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.2)",
+                              "var(--shadow-accent-lg), 0 0 0 1px color-mix(in srgb, var(--color-base-white) 20%, transparent)",
                           }}
-                          whileHover={{ scale: 1.08, y: -2 }}
-                          transition={{ type: "spring", stiffness: 400 }}
                         >
                           {project.stage}
-                        </motion.span>
+                        </span>
                       </div>
 
                       {/* Enhanced Bottom Gradient for Text Readability */}
-                      <motion.div
-                        className="absolute bottom-0 left-0 right-0 h-40"
-                        initial={{ opacity: 0.8 }}
-                        whileHover={{ opacity: 0.95 }}
-                        transition={{ duration: 0.5 }}
+                      <div
+                        className="absolute bottom-0 left-0 right-0 h-40 group-hover:opacity-95 transition-opacity duration-300"
                         style={{
+                          opacity: 0.8,
                           background:
                             "linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%)",
                         }}
                       />
 
                       {/* Project Title Overlay - Enhanced */}
-                      <motion.div
-                        className="absolute bottom-6 left-6 right-6 z-10"
-                        initial={{ y: 10, opacity: 0.9 }}
-                        whileHover={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <motion.h3
-                          className="text-3xl md:text-4xl font-bold mb-3"
+                      <div className="absolute bottom-6 left-6 right-6 z-10">
+                        <h3
+                          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
                           style={{
-                            color: "var(--color-sand-50)",
-                            textShadow: "0 2px 20px rgba(0, 0, 0, 0.5)",
+                            color: "var(--color-text-on-dark)",
+                            fontFamily: "var(--font-family-heading)",
+                            fontWeight: "var(--font-weight-black)",
+                            letterSpacing: "-0.02em",
                           }}
-                          whileHover={{ scale: 1.02 }}
                         >
                           {project.name === "Skrattås-Byafossen"
                             ? "Skrattås-Byafossen"
                             : project.name}
-                        </motion.h3>
-                        <motion.div
+                        </h3>
+                        <div
                           className="flex items-center gap-2"
-                          style={{ color: "var(--color-sand-200)" }}
-                          whileHover={{ x: 4 }}
-                          transition={{ duration: 0.2 }}
+                          style={{
+                            color: "color-mix(in srgb, var(--color-text-on-dark) 80%, transparent)",
+                            fontFamily: "var(--font-family-body)",
+                          }}
                         >
-                          <div style={{ filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))" }}>
+                          <div style={{ filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.4))" }}>
                             <MapPinIcon className="w-5 h-5" />
                           </div>
-                          <span className="text-sm font-semibold">{project.region}</span>
-                        </motion.div>
-                      </motion.div>
+                          <span
+                            className="text-sm font-semibold"
+                            style={{ fontWeight: "var(--font-weight-semibold)" }}
+                          >
+                            {project.region}
+                          </span>
+                        </div>
+                      </div>
 
                       {/* Enhanced Hover Indicator Line */}
-                      <motion.div
-                        className="absolute bottom-0 left-0 right-0 h-1.5 opacity-0 group-hover:opacity-100"
-                        initial={{ scaleX: 0 }}
-                        whileHover={{ scaleX: 1 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
+                      <div
+                        className="absolute bottom-0 left-0 right-0 h-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         style={{
-                          background:
-                            "linear-gradient(90deg, transparent 0%, var(--color-copper-400) 20%, var(--color-copper-500) 50%, var(--color-copper-400) 80%, transparent 100%)",
-                          boxShadow: "0 -4px 20px rgba(212, 165, 116, 0.6)",
+                          background: `linear-gradient(90deg, transparent 0%, var(--color-accent-main) 20%, var(--color-gold-400) 50%, var(--color-accent-main) 80%, transparent 100%)`,
+                          boxShadow: "none",
                         }}
                       />
                     </div>
 
                     {/* Content Section - Enhanced Visibility */}
-                    <div className="p-8 lg:p-10" style={{ background: "transparent" }}>
-                      {/* Description - Improved Readability */}
-                      <motion.p
-                        className="mb-6 text-lg leading-relaxed"
-                        style={{
-                          color: "var(--color-navy-900)",
-                          fontWeight: 500,
-                          minHeight: "auto",
-                        }}
-                        initial={{ opacity: 0.9 }}
-                        whileHover={{ opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        {project.description}
-                      </motion.p>
+                    <div
+                      className="p-8 lg:p-10 flex flex-col flex-grow"
+                      style={{ background: "transparent" }}
+                    >
+                      <div className="flex-grow">
+                        {/* Description - Improved Readability */}
+                        <p
+                          className="mb-8 text-lg leading-relaxed"
+                          style={{
+                            color: "var(--color-text-body)",
+                            fontFamily: "var(--font-family-body)",
+                            fontWeight: "var(--font-weight-medium)",
+                            lineHeight: "var(--line-height-base)",
+                          }}
+                        >
+                          {project.description}
+                        </p>
 
-                      {/* Minerals Tags - Enhanced Visibility */}
-                      <div className="flex flex-wrap gap-2.5 mb-8">
-                        {project.minerals.slice(0, 5).map((mineral, idx) => (
-                          <motion.span
-                            key={idx}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.05 }}
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            className="px-4 py-2.5 rounded-lg text-sm font-bold"
-                            style={{
-                              background:
-                                "linear-gradient(135deg, rgba(212, 165, 116, 0.2) 0%, rgba(182, 125, 66, 0.15) 100%)",
-                              color: "var(--color-copper-700)",
-                              border: "2px solid rgba(212, 165, 116, 0.3)",
-                              boxShadow: "0 2px 8px rgba(212, 165, 116, 0.15)",
-                            }}
-                          >
-                            {mineral}
-                          </motion.span>
-                        ))}
-                        {project.minerals.length > 5 && (
-                          <motion.span
-                            className="px-4 py-2.5 rounded-lg text-sm font-bold"
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            style={{
-                              background:
-                                "linear-gradient(135deg, rgba(15, 23, 42, 0.1) 0%, rgba(10, 22, 40, 0.08) 100%)",
-                              color: "var(--color-navy-800)",
-                              border: "2px solid rgba(15, 23, 42, 0.2)",
-                              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.08)",
-                            }}
-                          >
-                            +{project.minerals.length - 5} more
-                          </motion.span>
-                        )}
+                        {/* Minerals Tags - Enhanced Visibility */}
+                        <div className="flex flex-wrap gap-2.5 mb-8">
+                          {project.minerals.slice(0, 5).map((mineral, idx) => (
+                            <span
+                              key={idx}
+                              className="px-4 py-2.5 rounded-lg text-sm font-bold"
+                              style={{
+                                background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 100%)`,
+                                color: "var(--color-accent-hover)",
+                                border: `2px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                                boxShadow: "none",
+                                fontFamily: "var(--font-family-body)",
+                                fontWeight: "var(--font-weight-bold)",
+                              }}
+                            >
+                              {mineral}
+                            </span>
+                          ))}
+                          {project.minerals.length > 5 && (
+                            <span
+                              className="px-4 py-2.5 rounded-lg text-sm font-bold"
+                              style={{
+                                background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 8%, transparent) 100%)`,
+                                color: "var(--color-text-secondary)",
+                                border: `2px solid color-mix(in srgb, var(--color-primary-main) 20%, transparent)`,
+                                boxShadow: "none",
+                                fontFamily: "var(--font-family-body)",
+                                fontWeight: "var(--font-weight-bold)",
+                              }}
+                            >
+                              +{project.minerals.length - 5} more
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Enhanced Stats Row - Improved Visibility */}
+                        <div
+                          className="flex items-center justify-between pt-8 border-t-2"
+                          style={{
+                            borderColor:
+                              "color-mix(in srgb, var(--color-accent-main) 20%, transparent)",
+                          }}
+                        >
+                          <div>
+                            <span
+                              className="text-xs font-bold uppercase tracking-wider block mb-2.5"
+                              style={{
+                                color: "var(--color-text-secondary)",
+                                fontFamily: "var(--font-family-body)",
+                                fontWeight: "var(--font-weight-bold)",
+                              }}
+                            >
+                              License Area
+                            </span>
+                            <span
+                              className="text-2xl font-bold block"
+                              style={{
+                                color: "var(--color-text-body)",
+                                fontFamily: "var(--font-family-heading)",
+                                fontWeight: "var(--font-weight-bold)",
+                              }}
+                            >
+                              {project.area}
+                            </span>
+                          </div>
+                          <div className="text-right">
+                            <span
+                              className="text-xs font-bold uppercase tracking-wider block mb-2.5"
+                              style={{
+                                color: "var(--color-text-secondary)",
+                                fontFamily: "var(--font-family-body)",
+                                fontWeight: "var(--font-weight-bold)",
+                              }}
+                            >
+                              Licenses
+                            </span>
+                            <span
+                              className="text-2xl font-bold block"
+                              style={{
+                                color: "var(--color-text-body)",
+                                fontFamily: "var(--font-family-heading)",
+                                fontWeight: "var(--font-weight-bold)",
+                              }}
+                            >
+                              {project.licenses}
+                            </span>
+                          </div>
+                        </div>
                       </div>
 
-                      {/* Enhanced Stats Row - Improved Visibility */}
+                      {/* Enhanced CTA Arrow - Improved Visibility - Always at bottom */}
                       <div
-                        className="flex items-center justify-between pt-6 border-t-2"
-                        style={{ borderColor: "rgba(212, 165, 116, 0.2)" }}
-                      >
-                        <motion.div
-                          whileHover={{ scale: 1.05, x: 2 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <span
-                            className="text-xs font-bold uppercase tracking-wider block mb-2.5"
-                            style={{ color: "var(--color-gray-600)" }}
-                          >
-                            License Area
-                          </span>
-                          <span
-                            className="text-2xl font-bold block"
-                            style={{
-                              color: "var(--color-navy-900)",
-                            }}
-                          >
-                            {project.area}
-                          </span>
-                        </motion.div>
-                        <motion.div
-                          className="text-right"
-                          whileHover={{ scale: 1.05, x: -2 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <span
-                            className="text-xs font-bold uppercase tracking-wider block mb-2.5"
-                            style={{ color: "var(--color-gray-600)" }}
-                          >
-                            Licenses
-                          </span>
-                          <span
-                            className="text-2xl font-bold block"
-                            style={{
-                              color: "var(--color-navy-900)",
-                            }}
-                          >
-                            {project.licenses}
-                          </span>
-                        </motion.div>
-                      </div>
-
-                      {/* Enhanced CTA Arrow - Improved Visibility */}
-                      <motion.div
-                        className="flex items-center gap-3 mt-6 pt-6 border-t-2 group/cta"
+                        className="flex items-center gap-3 mt-8 pt-8 border-t-2 group/cta"
                         style={{
-                          color: "var(--color-copper-600)",
-                          borderColor: "rgba(212, 165, 116, 0.2)",
+                          color: "var(--color-accent-main)",
+                          borderColor:
+                            "color-mix(in srgb, var(--color-accent-main) 20%, transparent)",
+                          fontFamily: "var(--font-family-body)",
+                          fontWeight: "var(--font-weight-bold)",
                         }}
-                        whileHover={{ x: 6 }}
-                        transition={{ duration: 0.3 }}
                       >
                         <span className="text-base font-bold uppercase tracking-wider">
                           Explore Project
                         </span>
-                        <motion.div whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
+                        <div>
                           <ArrowRightIcon className="w-5 h-5" />
-                        </motion.div>
-                        <motion.div
-                          className="absolute left-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent to-[var(--color-copper-600)] opacity-0 group-hover/cta:opacity-100"
-                          initial={{ width: 0 }}
-                          whileHover={{ width: "100%" }}
-                          transition={{ duration: 0.3 }}
+                        </div>
+                        <div
+                          className="absolute left-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent opacity-0 group-hover/cta:opacity-100 transition-all duration-300 w-0 group-hover/cta:w-full"
+                          style={{
+                            background: `linear-gradient(to right, transparent, var(--color-accent-main))`,
+                          }}
                         />
-                      </motion.div>
+                      </div>
                     </div>
-                  </motion.div>
+                  </div>
                 </Link>
-              </motion.div>
+              </div>
             );
           })}
         </div>
 
         {/* CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-center"
-        >
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-3 px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300"
-              style={{
-                background:
-                  "linear-gradient(135deg, var(--color-copper-600) 0%, var(--color-copper-500) 100%)",
-                color: "white",
-                boxShadow: "0 10px 40px rgba(182, 125, 66, 0.4)",
-              }}
-            >
-              View All Projects
-              <ArrowRightIcon className="w-5 h-5" />
-            </Link>
-          </motion.div>
-        </motion.div>
+        <div className="text-center">
+          <Link
+            href="/projects"
+            className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 active:scale-95"
+            style={{
+              background: "var(--color-accent-main)",
+              color: "var(--color-accent-contrast)",
+              boxShadow: "var(--shadow-accent-lg)",
+              fontFamily: "var(--font-family-body)",
+              fontWeight: "var(--font-weight-bold)",
+            }}
+          >
+            View All Projects
+            <ArrowRightIcon className="w-5 h-5" />
+          </Link>
+        </div>
       </div>
     </section>
   );

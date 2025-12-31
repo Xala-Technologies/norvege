@@ -3,15 +3,14 @@
 import Link from "next/link";
 import { companyInfo } from "@/content/company";
 import Logo from "@/components/ui/Logo";
+import NorChainLogo from "@/components/ui/NorChainLogo";
 import { projects } from "@/content/projects";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const goldAccent = "#d4a574"; // Rich gold/copper color matching brand
 
   const companyLinks = [
     { href: "/about", label: "About Us" },
-    { href: "/about#team", label: "Our Team" },
     { href: "/privacy", label: "Privacy Policy" },
     { href: "/terms", label: "Terms of Service" },
   ];
@@ -36,16 +35,53 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[var(--color-navy-900)] text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer
+      className="relative overflow-hidden"
+      style={{
+        background: "var(--color-base-black)",
+        color: "var(--color-text-on-dark)",
+      }}
+    >
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 opacity-[0.05]">
+        <div
+          className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-3xl"
+          style={{ background: "var(--color-accent-main)" }}
+        />
+        <div
+          className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl"
+          style={{ background: "var(--color-primary-main)" }}
+        />
+      </div>
+
+      {/* Subtle grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, var(--color-accent-main) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--color-accent-main) 1px, transparent 1px)
+          `,
+          backgroundSize: "60px 60px",
+        }}
+      />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 relative z-10">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-16">
           {/* Logo and Description - Left Column */}
           <div className="lg:col-span-1">
             <div className="mb-4">
               <Logo />
             </div>
-            <p className="text-sm text-gray-300 mb-6 leading-relaxed">
+            <p
+              className="text-sm lg:text-base mb-8 leading-relaxed"
+              style={{
+                color: "color-mix(in srgb, var(--color-text-on-dark) 75%, transparent)",
+                fontFamily: "var(--font-family-body)",
+                lineHeight: "var(--line-height-base)",
+              }}
+            >
               Norwegian exploration company focused on sustainable mineral development in the
               Trøndelag region.
             </p>
@@ -55,10 +91,28 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:opacity-80"
+                className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group"
                 style={{
-                  background: "rgba(255, 255, 255, 0.1)",
-                  color: "white",
+                  background: "color-mix(in srgb, var(--color-text-on-dark) 10%, transparent)",
+                  color: "var(--color-text-on-dark)",
+                  border: `1px solid color-mix(in srgb, var(--color-text-on-dark) 20%, transparent)`,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "var(--color-accent-main)";
+                  e.currentTarget.style.background =
+                    "color-mix(in srgb, var(--color-accent-main) 20%, transparent)";
+                  e.currentTarget.style.borderColor = "var(--color-accent-main)";
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "var(--color-text-on-dark)";
+                  e.currentTarget.style.background =
+                    "color-mix(in srgb, var(--color-text-on-dark) 10%, transparent)";
+                  e.currentTarget.style.borderColor =
+                    "color-mix(in srgb, var(--color-text-on-dark) 20%, transparent)";
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
                 aria-label="LinkedIn"
               >
@@ -70,10 +124,28 @@ export default function Footer() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:opacity-80"
+                className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group"
                 style={{
-                  background: "rgba(255, 255, 255, 0.1)",
-                  color: "white",
+                  background: "color-mix(in srgb, var(--color-text-on-dark) 10%, transparent)",
+                  color: "var(--color-text-on-dark)",
+                  border: `1px solid color-mix(in srgb, var(--color-text-on-dark) 20%, transparent)`,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "var(--color-accent-main)";
+                  e.currentTarget.style.background =
+                    "color-mix(in srgb, var(--color-accent-main) 20%, transparent)";
+                  e.currentTarget.style.borderColor = "var(--color-accent-main)";
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "var(--color-text-on-dark)";
+                  e.currentTarget.style.background =
+                    "color-mix(in srgb, var(--color-text-on-dark) 10%, transparent)";
+                  e.currentTarget.style.borderColor =
+                    "color-mix(in srgb, var(--color-text-on-dark) 20%, transparent)";
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
                 aria-label="Twitter/X"
               >
@@ -87,25 +159,31 @@ export default function Footer() {
           {/* COMPANY Column */}
           <div>
             <h3
-              className="text-sm font-bold mb-4 uppercase tracking-wider"
-              style={{ color: goldAccent }}
+              className="text-sm font-bold mb-5 uppercase tracking-wider"
+              style={{
+                color: "var(--color-accent-main)",
+                fontFamily: "var(--font-family-body)",
+                fontWeight: "var(--font-weight-bold)",
+              }}
             >
               COMPANY
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {companyLinks.map((link, index) => (
                 <li key={`company-${link.label}-${index}`}>
                   <Link
                     href={link.href}
-                    className="text-sm transition-colors duration-200 hover:transition-colors"
+                    className="text-sm lg:text-base transition-colors duration-200 group"
                     style={{
-                      color: "rgba(255, 255, 255, 0.8)",
+                      color: "color-mix(in srgb, var(--color-text-on-dark) 80%, transparent)",
+                      fontFamily: "var(--font-family-body)",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.color = goldAccent;
+                      e.currentTarget.style.color = "var(--color-accent-main)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color = "rgba(255, 255, 255, 0.8)";
+                      e.currentTarget.style.color =
+                        "color-mix(in srgb, var(--color-text-on-dark) 80%, transparent)";
                     }}
                   >
                     {link.label}
@@ -118,25 +196,31 @@ export default function Footer() {
           {/* PROJECTS Column */}
           <div>
             <h3
-              className="text-sm font-bold mb-4 uppercase tracking-wider"
-              style={{ color: goldAccent }}
+              className="text-sm font-bold mb-5 uppercase tracking-wider"
+              style={{
+                color: "var(--color-accent-main)",
+                fontFamily: "var(--font-family-body)",
+                fontWeight: "var(--font-weight-bold)",
+              }}
             >
               PROJECTS
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {projectLinks.map((link, index) => (
                 <li key={`project-${link.label}-${index}`}>
                   <Link
                     href={link.href}
-                    className="text-sm transition-colors duration-200 hover:transition-colors"
+                    className="text-sm lg:text-base transition-colors duration-200 group"
                     style={{
-                      color: "rgba(255, 255, 255, 0.8)",
+                      color: "color-mix(in srgb, var(--color-text-on-dark) 80%, transparent)",
+                      fontFamily: "var(--font-family-body)",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.color = goldAccent;
+                      e.currentTarget.style.color = "var(--color-accent-main)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color = "rgba(255, 255, 255, 0.8)";
+                      e.currentTarget.style.color =
+                        "color-mix(in srgb, var(--color-text-on-dark) 80%, transparent)";
                     }}
                   >
                     {link.label}
@@ -149,12 +233,16 @@ export default function Footer() {
           {/* RESOURCES Column */}
           <div>
             <h3
-              className="text-sm font-bold mb-4 uppercase tracking-wider"
-              style={{ color: goldAccent }}
+              className="text-sm font-bold mb-5 uppercase tracking-wider"
+              style={{
+                color: "var(--color-accent-main)",
+                fontFamily: "var(--font-family-body)",
+                fontWeight: "var(--font-weight-bold)",
+              }}
             >
               RESOURCES
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {resourcesLinks.map((link, index) => {
                 const LinkComponent = link.external ? "a" : Link;
                 const linkProps = link.external
@@ -167,33 +255,36 @@ export default function Footer() {
                   >
                     <LinkComponent
                       {...linkProps}
-                      className="text-sm transition-colors duration-200 group-hover:transition-colors"
+                      className="text-sm lg:text-base transition-colors duration-200"
                       style={{
-                        color: "rgba(255, 255, 255, 0.8)",
+                        color: "color-mix(in srgb, var(--color-text-on-dark) 80%, transparent)",
+                        fontFamily: "var(--font-family-body)",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.color = goldAccent;
+                        e.currentTarget.style.color = "var(--color-accent-main)";
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.color = "rgba(255, 255, 255, 0.8)";
+                        e.currentTarget.style.color =
+                          "color-mix(in srgb, var(--color-text-on-dark) 80%, transparent)";
                       }}
                     >
                       {link.label}
                     </LinkComponent>
                     {link.external && (
                       <svg
-                        className="w-3 h-3 transition-colors duration-200 group-hover:transition-colors"
+                        className="w-3.5 h-3.5 transition-colors duration-200"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                         style={{
-                          color: "rgba(255, 255, 255, 0.5)",
+                          color: "color-mix(in srgb, var(--color-text-on-dark) 50%, transparent)",
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.color = goldAccent;
+                          e.currentTarget.style.color = "var(--color-accent-main)";
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.color = "rgba(255, 255, 255, 0.5)";
+                          e.currentTarget.style.color =
+                            "color-mix(in srgb, var(--color-text-on-dark) 50%, transparent)";
                         }}
                       >
                         <path
@@ -210,64 +301,39 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-
-        {/* Copyright */}
-        <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400">
-          <p>
-            © {currentYear} {companyInfo.legalName || "Norvege Minerals AS"}. All rights reserved.
-          </p>
-          <p>
-            Developed by{" "}
-            <a
-              href="https://xala.tech"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-80 transition-opacity inline-flex items-center gap-1"
-            >
-              Xala Technologies
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
-            </a>
-          </p>
-        </div>
       </div>
 
-      {/* NorChain Banner */}
-      <div className="border-t border-gray-700 py-6" style={{ background: "var(--color-sand-50)" }}>
+      {/* NorChain Banner - Full Width */}
+      <div
+        className="border-t py-8 lg:py-10 relative w-full"
+        style={{
+          background: "var(--color-bg-subtle)",
+          borderColor: "color-mix(in srgb, var(--color-primary-main) 20%, transparent)",
+        }}
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-5">
               {/* NorChain Logo */}
-              <div
-                className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{
-                  background: "linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)",
-                }}
-              >
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center"
-                  style={{
-                    background: "rgba(255, 255, 255, 0.2)",
-                    border: "2px solid rgba(255, 255, 255, 0.3)",
-                  }}
-                >
-                  <span className="text-2xl font-bold text-white">N</span>
-                </div>
-              </div>
+              <NorChainLogo />
               <div>
                 <p
-                  className="text-base font-semibold mb-1"
-                  style={{ color: "var(--color-navy-900)" }}
+                  className="text-lg lg:text-xl xl:text-2xl font-semibold mb-1.5"
+                  style={{
+                    color: "var(--color-text-body)",
+                    fontFamily: "var(--font-family-heading)",
+                    fontWeight: "var(--font-weight-bold)",
+                  }}
                 >
                   Assets Tokenized on NorChain
                 </p>
-                <p className="text-sm" style={{ color: "var(--color-gray-600)" }}>
+                <p
+                  className="text-sm lg:text-base"
+                  style={{
+                    color: "var(--color-text-secondary)",
+                    fontFamily: "var(--font-family-body)",
+                  }}
+                >
                   The Complete Blockchain Operating System
                 </p>
               </div>
@@ -276,8 +342,18 @@ export default function Footer() {
               href="https://www.norchain.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium hover:opacity-80 transition-opacity inline-flex items-center gap-1.5"
-              style={{ color: "var(--color-navy-900)" }}
+              className="text-sm lg:text-base font-medium hover:opacity-80 transition-opacity inline-flex items-center gap-2 px-4 py-2 rounded-lg"
+              style={{
+                color: "var(--color-primary-main)",
+                fontFamily: "var(--font-family-body)",
+                fontWeight: "var(--font-weight-semibold)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "var(--color-accent-main)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "var(--color-primary-main)";
+              }}
             >
               Visit NorChain
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -290,6 +366,52 @@ export default function Footer() {
               </svg>
             </a>
           </div>
+        </div>
+      </div>
+
+      {/* Copyright */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          className="border-t pt-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm"
+          style={{
+            borderColor: "color-mix(in srgb, var(--color-text-on-dark) 20%, transparent)",
+          }}
+        >
+          <p
+            style={{
+              color: "color-mix(in srgb, var(--color-text-on-dark) 60%, transparent)",
+              fontFamily: "var(--font-family-body)",
+            }}
+          >
+            © {currentYear} {companyInfo.legalName || "Norvege Minerals AS"}. All rights reserved.
+          </p>
+          <p
+            style={{
+              color: "color-mix(in srgb, var(--color-text-on-dark) 60%, transparent)",
+              fontFamily: "var(--font-family-body)",
+            }}
+          >
+            Developed by{" "}
+            <a
+              href="https://xala.tech"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity inline-flex items-center gap-1.5"
+              style={{
+                color: "var(--color-accent-main)",
+              }}
+            >
+              Xala Technologies
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+            </a>
+          </p>
         </div>
       </div>
     </footer>

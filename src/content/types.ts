@@ -61,10 +61,11 @@ export interface IFAQItem {
 export interface ITeamMember {
   name: string;
   role: string;
-  bio: string;
+  bio?: string;
   image?: string;
   linkedin?: string;
   email?: string;
+  category?: "Management" | "Board" | "Advisory";
 }
 
 export interface ICompanyInfo {
@@ -82,4 +83,16 @@ export interface ICompanyInfo {
     phone?: string;
   };
   description: string;
+}
+
+export interface IREEDiscovery {
+  mineral: string;
+  elements: string[];
+  locations: string[];
+}
+
+export interface IPartnership {
+  name: string;
+  type: "Public" | "Private" | "Strategic";
+  description?: string;
 }

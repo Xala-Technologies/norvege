@@ -33,10 +33,7 @@ export default function ESGTeaser() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20 lg:mb-24"
         >
-          <h2
-            className="text-4xl md:text-5xl font-bold mb-6"
-            style={{ color: "var(--color-navy-900)" }}
-          >
+          <h2 className="text-display mb-6" style={{ color: "var(--color-primary-main)" }}>
             Responsible Mining for the Future
           </h2>
           <p className="text-lg text-gray-600 mb-6 max-w-3xl mx-auto">
@@ -60,14 +57,14 @@ export default function ESGTeaser() {
             >
               <div
                 className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center text-2xl"
-                style={{ background: "var(--color-copper-500)" }}
+                style={{ background: "var(--color-accent-main)" }}
               >
                 {highlight.icon}
               </div>
               <div>
                 <h3
                   className="text-xl font-semibold mb-2"
-                  style={{ color: "var(--color-navy-900)" }}
+                  style={{ color: "var(--color-primary-main)" }}
                 >
                   {highlight.title}
                 </h3>

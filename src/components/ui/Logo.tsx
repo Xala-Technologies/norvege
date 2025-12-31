@@ -1,66 +1,57 @@
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 interface LogoProps {
   className?: string;
-  showTagline?: boolean;
 }
 
-export default function Logo({ className = "", showTagline = true }: LogoProps) {
-  const isWhiteTheme = className.includes("!text-white") || className.includes("text-white");
-  const textColor = isWhiteTheme ? "var(--color-sand-50)" : "var(--color-navy-900)";
-  const taglineColor = isWhiteTheme ? "var(--color-sand-200)" : "var(--color-gray-600)";
+export default function Logo({ className = "" }: LogoProps) {
+  const [isActive, setIsActive] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isHomePage) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <Link
       href="/"
-      className={`flex items-center gap-3 group ${className}`}
+      className={`relative flex items-center gap-3 transition-all duration-200 ${className}`}
       aria-label="Norvege Minerals Home"
+      style={{
+        WebkitTapHighlightColor: "transparent",
+      }}
+      onClick={handleClick}
+      scroll={!isHomePage}
+      onMouseDown={() => setIsActive(true)}
+      onMouseUp={() => setIsActive(false)}
+      onMouseLeave={() => setIsActive(false)}
     >
-      {/* Logo Icon - Stylized N with mineral formation */}
-      <div className="relative">
-        <div
-          className="flex items-center justify-center w-12 h-12 rounded-lg transition-transform group-hover:scale-105"
-          style={{
-            background: "linear-gradient(135deg, var(--color-copper-600), var(--color-copper-500))",
-            boxShadow: "0 4px 12px rgba(182, 125, 66, 0.3)",
-          }}
-        >
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 32 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-white"
-          >
-            {/* Stylized N with geological layers */}
-            <path
-              d="M8 6L8 26L12 22L12 10L20 18L20 26L24 26L24 6L20 10L20 18L12 10L12 6L8 6Z"
-              fill="currentColor"
-            />
-            {/* Mineral accent dots */}
-            <circle cx="14" cy="14" r="1.5" fill="currentColor" opacity="0.8" />
-            <circle cx="18" cy="18" r="1.5" fill="currentColor" opacity="0.8" />
-          </svg>
+      <div
+        className="relative h-28 md:h-32 lg:h-40 w-auto flex items-center transition-all duration-200"
+        style={{
+          filter: isActive ? "drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))" : "none",
+        }}
+      >
+        <div className="relative w-full h-full flex items-center">
+          <Image
+            src="/images/logo.png"
+            alt="Norvege Minerals"
+            width={0}
+            height={0}
+            sizes="100vw"
+            className="h-full w-auto object-contain"
+            priority
+          />
         </div>
-      </div>
-
-      {/* Logo Text */}
-      <div className="flex flex-col">
-        <div
-          className="text-xl md:text-2xl font-bold tracking-tight leading-tight"
-          style={{ color: textColor }}
-        >
-          NORVEGE
-        </div>
-        {showTagline && (
-          <div
-            className="text-xs md:text-sm font-medium tracking-wider uppercase leading-tight"
-            style={{ color: taglineColor }}
-          >
-            MINERALS
-          </div>
-        )}
       </div>
     </Link>
   );

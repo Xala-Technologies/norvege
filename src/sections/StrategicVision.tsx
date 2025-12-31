@@ -39,10 +39,7 @@ export default function StrategicVision() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20 lg:mb-24"
         >
-          <h2
-            className="text-4xl md:text-5xl font-bold mb-4"
-            style={{ color: "var(--color-navy-900)" }}
-          >
+          <h2 className="text-display mb-4" style={{ color: "var(--color-navy-deep)" }}>
             Why NORVEGE MINERALS
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">

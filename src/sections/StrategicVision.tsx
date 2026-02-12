@@ -42,7 +42,14 @@ export default function StrategicVision() {
           <h2 className="text-display mb-4" style={{ color: "var(--color-navy-deep)" }}>
             Why NORVEGE MINERALS
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p
+            className="text-lg max-w-3xl mx-auto"
+            style={{
+              color: "var(--color-text-secondary)",
+              fontFamily: "var(--font-family-body)",
+              lineHeight: "var(--line-height-loose)",
+            }}
+          >
             Positioned at the intersection of Norway&apos;s rich mineral heritage and the global
             energy transition
           </p>
@@ -64,10 +71,25 @@ export default function StrategicVision() {
               >
                 {point.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-3" style={{ color: "var(--color-navy-900)" }}>
+              <h3
+                className="text-xl mb-3"
+                style={{
+                  color: "var(--color-text-body)",
+                  fontFamily: "var(--font-family-heading)",
+                  fontWeight: "var(--font-weight-bold)",
+                }}
+              >
                 {point.title}
               </h3>
-              <p className="text-gray-600">{point.description}</p>
+              <p
+                style={{
+                  color: "var(--color-text-secondary)",
+                  fontFamily: "var(--font-family-body)",
+                  lineHeight: "var(--line-height-loose)",
+                }}
+              >
+                {point.description}
+              </p>
             </motion.div>
           ))}
         </div>

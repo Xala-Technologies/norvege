@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = generateSEOMetadata({
@@ -51,9 +52,9 @@ export default function ExplorationSpecialistsPage() {
               practices.
             </p>
             <div className="mt-8">
-              <a href="/contact" className="btn btn-primary">
+              <Link href="/contact" className="btn btn-primary">
                 Contact Our Team
-              </a>
+              </Link>
             </div>
           </div>
         </div>

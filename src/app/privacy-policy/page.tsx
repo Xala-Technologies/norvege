@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateSEOMetadata({
   title: "Privacy Policy - NORVEGE MINERALS AS",
   description: "Privacy policy and data protection information for NORVEGE MINERALS AS.",
-};
+  path: "/privacy-policy",
+});
 
 export default function PrivacyPolicyPage() {
   return (

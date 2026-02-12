@@ -2,17 +2,19 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const subjects = [
-  "Investment Inquiry",
-  "Partnership Opportunity",
-  "Project Information",
-  "Media Inquiry",
-  "General Inquiry",
-  "Other",
-];
+import { useTranslations } from "next-intl";
 
 export default function ContactForm() {
+  const t = useTranslations("contact.form");
+
+  const subjects = [
+    t("subjects.investmentInquiry"),
+    t("subjects.partnershipOpportunity"),
+    t("subjects.projectInformation"),
+    t("subjects.mediaInquiry"),
+    t("subjects.generalInquiry"),
+    t("subjects.other"),
+  ];
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -29,13 +31,13 @@ export default function ContactForm() {
 
     // Validation
     const newErrors: Record<string, string> = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.email.trim()) newErrors.email = "Email is required";
+    if (!formData.name.trim()) newErrors.name = t("errors.nameRequired");
+    if (!formData.email.trim()) newErrors.email = t("errors.emailRequired");
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
+      newErrors.email = t("errors.emailInvalid");
     }
-    if (!formData.subject.trim()) newErrors.subject = "Subject is required";
-    if (!formData.message.trim()) newErrors.message = "Message is required";
+    if (!formData.subject.trim()) newErrors.subject = t("errors.subjectRequired");
+    if (!formData.message.trim()) newErrors.message = t("errors.messageRequired");
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -98,7 +100,7 @@ export default function ContactForm() {
             className="block text-base font-bold mb-3"
             style={{ color: "var(--color-primary-main)" }}
           >
-            Full Name <span style={{ color: "var(--color-accent-main)" }}>*</span>
+            {t("fullName")} <span style={{ color: "var(--color-accent-main)" }}>*</span>
           </label>
           <input
             type="text"
@@ -125,7 +127,7 @@ export default function ContactForm() {
               outline: "none",
               boxShadow: "none",
             }}
-            placeholder="John Doe"
+            placeholder={t("placeholders.fullName")}
             aria-required="true"
             aria-invalid={!!errors.name}
           />
@@ -148,7 +150,7 @@ export default function ContactForm() {
             className="block text-base font-bold mb-3"
             style={{ color: "var(--color-primary-main)" }}
           >
-            Email <span style={{ color: "var(--color-accent-main)" }}>*</span>
+            {t("email")} <span style={{ color: "var(--color-accent-main)" }}>*</span>
           </label>
           <input
             type="email"
@@ -175,7 +177,7 @@ export default function ContactForm() {
               outline: "none",
               boxShadow: "none",
             }}
-            placeholder="john@example.com"
+            placeholder={t("placeholders.email")}
             aria-required="true"
             aria-invalid={!!errors.email}
           />
@@ -198,7 +200,7 @@ export default function ContactForm() {
             className="block text-base font-bold mb-3"
             style={{ color: "var(--color-primary-main)" }}
           >
-            Company
+            {t("company")}
           </label>
           <input
             type="text"
@@ -219,7 +221,7 @@ export default function ContactForm() {
               outline: "none",
               boxShadow: "none",
             }}
-            placeholder="Your Company"
+            placeholder={t("placeholders.company")}
           />
         </div>
 
@@ -230,7 +232,7 @@ export default function ContactForm() {
             className="block text-base font-bold mb-3"
             style={{ color: "var(--color-primary-main)" }}
           >
-            Subject <span style={{ color: "var(--color-accent-main)" }}>*</span>
+            {t("subject")} <span style={{ color: "var(--color-accent-main)" }}>*</span>
           </label>
           <div className="relative">
             <select
@@ -259,7 +261,7 @@ export default function ContactForm() {
               aria-required="true"
             >
               <option value="" disabled style={{ color: "var(--color-text-muted)" }}>
-                Select a subject
+                {t("selectSubject")}
               </option>
               {subjects.map((subject) => (
                 <option
@@ -305,7 +307,7 @@ export default function ContactForm() {
             className="block text-base font-bold mb-3"
             style={{ color: "var(--color-primary-main)" }}
           >
-            Message <span style={{ color: "var(--color-accent-main)" }}>*</span>
+            {t("message")} <span style={{ color: "var(--color-accent-main)" }}>*</span>
           </label>
           <textarea
             id="message"
@@ -331,7 +333,7 @@ export default function ContactForm() {
               outline: "none",
               boxShadow: "none",
             }}
-            placeholder="How can we help you?"
+            placeholder={t("placeholders.message")}
             aria-required="true"
             aria-invalid={!!errors.message}
           />
@@ -370,10 +372,8 @@ export default function ContactForm() {
                 />
               </svg>
               <div>
-                <p className="font-semibold mb-1">Message Sent Successfully!</p>
-                <p className="text-sm opacity-90">
-                  Thank you for contacting us. We&apos;ll get back to you within 24-48 hours.
-                </p>
+                <p className="font-semibold mb-1">{t("success.title")}</p>
+                <p className="text-sm opacity-90">{t("success.description")}</p>
               </div>
             </motion.div>
           )}
@@ -399,10 +399,8 @@ export default function ContactForm() {
                 />
               </svg>
               <div>
-                <p className="font-semibold mb-1">Please fix the errors below</p>
-                <p className="text-sm opacity-90">
-                  Some required fields are missing or invalid. Please check and try again.
-                </p>
+                <p className="font-semibold mb-1">{t("error.title")}</p>
+                <p className="text-sm opacity-90">{t("error.description")}</p>
               </div>
             </motion.div>
           )}
@@ -411,7 +409,7 @@ export default function ContactForm() {
         {/* Submit Button and Required Note */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-4 gap-4">
           <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
-            <span style={{ color: "var(--color-accent-main)" }}>*</span> Required fields
+            <span style={{ color: "var(--color-accent-main)" }}>*</span> {t("requiredFields")}
           </p>
           <motion.button
             type="submit"
@@ -438,11 +436,11 @@ export default function ContactForm() {
                   transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                   className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
                 />
-                Sending...
+                {t("sending")}
               </span>
             ) : (
               <>
-                <span className="relative z-10">Send Message</span>
+                <span className="relative z-10">{t("sendMessage")}</span>
                 <svg
                   className="w-5 h-5 relative z-10"
                   fill="none"

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateSEOMetadata({
   title: "ESG & Sustainability - NORVEGE MINERALS AS",
   description:
     "Our commitment to environmental, social, and governance excellence in mineral exploration.",
-};
+  path: "/esg",
+});
 
 export default function ESGPage() {
   return (

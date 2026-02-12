@@ -27,6 +27,8 @@ export default function HeroVideo({
 
     const handleLoadedData = () => {
       setIsLoaded(true);
+      // Set slow playback speed (0.7 = 70% speed, creating slow-motion effect)
+      video.playbackRate = 0.7;
       // Ensure video plays
       video.play().catch((error) => {
         console.warn("Video autoplay failed:", error);
@@ -36,6 +38,8 @@ export default function HeroVideo({
 
     const handleCanPlay = () => {
       setIsLoaded(true);
+      // Set slow playback speed (0.7 = 70% speed, creating slow-motion effect)
+      video.playbackRate = 0.7;
       video.play().catch((error) => {
         console.warn("Video autoplay failed:", error);
       });
@@ -52,10 +56,19 @@ export default function HeroVideo({
       }
     };
 
+    const handlePlay = () => {
+      // Ensure playback rate is maintained after play starts
+      video.playbackRate = 0.7;
+    };
+
     video.addEventListener("loadeddata", handleLoadedData);
     video.addEventListener("canplay", handleCanPlay);
     video.addEventListener("error", handleError);
     video.addEventListener("timeupdate", handleTimeUpdate);
+    video.addEventListener("play", handlePlay);
+
+    // Set slow playback speed before loading
+    video.playbackRate = 0.7;
 
     // Try to load and play the video
     video.load();
@@ -73,6 +86,7 @@ export default function HeroVideo({
       video.removeEventListener("canplay", handleCanPlay);
       video.removeEventListener("error", handleError);
       video.removeEventListener("timeupdate", handleTimeUpdate);
+      video.removeEventListener("play", handlePlay);
       // Pause video when component unmounts
       video.pause();
     };

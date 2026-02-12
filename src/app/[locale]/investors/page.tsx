@@ -1,20 +1,30 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+"use client";
+
+import { Link } from "@/i18n/routing";
 import InvestorsHeroImage from "@/components/ui/InvestorsHeroImage";
 import { resourceValuationMethodology } from "@/content/company";
-import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
-
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Investor Relations - NORVEGE MINERALS AS",
-  description: "Information for investors including company overview, projects, and key documents.",
-  path: "/investors",
-});
+import { useTranslations } from "next-intl";
 
 export default function InvestorsPage() {
+  const t = useTranslations("investors");
+  const tStats = useTranslations("home.stats.metrics");
+
   const documents = [
     { title: "Company Presentation 2024", type: "PDF", date: "2024-01-15" },
     { title: "Q4 2023 Exploration Update", type: "PDF", date: "2024-01-10" },
     { title: "Annual Report 2023", type: "PDF", date: "2024-03-01" },
+  ];
+
+  const keyFacts = [
+    { label: tStats("explorationLicenses.label"), value: "74", icon: "📋" },
+    { label: tStats("licensedArea.label"), value: "1,690", unit: "km²", icon: "🗺️" },
+    { label: tStats("viableFinds.label"), value: "31", icon: "💎" },
+    {
+      label: tStats("estValue.label"),
+      value: "4,885",
+      unit: tStats("estValue.label").split(" ").slice(1).join(" "),
+      icon: "💰",
+    },
   ];
 
   return (
@@ -49,13 +59,13 @@ export default function InvestorsPage() {
                 letterSpacing: "-0.03em",
               }}
             >
-              Investor{" "}
+              {t("title").split(" ")[0]}{" "}
               <span
                 style={{
                   color: "var(--color-accent-main)",
                 }}
               >
-                Relations
+                {t("title").split(" ")[1]}
               </span>
             </h1>
 
@@ -69,7 +79,7 @@ export default function InvestorsPage() {
                 fontWeight: "var(--font-weight-medium)",
               }}
             >
-              Building value through strategic exploration of critical minerals
+              {t("subtitle")}
             </p>
 
             {/* Key Stats Row */}
@@ -87,7 +97,7 @@ export default function InvestorsPage() {
                     color: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
                   }}
                 >
-                  Trillion NOK Est. Value
+                  {t("keyStats.estValue")}
                 </div>
               </div>
               <div className="text-center">
@@ -103,7 +113,7 @@ export default function InvestorsPage() {
                     color: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
                   }}
                 >
-                  Exploration Licenses
+                  {t("keyStats.licenses")}
                 </div>
               </div>
               <div className="text-center">
@@ -119,7 +129,7 @@ export default function InvestorsPage() {
                     color: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
                   }}
                 >
-                  km² Licensed Area
+                  {t("keyStats.area")}
                 </div>
               </div>
             </div>
@@ -164,7 +174,10 @@ export default function InvestorsPage() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Investment <span style={{ color: "var(--color-accent-main)" }}>Opportunity</span>
+              {t("investmentOpportunity").split(" ")[0]}{" "}
+              <span style={{ color: "var(--color-accent-main)" }}>
+                {t("investmentOpportunity").split(" ")[1]}
+              </span>
             </h2>
           </div>
 
@@ -205,19 +218,20 @@ export default function InvestorsPage() {
                 </div>
                 <div>
                   <h3
-                    className="text-2xl font-bold mb-4"
-                    style={{ color: "var(--color-primary-main)" }}
+                    className="text-2xl mb-4"
+                    style={{
+                      color: "var(--color-text-body)",
+                      fontFamily: "var(--font-family-heading)",
+                      fontWeight: "var(--font-weight-black)",
+                    }}
                   >
-                    Strategic Position
+                    {t("strategicPosition.title")}
                   </h3>
                   <p
                     className="text-base lg:text-lg leading-relaxed"
                     style={{ color: "var(--color-text-body)" }}
                   >
-                    NORVEGE MINERALS AS offers investors exposure to Norway&apos;s critical mineral
-                    potential at a time when Europe is seeking to secure domestic sources of battery
-                    metals, rare earth elements, and other minerals essential for the energy
-                    transition.
+                    {t("strategicPosition.description")}
                   </p>
                 </div>
               </div>
@@ -259,17 +273,20 @@ export default function InvestorsPage() {
                 </div>
                 <div>
                   <h3
-                    className="text-2xl font-bold mb-4"
-                    style={{ color: "var(--color-primary-main)" }}
+                    className="text-2xl mb-4"
+                    style={{
+                      color: "var(--color-text-body)",
+                      fontFamily: "var(--font-family-heading)",
+                      fontWeight: "var(--font-weight-black)",
+                    }}
                   >
-                    Value Creation
+                    {t("valueCreation.title")}
                   </h3>
                   <p
                     className="text-base lg:text-lg leading-relaxed"
                     style={{ color: "var(--color-text-body)" }}
                   >
-                    Our diversified portfolio of exploration licenses, experienced management team,
-                    and commitment to responsible mining position us for long-term value creation.
+                    {t("valueCreation.description")}
                   </p>
                 </div>
               </div>
@@ -306,23 +323,21 @@ export default function InvestorsPage() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Key <span style={{ color: "var(--color-accent-main)" }}>Facts</span>
+              {t("keyFacts.title").split(" ")[0]}{" "}
+              <span style={{ color: "var(--color-accent-main)" }}>
+                {t("keyFacts.title").split(" ")[1]}
+              </span>
             </h2>
             <p
               className="text-lg md:text-xl max-w-2xl mx-auto"
               style={{ color: "var(--color-text-secondary)" }}
             >
-              Essential metrics showcasing our exploration portfolio and strategic position
+              {t("keyFacts.subtitle")}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-6xl mx-auto">
-            {[
-              { label: "Exploration Licenses", value: "74", icon: "📋" },
-              { label: "Total Area", value: "1,690", unit: "km²", icon: "🗺️" },
-              { label: "Viable Finds", value: "31", icon: "💎" },
-              { label: "Est. Value", value: "4,885", unit: "Trillion NOK", icon: "💰" },
-            ].map((fact, index) => (
+            {keyFacts.map((fact, index) => (
               <div
                 key={index}
                 className="group relative p-8 lg:p-10 rounded-3xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
@@ -363,8 +378,12 @@ export default function InvestorsPage() {
                   </div>
                   {fact.unit && (
                     <div
-                      className="text-lg font-semibold"
-                      style={{ color: "var(--color-accent-main)" }}
+                      className="text-lg"
+                      style={{
+                        color: "var(--color-accent-main)",
+                        fontFamily: "var(--font-family-body)",
+                        fontWeight: "var(--font-weight-bold)",
+                      }}
                     >
                       {fact.unit}
                     </div>
@@ -373,8 +392,12 @@ export default function InvestorsPage() {
 
                 {/* Label */}
                 <div
-                  className="text-center text-base lg:text-lg font-bold"
-                  style={{ color: "var(--color-primary-main)" }}
+                  className="text-center text-base lg:text-lg"
+                  style={{
+                    color: "var(--color-text-body)",
+                    fontFamily: "var(--font-family-body)",
+                    fontWeight: "var(--font-weight-black)",
+                  }}
                 >
                   {fact.label}
                 </div>
@@ -412,14 +435,16 @@ export default function InvestorsPage() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Resource Valuation{" "}
-              <span style={{ color: "var(--color-accent-main)" }}>Methodology</span>
+              {t("methodology.title").split(" ")[0]}{" "}
+              <span style={{ color: "var(--color-accent-main)" }}>
+                {t("methodology.title").split(" ").slice(1).join(" ")}
+              </span>
             </h2>
             <p
               className="text-lg md:text-xl max-w-2xl mx-auto"
               style={{ color: "var(--color-text-secondary)" }}
             >
-              How we calculate our resource estimates and valuations
+              {t("methodology.subtitle")}
             </p>
           </div>
 
@@ -480,13 +505,16 @@ export default function InvestorsPage() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Reports & <span style={{ color: "var(--color-accent-main)" }}>Presentations</span>
+              {t("documents.title").split(" & ")[0]} &{" "}
+              <span style={{ color: "var(--color-accent-main)" }}>
+                {t("documents.title").split(" & ")[1]}
+              </span>
             </h2>
             <p
               className="text-lg md:text-xl max-w-2xl mx-auto"
               style={{ color: "var(--color-text-secondary)" }}
             >
-              Access our latest company reports, presentations, and exploration updates
+              {t("documents.subtitle")}
             </p>
           </div>
 
@@ -593,7 +621,7 @@ export default function InvestorsPage() {
                       fontFamily: "var(--font-family-body)",
                     }}
                   >
-                    <span>Download</span>
+                    <span>{t("documents.download")}</span>
                     <svg
                       className="w-5 h-5 transition-transform group-hover/btn:translate-x-1"
                       fill="none"
@@ -618,16 +646,30 @@ export default function InvestorsPage() {
       {/* Contact CTA */}
       <section className="section" style={{ background: "var(--color-sand-50)" }}>
         <div className="container max-w-3xl text-center">
-          <h2 className="text-3xl font-bold mb-4" style={{ color: "var(--color-navy-900)" }}>
-            Investor Inquiries
+          <h2
+            className="text-3xl mb-4"
+            style={{
+              color: "var(--color-text-body)",
+              fontFamily: "var(--font-family-heading)",
+              fontWeight: "var(--font-weight-black)",
+              letterSpacing: "-0.03em",
+            }}
+          >
+            {t("inquiries.title")}
           </h2>
-          <p className="text-lg text-gray-600 mb-6">
-            For more information about investment opportunities, please contact our investor
-            relations team.
+          <p
+            className="text-lg mb-6"
+            style={{
+              color: "var(--color-text-secondary)",
+              fontFamily: "var(--font-family-body)",
+              lineHeight: "var(--line-height-loose)",
+            }}
+          >
+            {t("inquiries.description")}
           </p>
           <Link href="/contact" className="btn btn-primary group/contact">
             <span className="inline-flex items-center gap-2">
-              Contact Us
+              {t("inquiries.cta")}
               <svg
                 className="w-5 h-5 transition-transform duration-300 group-hover/contact:translate-x-1"
                 fill="none"

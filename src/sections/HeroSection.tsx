@@ -1,75 +1,78 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import HeroVideo from "@/components/ui/HeroVideo";
 import Logo from "@/components/ui/Logo";
-
-// Hero slides with different content and project links
-const heroSlides = [
-  {
-    src: "/videos/mining.mp4",
-    type: "video",
-    alt: "Minerals inside mountains - mining exploration",
-    gradient:
-      "linear-gradient(135deg, rgba(10, 14, 20, 0.85) 0%, rgba(15, 20, 25, 0.8) 50%, rgba(26, 31, 38, 0.85) 100%)",
-    badge: "Mining Exploration",
-    title: "Discovering Minerals",
-    highlight: "Inside Mountains",
-    description:
-      "Exploring the depths of Norway's mountains to uncover critical minerals essential for Europe's green transition. Our advanced exploration techniques reveal the hidden treasures within.",
-    projectSlug: "projects",
-    ctaText: "Explore Our Assets",
-    secondaryCtaText: "Our Technology",
-  },
-  {
-    src: "/images/hero/01.jpg",
-    type: "image",
-    alt: "Mineral exploration site with geological formations",
-    gradient:
-      "linear-gradient(135deg, rgba(10, 14, 20, 0.85) 0%, rgba(15, 20, 25, 0.8) 50%, rgba(26, 31, 38, 0.85) 100%)",
-    badge: "Responsible Mining",
-    title: "Responsible Mining for the",
-    highlight: "Green Transition",
-    description:
-      "Securing Europe's supply of vital resources. We hold 74 exploration licenses across 1,690 km², focusing on high-value minerals essential for renewable energy and geopolitical stability.",
-    projectSlug: "projects",
-    ctaText: "Explore Our Assets",
-    secondaryCtaText: "Our Technology",
-  },
-  {
-    src: "/images/hero/03.jpg",
-    type: "image",
-    alt: "Rare earth minerals and geological samples",
-    gradient:
-      "linear-gradient(135deg, rgba(26, 31, 38, 0.85) 0%, rgba(10, 14, 20, 0.8) 50%, rgba(15, 20, 25, 0.85) 100%)",
-    badge: "Critical Minerals",
-    title: "Rare Earth Elements",
-    highlight: "Strategic Resources",
-    description:
-      "Exploring rare earth elements essential for the energy transition. Contributing to Europe's mineral independence.",
-    projectSlug: "projects",
-    ctaText: "View All Projects",
-  },
-  {
-    src: "/images/hero/05.jpg",
-    type: "image",
-    alt: "Underground mining tunnel and mineral deposits",
-    gradient:
-      "linear-gradient(135deg, rgba(15, 31, 58, 0.7) 0%, rgba(26, 47, 77, 0.6) 50%, rgba(20, 35, 60, 0.7) 100%)",
-    badge: "Investment Opportunity",
-    title: "Science-Driven Discovery",
-    highlight: "Innovation",
-    description:
-      "Pioneering a new era of mineral exploration in Europe with cutting-edge technology and proven expertise.",
-    projectSlug: "investors",
-    ctaText: "Investor Relations",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function HeroSection() {
+  const t = useTranslations();
+
+  // Hero slides with different content and project links
+  // Use useMemo to ensure translations are loaded before creating the array
+  const heroSlides = useMemo(
+    () => [
+      {
+        src: "/videos/mining.mp4",
+        type: "video",
+        alt: "Minerals inside mountains - mining exploration",
+        gradient:
+          "linear-gradient(135deg, rgba(10, 14, 20, 0.85) 0%, rgba(15, 20, 25, 0.8) 50%, rgba(26, 31, 38, 0.85) 100%)",
+        badge: t("home.hero.slide1.badge"),
+        title: t("home.hero.slide1.title"),
+        highlight: t("home.hero.slide1.highlight"),
+        description: t("home.hero.slide1.description"),
+        projectSlug: "projects",
+        ctaText: t("home.hero.slide1.cta"),
+        secondaryCtaText: t("home.hero.slide1.secondaryCta"),
+      },
+      {
+        src: "/images/hero/01.jpg",
+        type: "image",
+        alt: "Mineral exploration site with geological formations",
+        gradient:
+          "linear-gradient(135deg, rgba(10, 14, 20, 0.85) 0%, rgba(15, 20, 25, 0.8) 50%, rgba(26, 31, 38, 0.85) 100%)",
+        badge: t("home.hero.slide2.badge"),
+        title: t("home.hero.slide2.title"),
+        highlight: t("home.hero.slide2.highlight"),
+        description: t("home.hero.slide2.description"),
+        projectSlug: "projects",
+        ctaText: t("home.hero.slide2.cta"),
+        secondaryCtaText: t("home.hero.slide2.secondaryCta"),
+      },
+      {
+        src: "/images/hero/03.jpg",
+        type: "image",
+        alt: "Rare earth minerals and geological samples",
+        gradient:
+          "linear-gradient(135deg, rgba(26, 31, 38, 0.85) 0%, rgba(10, 14, 20, 0.8) 50%, rgba(15, 20, 25, 0.85) 100%)",
+        badge: t("home.hero.slide3.badge"),
+        title: t("home.hero.slide3.title"),
+        highlight: t("home.hero.slide3.highlight"),
+        description: t("home.hero.slide3.description"),
+        projectSlug: "projects",
+        ctaText: t("home.hero.slide3.cta"),
+      },
+      {
+        src: "/images/hero/05.jpg",
+        type: "image",
+        alt: "Underground mining tunnel and mineral deposits",
+        gradient:
+          "linear-gradient(135deg, rgba(15, 31, 58, 0.7) 0%, rgba(26, 47, 77, 0.6) 50%, rgba(20, 35, 60, 0.7) 100%)",
+        badge: t("home.hero.slide4.badge"),
+        title: t("home.hero.slide4.title"),
+        highlight: t("home.hero.slide4.highlight"),
+        description: t("home.hero.slide4.description"),
+        projectSlug: "investors",
+        ctaText: t("home.hero.slide4.cta"),
+      },
+    ],
+    [t]
+  );
+
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [showLogoOverlay, setShowLogoOverlay] = useState(false);
   const currentSlide = heroSlides[currentSlideIndex];
@@ -84,15 +87,21 @@ export default function HeroSection() {
     }, slideDuration);
 
     return () => clearInterval(interval);
-  }, [currentSlideIndex, isVideoSlide]);
+  }, [currentSlideIndex, isVideoSlide, heroSlides.length]);
 
   // Handle video time updates to show logo at the end
   const handleVideoTimeUpdate = (currentTime: number) => {
     // Video is 8 seconds long, show logo in the last 1.5 seconds (6.5s to 8s)
-    if (isVideoSlide && currentTime >= 6.5 && currentTime <= 8) {
-      setShowLogoOverlay(true);
-    } else {
-      setShowLogoOverlay(false);
+    // Also handle video looping - check if we're near the end
+    if (isVideoSlide) {
+      // Show logo when we're in the last 1.5 seconds
+      // Use >= 6.5 to catch the end of the video before it loops
+      if (currentTime >= 6.5) {
+        setShowLogoOverlay(true);
+      } else if (currentTime < 1.0) {
+        // Hide logo at the start of video (after loop or initial load)
+        setShowLogoOverlay(false);
+      }
     }
   };
 
@@ -108,31 +117,46 @@ export default function HeroSection() {
       prevSlideIndexRef.current = currentSlideIndex;
       prevIsVideoSlideRef.current = isVideoSlide;
 
-      // Only reset if we're not on a video slide
-      if (!isVideoSlide) {
-        // Use setTimeout to avoid synchronous setState in effect
-        setTimeout(() => {
-          setShowLogoOverlay(false);
-        }, 0);
-      }
+      // Always reset logo overlay when slide changes
+      // It will be shown again by handleVideoTimeUpdate when video reaches the right time
+      // Use setTimeout to avoid synchronous setState in effect
+      setTimeout(() => {
+        setShowLogoOverlay(false);
+      }, 0);
     }
   }, [currentSlideIndex, isVideoSlide]);
 
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <section
+      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
+      style={{
+        background: "var(--color-base-black)",
+      }}
+    >
       {/* Background Media Carousel (Images and Videos) */}
       <div className="absolute inset-0 w-full h-full z-[1]">
+        {/* Dark background to prevent white flash during transitions */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(10, 14, 20, 1) 0%, rgba(15, 20, 25, 1) 50%, rgba(26, 31, 38, 1) 100%)",
+          }}
+        />
         <AnimatePresence mode="wait">
           {heroSlides.map((slide, index) => {
             if (index !== currentSlideIndex) return null;
             return (
               <motion.div
                 key={`${slide.src}-${index}`}
-                initial={{ opacity: 0, scale: 1.1 }}
+                initial={{ opacity: 0, scale: 1.05 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.1 }}
-                transition={{ duration: 1.5, ease: "easeInOut" }}
-                className="absolute inset-0"
+                exit={{ opacity: 0, scale: 1.05 }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                className="absolute inset-0 z-10"
+                style={{
+                  backgroundColor: "transparent",
+                }}
               >
                 {/* Fallback gradient background */}
                 <div
@@ -197,8 +221,28 @@ export default function HeroSection() {
         </AnimatePresence>
       </div>
 
+      {/* SEO: Always present H1 for accessibility and SEO */}
+      {isVideoSlide ? (
+        <h1
+          className="sr-only"
+          style={{
+            position: "absolute",
+            width: "1px",
+            height: "1px",
+            padding: "0",
+            margin: "-1px",
+            overflow: "hidden",
+            clip: "rect(0, 0, 0, 0)",
+            whiteSpace: "nowrap",
+            borderWidth: "0",
+          }}
+        >
+          {currentSlide.title} {currentSlide.highlight} - {currentSlide.description}
+        </h1>
+      ) : null}
+
       {/* Content - Changes with each slide - Hide on video slides */}
-      {!isVideoSlide && (
+      {!isVideoSlide ? (
         <div className="container relative z-10 px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-6xl mx-auto">
             <AnimatePresence mode="wait">
@@ -303,7 +347,7 @@ export default function HeroSection() {
             </AnimatePresence>
           </div>
         </div>
-      )}
+      ) : null}
 
       {/* Image Carousel Indicators */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
@@ -332,7 +376,7 @@ export default function HeroSection() {
             className="text-sm font-medium uppercase tracking-wider"
             style={{ color: "var(--color-gray-300)" }}
           >
-            Scroll to explore
+            {t("home.hero.scrollToExplore")}
           </span>
           <motion.div
             animate={{ y: [0, 10, 0] }}

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 // Custom SVG Icons
 const WarningIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
@@ -69,52 +70,55 @@ const ExclamationTriangleIcon = ({ className = "w-6 h-6" }: { className?: string
   </svg>
 );
 
-const dependencyStats = [
-  {
-    number: "98%",
-    title: "Lack of Refining Capacity",
-    description:
-      "Europe depends on external sources for rare earth refining, creating significant supply chain vulnerabilities and geopolitical risks.",
-    icon: WarningIcon,
-    color: "from-gold-500 to-gold-400",
-    bgColor: "color-mix(in srgb, var(--color-accent-main) 10%, transparent)",
-  },
-  {
-    number: "100%",
-    title: "Import Dependency",
-    description:
-      "The EU currently imports 100% of its rare earth elements with no domestic extraction, exposing Europe to supply disruptions.",
-    icon: GlobeAltIcon,
-    color: "from-gold-500 to-gold-400",
-    bgColor: "rgba(104, 211, 136, 0.1)",
-  },
-  {
-    number: "5×",
-    title: "Demand Growth by 2030",
-    description:
-      "EU demand for REEs in strategic technologies—electric vehicles, wind turbines, defense systems—is projected to increase 5 times by 2030.",
-    icon: GrowthIcon,
-    color: "from-gold-500 to-gold-400",
-    bgColor: "color-mix(in srgb, var(--color-accent-main) 10%, transparent)",
-  },
-];
-
-const responseTargets = [
-  {
-    label: "Extraction Target (2030)",
-    value: 10,
-  },
-  {
-    label: "Processing Target (2030)",
-    value: 40,
-  },
-  {
-    label: "Recycling Target (2030)",
-    value: 25,
-  },
-];
+// dependencyStats will be defined inside the component to use translations
 
 export default function RareEarthSection() {
+  const t = useTranslations("home.rareEarth");
+  const tResponse = useTranslations("home.rareEarth.response");
+
+  const responseTargets = [
+    {
+      label: tResponse("targets.extraction"),
+      value: 10,
+    },
+    {
+      label: tResponse("targets.processing"),
+      value: 40,
+    },
+    {
+      label: tResponse("targets.recycling"),
+      value: 25,
+    },
+  ];
+  const tDependency = useTranslations("home.rareEarth.dependency");
+
+  const dependencyStats = [
+    {
+      number: "98%",
+      title: tDependency("refining.title"),
+      description: tDependency("refining.description"),
+      icon: WarningIcon,
+      color: "from-gold-500 to-gold-400",
+      bgColor: "color-mix(in srgb, var(--color-accent-main) 10%, transparent)",
+    },
+    {
+      number: "100%",
+      title: tDependency("import.title"),
+      description: tDependency("import.description"),
+      icon: GlobeAltIcon,
+      color: "from-gold-500 to-gold-400",
+      bgColor: "rgba(104, 211, 136, 0.1)",
+    },
+    {
+      number: "5×",
+      title: tDependency("demand.title"),
+      description: tDependency("demand.description"),
+      icon: GrowthIcon,
+      color: "from-gold-500 to-gold-400",
+      bgColor: "color-mix(in srgb, var(--color-accent-main) 10%, transparent)",
+    },
+  ];
+
   return (
     <section
       className="section relative overflow-hidden"
@@ -162,7 +166,7 @@ export default function RareEarthSection() {
               border: "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
             }}
           >
-            Strategic Context
+            {t("eyebrow")}
           </motion.span>
           <h2
             className="text-display mb-6"
@@ -173,13 +177,13 @@ export default function RareEarthSection() {
               letterSpacing: "-0.03em",
             }}
           >
-            Europe&apos;s Race for{" "}
+            {t("heading")}{" "}
             <span
               style={{
                 color: "var(--color-accent-main)",
               }}
             >
-              Rare Earths
+              {t("headingHighlight")}
             </span>
           </h2>
           <p
@@ -190,7 +194,7 @@ export default function RareEarthSection() {
               fontFamily: "var(--font-family-body)",
             }}
           >
-            From Dependency to Dominance
+            {t("description")}
           </p>
         </motion.div>
 
@@ -313,7 +317,7 @@ export default function RareEarthSection() {
                   letterSpacing: "-0.02em",
                 }}
               >
-                The Critical Dependency
+                {tDependency("title")}
               </h3>
             </div>
 
@@ -351,12 +355,7 @@ export default function RareEarthSection() {
                     lineHeight: "var(--line-height-base)",
                   }}
                 >
-                  Europe is heavily dependent on imports for strategic resources. Renewable energy
-                  and 5G infrastructure require large amounts of{" "}
-                  <strong style={{ color: "var(--color-text-body)" }}>
-                    Copper, Nickel, Lithium, Cobalt, and Rare Earth Elements (REEs)
-                  </strong>
-                  .
+                  {t("dependency.description")}
                 </p>
 
                 <div className="flex flex-wrap gap-2.5 mb-6">
@@ -385,8 +384,7 @@ export default function RareEarthSection() {
                     lineHeight: "var(--line-height-base)",
                   }}
                 >
-                  Recycling alone cannot cover the demand. Responsible, domestic mining is crucial
-                  for Norway&apos;s security of supply and independence.
+                  {t("recycling")}
                 </p>
               </div>
             </div>
@@ -420,7 +418,7 @@ export default function RareEarthSection() {
                   letterSpacing: "-0.02em",
                 }}
               >
-                The European Response
+                {tResponse("title")}
               </h3>
             </div>
 
@@ -473,7 +471,7 @@ export default function RareEarthSection() {
                         letterSpacing: "-0.01em",
                       }}
                     >
-                      Critical Raw Materials Act
+                      {tResponse("act.title")}
                     </h4>
                     <p
                       className="text-base md:text-lg leading-relaxed"
@@ -483,8 +481,7 @@ export default function RareEarthSection() {
                         lineHeight: "var(--line-height-base)",
                       }}
                     >
-                      A strategic plan to build a secure and resilient domestic supply chain and
-                      reduce dependency on third countries for critical raw materials.
+                      {tResponse("act.description")}
                     </p>
                   </div>
                 </div>
@@ -537,7 +534,7 @@ export default function RareEarthSection() {
                         letterSpacing: "-0.01em",
                       }}
                     >
-                      2030 Targets
+                      {tResponse("targets.title")}
                     </h4>
                   </div>
 
@@ -639,7 +636,7 @@ export default function RareEarthSection() {
                       letterSpacing: "-0.01em",
                     }}
                   >
-                    Unlocking Domestic Resources
+                    {t("unlocking")}
                   </div>
                   <p
                     className="mt-4 text-base md:text-lg leading-relaxed"

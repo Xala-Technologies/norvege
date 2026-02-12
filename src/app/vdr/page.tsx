@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = generateSEOMetadata({
@@ -46,9 +47,9 @@ export default function VDRPage() {
               . Access is granted on a case-by-case basis to qualified investors and partners.
             </p>
             <div className="mt-8">
-              <a href="/contact" className="btn btn-primary">
+              <Link href="/contact" className="btn btn-primary">
                 Request VDR Access
-              </a>
+              </Link>
             </div>
           </div>
         </div>

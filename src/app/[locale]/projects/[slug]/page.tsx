@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { getProjectBySlug, getAllProjectSlugs } from "@/content/projects";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import Timeline from "@/components/ui/timeline";
+import { getTranslations } from "next-intl/server";
 
 export async function generateStaticParams() {
   const slugs = getAllProjectSlugs();
@@ -13,9 +14,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; locale: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug, locale } = await params;
   const project = getProjectBySlug(slug);
 
   if (!project) {
@@ -24,16 +25,23 @@ export async function generateMetadata({
     };
   }
 
+  const t = await getTranslations({ locale, namespace: "projects" });
+
   return generateSEOMetadata({
     title: `${project.name} - NORVEGE MINERALS AS`,
     description: project.description,
-    path: `/projects/${slug}`,
+    path: `/${locale}/projects/${slug}`,
   });
 }
 
-export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function ProjectDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string; locale: string }>;
+}) {
+  const { slug, locale } = await params;
   const project = getProjectBySlug(slug);
+  const t = await getTranslations({ locale, namespace: "projects" });
 
   if (!project) {
     notFound();
@@ -144,9 +152,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   className="text-sm md:text-base font-medium uppercase tracking-wider"
                   style={{
                     color: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
+                    fontFamily: "var(--font-family-body)",
                   }}
                 >
-                  Licenses
+                  {t("licenses")}
                 </div>
               </div>
               <div>
@@ -163,9 +172,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   className="text-sm md:text-base font-medium uppercase tracking-wider"
                   style={{
                     color: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
+                    fontFamily: "var(--font-family-body)",
                   }}
                 >
-                  Total Area
+                  {t("totalArea")}
                 </div>
               </div>
               <div>
@@ -182,9 +192,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   className="text-sm md:text-base font-medium uppercase tracking-wider"
                   style={{
                     color: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
+                    fontFamily: "var(--font-family-body)",
                   }}
                 >
-                  Priority
+                  {t("priority")}
                 </div>
               </div>
             </div>
@@ -214,7 +225,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                   letterSpacing: "-0.02em",
                 }}
               >
-                Project <span style={{ color: "var(--color-accent-main)" }}>Overview</span>
+                {t("projectOverview").split(" ")[0]}{" "}
+                <span style={{ color: "var(--color-accent-main)" }}>
+                  {t("projectOverview").split(" ").slice(1).join(" ")}
+                </span>
               </h2>
               <div
                 className="h-1 w-24 rounded-full"
@@ -273,7 +287,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 letterSpacing: "-0.02em",
               }}
             >
-              Key <span style={{ color: "var(--color-accent-main)" }}>Metrics</span>
+              {t("keyMetrics").split(" ")[0]}{" "}
+              <span style={{ color: "var(--color-accent-main)" }}>
+                {t("keyMetrics").split(" ").slice(1).join(" ")}
+              </span>
             </h2>
             <div
               className="h-1 w-24 rounded-full mx-auto"
@@ -324,9 +341,13 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               </div>
               <div
                 className="text-base md:text-lg font-semibold uppercase tracking-wider"
-                style={{ color: "var(--color-primary-main)" }}
+                style={{
+                  color: "var(--color-primary-main)",
+                  fontFamily: "var(--font-family-body)",
+                  fontWeight: "var(--font-weight-bold)",
+                }}
               >
-                Exploration Licenses
+                {t("explorationLicenses")}
               </div>
             </div>
 
@@ -372,9 +393,13 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               </div>
               <div
                 className="text-base md:text-lg font-semibold uppercase tracking-wider"
-                style={{ color: "var(--color-primary-main)" }}
+                style={{
+                  color: "var(--color-primary-main)",
+                  fontFamily: "var(--font-family-body)",
+                  fontWeight: "var(--font-weight-bold)",
+                }}
               >
-                Total Area
+                {t("totalArea")}
               </div>
             </div>
 
@@ -420,9 +445,13 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               </div>
               <div
                 className="text-base md:text-lg font-semibold uppercase tracking-wider mb-4"
-                style={{ color: "var(--color-primary-main)" }}
+                style={{
+                  color: "var(--color-primary-main)",
+                  fontFamily: "var(--font-family-body)",
+                  fontWeight: "var(--font-weight-bold)",
+                }}
               >
-                Target Minerals
+                {t("targetMinerals")}
               </div>
               <div className="flex flex-wrap gap-2 justify-center">
                 {project.minerals.slice(0, 4).map((mineral, index) => (
@@ -460,11 +489,27 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {project.geology && (
         <section className="section bg-white">
           <div className="container max-w-4xl">
-            <h2 className="text-display mb-6" style={{ color: "var(--color-navy-900)" }}>
-              Geology
+            <h2
+              className="text-display mb-6"
+              style={{
+                color: "var(--color-text-body)",
+                fontFamily: "var(--font-family-heading)",
+                fontWeight: "var(--font-weight-black)",
+                letterSpacing: "-0.03em",
+              }}
+            >
+              {t("geology")}
             </h2>
             <div className="prose prose-lg max-w-none">
-              <p className="text-gray-600">{project.geology}</p>
+              <p
+                style={{
+                  color: "var(--color-text-secondary)",
+                  fontFamily: "var(--font-family-body)",
+                  lineHeight: "var(--line-height-loose)",
+                }}
+              >
+                {project.geology}
+              </p>
             </div>
           </div>
         </section>
@@ -474,11 +519,27 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {project.exploration && (
         <section className="section" style={{ background: "var(--color-sand-50)" }}>
           <div className="container max-w-4xl">
-            <h2 className="text-display mb-6" style={{ color: "var(--color-navy-900)" }}>
-              Exploration Activities
+            <h2
+              className="text-display mb-6"
+              style={{
+                color: "var(--color-text-body)",
+                fontFamily: "var(--font-family-heading)",
+                fontWeight: "var(--font-weight-black)",
+                letterSpacing: "-0.03em",
+              }}
+            >
+              {t("explorationActivities")}
             </h2>
             <div className="prose prose-lg max-w-none">
-              <p className="text-gray-600">{project.exploration}</p>
+              <p
+                style={{
+                  color: "var(--color-text-secondary)",
+                  fontFamily: "var(--font-family-body)",
+                  lineHeight: "var(--line-height-loose)",
+                }}
+              >
+                {project.exploration}
+              </p>
             </div>
           </div>
         </section>
@@ -490,9 +551,14 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="container max-w-4xl">
             <h2
               className="text-display mb-12 text-center"
-              style={{ color: "var(--color-primary-main)" }}
+              style={{
+                color: "var(--color-text-body)",
+                fontFamily: "var(--font-family-heading)",
+                fontWeight: "var(--font-weight-black)",
+                letterSpacing: "-0.03em",
+              }}
             >
-              Project Timeline
+              {t("projectTimeline")}
             </h2>
             <Timeline items={project.timeline} />
           </div>
@@ -503,10 +569,27 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {project.coverage && (
         <section className="section" style={{ background: "var(--color-sand-50)" }}>
           <div className="container max-w-4xl">
-            <h2 className="text-display mb-6" style={{ color: "var(--color-navy-900)" }}>
-              License Coverage
+            <h2
+              className="text-display mb-6"
+              style={{
+                color: "var(--color-text-body)",
+                fontFamily: "var(--font-family-heading)",
+                fontWeight: "var(--font-weight-black)",
+                letterSpacing: "-0.03em",
+              }}
+            >
+              {t("licenseCoverage")}
             </h2>
-            <p className="text-lg text-gray-600">{project.coverage}</p>
+            <p
+              className="text-lg"
+              style={{
+                color: "var(--color-text-secondary)",
+                fontFamily: "var(--font-family-body)",
+                lineHeight: "var(--line-height-loose)",
+              }}
+            >
+              {project.coverage}
+            </p>
           </div>
         </section>
       )}
@@ -514,8 +597,15 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {/* Back to Projects */}
       <section className="section bg-white">
         <div className="container max-w-4xl text-center">
-          <Link href="/projects" className="btn btn-secondary">
-            ← Back to All Projects
+          <Link
+            href="/projects"
+            className="btn btn-secondary"
+            style={{
+              fontFamily: "var(--font-family-body)",
+              fontWeight: "var(--font-weight-bold)",
+            }}
+          >
+            {t("backToProjects")}
           </Link>
         </div>
       </section>

@@ -36,7 +36,14 @@ export default function ESGTeaser() {
           <h2 className="text-display mb-6" style={{ color: "var(--color-primary-main)" }}>
             Responsible Mining for the Future
           </h2>
-          <p className="text-lg text-gray-600 mb-6 max-w-3xl mx-auto">
+          <p
+            className="text-lg mb-6 max-w-3xl mx-auto"
+            style={{
+              color: "var(--color-text-secondary)",
+              fontFamily: "var(--font-family-body)",
+              lineHeight: "var(--line-height-loose)",
+            }}
+          >
             At NORVEGE MINERALS AS, sustainability is not an afterthought—it&apos;s fundamental to
             everything we do. We&apos;re committed to developing Norway&apos;s critical mineral
             resources while protecting the environment and supporting local communities.
@@ -63,12 +70,24 @@ export default function ESGTeaser() {
               </div>
               <div>
                 <h3
-                  className="text-xl font-semibold mb-2"
-                  style={{ color: "var(--color-primary-main)" }}
+                  className="text-xl mb-2"
+                  style={{
+                    color: "var(--color-text-body)",
+                    fontFamily: "var(--font-family-heading)",
+                    fontWeight: "var(--font-weight-bold)",
+                  }}
                 >
                   {highlight.title}
                 </h3>
-                <p className="text-gray-600">{highlight.description}</p>
+                <p
+                  style={{
+                    color: "var(--color-text-secondary)",
+                    fontFamily: "var(--font-family-body)",
+                    lineHeight: "var(--line-height-loose)",
+                  }}
+                >
+                  {highlight.description}
+                </p>
               </div>
             </motion.div>
           ))}

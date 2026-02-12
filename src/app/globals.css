@@ -374,6 +374,51 @@ a:focus-visible {
   border-radius: var(--radius-sm);
 }
 
+/* Language Consistency - Ensure same styling for all locales */
+html[lang="en"],
+html[lang="no"] {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure text containers handle longer content gracefully */
+.text-container,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Consistent button and card sizing regardless of text length */
+.btn,
+button[class*="btn"] {
+  min-height: 2.75rem;
+  white-space: nowrap;
+}
+
+/* Flexible navigation items for longer text */
+nav a,
+nav button {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Ensure consistent font rendering across languages */
+* {
+  font-family: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* Utility Classes */
 .section {
   padding: var(--section-padding-y) var(--section-padding-x);

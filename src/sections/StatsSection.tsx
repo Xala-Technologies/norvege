@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { companyMetrics } from "@/content/company";
+import { useTranslations } from "next-intl";
 
 // Modern icon components
 const MountainIcon = ({ className = "w-full h-full" }: { className?: string }) => (
@@ -131,6 +132,29 @@ const cardStyles = [
 ];
 
 export default function StatsSection() {
+  const t = useTranslations("home.stats");
+  const tMetrics = useTranslations("home.stats.metrics");
+
+  // Map company metrics to translation keys
+  const metricsTranslationMap: Record<string, string> = {
+    "Exploration Licenses": "explorationLicenses",
+    "km² Licensed Area": "licensedArea",
+    "Viable Finds": "viableFinds",
+    "Trillion NOK Est. Value": "estValue",
+    "REE Mineral Types": "reeTypes",
+    "Strategic Partnerships": "partnerships",
+  };
+
+  // Get translated metrics
+  const translatedMetrics = companyMetrics.map((metric) => {
+    const translationKey = metricsTranslationMap[metric.label];
+    return {
+      ...metric,
+      label: translationKey ? tMetrics(`${translationKey}.label`) : metric.label,
+      description: translationKey ? tMetrics(`${translationKey}.description`) : metric.description,
+    };
+  });
+
   return (
     <section
       className="section relative overflow-hidden"
@@ -171,7 +195,7 @@ export default function StatsSection() {
               border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
             }}
           >
-            Our Impact
+            {t("eyebrow")}
           </motion.span>
           <h2
             className="text-display"
@@ -180,7 +204,7 @@ export default function StatsSection() {
               marginBottom: "var(--space-8)",
             }}
           >
-            Exploration at Scale
+            {t("heading")}
           </h2>
           <p
             className="text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto text-center block"
@@ -192,14 +216,12 @@ export default function StatsSection() {
               letterSpacing: "-0.01em",
             }}
           >
-            Norve&apos;Ge Minerals is a Norwegian exploration company focused on unlocking mineral
-            value from historic mines and future-critical resources, combining traditional mining
-            with advanced water-based mineral extraction.
+            {t("description")}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          {companyMetrics.map((stat, index) => {
+          {translatedMetrics.map((stat, index) => {
             const IconComponent = iconComponents[index % iconComponents.length];
             const style = cardStyles[index % cardStyles.length];
 

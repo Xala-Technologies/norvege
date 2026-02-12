@@ -1,22 +1,23 @@
 "use client";
 
-import Link from "next/link";
-import { companyInfo } from "@/content/company";
+import { Link } from "@/i18n/routing";
 import Logo from "@/components/ui/Logo";
 import NorChainLogo from "@/components/ui/NorChainLogo";
 import { projects } from "@/content/projects";
+import { useTranslations } from "next-intl";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const t = useTranslations("common.footer");
 
   const companyLinks = [
-    { href: "/about", label: "About Us" },
-    { href: "/privacy", label: "Privacy Policy" },
-    { href: "/terms", label: "Terms of Service" },
+    { href: "/about", label: t("aboutUs") },
+    { href: "/privacy", label: t("privacyPolicy") },
+    { href: "/terms", label: t("termsOfService") },
   ];
 
   const projectLinks = [
-    { href: "/projects", label: "Overview" },
+    { href: "/projects", label: t("overview") },
     ...projects.map((project) => ({
       href: `/projects/${project.slug}`,
       label: project.name === "Skrattås-Byafossen" ? "Skrattåsen" : project.name,
@@ -24,13 +25,8 @@ export default function Footer() {
   ];
 
   const resourcesLinks = [
-    { href: "/report-archive", label: "Report Archive" },
-    { href: "/vdr", label: "Virtual Data Room (VDR)" },
-    { href: "/laboratories", label: "Laboratories" },
-    { href: "/exploration-specialists", label: "Exploration Specialists" },
-    { href: "/partners", label: "Partners" },
-    { href: "/news", label: "News & Updates" },
-    { href: "/contact", label: "Contact" },
+    { href: "/partners", label: t("partners") },
+    { href: "/contact", label: t("contact") },
     { href: "https://www.norchain.org/", label: "NorChain", external: true },
   ];
 
@@ -43,13 +39,13 @@ export default function Footer() {
       }}
     >
       {/* Decorative background elements */}
-      <div className="absolute inset-0 opacity-[0.05]">
+      <div className="absolute inset-0 opacity-[0.05] overflow-hidden">
         <div
-          className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-3xl"
+          className="absolute top-0 left-0 w-[300px] h-[300px] rounded-full blur-3xl"
           style={{ background: "var(--color-accent-main)" }}
         />
         <div
-          className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl"
+          className="absolute bottom-0 right-0 w-[300px] h-[300px] rounded-full blur-3xl"
           style={{ background: "var(--color-primary-main)" }}
         />
       </div>
@@ -66,24 +62,23 @@ export default function Footer() {
         }}
       />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10 relative z-10">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-10">
           {/* Logo and Description - Left Column */}
           <div className="lg:col-span-1">
             <div className="mb-4">
               <Logo />
             </div>
             <p
-              className="text-sm lg:text-base mb-8 leading-relaxed"
+              className="text-sm lg:text-base mb-6 leading-relaxed"
               style={{
                 color: "color-mix(in srgb, var(--color-text-on-dark) 75%, transparent)",
                 fontFamily: "var(--font-family-body)",
                 lineHeight: "var(--line-height-base)",
               }}
             >
-              Norwegian exploration company focused on sustainable mineral development in the
-              Trøndelag region.
+              {t("description")}
             </p>
             {/* Social Media Buttons */}
             <div className="flex items-center gap-3">
@@ -159,14 +154,14 @@ export default function Footer() {
           {/* COMPANY Column */}
           <div>
             <h3
-              className="text-sm font-bold mb-5 uppercase tracking-wider"
+              className="text-sm font-bold mb-4 uppercase tracking-wider"
               style={{
                 color: "var(--color-accent-main)",
                 fontFamily: "var(--font-family-body)",
                 fontWeight: "var(--font-weight-bold)",
               }}
             >
-              COMPANY
+              {t("company").toUpperCase()}
             </h3>
             <ul className="space-y-3">
               {companyLinks.map((link, index) => (
@@ -196,14 +191,14 @@ export default function Footer() {
           {/* PROJECTS Column */}
           <div>
             <h3
-              className="text-sm font-bold mb-5 uppercase tracking-wider"
+              className="text-sm font-bold mb-4 uppercase tracking-wider"
               style={{
                 color: "var(--color-accent-main)",
                 fontFamily: "var(--font-family-body)",
                 fontWeight: "var(--font-weight-bold)",
               }}
             >
-              PROJECTS
+              {t("projects").toUpperCase()}
             </h3>
             <ul className="space-y-3">
               {projectLinks.map((link, index) => (
@@ -233,14 +228,14 @@ export default function Footer() {
           {/* RESOURCES Column */}
           <div>
             <h3
-              className="text-sm font-bold mb-5 uppercase tracking-wider"
+              className="text-sm font-bold mb-4 uppercase tracking-wider"
               style={{
                 color: "var(--color-accent-main)",
                 fontFamily: "var(--font-family-body)",
                 fontWeight: "var(--font-weight-bold)",
               }}
             >
-              RESOURCES
+              {t("resources").toUpperCase()}
             </h3>
             <ul className="space-y-3">
               {resourcesLinks.map((link, index) => {
@@ -305,36 +300,39 @@ export default function Footer() {
 
       {/* NorChain Banner - Full Width */}
       <div
-        className="border-t py-8 lg:py-10 relative w-full"
+        className="border-t py-8 lg:py-10 relative w-full overflow-hidden"
         style={{
           background: "var(--color-bg-subtle)",
-          borderColor: "color-mix(in srgb, var(--color-primary-main) 20%, transparent)",
+          borderColor: "color-mix(in srgb, var(--color-primary-main) 25%, transparent)",
         }}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-5">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 lg:gap-8">
+            <div className="flex items-center gap-6 lg:gap-8">
               {/* NorChain Logo */}
-              <NorChainLogo />
-              <div>
-                <p
-                  className="text-lg lg:text-xl xl:text-2xl font-semibold mb-1.5"
+              <div className="flex-shrink-0">
+                <NorChainLogo />
+              </div>
+              <div className="flex-1">
+                <h3
+                  className="text-xl lg:text-2xl xl:text-3xl font-bold mb-2 leading-tight"
                   style={{
                     color: "var(--color-text-body)",
                     fontFamily: "var(--font-family-heading)",
                     fontWeight: "var(--font-weight-bold)",
+                    letterSpacing: "-0.02em",
                   }}
                 >
-                  Assets Tokenized on NorChain
-                </p>
+                  {t("norchain.title")}
+                </h3>
                 <p
-                  className="text-sm lg:text-base"
+                  className="text-sm lg:text-base leading-relaxed"
                   style={{
                     color: "var(--color-text-secondary)",
                     fontFamily: "var(--font-family-body)",
                   }}
                 >
-                  The Complete Blockchain Operating System
+                  {t("norchain.subtitle")}
                 </p>
               </div>
             </div>
@@ -342,25 +340,35 @@ export default function Footer() {
               href="https://www.norchain.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm lg:text-base font-medium hover:opacity-80 transition-opacity inline-flex items-center gap-2 px-4 py-2 rounded-lg"
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm lg:text-base transition-all duration-300 flex-shrink-0"
               style={{
-                color: "var(--color-primary-main)",
+                background: "var(--color-primary-main)",
+                color: "var(--color-text-on-dark)",
                 fontFamily: "var(--font-family-body)",
                 fontWeight: "var(--font-weight-semibold)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = "var(--color-accent-main)";
+                e.currentTarget.style.background = "var(--color-accent-main)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.boxShadow = "0 8px 24px rgba(0, 0, 0, 0.3)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = "var(--color-primary-main)";
+                e.currentTarget.style.background = "var(--color-primary-main)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "none";
               }}
             >
-              Visit NorChain
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {t("norchain.visit")}
+              <svg
+                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
+                  strokeWidth={2.5}
                   d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                 />
               </svg>
@@ -372,7 +380,7 @@ export default function Footer() {
       {/* Copyright */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className="border-t pt-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm"
+          className="border-t pt-6 pb-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm"
           style={{
             borderColor: "color-mix(in srgb, var(--color-text-on-dark) 20%, transparent)",
           }}
@@ -383,7 +391,7 @@ export default function Footer() {
               fontFamily: "var(--font-family-body)",
             }}
           >
-            © {currentYear} {companyInfo.legalName || "Norvege Minerals AS"}. All rights reserved.
+            {t("copyright", { year: currentYear })} {t("allRightsReserved")}
           </p>
           <p
             style={{

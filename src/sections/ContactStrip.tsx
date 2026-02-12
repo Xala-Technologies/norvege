@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { companyInfo } from "@/content/company";
 import ContactForm from "@/components/contact/ContactForm";
+import { useTranslations } from "next-intl";
 
 // Custom Icons
 const BuildingIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
@@ -55,37 +56,40 @@ const ClockIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
   </svg>
 );
 
-const contactCards = [
-  {
-    icon: BuildingIcon,
-    label: "COMPANY",
-    title: companyInfo.legalName || "NORVEGE MINERALS AS",
-    subtitle: companyInfo.orgNumber
-      ? `Org.nr: ${companyInfo.orgNumber}`
-      : "Org.nr: [Company Number]",
-  },
-  {
-    icon: MapPinIcon,
-    label: "ADDRESS",
-    title: companyInfo.address.street || "Ølvegata 18B",
-    subtitle:
-      `${companyInfo.address.postalCode || ""} ${companyInfo.address.city}, ${companyInfo.address.country}`.trim(),
-  },
-  {
-    icon: EmailIcon,
-    label: "EMAIL",
-    title: companyInfo.contact.email,
-    subtitle: "",
-  },
-  {
-    icon: ClockIcon,
-    label: "RESPONSE TIME",
-    title: "Within 24-48 hours",
-    subtitle: "Monday - Friday",
-  },
-];
-
 export default function ContactStrip() {
+  const t = useTranslations("home.contactStrip");
+  const tCards = useTranslations("home.contactStrip.cards");
+
+  const contactCards = [
+    {
+      icon: BuildingIcon,
+      label: tCards("company"),
+      title: companyInfo.legalName || "NORVEGE MINERALS AS",
+      subtitle: companyInfo.orgNumber
+        ? `Org.nr: ${companyInfo.orgNumber}`
+        : "Org.nr: [Company Number]",
+    },
+    {
+      icon: MapPinIcon,
+      label: tCards("address"),
+      title: companyInfo.address.street || "Ølvegata 18B",
+      subtitle:
+        `${companyInfo.address.postalCode || ""} ${companyInfo.address.city}, ${companyInfo.address.country}`.trim(),
+    },
+    {
+      icon: EmailIcon,
+      label: tCards("email"),
+      title: companyInfo.contact.email,
+      subtitle: "",
+    },
+    {
+      icon: ClockIcon,
+      label: tCards("responseTime"),
+      title: tCards("responseTimeValue"),
+      subtitle: tCards("responseTimeSubtitle"),
+    },
+  ];
+
   // Google Maps embed URL - Update with actual coordinates
   const mapEmbedUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31910.500000000004!2d10.752245399999999!3d59.9138688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e61f267f039%3A0x7e92605fd3231e85!2sOslo%2C%20Norway!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus`;
 
@@ -186,13 +190,13 @@ export default function ContactStrip() {
               letterSpacing: "-0.03em",
             }}
           >
-            <span style={{ color: "var(--color-text-on-dark)" }}>Ready to Explore </span>
+            <span style={{ color: "var(--color-text-on-dark)" }}>{t("heading")} </span>
             <span
               style={{
                 color: "var(--color-accent-main)",
               }}
             >
-              Opportunities?
+              {t("headingHighlight")}
             </span>
           </h2>
           <p
@@ -205,8 +209,7 @@ export default function ContactStrip() {
               letterSpacing: "-0.01em",
             }}
           >
-            Connect with our team to discuss exploration projects, investment opportunities, or
-            partnership possibilities.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -376,7 +379,7 @@ export default function ContactStrip() {
                     letterSpacing: "-0.02em",
                   }}
                 >
-                  Send Us a Message
+                  {t("formTitle")}
                 </h3>
                 <p
                   className="text-base lg:text-lg leading-relaxed"
@@ -386,7 +389,7 @@ export default function ContactStrip() {
                     lineHeight: "var(--line-height-base)",
                   }}
                 >
-                  Fill out the form and our team will respond promptly.
+                  {t("formDescription")}
                 </p>
               </motion.div>
 

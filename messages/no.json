@@ -1,0 +1,663 @@
+{
+  "common": {
+    "nav": {
+      "home": "Hjem",
+      "about": "Om oss",
+      "projects": "Prosjekter",
+      "investors": "Investorer",
+      "contact": "Kontakt",
+      "esg": "ESG",
+      "partners": "Partnere"
+    },
+    "footer": {
+      "company": "Selskap",
+      "projects": "Prosjekter",
+      "resources": "Ressurser",
+      "aboutUs": "Om oss",
+      "privacyPolicy": "Personvernregler",
+      "termsOfService": "Vilkår for bruk",
+      "overview": "Oversikt",
+      "partners": "Partnere",
+      "contact": "Kontakt",
+      "description": "Norsk oppdagelsesselskap fokusert på bærekraftig mineralutvikling i Trøndelag-regionen.",
+      "copyright": "© {year} NORVEGE MINERALS AS",
+      "allRightsReserved": "Alle rettigheter forbeholdt.",
+      "norchain": {
+        "title": "Eiendeler Tokenisert på NorChain",
+        "subtitle": "Det Komplette Blockchain Operativsystemet",
+        "visit": "Besøk NorChain"
+      }
+    },
+    "buttons": {
+      "learnMore": "Les mer",
+      "readMore": "Les mer",
+      "viewAll": "Se alle",
+      "explore": "Utforsk",
+      "contact": "Kontakt oss",
+      "getInTouch": "Ta kontakt",
+      "submit": "Send",
+      "send": "Send",
+      "close": "Lukk",
+      "back": "Tilbake"
+    },
+    "labels": {
+      "name": "Navn",
+      "email": "E-post",
+      "company": "Selskap",
+      "subject": "Emne",
+      "message": "Melding",
+      "phone": "Telefon",
+      "address": "Adresse",
+      "companyDetails": "Selskapsdetaljer",
+      "orgNumber": "Org. nr"
+    }
+  },
+  "home": {
+    "hero": {
+      "slide1": {
+        "badge": "Gruvedrift",
+        "title": "Oppdage Mineraler",
+        "highlight": "Inne i Fjellene",
+        "description": "Utforsker dypet av Norges fjell for å avdekke kritiske mineraler som er essensielle for Europas grønne omstilling. Våre avanserte utforskingsteknikker avdekker skattene som ligger skjult.",
+        "cta": "Utforsk Våre Eiendeler",
+        "secondaryCta": "Vår Teknologi"
+      },
+      "slide2": {
+        "badge": "Ansvarlig Gruvedrift",
+        "title": "Ansvarlig Gruvedrift for",
+        "highlight": "Grønn Omstilling",
+        "description": "Sikrer Europas forsyning av vitale ressurser. Vi har 74 utforskningslisenser på tvers av 1.690 km², med fokus på høytverdige mineraler som er essensielle for fornybar energi og geopolitisk stabilitet.",
+        "cta": "Utforsk Våre Eiendeler",
+        "secondaryCta": "Vår Teknologi"
+      },
+      "slide3": {
+        "badge": "Kritiske Mineraler",
+        "title": "Sjeldne Jordarter",
+        "highlight": "Strategiske Ressurser",
+        "description": "Utforsker sjeldne jordarter som er essensielle for energiovergangen. Bidrar til Europas mineraluavhengighet.",
+        "cta": "Se Alle Prosjekter"
+      },
+      "slide4": {
+        "badge": "Investeringsmulighet",
+        "title": "Vitenskapsdrevet Oppdagelse",
+        "highlight": "Innovasjon",
+        "description": "Pionerer en ny æra av mineralutforskning i Europa med banebrytende teknologi og dokumentert ekspertise.",
+        "cta": "Investorforhold"
+      },
+      "scrollToExplore": "Scroll for å utforske"
+    },
+    "stats": {
+      "title": "Nøkkeltall",
+      "eyebrow": "Vår Innvirkning",
+      "heading": "Utforskning i Storskala",
+      "description": "Norve'Ge Minerals AS er et norsk oppdagelsesselskap fokusert på å frigjøre mineralverdi fra historiske gruver og fremtidige kritiske ressurser. Vi kombinerer tradisjonell gruvedrift med avansert vannbasert mineralutvinning, og gjenvinner sjeldne elementer direkte fra geotermisk gruvevann. Våre operasjoner drives av fornybar energi, inkludert proprietære geotermiske kraftløsninger og containeriserte turbinsystemer. Med et sterkt engasjement for miljøvern og innovasjon, støtter Norve'Ge Minerals overgangen mot en mer bærekraftig ressursøkonomi.",
+      "metrics": {
+        "explorationLicenses": {
+          "label": "Utforskningslisenser",
+          "description": "Norve'Ge Minerals har for tiden 74 minerettigheter. Dette inkluderer 15 gruver med Adterra og 2 med Nordveg'r, totalt 23 gruver."
+        },
+        "licensedArea": {
+          "label": "km² Lisensiert Område",
+          "description": "Norve'Ge Minerals har et totalt lisensiert område på 1.600 km², pluss ytterligere 90 km² gjennom Adterra og Nordveg'r."
+        },
+        "viableFinds": {
+          "label": "Levedyktige Funn",
+          "description": "Norve'Ge Minerals har identifisert 31 økonomisk levedyktige steder."
+        },
+        "estValue": {
+          "label": "Billioner NOK Est. Verdi",
+          "description": "Estimert totalverdi: 4.885.000.000.000 NOK"
+        },
+        "reeTypes": {
+          "label": "REE Mineraltyper",
+          "description": "Flere REE-oppdagelser over hele Norge (Monazitt, Bastnäsitt, Xenotim, Allanitt, Zirkon, Fergusonitt, Euxenitt, Samarskitt)"
+        },
+        "partnerships": {
+          "label": "Strategiske Partnerskap",
+          "description": "Adterra, Steinkjer Kommune, Steinkjer Utvikling AS"
+        }
+      }
+    },
+    "rareEarth": {
+      "title": "Sjeldne Jordarter",
+      "subtitle": "Kritiske Mineraler for Energiovergangen",
+      "eyebrow": "Strategisk Kontekst",
+      "heading": "Europas Kappløp om",
+      "headingHighlight": "Sjeldne Jordarter",
+      "description": "Fra Avhengighet til Dominans",
+      "dependency": {
+        "title": "Den Kritiske Avhengigheten",
+        "description": "Europa er sterkt avhengig av import for strategiske ressurser. Fornybar energi og 5G-infrastruktur krever store mengder Kobber, Nikkel, Litium, Kobolt og Sjeldne Jordarter (REE).",
+        "refining": {
+          "title": "Mangel på Raffineringskapasitet",
+          "description": "Europa er avhengig av eksterne kilder for raffineringskapasitet for sjeldne jordarter, noe som skaper betydelige forsyningskjede-sårbarheter og geopolitiske risici."
+        },
+        "import": {
+          "title": "Importavhengighet",
+          "description": "EU importerer for tiden 100% av sine sjeldne jordarter uten innenlandsk utvinning, noe som utsetter Europa for forsyningsforstyrrelser."
+        },
+        "demand": {
+          "title": "Etterspørselsvekst innen 2030",
+          "description": "EUs etterspørsel etter sjeldne jordarter i strategiske teknologier—elektriske kjøretøy, vindturbiner, forsvarsystemer—er anslått å øke 5 ganger innen 2030."
+        }
+      },
+      "unlocking": "Frigjøre Innenlandske Ressurser",
+      "recycling": "Gjenvinning alene kan ikke dekke etterspørselen. Ansvarlig, innenlandsk gruvedrift er avgjørende for Norges forsyningssikkerhet og uavhengighet.",
+      "response": {
+        "title": "Det Europeiske Svaret",
+        "act": {
+          "title": "Loven om Kritiske Råmaterialer",
+          "description": "En strategisk plan for å bygge en sikker og robust innenlandsk forsyningskjede og redusere avhengighet av tredjeland for kritiske råmaterialer."
+        },
+        "targets": {
+          "title": "2030 Mål",
+          "extraction": "Utvinningsmål (2030)",
+          "processing": "Prosesseringsmål (2030)",
+          "recycling": "Gjenvinningsmål (2030)"
+        }
+      }
+    },
+    "projects": {
+      "title": "Våre Prosjekter",
+      "subtitle": "Utforsker Norges Mineralpotensial",
+      "description": "Strategiske lisensholdinger i Fensfeltet – verdens største sjeldne jordarter-deponi i Norge.",
+      "exploreProject": "Utforsk Prosjekt",
+      "viewAll": "Se Alle Prosjekter",
+      "licenseArea": "Lisensområde",
+      "licenses": "Lisenser",
+      "coverage": "Dekning"
+    },
+    "blockchain": {
+      "title": "Blockchain-teknologi",
+      "subtitle": "Åpenhet i Mineralsporing",
+      "eyebrow": "Innovasjon",
+      "heading": "Malm Gruve",
+      "headingHighlight": "Vannprosjektet",
+      "description": "Gjøre Miljøansvar til Bærekraftige Eiendeler",
+      "description2": "Vi revolusjonerer utvinning ved å utnytte 7–10 millioner m³ av 26°C ion-rikt gruvevann fra de oversvømmede Malm-gruvene. Ved å anvende Selektiv Ionutveksling (IX) og Elektrovinning (EW), utvinner vi verdifulle metaller samtidig som vi fjerner tungmetaller fra sterkt forurenset vann, noe som reduserer utslipp betydelig sammenlignet med konvensjonell gruvedrift.",
+      "description3": "Kombinert med et termokraftverk basert på Double Flash-teknologi (lignende Hellisheiði, Island), skaper dette en selvbærende mineralprosesseringsprosess. Det varme rensete vannet varmes opp til 120°C ved hjelp av varmevekslere for kraftproduksjon, deretter kjøles og resirkuleres i et lukket system.",
+      "benefits": {
+        "sustainable": {
+          "title": "Bærekraftig",
+          "description": "Reduserer CO₂-utslipp med 20–40 tonn per kg mineraler sammenlignet med tradisjonell gruvedrift."
+        },
+        "efficient": {
+          "title": "Effektiv",
+          "description": "Gjenvinner 750–1.500 kg mineraler per syklus."
+        },
+        "revenue": {
+          "title": "Inntekt",
+          "description": "Estimert €2,5M – €6,5M inntekt per syklus."
+        }
+      },
+      "cta": {
+        "learnMore": "Les Mer om Våre Prosjekter",
+        "contact": "Les Mer"
+      }
+    },
+    "norchain": {
+      "title": "NorChain",
+      "subtitle": "Blockchain-drevet Mineralsporing",
+      "eyebrow": "Blockchain-integrasjon",
+      "heading": "Våre Eiendeler er Tokenisert på",
+      "headingHighlight": "NorChain",
+      "description": "Norvege Minerals har inngått partnerskap med NorChain for å bringe åpenhet og tilgjengelighet til mineralutforskning—muliggjør sikre, verifiserbare eierskaps- og investeringsmuligheter drevet av blockchain-teknologi.",
+      "cta": {
+        "visit": "Besøk NorChain",
+        "learnMore": "Les Mer"
+      },
+      "features": {
+        "tokenized": {
+          "title": "Tokeniserte Eiendeler",
+          "description": "Våre mineraleiendeler er sikkert tokenisert på NorChain blockchain for transparent eierskap."
+        },
+        "global": {
+          "title": "Global Tilgang",
+          "description": "Muliggjør verdensomspennende investeringsmuligheter i norsk mineralutforskning med kompatibel infrastruktur."
+        },
+        "secure": {
+          "title": "Sikker og Transparent",
+          "description": "Blockchain-verifiserte transaksjoner med komplette revisjonsspor og sterkere styring for interessenter."
+        }
+      },
+      "card": {
+        "poweredBy": "Drevet av NorChain",
+        "title": "Transparent eierskap med kompatibel infrastruktur",
+        "description": "Et rent on-chain register over eiendeler, styring og revisjonsspor—designet for institusjonell tilgang og rapportering.",
+        "operatingSystem": "Det Komplette Blockchain Operativsystemet",
+        "tokenChips": {
+          "assetToken": "Eiendelstoken",
+          "auditTrail": "Revisjonsspor",
+          "investorAccess": "Investortilgang"
+        },
+        "stats": {
+          "security": {
+            "label": "Sikkerhet",
+            "value": "On-chain"
+          },
+          "reporting": {
+            "label": "Rapportering",
+            "value": "Reviserbar"
+          }
+        }
+      }
+    },
+    "contactStrip": {
+      "heading": "Klar til å Utforske",
+      "headingHighlight": "Muligheter?",
+      "description": "Ta kontakt med vårt team for å diskutere utforskningsprosjekter, investeringsmuligheter eller partnerskapsmuligheter.",
+      "formTitle": "Ta Kontakt",
+      "formDescription": "Fyll ut skjemaet og vårt team vil svare raskt.",
+      "cards": {
+        "company": "SELSKAP",
+        "address": "ADRESSE",
+        "email": "E-POST",
+        "responseTime": "SVARTID",
+        "responseTimeValue": "Innen 24-48 timer",
+        "responseTimeSubtitle": "Mandag - Fredag"
+      }
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Om",
+      "highlight": "NORVEGE MINERALS AS",
+      "description": "Bygger Norges mineralfremtid gjennom ansvarlig utforskning og bærekraftig utvikling",
+      "values": {
+        "responsible": "Ansvarlig",
+        "mining": "Gruvedrift",
+        "sustainable": "Bærekraftig",
+        "development": "Utvikling",
+        "strategic": "Strategisk",
+        "exploration": "Utforskning",
+        "innovation": "Innovasjon",
+        "excellence": "Utmerket"
+      }
+    },
+    "overview": {
+      "title": "Selskapsoppdrag",
+      "storyTitle": "Vår Historie",
+      "storySubtitle": "Et norsk gruveselskap forpliktet til ansvarlig utforskning og bærekraftig utvikling",
+      "missionTitle": "Vårt Oppdrag",
+      "description": "Norve'Ge Minerals AS er et norsk oppdagelsesselskap fokusert på å frigjøre mineralverdi fra historiske gruver og fremtidige kritiske ressurser. Vi kombinerer tradisjonell gruvedrift med avansert vannbasert mineralutvinning, og gjenvinner sjeldne elementer direkte fra geotermisk gruvevann. Våre operasjoner drives av fornybar energi, inkludert proprietære geotermiske kraftløsninger og containeriserte turbinsystemer. Med et sterkt engasjement for miljøvern og innovasjon, støtter Norve'Ge Minerals overgangen mot en mer bærekraftig ressursøkonomi.",
+      "richHeritage": {
+        "title": "Rik Arv",
+        "description": "Norge har en rik gruvearv som strekker seg tilbake århundrer. I dag står vi i fronten av en ny æra—en hvor kritiske mineraler som kobber, nikkel, kobolt og sjeldne jordarter er essensielle for batterier, fornybare energisystemer og elektrifiseringen av samfunnet."
+      },
+      "explorationPortfolio": {
+        "title": "Utforskningsportefølje",
+        "description": "Vår utforskningsportefølje spenner over flere regioner i Norge, og retter seg mot både historiske gruvedistrikter med moderne utforskingsteknikker og grønne muligheter i underutforskede områder."
+      },
+      "europeanContext": {
+        "title": "Europeisk Kontekst",
+        "description": "Ettersom Europa søker å redusere avhengighet av importerte kritiske mineraler, posisjonerer Norges stabile jurisdiksjon og mineralpotensial oss som en strategisk innenlandsk leverandør."
+      }
+    },
+    "futurePlans": {
+      "title": "Fremtidige Planer og Strategisk Visjon",
+      "subtitle": "2025-2029 Veikart",
+      "intro": "En omfattende tilnærming til ansvarlig gruvedrift og bærekraftig utvikling",
+      "greenMining": {
+        "title": "Grønn Gruvestrategi",
+        "description1": "Grønn gruvedrift vil redusere fotavtrykket på miljøet i fremtiden. Vår strategi er å bruke underjordiske operasjoner, som reduserer naturinngrep, utslipp og arealkrav for deponering.",
+        "description2": "Selv om det vil være behov for deponi, kan vi ved å tenke på tilbakefylling av steinrom og bruke ny teknologi for økt bruk av sekundære ressurser for knust steinproduksjon og finstoffer i betong- og asfaltproduksjon, redusere dette betydelig."
+      },
+      "longTermVision": {
+        "title": "Langtidsvisjon",
+        "description": "Å bli en ledende leverandør av kritiske mineraler i Europa, og støtte kontinentets overgang til fornybar energi og elektrifisert transport."
+      }
+    },
+    "mineralGrade": {
+      "title": "Mineralgrad",
+      "comparison": "Sammenligning",
+      "subtitle": "Typiske gradområder for målmineraler i våre utforskningsprosjekter",
+      "minerals": {
+        "copper": {
+          "name": "Kobber",
+          "application": "Elektronikk, fornybar energi"
+        },
+        "nickel": {
+          "name": "Nikkel",
+          "application": "Batterier, rustfritt stål"
+        },
+        "zinc": {
+          "name": "Sink",
+          "application": "Forzinking, legeringer"
+        },
+        "cobalt": {
+          "name": "Kobolt",
+          "application": "Batterier, superlegeringer"
+        }
+      }
+    },
+    "timeline": {
+      "title": "Selskapshistorikk",
+      "subtitle": "Vår Reise",
+      "items": {
+        "2020": {
+          "title": "Selskapet Grunnlagt",
+          "description": "Selskapet grunnlagt med fokus på kritiske mineraler"
+        },
+        "2021": {
+          "title": "Første Lisenser Ervervet",
+          "description": "Ervervet første utforskningslisenser i Nordfjord-regionen"
+        },
+        "2022": {
+          "title": "Porteføljeutvidelse",
+          "description": "Utvidet portefølje til 15+ lisenser over hele Norge"
+        },
+        "2023": {
+          "title": "Avansert Utforskning",
+          "description": "Innledet avanserte utforskningsprogrammer"
+        },
+        "2024": {
+          "title": "Store Oppdagelser",
+          "description": "Betydelige REE-funn inkludert Snøfjell-depositum med 350.000 tonn malm dokumentert"
+        },
+        "2025": {
+          "title": "Gruvevannprosjekt Lansert",
+          "description": "Lansering av innovative Malm Gruvevann Ressursprosjekt som utnytter 7-10 millioner m³ av ion-rikt gruvevann"
+        },
+        "2026+": {
+          "title": "Produksjon og Vekst",
+          "description": "Mål om produksjonsstart og fortsatt utvidelse av utforskningsporteføljen"
+        }
+      }
+    },
+    "futurePlans": {
+      "title": "Fremtidige Planer og Strategisk Visjon",
+      "subtitle": "2025-2029 Veikart",
+      "intro": "En omfattende tilnærming til ansvarlig gruvedrift og bærekraftig utvikling",
+      "greenMining": {
+        "title": "Grønn Gruvestrategi",
+        "description1": "Grønn gruvedrift vil redusere fotavtrykket på miljøet i fremtiden. Vår strategi er å bruke underjordiske operasjoner, som reduserer naturinngrep, utslipp og arealkrav for deponering.",
+        "description2": "Selv om det vil være behov for deponi, kan vi ved å tenke på tilbakefylling av steinrom og bruke ny teknologi for økt bruk av sekundære ressurser for knust steinproduksjon og finstoffer i betong- og asfaltproduksjon, redusere dette betydelig."
+      },
+      "longTermVision": {
+        "title": "Langtidsvisjon",
+        "description": "Å bli en ledende leverandør av kritiske mineraler i Europa, og støtte kontinentets overgang til fornybar energi og elektrifisert transport."
+      },
+      "items": {
+        "2025-2027": {
+          "title": "Skalering av Mineralutvinning",
+          "description": "Skalere opp mineralutvinning fra høytverdige lisensierte områder med dokumenterte in-situ ressurser, støttet av intern og ekstern geologisk analyse."
+        },
+        "2025-2029-1": {
+          "title": "Geotermisk Kraftutvidelse",
+          "description": "Utvide vår geotermiske kraftproduksjon fra 1 TWh til 10 TWh årlig, muliggjøre energintegrert gruvedrift og langsiktig operativ stabilitet."
+        },
+        "2025-2029-2": {
+          "title": "Sirkulær Ressursutnyttelse",
+          "description": "Fremme miljøansvarlig mineralgjenvinning fra gruvevann og avgang, pionere en ny standard i sirkulær ressursutnyttelse."
+        },
+        "2025-2029-3": {
+          "title": "Strategiske Partnerskap og Vekst",
+          "description": "Styrke strategiske partnerskap på tvers av energi, industri og finans for å forberede internasjonal vekst og selektiv eiendelsmonetisering."
+        }
+      }
+    },
+    "team": {
+      "title": "Ledelse og Team",
+      "subtitle": "Vårt Lederskap",
+      "management": "Ledelse",
+      "board": "Styret",
+      "advisory": "Rådgivende Råd",
+      "roles": {
+        "CEO": "Daglig Leder",
+        "Chairman": "Styreleder",
+        "Board Member": "Styremedlem",
+        "Board Member, Investor": "Styremedlem, Investor",
+        "Advisory Board Member": "Rådgivende Rådsmedlem",
+        "Advisory Board Member, Investment Manager": "Rådgivende Rådsmedlem, Investeringsforvalter"
+      }
+    }
+  },
+  "projects": {
+    "title": "Våre Prosjekter",
+    "subtitle": "Utforske kritiske mineralressurser på tvers av Norges mest lovende regioner",
+    "activeProjects": "Aktive Prosjekter",
+    "totalLicenses": "Totale Lisenser",
+    "totalArea": "km² Område",
+    "portfolio": {
+      "title": "Utforskningsportefølje",
+      "subtitle": "Vår strategiske portefølje av kritiske mineralutforskningsprosjekter på tvers av Norges mest lovende geologiske regioner"
+    },
+    "targetMinerals": "Målmineraler",
+    "mineralNames": {
+      "Cerium": "Cerium",
+      "Gold": "Gull",
+      "Zinc": "Sink",
+      "Copper": "Kobber",
+      "Cobalt": "Kobolt",
+      "Nickel": "Nikkel",
+      "Iron": "Jern",
+      "Beryllium": "Beryllium",
+      "Rubidium": "Rubidium",
+      "Niobium": "Niob",
+      "Zirconium": "Zirkonium",
+      "Yttrium": "Yttrium",
+      "Uranium": "Uran",
+      "Light REEs": "Lette REE",
+      "Lead": "Bly",
+      "Silver": "Sølv",
+      "Pyrite": "Pyritt",
+      "REE": "REE",
+      "Fergusonite": "Fergusonitt",
+      "Monazite": "Monazitt"
+    },
+    "viewProjectDetails": "Se Prosjektdetaljer",
+    "overview": "Oversikt",
+    "stage": "Fase",
+    "licenses": "Lisenser",
+    "area": "Område",
+    "minerals": "Mineraler",
+    "priority": "Prioritet",
+    "high": "Høy",
+    "medium": "Middels",
+    "low": "Lav",
+    "advancedExploration": "Avansert Utforskning",
+    "resourceDefinition": "Ressursdefinisjon",
+    "earlyExploration": "Tidlig Utforskning",
+    "activeExploration": "Aktiv Utforskning",
+    "projectOverview": "Prosjektoversikt",
+    "keyMetrics": "Nøkkeltall",
+    "geology": "Geologi",
+    "explorationActivities": "Utforskningsaktiviteter",
+    "projectTimeline": "Prosjekttidslinje",
+    "licenseCoverage": "Lisensdekning",
+    "backToProjects": "← Tilbake til Alle Prosjekter",
+    "totalArea": "Totalt Område",
+    "explorationLicenses": "Utforskningslisenser",
+    "coverage": "Dekning",
+    "items": {
+      "snoefjell": {
+        "description": "45 borrkjerner dokumenterer 350.000 tonn malm i 5 meters høyde, med et gjennomsnitt på 1,8% Beryllium. Inneholder svært interessante verdier for lette REE inkludert Rubidium (Rb), Niob (Nb), Zirkonium (Zr), Uran (U) og Yttrium (Y).",
+        "overview": "Snøfjell-depositumet representerer en av de mest betydningsfulle oppdagelsene av sjeldne jordarter i Norge. 45 borrkjerner dokumenterer 350.000 tonn malm i 5 meters høyde, med et gjennomsnittlig Beryllium-innhold på 1,8%. Depositumet viser eksepsjonelle konsentrasjoner av lette sjeldne jordarter.",
+        "coverage": "350.000 Tonn Malm Dokumentert | 270 km² Lisensiert Område"
+      },
+      "malmfosdalen": {
+        "description": "Historisk gruvedistrikt (1906-1997) som produserte jern, kobber og svovel. Hjemsted for det revolusjonerende Gruvevann Ressursprosjekt. Vi har identifisert levedyktige forekomster av Cerium på nivåer som aldri er observert i Norge før, sammen med Gull, Sink, Kobber, Nikkel og Kobolt.",
+        "overview": "Malm Gruvedistriktet representerer 20.000 årsverk med gruvehistorie som går tilbake til 1906. Opprinnelig drevet av Fosdalens Bergverks A/S, produserte gruvene over 35 millioner tonn malm i perioden 1906-1997, og ga nesten 16 millioner tonn magnetittkonsentrat. Distriktet er nå stedet for vårt innovative Gruvevann Ressursprosjekt, som revolusjonerer mineralutvinning.",
+        "coverage": "147 Milliarder NOK Est. Mineralverdi"
+      },
+      "killingdal": {
+        "description": "Oppdatering kommer snart",
+        "overview": "Oppdatering kommer snart",
+        "coverage": "Oppdatering kommer snart"
+      },
+      "naustdal": {
+        "description": "Oppdatering kommer snart",
+        "overview": "Oppdatering kommer snart",
+        "coverage": "Oppdatering kommer snart"
+      },
+      "lergruvbakken": {
+        "description": "Et Pyritt-Sink depositum med opprinnelige reserver på ~940.000 tonn. Primære råvarer inkluderer Sink (5,5%), Kobber (0,45%), Bly (0,25%) og Sølv (10 ppm). Gruvedrift fant sted på 1970-tallet og opphørte i 1977.",
+        "overview": "Lergruvbakken er en del av det historiske Røros gruvedistrikt og var en av de senere små underjordiske gruvene. Gruvedrift ved Lergruvbakken fant sted på 1970-tallet og opphørte da selskapet gikk konkurs i 1977. Depositumet er beskrevet i NGU-opptegnelser som et pyritt-sink type depositum, med sink som primær råvare.",
+        "coverage": "$376 Millioner USD Angitt Verdi | 52.200 m² Regulert Område"
+      }
+    }
+  },
+  "investors": {
+    "title": "Investorforhold",
+    "subtitle": "Investeringsmulighet i Norske Mineraler",
+    "keyStats": {
+      "title": "Nøkkeltall",
+      "estValue": "Billioner NOK Est. Verdi",
+      "licenses": "Utforskningslisenser",
+      "area": "km² Lisensiert Område"
+    },
+    "methodology": {
+      "title": "Ressursvurderingsmetodikk"
+    },
+    "documents": {
+      "title": "Rapporter og Presentasjoner",
+      "subtitle": "Få tilgang til våre siste selskaprapporter, presentasjoner og utforskningsoppdateringer",
+      "download": "Last Ned",
+      "presentations": "Presentasjoner",
+      "reports": "Rapporter",
+      "notices": "Varsler"
+    },
+    "investmentOpportunity": "Investeringsmulighet",
+    "strategicPosition": {
+      "title": "Strategisk Posisjon",
+      "description": "NORVEGE MINERALS AS tilbyr investorer eksponering mot Norges kritiske mineralpotensial på et tidspunkt da Europa søker å sikre innenlandske kilder til batterimetaller, sjeldne jordarter og andre mineraler som er essensielle for energiovergangen."
+    },
+    "valueCreation": {
+      "title": "Verdi Skaping",
+      "description": "Vår diversifiserte portefølje av utforskningslisenser, erfarne ledelsesteam og forpliktelse til ansvarlig gruvedrift posisjonerer oss for langsiktig verdiskaping."
+    },
+    "keyFacts": {
+      "title": "Nøkkelfakta",
+      "subtitle": "Essensielle mål som viser vår utforskningsportefølje og strategiske posisjon"
+    },
+    "methodology": {
+      "subtitle": "Hvordan vi beregner våre ressursestimater og verdsettelser"
+    },
+    "inquiries": {
+      "title": "Investorhenvendelser",
+      "description": "For mer informasjon om investeringsmuligheter, vennligst kontakt vårt investorforholdsteam.",
+      "cta": "Kontakt Oss"
+    }
+  },
+  "contact": {
+    "title": "Kontakt Oss",
+    "subtitle": "Ta kontakt med vårt team for henvendelser, partnerskap eller investeringsmuligheter",
+    "getInTouch": "Ta Kontakt",
+    "getInTouchDescription": "Ta kontakt med vårt team for henvendelser, partnerskap eller investeringsmuligheter. Vi er her for å hjelpe.",
+    "contactInfo": "Kontaktinformasjon",
+    "sendMessage": "Send oss en Melding",
+    "form": {
+      "fullName": "Fullt Navn",
+      "email": "E-post",
+      "company": "Selskap",
+      "subject": "Emne",
+      "message": "Melding",
+      "selectSubject": "Velg et emne",
+      "subjects": {
+        "investmentInquiry": "Investeringsforespørsel",
+        "partnershipOpportunity": "Partnerskapsmulighet",
+        "projectInformation": "Prosjektinformasjon",
+        "mediaInquiry": "Medieforespørsel",
+        "generalInquiry": "Generell henvendelse",
+        "other": "Annet"
+      },
+      "placeholders": {
+        "fullName": "Ola Nordmann",
+        "email": "ola@eksempel.no",
+        "company": "Ditt Selskap",
+        "message": "Hvordan kan vi hjelpe deg?"
+      },
+      "errors": {
+        "nameRequired": "Navn er påkrevd",
+        "emailRequired": "E-post er påkrevd",
+        "emailInvalid": "Vennligst oppgi en gyldig e-postadresse",
+        "subjectRequired": "Emne er påkrevd",
+        "messageRequired": "Melding er påkrevd"
+      },
+      "requiredFields": "Påkrevde felt",
+      "sending": "Sender...",
+      "sendMessage": "Send Melding",
+      "success": {
+        "title": "Melding Sendt!",
+        "description": "Takk for at du kontaktet oss. Vi kommer tilbake til deg innen 24-48 timer."
+      },
+      "error": {
+        "title": "Vennligst rett feilene nedenfor",
+        "description": "Noen påkrevde felt mangler eller er ugyldige. Vennligst sjekk og prøv igjen."
+      }
+    },
+    "faq": {
+      "title": "Ofte Stilte Spørsmål"
+    }
+  },
+  "esg": {
+    "title": "ESG og Bærekraft",
+    "subtitle": "Vårt Engasjement for Ansvarlig Gruvedrift",
+    "heroSubtitle": "Ansvarlig gruvedrift er ikke valgfritt—det er grunnleggende for alt vi gjør",
+    "commitment": {
+      "title": "Vårt Engasjement",
+      "description1": "I NORVEGE MINERALS AS erkjenner vi at mineralene vi utforsker er essensielle for den globale energiovergangen. Vi forstår imidlertid også at hvordan vi utvinner disse ressursene er like viktig som hva vi utvinner. Vi er forpliktet til de høyeste standardene for miljøvern, sosialt ansvar og bedriftsstyring.",
+      "description2": "Våre operasjoner er i tråd med norske forskrifter, EU-standarder og internasjonale beste praksis for ansvarlig gruvedrift."
+    },
+    "environmental": {
+      "title": "Miljø",
+      "landUse": {
+        "title": "Arealbruk og Biologisk Mangfold",
+        "description": "Vi gjennomfører omfattende miljøvurderinger før enhver utforskningsaktivitet. Vårt mål er å minimere forstyrrelser av økosystemer og beskytte biologisk mangfold i områdene der vi opererer."
+      },
+      "waterManagement": {
+        "title": "Vannforvaltning",
+        "description": "Å beskytte vannressurser er en topprioritet. Vi implementerer strenge vannforvaltningsprotokoller for å forhindre forurensning og sikre bærekraftig bruk."
+      },
+      "emissions": {
+        "title": "Utslipp og Klima",
+        "description": "Vi sporer og jobber for å minimere vårt karbonavtrykk, og erkjenner ironien ved å utvinne mineraler for energiovergangen samtidig som vi bidrar til utslipp. Våre utforskningsmetoder prioriterer lavpåvirkningsteknikker."
+      }
+    },
+    "social": {
+      "title": "Sosialt",
+      "communities": {
+        "title": "Lokalsamfunn",
+        "description": "Vi engasjerer oss med lokalsamfunn tidlig og ofte, og sikrer at våre aktiviteter er transparente og at bekymringer i lokalsamfunnet blir hørt og adressert."
+      },
+      "indigenousRights": {
+        "title": "Urfolksrettigheter",
+        "description": "Vi respekterer rettighetene til urfolk, inkludert samene, og sikrer at våre operasjoner ikke krenker tradisjonelle landområder eller kulturarv."
+      },
+      "jobsSafety": {
+        "title": "Arbeidsplasser og Sikkerhet",
+        "description": "Vi prioriterer helse og sikkerhet for våre arbeidere og sikter mot å skape kvalitetsarbeidsplasser i regionene der vi opererer."
+      }
+    },
+    "governance": {
+      "title": "Styring",
+      "transparency": {
+        "title": "Åpenhet",
+        "description": "Vi opprettholder åpen og transparent rapportering om våre aktiviteter, økonomi og ESG-ytelse. Interessenter har rett til å vite hvordan vi opererer."
+      },
+      "compliance": {
+        "title": "Regeloverholdelse",
+        "description": "Vi overholder alle norske gruveforskrifter og jobber tett med tilsynsmyndigheter for å sikre full overholdelse."
+      },
+      "ethics": {
+        "title": "Etisk Forretningspraksis",
+        "description": "Vår virksomhet drives med integritet, ærlighet og respekt for alle interessenter. Vi har nulltoleranse for korrupsjon eller uetisk oppførsel."
+      }
+    }
+  },
+  "partners": {
+    "title": "Strategiske Partnere",
+    "subtitle": "Strategiske partnerskap for bærekraftig mineralutvikling",
+    "description": "NORVEGE MINERALS AS samarbeider med strategiske partnere for å fremme våre utforsknings- og utviklingsaktiviteter. Våre partnerskap spenner over offentlige institusjoner, kommuner og strategiske utviklingsorganisasjoner.",
+    "ourPartners": "Våre Partnere",
+    "partnershipAreas": "Partnerskapsområder",
+    "areas": [
+      "Utforskning og utviklingspartnerskap",
+      "Offentlige og kommunale samarbeid",
+      "Regionale utviklingsinitiativer",
+      "Strategisk ressursutvikling"
+    ],
+    "ctaDescription": "Vi er alltid interessert i å utforske nye partnerskapsmuligheter som samsvarer med våre verdier og strategiske mål. Hvis du er interessert i å samarbeide med oss, vennligst kontakt oss gjennom vårt kontaktskjema.",
+    "cta": "Bli en Partner"
+  }
+}

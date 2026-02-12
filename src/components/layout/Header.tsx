@@ -1,19 +1,44 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
+import { Link } from "@/i18n/routing";
+import { usePathname as useNextPathname } from "next/navigation";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "@/content/projects";
 import Logo from "@/components/ui/Logo";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
+import { useTranslations } from "next-intl";
 
 export default function Header() {
-  const pathname = usePathname();
+  // All hooks must be called unconditionally at the top level in the same order
+  const t = useTranslations("common.nav");
+  const nextPathname = useNextPathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false);
   const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Remove locale prefix from pathname for matching
+  const pathname = useMemo(() => {
+    if (!nextPathname) return "";
+    // Remove locale prefix (e.g., /en/about -> /about, /no/about -> /about)
+    const pathWithoutLocale = nextPathname.replace(/^\/(en|no)/, "") || "/";
+    return pathWithoutLocale;
+  }, [nextPathname]);
+
+  // Compute derived values after hooks
+  const navLinks = useMemo(
+    () => [
+      { href: "/about", label: t("about") },
+      { href: "/investors", label: t("investors") },
+      { href: "/contact", label: t("contact") },
+    ],
+    [t]
+  );
+
+  const accentColor = "var(--color-accent-main)";
+  const navyColor = "var(--color-primary-main)";
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -48,15 +73,6 @@ export default function Header() {
     }
   }, [mobileMenuOpen]);
 
-  const navLinks = [
-    { href: "/about", label: "About" },
-    { href: "/investors", label: "Investors" },
-    { href: "/contact", label: "Contact" },
-  ];
-
-  const accentColor = "var(--color-accent-main)";
-  const navyColor = "var(--color-primary-main)";
-
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
@@ -78,72 +94,28 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1 h-full">
+          <div className="hidden lg:flex items-center space-x-8 h-full">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = pathname === link.href || pathname?.startsWith(link.href + "/");
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="relative px-5 py-2.5 text-lg font-semibold transition-all duration-300 rounded-lg group"
+                  className="relative px-2 py-3 text-lg font-semibold transition-all duration-300 group"
                   style={{
                     color: "var(--color-text-on-dark)",
                   }}
                 >
                   <span className="relative z-10">{link.label}</span>
-                  {/* Active state background */}
+                  {/* Underline - Always visible for active, visible on hover */}
                   <motion.span
-                    className="absolute inset-0 rounded-lg"
+                    className="absolute bottom-0 left-0 right-0 h-0.5"
                     style={{
-                      background: isActive
-                        ? `color-mix(in srgb, var(--color-accent-main) 15%, transparent)`
-                        : `transparent`,
+                      background: "var(--color-accent-main)",
                       opacity: isActive ? 1 : 0,
                     }}
+                    whileHover={{ opacity: 1 }}
                     transition={{ duration: 0.2 }}
-                  />
-                  {/* Hover state background */}
-                  <motion.span
-                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100"
-                    style={{
-                      background: `color-mix(in srgb, var(--color-accent-main) 15%, transparent)`,
-                    }}
-                    transition={{ duration: 0.2 }}
-                  />
-                  {/* Blue border glow on hover or active */}
-                  <motion.span
-                    className="absolute inset-0 rounded-lg pointer-events-none"
-                    style={{
-                      border: `2px solid var(--color-primary-main)`,
-                      opacity: isActive ? 1 : 0,
-                    }}
-                    transition={{ duration: 0.2 }}
-                  />
-                  <motion.span
-                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none"
-                    style={{
-                      border: `2px solid var(--color-primary-main)`,
-                    }}
-                    transition={{ duration: 0.2 }}
-                  />
-                  {/* Active underline */}
-                  <motion.span
-                    className="absolute bottom-1 left-1/2 h-0.5"
-                    style={{
-                      transform: "translateX(-50%)",
-                      background: accentColor,
-                      width: isActive ? "75%" : "0",
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  {/* Hover underline */}
-                  <motion.span
-                    className="absolute bottom-1 left-1/2 h-0.5 w-0 group-hover:w-3/4"
-                    style={{
-                      transform: "translateX(-50%)",
-                      background: accentColor,
-                    }}
-                    transition={{ duration: 0.3 }}
                   />
                 </Link>
               );
@@ -156,7 +128,7 @@ export default function Header() {
                 return (
                   <button
                     type="button"
-                    className="relative px-5 py-2.5 text-lg font-semibold transition-all duration-300 rounded-lg flex items-center gap-1.5 group"
+                    className="relative px-2 py-3 text-lg font-semibold transition-all duration-300 flex items-center gap-1.5 group"
                     style={{
                       color: "var(--color-text-on-dark)",
                     }}
@@ -164,7 +136,7 @@ export default function Header() {
                     aria-haspopup="true"
                     onClick={() => setProjectsDropdownOpen(!projectsDropdownOpen)}
                   >
-                    <span className="relative z-10">Projects</span>
+                    <span className="relative z-10">{t("projects")}</span>
                     <motion.svg
                       className="w-4 h-4 relative z-10"
                       fill="none"
@@ -180,59 +152,15 @@ export default function Header() {
                         d="M19 9l-7 7-7-7"
                       />
                     </motion.svg>
-                    {/* Active state background */}
+                    {/* Underline - Always visible for active, visible on hover */}
                     <motion.span
-                      className="absolute inset-0 rounded-lg"
+                      className="absolute bottom-0 left-0 right-0 h-0.5"
                       style={{
-                        background: isProjectsActive
-                          ? `color-mix(in srgb, var(--color-accent-main) 15%, transparent)`
-                          : `transparent`,
+                        background: "var(--color-accent-main)",
                         opacity: isProjectsActive ? 1 : 0,
                       }}
+                      whileHover={{ opacity: 1 }}
                       transition={{ duration: 0.2 }}
-                    />
-                    {/* Hover state background */}
-                    <motion.span
-                      className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100"
-                      style={{
-                        background: `color-mix(in srgb, var(--color-accent-main) 15%, transparent)`,
-                      }}
-                      transition={{ duration: 0.2 }}
-                    />
-                    {/* Blue border glow on active or hover */}
-                    <motion.span
-                      className="absolute inset-0 rounded-lg pointer-events-none"
-                      style={{
-                        border: `2px solid var(--color-primary-main)`,
-                        opacity: isProjectsActive ? 1 : 0,
-                      }}
-                      transition={{ duration: 0.2 }}
-                    />
-                    <motion.span
-                      className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none"
-                      style={{
-                        border: `2px solid var(--color-primary-main)`,
-                      }}
-                      transition={{ duration: 0.2 }}
-                    />
-                    {/* Active underline */}
-                    <motion.span
-                      className="absolute bottom-1 left-1/2 h-0.5"
-                      style={{
-                        transform: "translateX(-50%)",
-                        background: accentColor,
-                        width: isProjectsActive ? "75%" : "0",
-                      }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    {/* Hover underline */}
-                    <motion.span
-                      className="absolute bottom-1 left-1/2 h-0.5 w-0 group-hover:w-3/4"
-                      style={{
-                        transform: "translateX(-50%)",
-                        background: accentColor,
-                      }}
-                      transition={{ duration: 0.3 }}
                     />
                   </button>
                 );
@@ -390,6 +318,11 @@ export default function Header() {
             </div>
           </div>
 
+          {/* Language Switcher - Right Side */}
+          <div className="hidden lg:flex items-center">
+            <LanguageSwitcher />
+          </div>
+
           {/* Mobile Menu Button */}
           <motion.button
             type="button"
@@ -517,7 +450,7 @@ export default function Header() {
                           }}
                           onClick={() => setMobileMenuOpen(false)}
                         >
-                          HOME
+                          {t("home").toUpperCase()}
                         </Link>
                         <div
                           className="h-px my-2"
@@ -538,7 +471,7 @@ export default function Header() {
                           }}
                           onClick={() => setMobileMenuOpen(false)}
                         >
-                          ABOUT
+                          {t("about").toUpperCase()}
                         </Link>
                         <div
                           className="h-px my-2"
@@ -559,7 +492,7 @@ export default function Header() {
                           }}
                           onClick={() => setMobileMenuOpen(false)}
                         >
-                          INVESTORS
+                          {t("investors").toUpperCase()}
                         </Link>
                         <div
                           className="h-px my-2"
@@ -583,7 +516,7 @@ export default function Header() {
                                 textDecorationThickness: isProjectsActive ? "2px" : "1px",
                               }}
                             >
-                              <span>PROJECTS</span>
+                              <span>{t("projects").toUpperCase()}</span>
                               <motion.svg
                                 className="w-4 h-4"
                                 fill="none"
@@ -668,7 +601,7 @@ export default function Header() {
                           }}
                           onClick={() => setMobileMenuOpen(false)}
                         >
-                          CONTACT
+                          {t("contact").toUpperCase()}
                         </Link>
                       </div>
                     </nav>

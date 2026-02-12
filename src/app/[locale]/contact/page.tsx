@@ -1,21 +1,17 @@
-import type { Metadata } from "next";
+"use client";
+
 import Script from "next/script";
-import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 import { companyInfo } from "@/content/company";
 import { contactFAQs } from "@/content/legal";
 import Accordion from "@/components/ui/accordion";
 import { generateFAQSchema } from "@/lib/seo";
 import ContactForm from "@/components/contact/ContactForm";
 import ContactHeroImage from "@/components/ui/ContactHeroImage";
-
-export const metadata: Metadata = generateSEOMetadata({
-  title: "Contact Us - NORVEGE MINERALS AS",
-  description:
-    "Get in touch with NORVEGE MINERALS AS. Contact our team for inquiries, partnerships, or investment opportunities.",
-  path: "/contact",
-});
+import { useTranslations } from "next-intl";
 
 export default function ContactPage() {
+  const t = useTranslations("contact");
+  const tCommon = useTranslations("common.labels");
   const faqSchema = generateFAQSchema(contactFAQs);
 
   return (
@@ -55,13 +51,13 @@ export default function ContactPage() {
                 letterSpacing: "-0.03em",
               }}
             >
-              Contact{" "}
+              {t("title").split(" ")[0]}{" "}
               <span
                 style={{
                   color: "var(--color-accent-main)",
                 }}
               >
-                Us
+                {t("title").split(" ")[1]}
               </span>
             </h1>
 
@@ -75,7 +71,7 @@ export default function ContactPage() {
                 fontWeight: "var(--font-weight-medium)",
               }}
             >
-              Get in touch with our team for inquiries, partnerships, or investment opportunities
+              {t("subtitle")}
             </p>
 
             {/* Quick Contact Info */}
@@ -85,7 +81,7 @@ export default function ContactPage() {
                   className="text-lg md:text-xl font-semibold mb-2"
                   style={{ color: "var(--color-accent-main)" }}
                 >
-                  Email
+                  {tCommon("email")}
                 </div>
                 <a
                   href={`mailto:${companyInfo.contact.email}`}
@@ -103,7 +99,7 @@ export default function ContactPage() {
                     className="text-lg md:text-xl font-semibold mb-2"
                     style={{ color: "var(--color-accent-main)" }}
                   >
-                    Location
+                    {tCommon("address")}
                   </div>
                   <div
                     className="text-base md:text-lg"
@@ -164,7 +160,10 @@ export default function ContactPage() {
                 fontFamily: "var(--font-family-heading)",
               }}
             >
-              Get in <span style={{ color: "var(--color-accent-main)" }}>Touch</span>
+              {t("getInTouch").split(" ")[0]}{" "}
+              <span style={{ color: "var(--color-accent-main)" }}>
+                {t("getInTouch").split(" ").slice(1).join(" ")}
+              </span>
             </h2>
             <p
               className="text-lg md:text-xl max-w-3xl mx-auto"
@@ -174,8 +173,7 @@ export default function ContactPage() {
                 lineHeight: "var(--line-height-loose)",
               }}
             >
-              Reach out to our team for inquiries, partnerships, or investment opportunities.
-              We&apos;re here to help.
+              {t("getInTouchDescription")}
             </p>
           </div>
 
@@ -189,7 +187,7 @@ export default function ContactPage() {
                   fontFamily: "var(--font-family-heading)",
                 }}
               >
-                Contact Information
+                {t("contactInfo")}
               </h3>
               <div className="space-y-4">
                 {/* Company Details Card */}
@@ -233,19 +231,27 @@ export default function ContactPage() {
                     </div>
                     <div className="flex-1">
                       <h3
-                        className="text-base font-bold mb-2"
-                        style={{ color: "var(--color-primary-main)" }}
+                        className="text-base mb-2"
+                        style={{
+                          color: "var(--color-text-body)",
+                          fontFamily: "var(--font-family-heading)",
+                          fontWeight: "var(--font-weight-black)",
+                        }}
                       >
-                        Company Details
+                        {tCommon("companyDetails")}
                       </h3>
                       <p
-                        className="text-sm mb-1 font-medium"
-                        style={{ color: "var(--color-text-body)" }}
+                        className="text-sm mb-1"
+                        style={{
+                          color: "var(--color-text-body)",
+                          fontFamily: "var(--font-family-body)",
+                          fontWeight: "var(--font-weight-medium)",
+                        }}
                       >
                         {companyInfo.legalName}
                       </p>
                       <p className="text-xs" style={{ color: "var(--color-text-secondary)" }}>
-                        Org. nr: {companyInfo.orgNumber}
+                        {tCommon("orgNumber")}: {companyInfo.orgNumber}
                       </p>
                     </div>
                   </div>
@@ -298,14 +304,22 @@ export default function ContactPage() {
                     </div>
                     <div className="flex-1">
                       <h3
-                        className="text-base font-bold mb-2"
-                        style={{ color: "var(--color-primary-main)" }}
+                        className="text-base mb-2"
+                        style={{
+                          color: "var(--color-text-body)",
+                          fontFamily: "var(--font-family-heading)",
+                          fontWeight: "var(--font-weight-black)",
+                        }}
                       >
-                        Address
+                        {tCommon("address")}
                       </h3>
                       <p
-                        className="text-sm mb-1 font-medium"
-                        style={{ color: "var(--color-text-body)" }}
+                        className="text-sm mb-1"
+                        style={{
+                          color: "var(--color-text-body)",
+                          fontFamily: "var(--font-family-body)",
+                          fontWeight: "var(--font-weight-medium)",
+                        }}
                       >
                         {companyInfo.address.street}
                       </p>
@@ -361,10 +375,14 @@ export default function ContactPage() {
                       </div>
                       <div className="flex-1">
                         <h3
-                          className="text-base font-bold mb-2"
-                          style={{ color: "var(--color-primary-main)" }}
+                          className="text-base mb-2"
+                          style={{
+                            color: "var(--color-text-body)",
+                            fontFamily: "var(--font-family-heading)",
+                            fontWeight: "var(--font-weight-black)",
+                          }}
                         >
-                          Phone
+                          {tCommon("phone")}
                         </h3>
                         <a
                           href={`tel:${companyInfo.contact.phone}`}
@@ -402,7 +420,7 @@ export default function ContactPage() {
                   fontFamily: "var(--font-family-heading)",
                 }}
               >
-                Send us a Message
+                {t("sendMessage")}
               </h3>
               <ContactForm />
             </div>
@@ -417,7 +435,7 @@ export default function ContactPage() {
             className="text-display mb-8 text-center"
             style={{ color: "var(--color-primary-main)" }}
           >
-            Frequently Asked Questions
+            {t("faq.title")}
           </h2>
           <Accordion items={contactFAQs} />
         </div>

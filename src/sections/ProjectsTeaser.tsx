@@ -1,10 +1,11 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { projects } from "@/content/projects";
+import { useTranslations } from "next-intl";
 
 // Custom icons
 const MapPinIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
@@ -140,6 +141,8 @@ function ProjectImageRotator({ images, alt }: { images: string[]; alt: string })
 }
 
 export default function ProjectsTeaser() {
+  const t = useTranslations("home.projects");
+
   return (
     <section
       className="section relative overflow-hidden"
@@ -207,7 +210,7 @@ export default function ProjectsTeaser() {
               boxShadow: "none",
             }}
           >
-            Our Projects
+            {t("title")}
           </span>
           <h2
             className="text-display mb-6"
@@ -218,14 +221,7 @@ export default function ProjectsTeaser() {
               letterSpacing: "-0.03em",
             }}
           >
-            Exploration{" "}
-            <span
-              style={{
-                color: "var(--color-accent-main)",
-              }}
-            >
-              Areas
-            </span>
+            {t("subtitle")}
           </h2>
           <p
             className="text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto text-center block"
@@ -237,8 +233,7 @@ export default function ProjectsTeaser() {
               letterSpacing: "-0.01em",
             }}
           >
-            Strategic license holdings in Fensfeltet – the world&apos;s largest rare earth deposit
-            in Norway.
+            {t("description")}
           </p>
         </div>
 
@@ -450,7 +445,7 @@ export default function ProjectsTeaser() {
                                 fontWeight: "var(--font-weight-bold)",
                               }}
                             >
-                              License Area
+                              {t("licenseArea")}
                             </span>
                             <span
                               className="text-2xl font-bold block"
@@ -472,7 +467,7 @@ export default function ProjectsTeaser() {
                                 fontWeight: "var(--font-weight-bold)",
                               }}
                             >
-                              Licenses
+                              {t("licenses")}
                             </span>
                             <span
                               className="text-2xl font-bold block"
@@ -500,7 +495,7 @@ export default function ProjectsTeaser() {
                         }}
                       >
                         <span className="text-base font-bold uppercase tracking-wider">
-                          Explore Project
+                          {t("exploreProject")}
                         </span>
                         <div>
                           <ArrowRightIcon className="w-5 h-5" />
@@ -533,7 +528,7 @@ export default function ProjectsTeaser() {
               fontWeight: "var(--font-weight-bold)",
             }}
           >
-            View All Projects
+            {t("viewAll")}
             <ArrowRightIcon className="w-5 h-5" />
           </Link>
         </div>

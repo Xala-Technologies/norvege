@@ -1,0 +1,647 @@
+{
+  "common": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "projects": "Projects",
+      "investors": "Investors",
+      "contact": "Contact",
+      "esg": "ESG",
+      "partners": "Partners"
+    },
+    "footer": {
+      "company": "Company",
+      "projects": "Projects",
+      "resources": "Resources",
+      "aboutUs": "About Us",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "overview": "Overview",
+      "partners": "Partners",
+      "contact": "Contact",
+      "description": "Norwegian exploration company focused on sustainable mineral development in the Trøndelag region.",
+      "copyright": "© {year} NORVEGE MINERALS AS",
+      "allRightsReserved": "All rights reserved.",
+      "norchain": {
+        "title": "Assets Tokenized on NorChain",
+        "subtitle": "The Complete Blockchain Operating System",
+        "visit": "Visit NorChain"
+      }
+    },
+    "buttons": {
+      "learnMore": "Learn More",
+      "readMore": "Read More",
+      "viewAll": "View All",
+      "explore": "Explore",
+      "contact": "Contact Us",
+      "getInTouch": "Get in Touch",
+      "submit": "Submit",
+      "send": "Send",
+      "close": "Close",
+      "back": "Back"
+    },
+    "labels": {
+      "name": "Name",
+      "email": "Email",
+      "company": "Company",
+      "subject": "Subject",
+      "message": "Message",
+      "phone": "Phone",
+      "address": "Address",
+      "companyDetails": "Company Details",
+      "orgNumber": "Org. nr"
+    }
+  },
+  "home": {
+    "hero": {
+      "slide1": {
+        "badge": "Mining Exploration",
+        "title": "Discovering Minerals",
+        "highlight": "Inside Mountains",
+        "description": "Exploring the depths of Norway's mountains to uncover critical minerals essential for Europe's green transition. Our advanced exploration techniques reveal the hidden treasures within.",
+        "cta": "Explore Our Assets",
+        "secondaryCta": "Our Technology"
+      },
+      "slide2": {
+        "badge": "Responsible Mining",
+        "title": "Responsible Mining for the",
+        "highlight": "Green Transition",
+        "description": "Securing Europe's supply of vital resources. We hold 74 exploration licenses across 1,690 km², focusing on high-value minerals essential for renewable energy and geopolitical stability.",
+        "cta": "Explore Our Assets",
+        "secondaryCta": "Our Technology"
+      },
+      "slide3": {
+        "badge": "Critical Minerals",
+        "title": "Rare Earth Elements",
+        "highlight": "Strategic Resources",
+        "description": "Exploring rare earth elements essential for the energy transition. Contributing to Europe's mineral independence.",
+        "cta": "View All Projects"
+      },
+      "slide4": {
+        "badge": "Investment Opportunity",
+        "title": "Science-Driven Discovery",
+        "highlight": "Innovation",
+        "description": "Pioneering a new era of mineral exploration in Europe with cutting-edge technology and proven expertise.",
+        "cta": "Investor Relations"
+      },
+      "scrollToExplore": "Scroll to explore"
+    },
+    "stats": {
+      "title": "Key Metrics",
+      "eyebrow": "Our Impact",
+      "heading": "Exploration at Scale",
+      "description": "Norve'Ge Minerals AS is a Norwegian exploration company focused on unlocking mineral value from historic mines and future-critical resources. We combine traditional mining with advanced water-based mineral extraction, recovering rare elements directly from geothermal mine water. Our operations are powered by renewable energy, including proprietary geothermal power solutions and containerized turbine systems. With a strong commitment to environmental stewardship and innovation, Norve'Ge Minerals supports the shift toward a more sustainable resource economy.",
+      "metrics": {
+        "explorationLicenses": {
+          "label": "Exploration Licenses",
+          "description": "Norve'Ge Minerals currently holds 74 mineral rights. This includes 15 mines with Adterra and 2 with Nordveg'r, for a total of 23 mines."
+        },
+        "licensedArea": {
+          "label": "km² Licensed Area",
+          "description": "Norve'Ge Minerals has a total licensed area of 1,600 km², plus an additional 90 km² through Adterra and Nordveg'r."
+        },
+        "viableFinds": {
+          "label": "Viable Finds",
+          "description": "Norve'Ge Minerals has identified 31 economically viable sites."
+        },
+        "estValue": {
+          "label": "Trillion NOK Est. Value",
+          "description": "Estimated total value: 4.885.000.000.000 NOK"
+        },
+        "reeTypes": {
+          "label": "REE Mineral Types",
+          "description": "Multiple REE discoveries across Norway (Monazite, Bastnäsite, Xenotime, Allanite, Zircon, Fergusonite, Euxenite, Samarskite)"
+        },
+        "partnerships": {
+          "label": "Strategic Partnerships",
+          "description": "Adterra, Steinkjer Municipality, Steinkjer Utvikling AS"
+        }
+      }
+    },
+    "rareEarth": {
+      "title": "Rare Earth Elements",
+      "subtitle": "Critical Minerals for the Energy Transition",
+      "eyebrow": "Strategic Context",
+      "heading": "Europe's Race for",
+      "headingHighlight": "Rare Earths",
+      "description": "From Dependency to Dominance",
+      "dependency": {
+        "title": "The Critical Dependency",
+        "description": "Europe is heavily dependent on imports for strategic resources. Renewable energy and 5G infrastructure require large amounts of Copper, Nickel, Lithium, Cobalt, and Rare Earth Elements (REE).",
+        "refining": {
+          "title": "Lack of Refining Capacity",
+          "description": "Europe depends on external sources for rare earth refining, creating significant supply chain vulnerabilities and geopolitical risks."
+        },
+        "import": {
+          "title": "Import Dependency",
+          "description": "The EU currently imports 100% of its rare earth elements with no domestic extraction, exposing Europe to supply disruptions."
+        },
+        "demand": {
+          "title": "Demand Growth by 2030",
+          "description": "EU demand for REEs in strategic technologies—electric vehicles, wind turbines, defense systems—is projected to increase 5 times by 2030."
+        }
+      },
+      "unlocking": "Unlocking Domestic Resources",
+      "recycling": "Recycling alone cannot meet demand. Responsible, domestic mining is crucial for Norway's supply security and independence.",
+      "response": {
+        "title": "The European Response",
+        "act": {
+          "title": "Critical Raw Materials Act",
+          "description": "A strategic plan to build a secure and resilient domestic supply chain and reduce dependency on third countries for critical raw materials."
+        },
+        "targets": {
+          "title": "2030 Targets",
+          "extraction": "Extraction Target (2030)",
+          "processing": "Processing Target (2030)",
+          "recycling": "Recycling Target (2030)"
+        }
+      }
+    },
+    "projects": {
+      "title": "Our Projects",
+      "subtitle": "Exploring Norway's Mineral Potential",
+      "description": "Strategic license holdings in Fensfeltet – the world's largest rare earth deposit in Norway.",
+      "exploreProject": "Explore Project",
+      "viewAll": "View All Projects",
+      "licenseArea": "License Area",
+      "licenses": "Licenses",
+      "coverage": "Coverage"
+    },
+    "blockchain": {
+      "title": "Blockchain Technology",
+      "subtitle": "Transparency in Mineral Tracking",
+      "eyebrow": "Innovation",
+      "heading": "The Malm Mine",
+      "headingHighlight": "Water Project",
+      "description": "Turning Environmental Liability into Sustainable Assets",
+      "description2": "We are revolutionizing extraction by utilizing 7–10 million m³ of 26°C ion-rich mine water from the flooded Malm mines. By applying Selective Ion Exchange (IX) and Electro-winning (EW), we extract valuable metals while removing heavy metals from highly contaminated water, significantly reducing emissions compared to conventional mining.",
+      "description3": "Combined with a thermo powerplant based on Double Flash technology (similar to Hellisheiði, Iceland), this creates a self-sustainable mineral processing process. The hot purified water is heated to 120°C using heat exchangers for power generation, then cooled and recirculated in a closed-loop system.",
+      "benefits": {
+        "sustainable": {
+          "title": "Sustainable",
+          "description": "Reduces CO₂ emissions by 20–40 tons per kg of minerals compared to traditional mining."
+        },
+        "efficient": {
+          "title": "Efficient",
+          "description": "Recovers 750–1,500 kg of minerals per cycle."
+        },
+        "revenue": {
+          "title": "Revenue",
+          "description": "Estimated €2.5M – €6.5M revenue per cycle."
+        }
+      },
+      "cta": {
+        "learnMore": "Learn More About Our Projects",
+        "contact": "Learn More"
+      }
+    },
+    "norchain": {
+      "title": "NorChain",
+      "subtitle": "Blockchain-Powered Mineral Tracking",
+      "eyebrow": "Blockchain Integration",
+      "heading": "Our Assets are Tokenized on",
+      "headingHighlight": "NorChain",
+      "description": "Norvege Minerals has partnered with NorChain to bring transparency and accessibility to mineral exploration—enabling secure, verifiable ownership and investment opportunities powered by blockchain technology.",
+      "cta": {
+        "visit": "Visit NorChain",
+        "learnMore": "Learn More"
+      },
+      "features": {
+        "tokenized": {
+          "title": "Tokenized Assets",
+          "description": "Our mineral assets are securely tokenized on the NorChain blockchain for transparent ownership."
+        },
+        "global": {
+          "title": "Global Access",
+          "description": "Enabling worldwide investment opportunities in Norwegian mineral exploration with compliant infrastructure."
+        },
+        "secure": {
+          "title": "Secure & Transparent",
+          "description": "Blockchain-verified transactions with complete audit trails and stronger governance for stakeholders."
+        }
+      },
+      "card": {
+        "poweredBy": "Powered by NorChain",
+        "title": "Transparent ownership with compliant infrastructure",
+        "description": "A clean on-chain record of assets, governance and audit trails—designed for institutional-grade access and reporting.",
+        "operatingSystem": "The Complete Blockchain Operating System",
+        "tokenChips": {
+          "assetToken": "Asset Token",
+          "auditTrail": "Audit Trail",
+          "investorAccess": "Investor Access"
+        },
+        "stats": {
+          "security": {
+            "label": "Security",
+            "value": "On-chain"
+          },
+          "reporting": {
+            "label": "Reporting",
+            "value": "Auditable"
+          }
+        }
+      }
+    },
+    "contactStrip": {
+      "heading": "Ready to Explore",
+      "headingHighlight": "Opportunities?",
+      "description": "Connect with our team to discuss exploration projects, investment opportunities, or partnership possibilities.",
+      "formTitle": "Get in Touch",
+      "formDescription": "Fill out the form and our team will respond promptly.",
+      "cards": {
+        "company": "COMPANY",
+        "address": "ADDRESS",
+        "email": "EMAIL",
+        "responseTime": "RESPONSE TIME",
+        "responseTimeValue": "Within 24-48 hours",
+        "responseTimeSubtitle": "Monday - Friday"
+      }
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About",
+      "highlight": "NORVEGE MINERALS AS",
+      "description": "Building Norway's mineral future through responsible exploration and sustainable development",
+      "values": {
+        "responsible": "Responsible",
+        "mining": "Mining",
+        "sustainable": "Sustainable",
+        "development": "Development",
+        "strategic": "Strategic",
+        "exploration": "Exploration",
+        "innovation": "Innovation",
+        "excellence": "Excellence"
+      }
+    },
+    "overview": {
+      "title": "Company Overview",
+      "storyTitle": "Our Story",
+      "storySubtitle": "A Norwegian mining company committed to responsible exploration and sustainable development",
+      "missionTitle": "Our Mission",
+      "description": "Norve'Ge Minerals AS is a Norwegian exploration company focused on unlocking mineral value from historic mines and future-critical resources. We combine traditional mining with advanced water-based mineral extraction, recovering rare elements directly from geothermal mine water. Our operations are powered by renewable energy, including proprietary geothermal power solutions and containerized turbine systems. With a strong commitment to environmental stewardship and innovation, Norve'Ge Minerals supports the shift toward a more sustainable resource economy.",
+      "richHeritage": {
+        "title": "Rich Heritage",
+        "description": "Norway has a rich mining heritage dating back centuries. Today, we stand at the forefront of a new era—one where critical minerals like copper, nickel, cobalt, and rare earth elements are essential for batteries, renewable energy systems, and the electrification of society."
+      },
+      "explorationPortfolio": {
+        "title": "Exploration Portfolio",
+        "description": "Our exploration portfolio spans multiple regions across Norway, targeting both historical mining districts with modern exploration techniques and greenfield opportunities in underexplored areas."
+      },
+      "europeanContext": {
+        "title": "European Context",
+        "description": "As Europe seeks to reduce dependence on imported critical minerals, Norway's stable jurisdiction and mineral potential position us as a strategic domestic supplier."
+      }
+    },
+    "mineralGrade": {
+      "title": "Mineral Grade",
+      "comparison": "Comparison",
+      "subtitle": "Typical grade ranges for target minerals in our exploration projects",
+      "minerals": {
+        "copper": {
+          "name": "Copper",
+          "application": "Electronics, renewable energy"
+        },
+        "nickel": {
+          "name": "Nickel",
+          "application": "Batteries, stainless steel"
+        },
+        "zinc": {
+          "name": "Zinc",
+          "application": "Galvanization, alloys"
+        },
+        "cobalt": {
+          "name": "Cobalt",
+          "application": "Batteries, superalloys"
+        }
+      }
+    },
+    "timeline": {
+      "title": "Company Timeline",
+      "subtitle": "Our Journey",
+      "items": {
+        "2020": {
+          "title": "Company Founded",
+          "description": "Company founded with focus on critical minerals"
+        },
+        "2021": {
+          "title": "First Licenses Acquired",
+          "description": "Acquired first exploration licenses in Nordfjord region"
+        },
+        "2022": {
+          "title": "Portfolio Expansion",
+          "description": "Expanded portfolio to 15+ licenses across Norway"
+        },
+        "2023": {
+          "title": "Advanced Exploration",
+          "description": "Initiated advanced exploration programs"
+        },
+        "2024": {
+          "title": "Major Discoveries",
+          "description": "Significant REE finds including Snøfjell deposit with 350,000 tonnes ore documented"
+        },
+        "2025": {
+          "title": "Mine Water Project Launch",
+          "description": "Launch of innovative Malm Mine Water Resource Project utilizing 7-10 million m³ of ion-rich mine water"
+        },
+        "2026+": {
+          "title": "Production & Growth",
+          "description": "Targeting production start and continued expansion of exploration portfolio"
+        }
+      }
+    },
+    "futurePlans": {
+      "title": "Future Plans & Strategic Vision",
+      "subtitle": "2025-2029 Roadmap",
+      "intro": "A comprehensive approach to responsible mining and sustainable development",
+      "greenMining": {
+        "title": "Green Mining Strategy",
+        "description1": "Green mining will reduce the footprint on the environment in the future. Our strategy is to use underground operations, which reduces natural encroachment, emissions and land requirements for disposal.",
+        "description2": "While there will be a need for landfill, by thinking about backfilling of rock caverns and using new technology for increased use of secondary resources for crushed stone production and fines in concrete and asphalt production, it is possible to reduce this considerably."
+      },
+      "longTermVision": {
+        "title": "Long-term Vision",
+        "description": "To become a leading supplier of critical minerals in Europe, supporting the continent's transition to renewable energy and electrified transportation."
+      },
+      "items": {
+        "2025-2027": {
+          "title": "Scaling Mineral Extraction",
+          "description": "Scaling up mineral extraction from high-value licensed areas with documented in-situ resources, supported by internal and external geological analysis."
+        },
+        "2025-2029-1": {
+          "title": "Geothermal Power Expansion",
+          "description": "Expanding our geothermal-based power production from 1 TWh to 10 TWh annually, enabling energy-integrated mining and long-term operational stability."
+        },
+        "2025-2029-2": {
+          "title": "Circular Resource Utilization",
+          "description": "Advancing environmentally responsible mineral recovery from mine water and tailings, pioneering a new standard in circular resource utilization."
+        },
+        "2025-2029-3": {
+          "title": "Strategic Partnerships & Growth",
+          "description": "Strengthening strategic partnerships across energy, industry, and finance to prepare for international growth and selective asset monetization."
+        }
+      }
+    },
+    "team": {
+      "title": "Management & Team",
+      "subtitle": "Our Leadership",
+      "management": "Management",
+      "board": "Board of Directors",
+      "advisory": "Advisory Board",
+      "roles": {
+        "CEO": "CEO",
+        "Chairman": "Chairman",
+        "Board Member": "Board Member",
+        "Board Member, Investor": "Board Member, Investor",
+        "Advisory Board Member": "Advisory Board Member",
+        "Advisory Board Member, Investment Manager": "Advisory Board Member, Investment Manager"
+      }
+    }
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Exploring critical mineral resources across Norway's most promising regions",
+    "activeProjects": "Active Projects",
+    "totalLicenses": "Total Licenses",
+    "totalArea": "km² Area",
+    "portfolio": {
+      "title": "Exploration Portfolio",
+      "subtitle": "Our strategic portfolio of critical mineral exploration projects across Norway's most promising geological regions"
+    },
+    "overview": "Overview",
+    "stage": "Stage",
+    "licenses": "Licenses",
+    "area": "Area",
+    "minerals": "Minerals",
+    "targetMinerals": "Target Minerals",
+    "mineralNames": {
+      "Cerium": "Cerium",
+      "Gold": "Gold",
+      "Zinc": "Zinc",
+      "Copper": "Copper",
+      "Cobalt": "Cobalt",
+      "Nickel": "Nickel",
+      "Iron": "Iron",
+      "Beryllium": "Beryllium",
+      "Rubidium": "Rubidium",
+      "Niobium": "Niobium",
+      "Zirconium": "Zirconium",
+      "Yttrium": "Yttrium",
+      "Uranium": "Uranium",
+      "Light REEs": "Light REEs",
+      "Lead": "Lead",
+      "Silver": "Silver",
+      "Pyrite": "Pyrite",
+      "REE": "REE",
+      "Fergusonite": "Fergusonite",
+      "Monazite": "Monazite"
+    },
+    "priority": "Priority",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low",
+    "viewProjectDetails": "View Project Details",
+    "advancedExploration": "Advanced Exploration",
+    "resourceDefinition": "Resource Definition",
+    "earlyExploration": "Early Exploration",
+    "activeExploration": "Active Exploration",
+    "projectOverview": "Project Overview",
+    "keyMetrics": "Key Metrics",
+    "geology": "Geology",
+    "explorationActivities": "Exploration Activities",
+    "projectTimeline": "Project Timeline",
+    "licenseCoverage": "License Coverage",
+    "backToProjects": "← Back to All Projects",
+    "totalArea": "Total Area",
+    "explorationLicenses": "Exploration Licenses",
+    "coverage": "Coverage",
+    "items": {
+      "snoefjell": {
+        "description": "45 drillcores document 350,000 tonnes of ore in 5 meter height, with an average of 1.8% Beryllium. Contains very interesting values for light REEs including Rubidium (Rb), Niobium (Nb), Zirconium (Zr), Uranium (U), and Yttrium (Y).",
+        "overview": "Snøfjell Deposit represents one of the most significant Rare Earth Element discoveries in Norway. 45 drillcores document 350,000 tonnes of ore in 5 meter height, with an average of 1.8% Beryllium content. The deposit shows exceptional concentrations of light Rare Earth Elements.",
+        "coverage": "350,000 Tonnes Ore Documented | 270 km² Licensed Area"
+      },
+      "malmfosdalen": {
+        "description": "Historic mining district (1906-1997) producing iron, copper, and sulfur. Home to the revolutionary Mine Water Resource Project. We have identified viable deposits of Cerium at levels never observed in Norway before, along with Gold, Zinc, Copper, Nickel, and Cobalt.",
+        "overview": "The Malm Mine District represents 20,000 man-years of mining history dating back to 1906. Originally operated by Fosdalens Bergverks A/S, the mines produced over 35 million tonnes of ore during 1906-1997, yielding nearly 16 million tonnes of magnetite concentrate. The district is now the site of our innovative Mine Water Resource Project, revolutionizing mineral extraction.",
+        "coverage": "147 Billion NOK Est. Mineral Value"
+      },
+      "killingdal": {
+        "description": "Update soon",
+        "overview": "Update soon",
+        "coverage": "Update soon"
+      },
+      "naustdal": {
+        "description": "Update soon",
+        "overview": "Update soon",
+        "coverage": "Update soon"
+      },
+      "lergruvbakken": {
+        "description": "A Pyrite-Zinc deposit with original reserves of ~940,000 tonnes. Primary commodities include Zinc (5.5%), Copper (0.45%), Lead (0.25%), and Silver (10 ppm). Mining took place in the 1970s and ceased in 1977.",
+        "overview": "Lergruvbakken is part of the historic Røros mining district and was one of the later small underground mines. Mining at Lergruvbakken took place in the 1970s and ceased when the company went into bankruptcy in 1977. The deposit is described in NGU records as a pyrite-zinc type deposit, with zinc as the primary commodity.",
+        "coverage": "$376 Million USD Indicated Value | 52,200 m² Regulated Area"
+      }
+    }
+  },
+  "investors": {
+    "title": "Investor Relations",
+    "subtitle": "Building value through strategic exploration of critical minerals",
+    "investmentOpportunity": "Investment Opportunity",
+    "strategicPosition": {
+      "title": "Strategic Position",
+      "description": "NORVEGE MINERALS AS offers investors exposure to Norway's critical mineral potential at a time when Europe is seeking to secure domestic sources of battery metals, rare earth elements, and other minerals essential for the energy transition."
+    },
+    "valueCreation": {
+      "title": "Value Creation",
+      "description": "Our diversified portfolio of exploration licenses, experienced management team, and commitment to responsible mining position us for long-term value creation."
+    },
+    "keyFacts": {
+      "title": "Key Facts",
+      "subtitle": "Essential metrics showcasing our exploration portfolio and strategic position"
+    },
+    "keyStats": {
+      "title": "Key Statistics",
+      "estValue": "Trillion NOK Est. Value",
+      "licenses": "Exploration Licenses",
+      "area": "km² Licensed Area"
+    },
+    "methodology": {
+      "title": "Resource Valuation Methodology",
+      "subtitle": "How we calculate our resource estimates and valuations"
+    },
+    "documents": {
+      "title": "Reports & Presentations",
+      "subtitle": "Access our latest company reports, presentations, and exploration updates",
+      "download": "Download",
+      "presentations": "Presentations",
+      "reports": "Reports",
+      "notices": "Notices"
+    },
+    "inquiries": {
+      "title": "Investor Inquiries",
+      "description": "For more information about investment opportunities, please contact our investor relations team.",
+      "cta": "Contact Us"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our team for inquiries, partnerships, or investment opportunities",
+    "getInTouch": "Get in Touch",
+    "getInTouchDescription": "Reach out to our team for inquiries, partnerships, or investment opportunities. We're here to help.",
+    "contactInfo": "Contact Information",
+    "sendMessage": "Send us a Message",
+    "form": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "company": "Company",
+      "subject": "Subject",
+      "message": "Message",
+      "selectSubject": "Select a subject",
+      "subjects": {
+        "investmentInquiry": "Investment Inquiry",
+        "partnershipOpportunity": "Partnership Opportunity",
+        "projectInformation": "Project Information",
+        "mediaInquiry": "Media Inquiry",
+        "generalInquiry": "General Inquiry",
+        "other": "Other"
+      },
+      "placeholders": {
+        "fullName": "John Doe",
+        "email": "john@example.com",
+        "company": "Your Company",
+        "message": "How can we help you?"
+      },
+      "errors": {
+        "nameRequired": "Name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email",
+        "subjectRequired": "Subject is required",
+        "messageRequired": "Message is required"
+      },
+      "requiredFields": "Required fields",
+      "sending": "Sending...",
+      "sendMessage": "Send Message",
+      "success": {
+        "title": "Message Sent Successfully!",
+        "description": "Thank you for contacting us. We'll get back to you within 24-48 hours."
+      },
+      "error": {
+        "title": "Please fix the errors below",
+        "description": "Some required fields are missing or invalid. Please check and try again."
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions"
+    }
+  },
+  "esg": {
+    "title": "ESG & Sustainability",
+    "subtitle": "Our Commitment to Responsible Mining",
+    "heroSubtitle": "Responsible mining is not optional—it's fundamental to everything we do",
+    "commitment": {
+      "title": "Our Commitment",
+      "description1": "At NORVEGE MINERALS AS, we recognize that the minerals we explore are essential for the global energy transition. However, we also understand that how we extract these resources matters just as much as what we extract. We are committed to the highest standards of environmental stewardship, social responsibility, and corporate governance.",
+      "description2": "Our operations align with Norwegian regulations, EU standards, and international best practices for responsible mining."
+    },
+    "environmental": {
+      "title": "Environmental",
+      "landUse": {
+        "title": "Land Use & Biodiversity",
+        "description": "We conduct comprehensive environmental impact assessments before any exploration activity. Our goal is to minimize disturbance to ecosystems and protect biodiversity in the areas where we operate."
+      },
+      "waterManagement": {
+        "title": "Water Management",
+        "description": "Protecting water resources is a top priority. We implement strict water management protocols to prevent contamination and ensure sustainable use."
+      },
+      "emissions": {
+        "title": "Emissions & Climate",
+        "description": "We track and work to minimize our carbon footprint, recognizing the irony of extracting minerals for the energy transition while contributing to emissions. Our exploration methods prioritize low-impact techniques."
+      }
+    },
+    "social": {
+      "title": "Social",
+      "communities": {
+        "title": "Local Communities",
+        "description": "We engage with local communities early and often, ensuring that our activities are transparent and that community concerns are heard and addressed."
+      },
+      "indigenousRights": {
+        "title": "Indigenous Rights",
+        "description": "We respect the rights of indigenous peoples, including the Sami, and ensure that our operations do not infringe on traditional lands or cultural heritage."
+      },
+      "jobsSafety": {
+        "title": "Jobs & Safety",
+        "description": "We prioritize the health and safety of our workers and aim to create quality employment opportunities in the regions where we operate."
+      }
+    },
+    "governance": {
+      "title": "Governance",
+      "transparency": {
+        "title": "Transparency",
+        "description": "We maintain open and transparent reporting on our activities, financials, and ESG performance. Stakeholders have a right to know how we operate."
+      },
+      "compliance": {
+        "title": "Regulatory Compliance",
+        "description": "We adhere to all Norwegian mining regulations and work closely with regulatory authorities to ensure full compliance."
+      },
+      "ethics": {
+        "title": "Ethical Business Practices",
+        "description": "Our business is conducted with integrity, honesty, and respect for all stakeholders. We have zero tolerance for corruption or unethical behavior."
+      }
+    }
+  },
+  "partners": {
+    "title": "Strategic Partners",
+    "subtitle": "Strategic partnerships for sustainable mineral development",
+    "description": "NORVEGE MINERALS AS collaborates with strategic partners to advance our exploration and development activities. Our partnerships span public institutions, municipalities, and strategic development organizations.",
+    "ourPartners": "Our Partners",
+    "partnershipAreas": "Partnership Areas",
+    "areas": [
+      "Exploration and development partnerships",
+      "Public and municipal collaborations",
+      "Regional development initiatives",
+      "Strategic resource development"
+    ],
+    "ctaDescription": "We are always interested in exploring new partnership opportunities that align with our values and strategic objectives. If you are interested in partnering with us, please contact us through our contact form.",
+    "cta": "Become a Partner"
+  }
+}

@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 // Icons
 const ShieldIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
@@ -95,28 +96,28 @@ type Feature = {
   description: string;
 };
 
-const features: Feature[] = [
-  {
-    icon: ShieldIcon,
-    title: "Tokenized Assets",
-    description:
-      "Our mineral assets are securely tokenized on the NorChain blockchain for transparent ownership.",
-  },
-  {
-    icon: GlobeIcon,
-    title: "Global Access",
-    description:
-      "Enabling worldwide investment opportunities in Norwegian mineral exploration with compliant infrastructure.",
-  },
-  {
-    icon: LockIcon,
-    title: "Secure & Transparent",
-    description:
-      "Blockchain-verified transactions with complete audit trails and stronger governance for stakeholders.",
-  },
-];
-
 export default function NorChainSection() {
+  const t = useTranslations("home.norchain");
+  const tFeatures = useTranslations("home.norchain.features");
+
+  const features: Feature[] = [
+    {
+      icon: ShieldIcon,
+      title: tFeatures("tokenized.title"),
+      description: tFeatures("tokenized.description"),
+    },
+    {
+      icon: GlobeIcon,
+      title: tFeatures("global.title"),
+      description: tFeatures("global.description"),
+    },
+    {
+      icon: LockIcon,
+      title: tFeatures("secure.title"),
+      description: tFeatures("secure.description"),
+    },
+  ];
+
   return (
     <section
       className="section relative overflow-hidden"
@@ -160,7 +161,7 @@ export default function NorChainSection() {
               border: "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
             }}
           >
-            Blockchain Integration
+            {t("eyebrow")}
           </span>
 
           <h1
@@ -172,8 +173,8 @@ export default function NorChainSection() {
               letterSpacing: "-0.03em",
             }}
           >
-            Our Assets are Tokenized on{" "}
-            <span style={{ color: "var(--color-accent-main)" }}>NorChain</span>
+            {t("heading")}{" "}
+            <span style={{ color: "var(--color-accent-main)" }}>{t("headingHighlight")}</span>
           </h1>
 
           <p
@@ -184,9 +185,7 @@ export default function NorChainSection() {
               lineHeight: "var(--line-height-loose)",
             }}
           >
-            Norvege Minerals has partnered with NorChain to bring transparency and accessibility to
-            mineral exploration—enabling secure, verifiable ownership and investment opportunities
-            powered by blockchain technology.
+            {t("description")}
           </p>
 
           <div className="mt-9 flex flex-col sm:flex-row gap-4 justify-center">
@@ -203,7 +202,7 @@ export default function NorChainSection() {
                 fontFamily: "var(--font-family-body)",
               }}
             >
-              Visit NorChain <ExternalLinkIcon />
+              {t("cta.visit")} <ExternalLinkIcon />
             </a>
             <Link
               href="/investors"
@@ -218,7 +217,7 @@ export default function NorChainSection() {
                 WebkitBackdropFilter: "blur(8px)",
               }}
             >
-              Learn More
+              {t("cta.learnMore")}
             </Link>
           </div>
         </motion.div>
@@ -261,7 +260,7 @@ export default function NorChainSection() {
                       fontFamily: "var(--font-family-body)",
                     }}
                   >
-                    Powered by NorChain
+                    {t("card.poweredBy")}
                   </div>
                   <h3
                     className="mt-5 text-2xl md:text-3xl font-bold"
@@ -271,7 +270,7 @@ export default function NorChainSection() {
                       letterSpacing: "-0.02em",
                     }}
                   >
-                    Transparent ownership with compliant infrastructure
+                    {t("card.title")}
                   </h3>
                   <p
                     className="mt-4 text-base md:text-lg leading-relaxed max-w-xl"
@@ -281,8 +280,7 @@ export default function NorChainSection() {
                       lineHeight: "var(--line-height-base)",
                     }}
                   >
-                    A clean on-chain record of assets, governance and audit trails—designed for
-                    institutional-grade access and reporting.
+                    {t("card.description")}
                   </p>
                 </div>
 
@@ -304,9 +302,13 @@ export default function NorChainSection() {
                 </div>
               </div>
 
-              {/* Mini “token chips” */}
+              {/* Mini "token chips" */}
               <div className="mt-9 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {["Asset Token", "Audit Trail", "Investor Access"].map((label) => (
+                {[
+                  t("card.tokenChips.assetToken"),
+                  t("card.tokenChips.auditTrail"),
+                  t("card.tokenChips.investorAccess"),
+                ].map((label) => (
                   <div
                     key={label}
                     className="px-4 py-3 rounded-2xl text-sm font-semibold"
@@ -326,8 +328,8 @@ export default function NorChainSection() {
               {/* Summary stats */}
               <div className="mt-8 grid grid-cols-2 gap-4">
                 {[
-                  { k: "Security", v: "On-chain" },
-                  { k: "Reporting", v: "Auditable" },
+                  { k: t("card.stats.security.label"), v: t("card.stats.security.value") },
+                  { k: t("card.stats.reporting.label"), v: t("card.stats.reporting.value") },
                 ].map((s) => (
                   <div
                     key={s.k}
@@ -471,10 +473,10 @@ export default function NorChainSection() {
                   </div>
                   <div>
                     <div className="text-sm font-bold" style={{ color: "var(--color-text-body)" }}>
-                      Powered by NorChain
+                      {t("card.poweredBy")}
                     </div>
                     <div className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
-                      The Complete Blockchain Operating System
+                      {t("card.operatingSystem")}
                     </div>
                   </div>
                 </div>

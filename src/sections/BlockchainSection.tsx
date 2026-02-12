@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const LeafIcon = ({ className = "w-8 h-8" }: { className?: string }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -47,29 +48,31 @@ const ArrowRightIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   </svg>
 );
 
-const benefits = [
-  {
-    icon: LeafIcon,
-    title: "Sustainable",
-    description:
-      "Reduces CO₂ emissions by 20–40 tons per kg of minerals compared to traditional mining.",
-    bgColor: "color-mix(in srgb, var(--color-accent-main) 10%, transparent)",
-  },
-  {
-    icon: BoltIcon,
-    title: "Efficient",
-    description: "Recovers 750–1,500 kg of minerals per cycle.",
-    bgColor: "color-mix(in srgb, var(--color-primary-main) 10%, transparent)",
-  },
-  {
-    icon: CurrencyIcon,
-    title: "Revenue",
-    description: "Estimated €2.5M – €6.5M revenue per cycle.",
-    bgColor: "color-mix(in srgb, var(--color-accent-main) 10%, transparent)",
-  },
-];
-
 export default function BlockchainSection() {
+  const t = useTranslations("home.blockchain");
+  const tBenefits = useTranslations("home.blockchain.benefits");
+
+  const benefits = [
+    {
+      icon: LeafIcon,
+      title: tBenefits("sustainable.title"),
+      description: tBenefits("sustainable.description"),
+      bgColor: "color-mix(in srgb, var(--color-accent-main) 10%, transparent)",
+    },
+    {
+      icon: BoltIcon,
+      title: tBenefits("efficient.title"),
+      description: tBenefits("efficient.description"),
+      bgColor: "color-mix(in srgb, var(--color-primary-main) 10%, transparent)",
+    },
+    {
+      icon: CurrencyIcon,
+      title: tBenefits("revenue.title"),
+      description: tBenefits("revenue.description"),
+      bgColor: "color-mix(in srgb, var(--color-accent-main) 10%, transparent)",
+    },
+  ];
+
   return (
     <section
       className="section relative overflow-hidden"
@@ -123,7 +126,7 @@ export default function BlockchainSection() {
               boxShadow: "none",
             }}
           >
-            Innovation
+            {t("eyebrow")}
           </motion.span>
           <h2
             className="text-display mb-6"
@@ -134,13 +137,13 @@ export default function BlockchainSection() {
               letterSpacing: "-0.03em",
             }}
           >
-            The Malm Mine{" "}
+            {t("heading")}{" "}
             <span
               style={{
                 color: "var(--color-accent-main)",
               }}
             >
-              Water Project
+              {t("headingHighlight")}
             </span>
           </h2>
           <p
@@ -153,7 +156,7 @@ export default function BlockchainSection() {
               letterSpacing: "-0.01em",
             }}
           >
-            Turning Environmental Liability into Sustainable Assets
+            {t("description")}
           </p>
           <p
             className="text-base md:text-lg max-w-4xl mx-auto text-center block mb-6"
@@ -164,11 +167,7 @@ export default function BlockchainSection() {
               fontWeight: "var(--font-weight-regular)",
             }}
           >
-            We are revolutionizing extraction by utilizing{" "}
-            <strong>7–10 million m³ of 26°C ion-rich mine water</strong> from the flooded Malm
-            mines. By applying Selective Ion Exchange (IX) and Electro-winning (EW), we extract
-            valuable metals while removing heavy metals from highly contaminated water,
-            significantly reducing emissions compared to conventional mining.
+            {t("description2")}
           </p>
           <p
             className="text-sm md:text-base max-w-4xl mx-auto text-center block"
@@ -179,10 +178,7 @@ export default function BlockchainSection() {
               fontWeight: "var(--font-weight-regular)",
             }}
           >
-            Combined with a thermo powerplant based on Double Flash technology (similar to
-            Hellisheiði, Iceland), this creates a self-sustainable mineral processing process. The
-            hot purified water is heated to 120°C using heat exchangers for power generation, then
-            cooled and recirculated in a closed-loop system.
+            {t("description3")}
           </p>
         </motion.div>
 
@@ -305,7 +301,7 @@ export default function BlockchainSection() {
                   fontWeight: "var(--font-weight-bold)",
                 }}
               >
-                Learn More About Our Projects
+                {t("cta.learnMore")}
                 <ArrowRightIcon className="w-5 h-5" />
               </Link>
             </motion.div>
@@ -322,7 +318,7 @@ export default function BlockchainSection() {
                   fontWeight: "var(--font-weight-bold)",
                 }}
               >
-                Learn More
+                {t("cta.contact")}
                 <ArrowRightIcon className="w-5 h-5" />
               </Link>
             </motion.div>

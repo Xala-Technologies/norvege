@@ -2,7 +2,6 @@
 
 import Script from "next/script";
 import { companyInfo } from "@/content/company";
-import { contactFAQs } from "@/content/legal";
 import Accordion from "@/components/ui/accordion";
 import { generateFAQSchema } from "@/lib/seo";
 import ContactForm from "@/components/contact/ContactForm";
@@ -12,7 +11,16 @@ import { useTranslations } from "next-intl";
 export default function ContactPage() {
   const t = useTranslations("contact");
   const tCommon = useTranslations("common.labels");
-  const faqSchema = generateFAQSchema(contactFAQs);
+  const tFAQ = useTranslations("contact.faq.items");
+
+  // Create translated FAQs
+  const faqKeys = ["investment", "location", "minerals", "sustainability", "visits", "updates"];
+  const translatedFAQs = faqKeys.map((key) => ({
+    question: tFAQ(`${key}.question`),
+    answer: tFAQ(`${key}.answer`),
+  }));
+
+  const faqSchema = generateFAQSchema(translatedFAQs);
 
   return (
     <div className="min-h-screen">
@@ -192,16 +200,16 @@ export default function ContactPage() {
               <div className="space-y-4">
                 {/* Company Details Card */}
                 <div
-                  className="group p-4 lg:p-5 rounded-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
+                  className="group p-4 lg:p-5 rounded-sm transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
                   style={{
-                    background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
+                    background: `var(--color-bg-default)`,
                     border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                     boxShadow: "none",
                   }}
                 >
                   {/* Enhanced border glow on hover */}
                   <div
-                    className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{
                       border: `2px solid var(--color-primary-main)`,
                     }}
@@ -259,16 +267,16 @@ export default function ContactPage() {
 
                 {/* Address Card */}
                 <div
-                  className="group p-4 lg:p-5 rounded-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
+                  className="group p-4 lg:p-5 rounded-sm transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
                   style={{
-                    background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
+                    background: `var(--color-bg-default)`,
                     border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                     boxShadow: "none",
                   }}
                 >
                   {/* Enhanced border glow on hover */}
                   <div
-                    className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{
                       border: `2px solid var(--color-primary-main)`,
                     }}
@@ -336,7 +344,7 @@ export default function ContactPage() {
                 {/* Phone Card */}
                 {companyInfo.contact.phone && (
                   <div
-                    className="group p-4 lg:p-5 rounded-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
+                    className="group p-4 lg:p-5 rounded-sm transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
                     style={{
                       background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
                       border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
@@ -345,7 +353,7 @@ export default function ContactPage() {
                   >
                     {/* Enhanced border glow on hover */}
                     <div
-                      className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                       style={{
                         border: `2px solid var(--color-primary-main)`,
                       }}
@@ -437,7 +445,7 @@ export default function ContactPage() {
           >
             {t("faq.title")}
           </h2>
-          <Accordion items={contactFAQs} />
+          <Accordion items={translatedFAQs} />
         </div>
       </section>
     </div>

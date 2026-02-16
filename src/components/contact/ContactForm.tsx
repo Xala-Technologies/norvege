@@ -78,7 +78,7 @@ export default function ContactForm() {
 
   return (
     <div
-      className="group p-8 lg:p-10 rounded-3xl transition-all duration-300 relative overflow-hidden"
+      className="group p-8 lg:p-10 rounded-md transition-all duration-300 relative overflow-hidden"
       style={{
         background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
         border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
@@ -87,7 +87,7 @@ export default function ContactForm() {
     >
       {/* Enhanced border glow on hover */}
       <div
-        className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{
           border: `2px solid var(--color-primary-main)`,
         }}
@@ -111,7 +111,7 @@ export default function ContactForm() {
             onChange={handleChange}
             onFocus={() => setFocusedField("name")}
             onBlur={() => setFocusedField(null)}
-            className={`w-full px-5 py-4 rounded-xl transition-all duration-300 text-base ${
+            className={`w-full px-5 py-4 rounded-sm transition-all duration-300 text-base ${
               errors.name ? "border-2 border-red-400" : ""
             }`}
             style={{
@@ -161,7 +161,7 @@ export default function ContactForm() {
             onChange={handleChange}
             onFocus={() => setFocusedField("email")}
             onBlur={() => setFocusedField(null)}
-            className={`w-full px-5 py-4 rounded-xl transition-all duration-300 text-base ${
+            className={`w-full px-5 py-4 rounded-sm transition-all duration-300 text-base ${
               errors.email ? "border-2 border-red-400" : ""
             }`}
             style={{
@@ -210,7 +210,7 @@ export default function ContactForm() {
             onChange={handleChange}
             onFocus={() => setFocusedField("company")}
             onBlur={() => setFocusedField(null)}
-            className="w-full px-5 py-4 rounded-xl transition-all duration-300 text-base"
+            className="w-full px-5 py-4 rounded-sm transition-all duration-300 text-base"
             style={{
               background: "var(--color-bg-default)",
               border:
@@ -243,7 +243,7 @@ export default function ContactForm() {
               onChange={handleChange}
               onFocus={() => setFocusedField("subject")}
               onBlur={() => setFocusedField(null)}
-              className={`w-full px-5 py-4 rounded-xl transition-all duration-300 appearance-none cursor-pointer pr-12 text-base ${
+              className={`w-full px-5 py-4 rounded-sm transition-all duration-300 appearance-none cursor-pointer pr-12 text-base ${
                 errors.subject ? "border-2 border-red-400" : ""
               }`}
               style={{
@@ -318,7 +318,7 @@ export default function ContactForm() {
             onChange={handleChange}
             onFocus={() => setFocusedField("message")}
             onBlur={() => setFocusedField(null)}
-            className={`w-full px-5 py-4 rounded-xl transition-all duration-300 resize-none text-base ${
+            className={`w-full px-5 py-4 rounded-sm transition-all duration-300 resize-none text-base ${
               errors.message ? "border-2 border-red-400" : ""
             }`}
             style={{
@@ -356,7 +356,7 @@ export default function ContactForm() {
               initial={{ opacity: 0, y: -10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
-              className="p-4 rounded-lg border-2 flex items-start gap-3"
+              className="p-4 rounded-sm border-2 flex items-start gap-3"
               style={{
                 background: "color-mix(in srgb, var(--color-success) 10%, transparent)",
                 borderColor: "color-mix(in srgb, var(--color-success) 30%, transparent)",
@@ -383,7 +383,7 @@ export default function ContactForm() {
               initial={{ opacity: 0, y: -10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
-              className="p-4 rounded-lg border-2 flex items-start gap-3"
+              className="p-4 rounded-sm border-2 flex items-start gap-3"
               style={{
                 background: "color-mix(in srgb, var(--color-error) 10%, transparent)",
                 borderColor: "color-mix(in srgb, var(--color-error) 30%, transparent)",
@@ -416,7 +416,7 @@ export default function ContactForm() {
             disabled={status === "submitting"}
             whileHover={status !== "submitting" ? { scale: 1.05, y: -2 } : {}}
             whileTap={status !== "submitting" ? { scale: 0.98 } : {}}
-            className="px-10 py-4 rounded-xl font-bold text-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group flex items-center gap-3 w-full sm:w-auto justify-center"
+            className="px-10 py-4 rounded-sm font-bold text-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group flex items-center gap-3 w-full sm:w-auto justify-center"
             style={{
               background:
                 status === "submitting"

@@ -80,18 +80,6 @@ export default function BlockchainSection() {
         background: `linear-gradient(180deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 30%, var(--color-bg-default) 70%, var(--color-bg-subtle) 100%)`,
       }}
     >
-      {/* Enhanced decorative background elements */}
-      <div className="absolute inset-0 opacity-[0.08]">
-        <div
-          className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-3xl"
-          style={{ background: "var(--color-accent-main)" }}
-        />
-        <div
-          className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl"
-          style={{ background: "var(--color-primary-main)" }}
-        />
-      </div>
-
       {/* Subtle grid pattern */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -207,7 +195,7 @@ export default function BlockchainSection() {
               >
                 {/* Card */}
                 <div
-                  className="relative p-8 lg:p-10 rounded-3xl transition-all duration-500 overflow-hidden h-full"
+                  className="relative p-8 lg:p-10 rounded-md transition-all duration-500 overflow-hidden h-full"
                   style={{
                     background: "var(--color-surface-card)",
                     border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
@@ -216,7 +204,7 @@ export default function BlockchainSection() {
                 >
                   {/* Enhanced border glow on hover */}
                   <motion.div
-                    className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{
                       border: `2px solid var(--color-primary-main)`,
                     }}
@@ -224,7 +212,7 @@ export default function BlockchainSection() {
 
                   {/* Icon */}
                   <motion.div
-                    className="relative mb-6 inline-flex items-center justify-center w-18 h-18 lg:w-20 lg:h-20 rounded-2xl"
+                    className="relative mb-6 inline-flex items-center justify-center w-18 h-18 lg:w-20 lg:h-20 rounded-sm"
                     style={{
                       background:
                         benefit.title === "Sustainable"
@@ -291,10 +279,9 @@ export default function BlockchainSection() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/projects"
-                className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300"
+                className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-sm font-bold text-lg transition-all duration-300"
                 style={{
-                  background:
-                    "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)",
+                  background: "var(--color-accent-main)",
                   color: "var(--color-accent-contrast)",
                   boxShadow: "none",
                   fontFamily: "var(--font-family-body)",
@@ -308,7 +295,7 @@ export default function BlockchainSection() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/contact"
-                className="btn-secondary inline-flex items-center gap-3 px-10 py-5 rounded-xl font-bold text-lg border-2 transition-all duration-300"
+                className="btn-secondary inline-flex items-center gap-3 px-10 py-5 rounded-sm font-bold text-lg border-2 transition-all duration-300"
                 style={{
                   borderColor: "var(--color-primary-main)",
                   color: "var(--color-primary-main)",

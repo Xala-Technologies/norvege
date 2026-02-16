@@ -210,7 +210,7 @@ export default function RareEarthSection() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08, duration: 0.5 }}
                 whileHover={{ y: -4, transition: { duration: 0.3 } }}
-                className="group rounded-3xl p-8 lg:p-9 relative overflow-hidden transition-all duration-300"
+                className="group rounded-md p-8 lg:p-9 relative overflow-hidden transition-all duration-300"
                 style={{
                   background: "rgba(255, 255, 255, 0.78)",
                   border:
@@ -238,7 +238,7 @@ export default function RareEarthSection() {
                 <div className="relative flex flex-col gap-5">
                   <div className="flex items-start gap-4">
                     <div
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
+                      className="w-14 h-14 rounded-sm flex items-center justify-center flex-shrink-0"
                       style={{
                         background: "rgba(227, 161, 66, 0.14)",
                         color: "var(--color-accent-main)",
@@ -299,7 +299,7 @@ export default function RareEarthSection() {
           >
             <div className="flex items-center gap-4 mb-6">
               <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
+                className="w-14 h-14 rounded-sm flex items-center justify-center flex-shrink-0"
                 style={{
                   background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 25%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 100%)`,
                   color: "var(--color-accent-main)",
@@ -322,7 +322,7 @@ export default function RareEarthSection() {
             </div>
 
             <div
-              className="group rounded-3xl p-8 md:p-9 lg:p-10 relative overflow-hidden transition-all duration-300"
+              className="group rounded-md p-8 md:p-9 lg:p-10 relative overflow-hidden transition-all duration-300"
               style={{
                 background: "rgba(255, 255, 255, 0.78)",
                 border: "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
@@ -400,7 +400,7 @@ export default function RareEarthSection() {
           >
             <div className="flex items-center gap-4 mb-6">
               <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
+                className="w-14 h-14 rounded-sm flex items-center justify-center flex-shrink-0"
                 style={{
                   background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 25%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 100%)`,
                   color: "var(--color-accent-main)",
@@ -425,7 +425,7 @@ export default function RareEarthSection() {
             {/* Act + targets */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div
-                className="group rounded-3xl p-8 md:p-9 relative overflow-hidden transition-all duration-300"
+                className="group rounded-md p-8 md:p-9 relative overflow-hidden transition-all duration-300"
                 style={{
                   background: "rgba(255, 255, 255, 0.78)",
                   border:
@@ -452,7 +452,7 @@ export default function RareEarthSection() {
                 />
                 <div className="relative flex items-start gap-5">
                   <div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
+                    className="w-14 h-14 rounded-sm flex items-center justify-center flex-shrink-0"
                     style={{
                       background:
                         "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)",
@@ -488,7 +488,7 @@ export default function RareEarthSection() {
               </div>
 
               <div
-                className="group rounded-3xl p-8 md:p-9 relative overflow-hidden transition-all duration-300"
+                className="group rounded-md p-8 md:p-9 relative overflow-hidden transition-all duration-300"
                 style={{
                   background: "rgba(255, 255, 255, 0.78)",
                   border:
@@ -516,7 +516,7 @@ export default function RareEarthSection() {
                 <div className="relative">
                   <div className="flex items-center gap-4 mb-6">
                     <div
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
+                      className="w-14 h-14 rounded-sm flex items-center justify-center flex-shrink-0"
                       style={{
                         background:
                           "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)",
@@ -588,10 +588,9 @@ export default function RareEarthSection() {
 
             {/* Highlight card */}
             <div
-              className="group rounded-3xl p-9 md:p-10 lg:p-12 relative overflow-hidden transition-all duration-300"
+              className="group rounded-md p-9 md:p-10 lg:p-12 relative overflow-hidden transition-all duration-300"
               style={{
-                background:
-                  "linear-gradient(135deg, var(--color-navy-deep) 0%, var(--color-navy-800) 100%)",
+                background: "#90D5FF",
                 border: "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
                 boxShadow: "none",
               }}
@@ -607,12 +606,11 @@ export default function RareEarthSection() {
 
               <div className="relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
                 <div
-                  className="w-18 h-18 md:w-20 md:h-20 rounded-2xl flex items-center justify-center flex-shrink-0"
+                  className="w-18 h-18 md:w-20 md:h-20 rounded-sm flex items-center justify-center flex-shrink-0"
                   style={{
-                    background:
-                      "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)",
+                    background: "transparent",
                     boxShadow: "none",
-                    color: "var(--color-accent-contrast)",
+                    color: "#1E293B",
                   }}
                 >
                   <GlobeAltIcon className="w-10 h-10" />
@@ -621,7 +619,7 @@ export default function RareEarthSection() {
                   <div
                     className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-none"
                     style={{
-                      color: "var(--color-accent-main)",
+                      color: "#1E293B",
                       fontFamily: "var(--font-family-heading)",
                       fontWeight: "var(--font-weight-black)",
                     }}
@@ -631,7 +629,7 @@ export default function RareEarthSection() {
                   <div
                     className="mt-3 text-2xl md:text-3xl font-bold"
                     style={{
-                      color: "var(--color-text-on-dark)",
+                      color: "#1E293B",
                       fontFamily: "var(--font-family-heading)",
                       letterSpacing: "-0.01em",
                     }}
@@ -641,7 +639,7 @@ export default function RareEarthSection() {
                   <p
                     className="mt-4 text-base md:text-lg leading-relaxed"
                     style={{
-                      color: "color-mix(in srgb, var(--color-text-on-dark) 88%, transparent)",
+                      color: "#1E293B",
                       fontFamily: "var(--font-family-body)",
                       lineHeight: "var(--line-height-base)",
                     }}

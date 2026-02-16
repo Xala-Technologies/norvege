@@ -34,19 +34,19 @@ export default function Footer() {
     <footer
       className="relative overflow-hidden"
       style={{
-        background: "var(--color-base-black)",
-        color: "var(--color-text-on-dark)",
+        background: "#90D5FF",
+        color: "#1E293B",
       }}
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 opacity-[0.05] overflow-hidden">
         <div
-          className="absolute top-0 left-0 w-[300px] h-[300px] rounded-full blur-3xl"
-          style={{ background: "var(--color-accent-main)" }}
+          className="absolute top-0 left-0 w-[250px] h-[250px] rounded-full blur-3xl"
+          style={{ background: "#90D5FF" }}
         />
         <div
-          className="absolute bottom-0 right-0 w-[300px] h-[300px] rounded-full blur-3xl"
-          style={{ background: "var(--color-primary-main)" }}
+          className="absolute bottom-0 right-0 w-[200px] h-[200px] rounded-full blur-3xl"
+          style={{ background: "#90D5FF" }}
         />
       </div>
 
@@ -62,7 +62,12 @@ export default function Footer() {
         }}
       />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10 relative z-10">
+      <div
+        className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10 relative z-10"
+        style={{
+          background: "#90D5FF",
+        }}
+      >
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-10">
           {/* Logo and Description - Left Column */}
@@ -73,7 +78,7 @@ export default function Footer() {
             <p
               className="text-sm lg:text-base mb-6 leading-relaxed"
               style={{
-                color: "color-mix(in srgb, var(--color-text-on-dark) 75%, transparent)",
+                color: "#1E293B",
                 fontFamily: "var(--font-family-body)",
                 lineHeight: "var(--line-height-base)",
               }}
@@ -86,11 +91,11 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group"
+                className="w-11 h-11 rounded-sm flex items-center justify-center transition-all duration-300 group"
                 style={{
-                  background: "color-mix(in srgb, var(--color-text-on-dark) 10%, transparent)",
-                  color: "var(--color-text-on-dark)",
-                  border: `1px solid color-mix(in srgb, var(--color-text-on-dark) 20%, transparent)`,
+                  background: "color-mix(in srgb, #1E293B 10%, transparent)",
+                  color: "#1E293B",
+                  border: `1px solid color-mix(in srgb, #1E293B 20%, transparent)`,
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = "var(--color-accent-main)";
@@ -101,11 +106,10 @@ export default function Footer() {
                   e.currentTarget.style.boxShadow = "none";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "var(--color-text-on-dark)";
-                  e.currentTarget.style.background =
-                    "color-mix(in srgb, var(--color-text-on-dark) 10%, transparent)";
+                  e.currentTarget.style.color = "#1E293B";
+                  e.currentTarget.style.background = "color-mix(in srgb, #1E293B 10%, transparent)";
                   e.currentTarget.style.borderColor =
-                    "color-mix(in srgb, var(--color-text-on-dark) 20%, transparent)";
+                    "color-mix(in srgb, #1E293B 20%, transparent)";
                   e.currentTarget.style.transform = "translateY(0)";
                   e.currentTarget.style.boxShadow = "none";
                 }}
@@ -119,11 +123,11 @@ export default function Footer() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group"
+                className="w-11 h-11 rounded-sm flex items-center justify-center transition-all duration-300 group"
                 style={{
-                  background: "color-mix(in srgb, var(--color-text-on-dark) 10%, transparent)",
-                  color: "var(--color-text-on-dark)",
-                  border: `1px solid color-mix(in srgb, var(--color-text-on-dark) 20%, transparent)`,
+                  background: "color-mix(in srgb, #1E293B 10%, transparent)",
+                  color: "#1E293B",
+                  border: `1px solid color-mix(in srgb, #1E293B 20%, transparent)`,
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = "var(--color-accent-main)";
@@ -134,11 +138,10 @@ export default function Footer() {
                   e.currentTarget.style.boxShadow = "none";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "var(--color-text-on-dark)";
-                  e.currentTarget.style.background =
-                    "color-mix(in srgb, var(--color-text-on-dark) 10%, transparent)";
+                  e.currentTarget.style.color = "#1E293B";
+                  e.currentTarget.style.background = "color-mix(in srgb, #1E293B 10%, transparent)";
                   e.currentTarget.style.borderColor =
-                    "color-mix(in srgb, var(--color-text-on-dark) 20%, transparent)";
+                    "color-mix(in srgb, #1E293B 20%, transparent)";
                   e.currentTarget.style.transform = "translateY(0)";
                   e.currentTarget.style.boxShadow = "none";
                 }}
@@ -156,7 +159,7 @@ export default function Footer() {
             <h3
               className="text-sm font-bold mb-4 uppercase tracking-wider"
               style={{
-                color: "var(--color-accent-main)",
+                color: "#1E293B",
                 fontFamily: "var(--font-family-body)",
                 fontWeight: "var(--font-weight-bold)",
               }}
@@ -170,15 +173,14 @@ export default function Footer() {
                     href={link.href}
                     className="text-sm lg:text-base transition-colors duration-200 group"
                     style={{
-                      color: "color-mix(in srgb, var(--color-text-on-dark) 80%, transparent)",
+                      color: "#1E293B",
                       fontFamily: "var(--font-family-body)",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = "var(--color-accent-main)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color =
-                        "color-mix(in srgb, var(--color-text-on-dark) 80%, transparent)";
+                      e.currentTarget.style.color = "#1E293B";
                     }}
                   >
                     {link.label}
@@ -193,7 +195,7 @@ export default function Footer() {
             <h3
               className="text-sm font-bold mb-4 uppercase tracking-wider"
               style={{
-                color: "var(--color-accent-main)",
+                color: "#1E293B",
                 fontFamily: "var(--font-family-body)",
                 fontWeight: "var(--font-weight-bold)",
               }}
@@ -207,15 +209,14 @@ export default function Footer() {
                     href={link.href}
                     className="text-sm lg:text-base transition-colors duration-200 group"
                     style={{
-                      color: "color-mix(in srgb, var(--color-text-on-dark) 80%, transparent)",
+                      color: "#1E293B",
                       fontFamily: "var(--font-family-body)",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = "var(--color-accent-main)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color =
-                        "color-mix(in srgb, var(--color-text-on-dark) 80%, transparent)";
+                      e.currentTarget.style.color = "#1E293B";
                     }}
                   >
                     {link.label}
@@ -230,7 +231,7 @@ export default function Footer() {
             <h3
               className="text-sm font-bold mb-4 uppercase tracking-wider"
               style={{
-                color: "var(--color-accent-main)",
+                color: "#1E293B",
                 fontFamily: "var(--font-family-body)",
                 fontWeight: "var(--font-weight-bold)",
               }}
@@ -252,15 +253,14 @@ export default function Footer() {
                       {...linkProps}
                       className="text-sm lg:text-base transition-colors duration-200"
                       style={{
-                        color: "color-mix(in srgb, var(--color-text-on-dark) 80%, transparent)",
+                        color: "#1E293B",
                         fontFamily: "var(--font-family-body)",
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.color = "var(--color-accent-main)";
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.color =
-                          "color-mix(in srgb, var(--color-text-on-dark) 80%, transparent)";
+                        e.currentTarget.style.color = "#1E293B";
                       }}
                     >
                       {link.label}
@@ -272,14 +272,13 @@ export default function Footer() {
                         stroke="currentColor"
                         viewBox="0 0 24 24"
                         style={{
-                          color: "color-mix(in srgb, var(--color-text-on-dark) 50%, transparent)",
+                          color: "#1E293B",
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.color = "var(--color-accent-main)";
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.color =
-                            "color-mix(in srgb, var(--color-text-on-dark) 50%, transparent)";
+                          e.currentTarget.style.color = "#1E293B";
                         }}
                       >
                         <path
@@ -340,20 +339,21 @@ export default function Footer() {
               href="https://www.norchain.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm lg:text-base transition-all duration-300 flex-shrink-0"
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-sm font-semibold text-sm lg:text-base transition-all duration-300 flex-shrink-0"
               style={{
-                background: "var(--color-primary-main)",
-                color: "var(--color-text-on-dark)",
+                background: "white",
+                color: "#1E293B",
                 fontFamily: "var(--font-family-body)",
                 fontWeight: "var(--font-weight-semibold)",
+                border: "1px solid color-mix(in srgb, #1E293B 20%, transparent)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "var(--color-accent-main)";
+                e.currentTarget.style.background = "color-mix(in srgb, #1E293B 10%, white)";
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 8px 24px rgba(0, 0, 0, 0.3)";
+                e.currentTarget.style.boxShadow = "0 8px 24px rgba(0, 0, 0, 0.1)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = "var(--color-primary-main)";
+                e.currentTarget.style.background = "white";
                 e.currentTarget.style.transform = "translateY(0)";
                 e.currentTarget.style.boxShadow = "none";
               }}
@@ -382,12 +382,12 @@ export default function Footer() {
         <div
           className="border-t pt-6 pb-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm"
           style={{
-            borderColor: "color-mix(in srgb, var(--color-text-on-dark) 20%, transparent)",
+            borderColor: "color-mix(in srgb, #1E293B 20%, transparent)",
           }}
         >
           <p
             style={{
-              color: "color-mix(in srgb, var(--color-text-on-dark) 60%, transparent)",
+              color: "#1E293B",
               fontFamily: "var(--font-family-body)",
             }}
           >
@@ -395,7 +395,7 @@ export default function Footer() {
           </p>
           <p
             style={{
-              color: "color-mix(in srgb, var(--color-text-on-dark) 60%, transparent)",
+              color: "#1E293B",
               fontFamily: "var(--font-family-body)",
             }}
           >
@@ -406,7 +406,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="hover:opacity-80 transition-opacity inline-flex items-center gap-1.5"
               style={{
-                color: "var(--color-accent-main)",
+                color: "#1E293B",
               }}
             >
               Xala Technologies

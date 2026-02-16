@@ -237,7 +237,7 @@ export default async function ProjectDetailPage({
             </div>
 
             <div
-              className="p-8 lg:p-10 rounded-3xl"
+              className="p-8 lg:p-10 rounded-md"
               style={{
                 background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
                 border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
@@ -301,7 +301,7 @@ export default async function ProjectDetailPage({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {/* Licenses Card */}
             <div
-              className="p-8 lg:p-10 rounded-3xl text-center group transition-all duration-300 hover:-translate-y-1"
+              className="p-8 lg:p-10 rounded-md text-center group transition-all duration-300 hover:-translate-y-1"
               style={{
                 background: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
                 border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
@@ -309,7 +309,7 @@ export default async function ProjectDetailPage({
               }}
             >
               <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-transform duration-300 group-hover:scale-110"
+                className="w-16 h-16 rounded-sm flex items-center justify-center mx-auto mb-6 transition-transform duration-300 group-hover:scale-110"
                 style={{
                   background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 100%)`,
                   boxShadow: "none",
@@ -353,7 +353,7 @@ export default async function ProjectDetailPage({
 
             {/* Area Card */}
             <div
-              className="p-8 lg:p-10 rounded-3xl text-center group transition-all duration-300 hover:-translate-y-1"
+              className="p-8 lg:p-10 rounded-md text-center group transition-all duration-300 hover:-translate-y-1"
               style={{
                 background: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
                 border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
@@ -361,7 +361,7 @@ export default async function ProjectDetailPage({
               }}
             >
               <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-transform duration-300 group-hover:scale-110"
+                className="w-16 h-16 rounded-sm flex items-center justify-center mx-auto mb-6 transition-transform duration-300 group-hover:scale-110"
                 style={{
                   background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
                   boxShadow: "none",
@@ -405,7 +405,7 @@ export default async function ProjectDetailPage({
 
             {/* Minerals Card */}
             <div
-              className="p-8 lg:p-10 rounded-3xl text-center group transition-all duration-300 hover:-translate-y-1"
+              className="p-8 lg:p-10 rounded-md text-center group transition-all duration-300 hover:-translate-y-1"
               style={{
                 background: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
                 border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
@@ -413,7 +413,7 @@ export default async function ProjectDetailPage({
               }}
             >
               <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-transform duration-300 group-hover:scale-110"
+                className="w-16 h-16 rounded-sm flex items-center justify-center mx-auto mb-6 transition-transform duration-300 group-hover:scale-110"
                 style={{
                   background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 100%)`,
                   boxShadow: "none",

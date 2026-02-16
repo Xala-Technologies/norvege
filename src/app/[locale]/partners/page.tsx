@@ -67,7 +67,7 @@ export default function PartnersPage() {
               {partnerships.map((partner, index) => (
                 <div
                   key={index}
-                  className="group p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
+                  className="group p-6 rounded-sm transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
                   style={{
                     background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
                     border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
@@ -76,7 +76,7 @@ export default function PartnersPage() {
                 >
                   {/* Enhanced border glow on hover */}
                   <div
-                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{
                       border: `2px solid var(--color-primary-main)`,
                     }}

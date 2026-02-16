@@ -216,23 +216,23 @@ export default function AboutPageContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.6 }}
-              className="group lg:col-span-2 p-8 lg:p-10 rounded-3xl relative overflow-hidden"
+              className="group lg:col-span-2 p-8 lg:p-10 rounded-md relative overflow-hidden"
               style={{
-                background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
+                background: `var(--color-bg-default)`,
                 border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                 boxShadow: "none",
               }}
             >
               {/* Enhanced border glow on hover */}
               <div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
                   border: `2px solid var(--color-primary-main)`,
                 }}
               />
               <div className="flex items-start gap-4 mb-6">
                 <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
+                  className="w-14 h-14 rounded-sm flex items-center justify-center flex-shrink-0"
                   style={{
                     background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
                     color: "var(--color-accent-main)",
@@ -271,44 +271,43 @@ export default function AboutPageContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="group p-8 lg:p-10 rounded-3xl relative overflow-hidden"
+              className="group p-8 lg:p-10 rounded-md relative overflow-hidden"
               style={{
-                background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
+                background: `var(--color-bg-default)`,
                 border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                 boxShadow: "none",
               }}
             >
               {/* Enhanced border glow on hover */}
               <div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
                   border: `2px solid var(--color-primary-main)`,
                 }}
               />
               <div className="flex flex-col h-full">
-                <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-6"
-                  style={{
-                    background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 100%)`,
-                    color: "var(--color-primary-main)",
-                    boxShadow: "none",
-                  }}
-                >
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                <div className="flex items-center gap-4 mb-4">
+                  <div
+                    className="w-14 h-14 rounded-sm flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 100%)`,
+                      color: "var(--color-primary-main)",
+                      boxShadow: "none",
+                    }}
+                  >
+                    <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold" style={{ color: "var(--color-primary-main)" }}>
+                    {t("overview.richHeritage.title")}
+                  </h3>
                 </div>
-                <h3
-                  className="text-2xl font-bold mb-4"
-                  style={{ color: "var(--color-primary-main)" }}
-                >
-                  {t("overview.richHeritage.title")}
-                </h3>
                 <p
                   className="text-base lg:text-lg leading-relaxed flex-1"
                   style={{ color: "var(--color-text-body)" }}
@@ -324,7 +323,7 @@ export default function AboutPageContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="group lg:col-span-3 p-8 lg:p-10 rounded-3xl relative overflow-hidden"
+              className="group lg:col-span-3 p-8 lg:p-10 rounded-md relative overflow-hidden"
               style={{
                 background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
                 border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
@@ -333,14 +332,14 @@ export default function AboutPageContent() {
             >
               {/* Enhanced border glow on hover */}
               <div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
                   border: `2px solid var(--color-primary-main)`,
                 }}
               />
               <div className="flex items-start gap-4">
                 <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
+                  className="w-14 h-14 rounded-sm flex items-center justify-center flex-shrink-0"
                   style={{
                     background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
                     color: "var(--color-accent-main)",
@@ -484,23 +483,23 @@ export default function AboutPageContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.6 }}
-              className="group p-8 lg:p-10 rounded-3xl relative overflow-hidden"
+              className="group p-8 lg:p-10 rounded-md relative overflow-hidden"
               style={{
-                background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
+                background: `var(--color-bg-default)`,
                 border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                 boxShadow: "none",
               }}
             >
               {/* Enhanced border glow on hover */}
               <div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
                   border: `2px solid var(--color-primary-main)`,
                 }}
               />
               <div className="flex items-start gap-5 mb-6">
                 <div
-                  className="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0"
+                  className="w-16 h-16 rounded-sm flex items-center justify-center flex-shrink-0"
                   style={{
                     background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
                     color: "var(--color-accent-main)",
@@ -546,23 +545,23 @@ export default function AboutPageContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="p-8 lg:p-10 rounded-3xl group transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
+                className="p-8 lg:p-10 rounded-md group transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
                 style={{
-                  background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
+                  background: `var(--color-bg-default)`,
                   border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                   boxShadow: "none",
                 }}
               >
                 {/* Enhanced border glow on hover */}
                 <div
-                  className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{
                     border: `2px solid var(--color-primary-main)`,
                   }}
                 />
                 <div className="flex items-start gap-4 mb-6">
                   <div
-                    className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+                    className="w-14 h-14 rounded-sm flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
                     style={{
                       background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 100%)`,
                       color: "var(--color-primary-main)",
@@ -606,23 +605,23 @@ export default function AboutPageContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="p-8 lg:p-10 rounded-3xl group transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
+                className="p-8 lg:p-10 rounded-md group transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
                 style={{
-                  background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
+                  background: `var(--color-bg-default)`,
                   border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                   boxShadow: "none",
                 }}
               >
                 {/* Enhanced border glow on hover */}
                 <div
-                  className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{
                     border: `2px solid var(--color-primary-main)`,
                   }}
                 />
                 <div className="flex items-start gap-4 mb-6">
                   <div
-                    className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+                    className="w-14 h-14 rounded-sm flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
                     style={{
                       background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
                       color: "var(--color-accent-main)",
@@ -743,16 +742,16 @@ export default function AboutPageContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="group p-6 lg:p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
+                className="group p-6 lg:p-8 rounded-sm transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
                 style={{
-                  background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
+                  background: `var(--color-bg-default)`,
                   border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                   boxShadow: "none",
                 }}
               >
                 {/* Enhanced border glow on hover */}
                 <div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{
                     border: `2px solid var(--color-primary-main)`,
                   }}
@@ -849,23 +848,23 @@ export default function AboutPageContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="group p-8 lg:p-10 rounded-3xl relative overflow-hidden"
+                className="group p-8 lg:p-10 rounded-md relative overflow-hidden"
                 style={{
-                  background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
+                  background: `var(--color-bg-default)`,
                   border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                   boxShadow: "none",
                 }}
               >
                 {/* Enhanced border glow on hover */}
                 <div
-                  className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{
                     border: `2px solid var(--color-primary-main)`,
                   }}
                 />
                 <div className="flex items-start gap-5">
                   <div
-                    className="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0"
+                    className="w-16 h-16 rounded-sm flex items-center justify-center flex-shrink-0"
                     style={{
                       background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
                       color: "var(--color-accent-main)",
@@ -981,7 +980,7 @@ export default function AboutPageContent() {
                   {/* Category Label */}
                   <div className="flex items-center gap-3 mb-6">
                     <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center"
+                      className="w-10 h-10 rounded-sm flex items-center justify-center"
                       style={{
                         background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
                         color: "var(--color-accent-main)",
@@ -1019,7 +1018,7 @@ export default function AboutPageContent() {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1, duration: 0.4 }}
                         whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                        className="group relative rounded-2xl overflow-hidden transition-all duration-300"
+                        className="group relative rounded-sm overflow-hidden transition-all duration-300"
                         style={{
                           background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
                           border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
@@ -1030,48 +1029,49 @@ export default function AboutPageContent() {
                         }}
                       >
                         <motion.div
-                          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10"
                           style={{
-                            border: `2px solid var(--color-primary-main)`,
+                            boxShadow: `inset 0 0 0 2px var(--color-primary-main)`,
+                            borderRadius: "var(--radius-sm)",
                           }}
                         />
-                        <div className="p-4 lg:p-5">
-                          <div className="flex items-start gap-3 mb-3">
-                            <div
-                              className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
-                              style={{
-                                background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 100%)`,
-                                color: "var(--color-primary-main)",
-                              }}
+                        <div className="p-0">
+                          {/* Image Placeholder */}
+                          <div
+                            className="w-full h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center mb-4 relative overflow-hidden"
+                            style={{
+                              background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, color-mix(in srgb, var(--color-primary-main) 5%, transparent) 100%)`,
+                            }}
+                          >
+                            <svg
+                              className="w-16 h-16 opacity-30"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              style={{ color: "var(--color-primary-main)" }}
                             >
-                              <svg
-                                className="w-6 h-6"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                                />
-                              </svg>
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <h4
-                                className="text-base lg:text-lg font-bold mb-1 leading-tight truncate"
-                                style={{ color: "var(--color-primary-main)" }}
-                              >
-                                {member.name}
-                              </h4>
-                              <p
-                                className="text-xs lg:text-sm font-semibold leading-snug"
-                                style={{ color: "var(--color-accent-main)" }}
-                              >
-                                {member.role}
-                              </p>
-                            </div>
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                              />
+                            </svg>
+                          </div>
+                          {/* Content */}
+                          <div className="px-6 pb-6 text-center">
+                            <h4
+                              className="text-lg lg:text-xl font-bold mb-2 leading-tight"
+                              style={{ color: "var(--color-primary-main)" }}
+                            >
+                              {member.name}
+                            </h4>
+                            <p
+                              className="text-sm lg:text-base font-semibold leading-snug"
+                              style={{ color: "var(--color-accent-main)" }}
+                            >
+                              {member.role}
+                            </p>
                           </div>
                         </div>
                       </motion.div>
@@ -1103,7 +1103,7 @@ export default function AboutPageContent() {
                   {/* Category Label */}
                   <div className="flex items-center gap-3 mb-6 mt-6">
                     <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center"
+                      className="w-10 h-10 rounded-sm flex items-center justify-center"
                       style={{
                         background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
                         color: "var(--color-accent-main)",
@@ -1132,7 +1132,7 @@ export default function AboutPageContent() {
                   </div>
 
                   {/* Board Cards - Grid */}
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-5">
+                  <div className="flex flex-wrap justify-center gap-4 lg:gap-6">
                     {board.map((member, index) => (
                       <motion.div
                         key={index}
@@ -1141,56 +1141,60 @@ export default function AboutPageContent() {
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 + index * 0.08, duration: 0.4 }}
                         whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                        className="group relative rounded-2xl overflow-hidden transition-all duration-300"
+                        className="group relative rounded-sm overflow-hidden transition-all duration-300"
                         style={{
                           background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
                           border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                           boxShadow: "none",
+                          minWidth: "200px",
+                          flex: "1 1 auto",
+                          maxWidth: "280px",
                         }}
                       >
                         <motion.div
-                          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10"
                           style={{
-                            border: `2px solid var(--color-primary-main)`,
+                            boxShadow: `inset 0 0 0 2px var(--color-primary-main)`,
+                            borderRadius: "var(--radius-sm)",
                           }}
                         />
-                        <div className="p-4 lg:p-5">
-                          <div className="flex items-start gap-3 mb-3">
-                            <div
-                              className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
-                              style={{
-                                background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 100%)`,
-                                color: "var(--color-primary-main)",
-                              }}
+                        <div className="p-0">
+                          {/* Image Placeholder */}
+                          <div
+                            className="w-full h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center mb-4 relative overflow-hidden"
+                            style={{
+                              background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, color-mix(in srgb, var(--color-primary-main) 5%, transparent) 100%)`,
+                            }}
+                          >
+                            <svg
+                              className="w-16 h-16 opacity-30"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              style={{ color: "var(--color-primary-main)" }}
                             >
-                              <svg
-                                className="w-5 h-5"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                                />
-                              </svg>
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <h4
-                                className="text-sm lg:text-base font-bold mb-1 leading-tight"
-                                style={{ color: "var(--color-primary-main)" }}
-                              >
-                                {member.name}
-                              </h4>
-                              <p
-                                className="text-xs font-semibold leading-snug"
-                                style={{ color: "var(--color-accent-main)" }}
-                              >
-                                {member.role}
-                              </p>
-                            </div>
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                              />
+                            </svg>
+                          </div>
+                          {/* Content */}
+                          <div className="px-6 pb-6 text-center">
+                            <h4
+                              className="text-lg lg:text-xl font-bold mb-2 leading-tight"
+                              style={{ color: "var(--color-primary-main)" }}
+                            >
+                              {member.name}
+                            </h4>
+                            <p
+                              className="text-sm lg:text-base font-semibold leading-snug"
+                              style={{ color: "var(--color-accent-main)" }}
+                            >
+                              {member.role}
+                            </p>
                           </div>
                         </div>
                       </motion.div>
@@ -1222,7 +1226,7 @@ export default function AboutPageContent() {
                   {/* Category Label */}
                   <div className="flex items-center gap-3 mb-6 mt-6">
                     <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center"
+                      className="w-10 h-10 rounded-sm flex items-center justify-center"
                       style={{
                         background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
                         color: "var(--color-accent-main)",
@@ -1251,7 +1255,7 @@ export default function AboutPageContent() {
                   </div>
 
                   {/* Advisory Cards - Grid */}
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-5">
+                  <div className="flex flex-wrap justify-center gap-4 lg:gap-6">
                     {advisory.map((member, index) => (
                       <motion.div
                         key={index}
@@ -1260,56 +1264,60 @@ export default function AboutPageContent() {
                         viewport={{ once: true }}
                         transition={{ delay: 0.4 + index * 0.08, duration: 0.4 }}
                         whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                        className="group relative rounded-2xl overflow-hidden transition-all duration-300"
+                        className="group relative rounded-sm overflow-hidden transition-all duration-300"
                         style={{
                           background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
                           border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                           boxShadow: "none",
+                          minWidth: "200px",
+                          flex: "1 1 auto",
+                          maxWidth: "280px",
                         }}
                       >
                         <motion.div
-                          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10"
                           style={{
-                            border: `2px solid var(--color-primary-main)`,
+                            boxShadow: `inset 0 0 0 2px var(--color-primary-main)`,
+                            borderRadius: "var(--radius-sm)",
                           }}
                         />
-                        <div className="p-4 lg:p-5">
-                          <div className="flex items-start gap-3 mb-3">
-                            <div
-                              className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
-                              style={{
-                                background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 100%)`,
-                                color: "var(--color-primary-main)",
-                              }}
+                        <div className="p-0">
+                          {/* Image Placeholder */}
+                          <div
+                            className="w-full h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center mb-4 relative overflow-hidden"
+                            style={{
+                              background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, color-mix(in srgb, var(--color-primary-main) 5%, transparent) 100%)`,
+                            }}
+                          >
+                            <svg
+                              className="w-16 h-16 opacity-30"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              style={{ color: "var(--color-primary-main)" }}
                             >
-                              <svg
-                                className="w-5 h-5"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                                />
-                              </svg>
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <h4
-                                className="text-sm lg:text-base font-bold mb-1 leading-tight"
-                                style={{ color: "var(--color-primary-main)" }}
-                              >
-                                {member.name}
-                              </h4>
-                              <p
-                                className="text-xs font-semibold leading-snug"
-                                style={{ color: "var(--color-accent-main)" }}
-                              >
-                                {member.role}
-                              </p>
-                            </div>
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                              />
+                            </svg>
+                          </div>
+                          {/* Content */}
+                          <div className="px-6 pb-6 text-center">
+                            <h4
+                              className="text-lg lg:text-xl font-bold mb-2 leading-tight"
+                              style={{ color: "var(--color-primary-main)" }}
+                            >
+                              {member.name}
+                            </h4>
+                            <p
+                              className="text-sm lg:text-base font-semibold leading-snug"
+                              style={{ color: "var(--color-accent-main)" }}
+                            >
+                              {member.role}
+                            </p>
                           </div>
                         </div>
                       </motion.div>

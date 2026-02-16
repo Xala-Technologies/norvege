@@ -317,7 +317,7 @@ export default function HeroSection() {
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Link
                       href={`/${currentSlide.projectSlug}`}
-                      className="inline-block px-10 py-5 rounded-lg font-bold text-lg lg:text-xl transition-all duration-300"
+                      className="inline-block px-10 py-5 rounded-sm font-bold text-lg lg:text-xl transition-all duration-300"
                       style={{
                         background: "var(--color-accent-main)",
                         color: "var(--color-accent-contrast)",
@@ -331,7 +331,7 @@ export default function HeroSection() {
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Link
                       href={currentSlide.secondaryCtaText ? "/about" : "/projects"}
-                      className="inline-block px-10 py-5 rounded-lg font-bold text-lg lg:text-xl border-2 transition-all duration-300 backdrop-blur-sm"
+                      className="inline-block px-10 py-5 rounded-sm font-bold text-lg lg:text-xl border-2 transition-all duration-300 backdrop-blur-sm"
                       style={{
                         borderColor: "var(--color-gray-200)",
                         color: "var(--color-gray-50)",

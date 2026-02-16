@@ -122,7 +122,7 @@ export default function NorChainSection() {
     <section
       className="section relative overflow-hidden"
       style={{
-        background: "linear-gradient(180deg, #F6F1E8 0%, #FAF7F1 45%, #FFFFFF 100%)",
+        background: "var(--color-bg-default)",
       }}
     >
       {/* Soft background tint + subtle texture */}
@@ -193,10 +193,9 @@ export default function NorChainSection() {
               href="https://www.norchain.org/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-[1.02] active:scale-[0.99]"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-sm font-bold transition-all duration-300 hover:scale-[1.02] active:scale-[0.99]"
               style={{
-                background:
-                  "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)",
+                background: "var(--color-accent-main)",
                 color: "var(--color-accent-contrast)",
                 boxShadow: "none",
                 fontFamily: "var(--font-family-body)",
@@ -206,7 +205,7 @@ export default function NorChainSection() {
             </a>
             <Link
               href="/investors"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-[1.02] active:scale-[0.99]"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-sm font-bold transition-all duration-300 hover:scale-[1.02] active:scale-[0.99]"
               style={{
                 background: "rgba(255,255,255,0.75)",
                 color: "var(--color-text-body)",
@@ -230,7 +229,7 @@ export default function NorChainSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="group lg:col-span-6 rounded-3xl overflow-hidden relative"
+            className="group lg:col-span-6 rounded-md overflow-hidden relative"
             style={{
               background: "rgba(255, 255, 255, 0.78)",
               border: "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
@@ -241,7 +240,7 @@ export default function NorChainSection() {
           >
             {/* Enhanced border glow on hover */}
             <motion.div
-              className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+              className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
               style={{
                 border: `2px solid var(--color-primary-main)`,
               }}
@@ -286,7 +285,7 @@ export default function NorChainSection() {
 
                 {/* Simple NorChain mark */}
                 <div
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+                  className="w-12 h-12 rounded-sm flex items-center justify-center flex-shrink-0"
                   style={{
                     background: "rgba(227, 161, 66, 0.14)",
                     border:
@@ -311,7 +310,7 @@ export default function NorChainSection() {
                 ].map((label) => (
                   <div
                     key={label}
-                    className="px-4 py-3 rounded-2xl text-sm font-semibold"
+                    className="px-4 py-3 rounded-sm text-sm font-semibold"
                     style={{
                       background: "rgba(255, 255, 255, 0.9)",
                       border:
@@ -333,7 +332,7 @@ export default function NorChainSection() {
                 ].map((s) => (
                   <div
                     key={s.k}
-                    className="rounded-2xl p-5"
+                    className="rounded-sm p-5"
                     style={{
                       background: "rgba(15, 23, 42, 0.05)",
                       border:
@@ -383,7 +382,7 @@ export default function NorChainSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.45, delay: 0.12 + idx * 0.08 }}
-                    className="group rounded-2xl p-6 md:p-7 relative overflow-hidden"
+                    className="group rounded-sm p-6 md:p-7 relative overflow-hidden"
                     style={{
                       background: "rgba(255, 255, 255, 0.92)",
                       border:
@@ -393,7 +392,7 @@ export default function NorChainSection() {
                   >
                     {/* Enhanced border glow on hover */}
                     <motion.div
-                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                       style={{
                         border: `2px solid var(--color-primary-main)`,
                       }}
@@ -401,7 +400,7 @@ export default function NorChainSection() {
                     <div className="flex items-start gap-4">
                       <div className="flex items-center gap-3">
                         <div
-                          className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold"
+                          className="w-10 h-10 rounded-sm flex items-center justify-center text-sm font-bold"
                           style={{
                             background: "rgba(227, 161, 66, 0.14)",
                             color: "var(--color-accent-main)",
@@ -413,7 +412,7 @@ export default function NorChainSection() {
                           {step}
                         </div>
                         <div
-                          className="w-10 h-10 rounded-xl flex items-center justify-center"
+                          className="w-10 h-10 rounded-sm flex items-center justify-center"
                           style={{
                             background: "rgba(15, 23, 42, 0.05)",
                             border:
@@ -451,7 +450,7 @@ export default function NorChainSection() {
 
               {/* Powered by bar (kept, more compact) */}
               <div
-                className="rounded-2xl p-5 md:p-6"
+                className="rounded-sm p-5 md:p-6"
                 style={{
                   background: "rgba(15, 23, 42, 0.06)",
                   border: "1px solid rgba(15, 23, 42, 0.10)",

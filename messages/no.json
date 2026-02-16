@@ -507,7 +507,9 @@
       "area": "km² Lisensiert Område"
     },
     "methodology": {
-      "title": "Ressursvurderingsmetodikk"
+      "title": "Ressursvurderingsmetodikk",
+      "subtitle": "Hvordan vi beregner våre ressursestimater og verdsettelser",
+      "description": "De in-situ ressursestimater som presenteres av Norve'Ge Minerals AS er basert på en kombinasjon av interne og eksterne vurderinger. Tre erfarne interne geologer, sammen med én ekstern konsulent, har gjennomgått geologiske data fra Norges geologiske undersøkelse (NGU), det nasjonale gruveregisteret (Dirmin.no) og historiske produksjonsrapporter. Infererte volumer er modellert ved hjelp av borehullresultater, geofysiske datasett og konservative antagelser basert på dokumenterte mineralkonsentrasjoner. Alle verdier representerer foreløpige in-situ verdsettelser og er ment som indikative tall for utforskning og utviklingsplanlegging."
     },
     "documents": {
       "title": "Rapporter og Presentasjoner",
@@ -529,9 +531,6 @@
     "keyFacts": {
       "title": "Nøkkelfakta",
       "subtitle": "Essensielle mål som viser vår utforskningsportefølje og strategiske posisjon"
-    },
-    "methodology": {
-      "subtitle": "Hvordan vi beregner våre ressursestimater og verdsettelser"
     },
     "inquiries": {
       "title": "Investorhenvendelser",
@@ -587,7 +586,33 @@
       }
     },
     "faq": {
-      "title": "Ofte Stilte Spørsmål"
+      "title": "Ofte Stilte Spørsmål",
+      "items": {
+        "investment": {
+          "question": "Hvordan kan jeg investere i NORVEGE MINERALS AS?",
+          "answer": "Vennligst kontakt oss gjennom kontaktskjemaet eller send oss en e-post direkte til contact@norvegeminerals.no. Vårt investorforholds-team vil gi deg detaljert informasjon om investeringsmuligheter."
+        },
+        "location": {
+          "question": "Hvor ligger utforskningsprosjektene deres?",
+          "answer": "Prosjektene våre ligger over hele Norge, inkludert regioner i Sogn og Fjordane, Telemark, Trøndelag og Finnmark. Besøk vår Prosjekter-side for detaljert informasjon om hvert prosjekt."
+        },
+        "minerals": {
+          "question": "Hvilke mineraler utforsker dere?",
+          "answer": "Vi fokuserer på kritiske mineraler som er essensielle for energiovergangen, inkludert kobber, sink, nikkel, kobolt, sjeldne jordarter og gull."
+        },
+        "sustainability": {
+          "question": "Hvordan sikrer dere bærekraftig og ansvarlig gruvedrift?",
+          "answer": "Bærekraft er kjernen i våre operasjoner. Vi følger strenge miljøstandarder, engasjerer oss med lokalsamfunn og implementerer beste praksis innen ESG. Besøk vår ESG-side for mer informasjon."
+        },
+        "visits": {
+          "question": "Kan jeg besøke utforskningsstedene deres?",
+          "answer": "Av sikkerhets- og operasjonsmessige årsaker er utforskningssteder generelt ikke åpne for offentlige besøk. Vi engasjerer oss imidlertid regelmessig med lokalsamfunn og interessenter. Vennligst kontakt oss hvis du har spesifikke henvendelser."
+        },
+        "updates": {
+          "question": "Hvordan kan jeg holde meg oppdatert på fremdriften deres?",
+          "answer": "Du kan abonnere på vårt nyhetsbrev gjennom kontaktskjemaet, følge oss på sosiale medier eller sjekke nettstedet vårt regelmessig for oppdateringer og rapporter."
+        }
+      }
     }
   },
   "esg": {

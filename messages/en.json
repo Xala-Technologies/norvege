@@ -507,7 +507,8 @@
     },
     "methodology": {
       "title": "Resource Valuation Methodology",
-      "subtitle": "How we calculate our resource estimates and valuations"
+      "subtitle": "How we calculate our resource estimates and valuations",
+      "description": "The in-situ resource estimates presented by Norve'Ge Minerals AS are based on a combination of internal and external assessments. Three experienced in-house geologists, together with one external consultant, have reviewed geological data from the Norwegian Geological Survey (NGU), the national mining registry (Dirmin.no), and historical production reports. Inferred volumes have been modeled using borehole results, geophysical datasets, and conservative assumptions based on documented mineral concentrations. All values represent preliminary in-situ valuations and are intended as indicative figures for exploration and development planning."
     },
     "documents": {
       "title": "Reports & Presentations",
@@ -571,7 +572,33 @@
       }
     },
     "faq": {
-      "title": "Frequently Asked Questions"
+      "title": "Frequently Asked Questions",
+      "items": {
+        "investment": {
+          "question": "How can I invest in NORVEGE MINERALS AS?",
+          "answer": "Please contact us through the contact form or email us directly at contact@norvegeminerals.no. Our investor relations team will provide you with detailed information about investment opportunities."
+        },
+        "location": {
+          "question": "Where are your exploration projects located?",
+          "answer": "Our projects are located across Norway, including regions in Sogn og Fjordane, Telemark, Trøndelag, and Finnmark. Visit our Projects page for detailed information about each project."
+        },
+        "minerals": {
+          "question": "What minerals are you exploring for?",
+          "answer": "We focus on critical minerals essential for the energy transition, including copper, zinc, nickel, cobalt, rare earth elements, and gold."
+        },
+        "sustainability": {
+          "question": "How do you ensure sustainable and responsible mining?",
+          "answer": "Sustainability is at the core of our operations. We follow strict environmental standards, engage with local communities, and implement best practices in ESG. Visit our ESG page for more details."
+        },
+        "visits": {
+          "question": "Can I visit your exploration sites?",
+          "answer": "For safety and operational reasons, exploration sites are generally not open to public visits. However, we regularly engage with local communities and stakeholders. Please contact us if you have specific inquiries."
+        },
+        "updates": {
+          "question": "How can I stay updated on your progress?",
+          "answer": "You can subscribe to our newsletter through the contact form, follow us on social media, or check our website regularly for updates and reports."
+        }
+      }
     }
   },
   "esg": {

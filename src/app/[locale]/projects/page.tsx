@@ -213,7 +213,7 @@ export default function ProjectsPage() {
                 <div className="card group flex flex-col h-full relative overflow-hidden">
                   {/* Enhanced border glow on hover */}
                   <div
-                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{
                       border: `2px solid var(--color-primary-main)`,
                       borderRadius: "var(--radius-lg)",

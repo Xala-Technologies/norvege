@@ -97,7 +97,7 @@ export default function ContactStrip() {
     <section
       className="section relative overflow-hidden"
       style={{
-        background: "var(--color-bg-dark)",
+        background: "#90D5FF",
       }}
     >
       {/* Separator Line - Top Border */}
@@ -149,7 +149,7 @@ export default function ContactStrip() {
       <div
         className="absolute inset-0"
         style={{
-          background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 98%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 95%, transparent) 50%, color-mix(in srgb, var(--color-primary-main) 98%, transparent) 100%)`,
+          background: "#90D5FF",
         }}
       />
 
@@ -157,7 +157,7 @@ export default function ContactStrip() {
       <div
         className="absolute inset-0 opacity-[0.25]"
         style={{
-          background: `radial-gradient(ellipse at center, color-mix(in srgb, var(--color-accent-main) 8%, transparent) 0%, transparent 70%)`,
+          background: `radial-gradient(ellipse at center, color-mix(in srgb, #7BC4E8 8%, transparent) 0%, transparent 70%)`,
         }}
       />
 
@@ -190,10 +190,10 @@ export default function ContactStrip() {
               letterSpacing: "-0.03em",
             }}
           >
-            <span style={{ color: "var(--color-text-on-dark)" }}>{t("heading")} </span>
+            <span style={{ color: "#1E293B" }}>{t("heading")} </span>
             <span
               style={{
-                color: "var(--color-accent-main)",
+                color: "#1E293B",
               }}
             >
               {t("headingHighlight")}
@@ -202,7 +202,7 @@ export default function ContactStrip() {
           <p
             className="text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto text-center block"
             style={{
-              color: "color-mix(in srgb, var(--color-text-on-dark) 85%, transparent)",
+              color: "#1E293B",
               lineHeight: "var(--line-height-loose)",
               fontFamily: "var(--font-family-body)",
               fontWeight: "var(--font-weight-medium)",
@@ -214,9 +214,9 @@ export default function ContactStrip() {
         </motion.div>
 
         {/* Split Layout: Left (Dark) + Right (Light) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-0">
           {/* Left Panel - Dark Background with Contact Info Cards + Map */}
-          <div className="relative p-8 lg:p-12 xl:p-16">
+          <div className="relative p-8 lg:p-12 xl:p-16 lg:col-span-7">
             <div className="relative z-10">
               {/* Contact Info Cards - responsive grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6 mb-10">
@@ -230,47 +230,50 @@ export default function ContactStrip() {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1, duration: 0.5 }}
                       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                      className="group relative p-6 lg:p-8 rounded-xl overflow-hidden min-w-0"
+                      className="group relative p-6 lg:p-8 rounded-sm overflow-hidden min-w-0"
                       style={{
-                        background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 90%, transparent) 0%, color-mix(in srgb, var(--color-navy-800) 85%, transparent) 100%)`,
-                        border: `2px solid rgba(255, 255, 255, 0.4)`,
+                        background:
+                          "linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)",
+                        border: `2px solid color-mix(in srgb, #1E293B 20%, transparent)`,
                         boxShadow: "none",
                       }}
                     >
                       {/* Enhanced border glow on hover */}
                       <motion.div
-                        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                        className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                         style={{
-                          border: `2px solid var(--color-primary-main)`,
+                          border: `2px solid #1E293B`,
                         }}
                       />
 
-                      {/* Icon with enhanced styling */}
-                      <motion.div
-                        className="w-14 h-14 lg:w-16 lg:h-16 rounded-xl flex items-center justify-center mb-5 relative z-10"
-                        style={{
-                          background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 25%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 100%)`,
-                          color: "var(--color-accent-main)",
-                          border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
-                          boxShadow: "none",
-                        }}
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                      >
-                        <IconComponent className="w-7 h-7 lg:w-8 lg:h-8" />
-                      </motion.div>
+                      <div className="flex items-center gap-4 mb-5">
+                        {/* Icon with enhanced styling */}
+                        <motion.div
+                          className="w-14 h-14 lg:w-16 lg:h-16 rounded-sm flex items-center justify-center relative z-10 flex-shrink-0"
+                          style={{
+                            background: "transparent",
+                            color: "#1E293B",
+                            border: "none",
+                            boxShadow: "none",
+                          }}
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        >
+                          <IconComponent className="w-7 h-7 lg:w-8 lg:h-8" />
+                        </motion.div>
 
-                      {/* Label - Gold accent */}
-                      <p
-                        className="text-xs font-bold uppercase tracking-wider mb-3 relative z-10"
-                        style={{
-                          color: "var(--color-accent-main)",
-                          fontFamily: "var(--font-family-body)",
-                          fontWeight: "var(--font-weight-bold)",
-                        }}
-                      >
-                        {card.label}
-                      </p>
+                        {/* Label - Gold accent */}
+                        <p
+                          className="text-xs font-bold uppercase tracking-wider relative z-10"
+                          style={{
+                            color: "#1E293B",
+                            fontFamily: "var(--font-family-body)",
+                            fontWeight: "var(--font-weight-bold)",
+                          }}
+                        >
+                          {card.label}
+                        </p>
+                      </div>
 
                       {/* Title - White text with better typography */}
                       {card.label === "EMAIL" ? (
@@ -278,7 +281,7 @@ export default function ContactStrip() {
                           href={`mailto:${card.title}`}
                           className="text-base md:text-lg lg:text-xl font-bold mb-2 leading-snug relative z-10 block min-w-0 break-all hover:opacity-80 transition-opacity"
                           style={{
-                            color: "var(--color-text-on-dark)",
+                            color: "#1E293B",
                             fontFamily: "var(--font-family-heading)",
                             fontWeight: "var(--font-weight-bold)",
                           }}
@@ -289,7 +292,7 @@ export default function ContactStrip() {
                         <h4
                           className="text-base md:text-lg lg:text-xl font-bold mb-2 leading-snug relative z-10 min-w-0 break-words"
                           style={{
-                            color: "var(--color-text-on-dark)",
+                            color: "#1E293B",
                             fontFamily: "var(--font-family-heading)",
                             fontWeight: "var(--font-weight-bold)",
                           }}
@@ -303,7 +306,7 @@ export default function ContactStrip() {
                         <p
                           className="text-xs md:text-sm leading-relaxed relative z-10"
                           style={{
-                            color: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
+                            color: "#1E293B",
                             fontFamily: "var(--font-family-body)",
                             lineHeight: "var(--line-height-base)",
                           }}
@@ -323,7 +326,7 @@ export default function ContactStrip() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.4, duration: 0.6 }}
-                  className="relative h-64 lg:h-80 rounded-xl overflow-hidden"
+                  className="relative h-64 lg:h-80 rounded-sm overflow-hidden"
                   style={{
                     border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                     boxShadow: "none",
@@ -356,7 +359,7 @@ export default function ContactStrip() {
 
           {/* Right Panel - Light Background with Contact Form */}
           <div
-            className="relative p-8 lg:p-12 xl:p-16 rounded-2xl lg:rounded-3xl"
+            className="relative p-8 lg:p-12 xl:p-16 rounded-sm lg:rounded-md lg:col-span-5"
             style={{
               background: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
             }}

@@ -77,7 +77,7 @@ export default function Header() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: `${navyColor}`,
+        background: "#90D5FF",
         backdropFilter: "blur(16px)",
         WebkitBackdropFilter: "blur(16px)",
         boxShadow: "none",
@@ -103,7 +103,7 @@ export default function Header() {
                   href={link.href}
                   className="relative px-2 py-3 text-lg font-semibold transition-all duration-300 group"
                   style={{
-                    color: "var(--color-text-on-dark)",
+                    color: "#1E293B",
                   }}
                 >
                   <span className="relative z-10">{link.label}</span>
@@ -111,7 +111,7 @@ export default function Header() {
                   <motion.span
                     className="absolute bottom-0 left-0 right-0 h-0.5"
                     style={{
-                      background: "var(--color-accent-main)",
+                      background: "#1E293B",
                       opacity: isActive ? 1 : 0,
                     }}
                     whileHover={{ opacity: 1 }}
@@ -130,7 +130,7 @@ export default function Header() {
                     type="button"
                     className="relative px-2 py-3 text-lg font-semibold transition-all duration-300 flex items-center gap-1.5 group"
                     style={{
-                      color: "var(--color-text-on-dark)",
+                      color: "#1E293B",
                     }}
                     aria-expanded={projectsDropdownOpen ? "true" : "false"}
                     aria-haspopup="true"
@@ -156,7 +156,7 @@ export default function Header() {
                     <motion.span
                       className="absolute bottom-0 left-0 right-0 h-0.5"
                       style={{
-                        background: "var(--color-accent-main)",
+                        background: "#1E293B",
                         opacity: isProjectsActive ? 1 : 0,
                       }}
                       whileHover={{ opacity: 1 }}
@@ -177,7 +177,7 @@ export default function Header() {
                     role="menu"
                     aria-orientation="vertical"
                     style={{
-                      background: `${navyColor}`,
+                      background: "#90D5FF",
                       backdropFilter: "blur(16px)",
                       WebkitBackdropFilter: "blur(16px)",
                       border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
@@ -198,9 +198,9 @@ export default function Header() {
                       {/* Overview Link - More Prominent */}
                       <Link
                         href="/projects"
-                        className="block px-6 py-3.5 text-sm font-bold transition-all duration-200 group/overview relative"
+                        className="block px-6 py-3.5 text-base font-bold transition-all duration-200 group/overview relative"
                         style={{
-                          color: "var(--color-accent-main)",
+                          color: "#1E293B",
                           background: "transparent",
                         }}
                         onMouseEnter={(e) => {
@@ -256,34 +256,26 @@ export default function Header() {
                           >
                             <Link
                               href={`/projects/${project.slug}`}
-                              className="block px-6 py-3 text-sm transition-all duration-200 group/item relative"
+                              className="block px-6 py-3 text-base transition-all duration-200 group/item relative"
                               style={{
-                                color: "var(--color-gray-100)",
+                                color: "#1E293B",
                                 background: "transparent",
                                 fontFamily: "var(--font-family-body)",
                               }}
                               onMouseEnter={(e) => {
                                 e.currentTarget.style.background =
                                   "color-mix(in srgb, var(--color-accent-main) 12%, transparent)";
-                                e.currentTarget.style.color = "var(--color-gray-50)";
+                                e.currentTarget.style.color = "#1E293B";
                               }}
                               onMouseLeave={(e) => {
                                 e.currentTarget.style.background = "transparent";
-                                e.currentTarget.style.color = "var(--color-gray-100)";
+                                e.currentTarget.style.color = "#1E293B";
                               }}
                               onClick={() => setProjectsDropdownOpen(false)}
                               role="menuitem"
                             >
                               <span className="flex items-center justify-between relative z-10">
-                                <span className="flex items-center gap-3">
-                                  {/* Project indicator dot */}
-                                  <span
-                                    className="w-1.5 h-1.5 rounded-full transition-all duration-200"
-                                    style={{
-                                      background: "var(--color-accent-main)",
-                                      opacity: 0.5,
-                                    }}
-                                  />
+                                <span>
                                   {project.name === "Skrattås-Byafossen"
                                     ? "Skrattåsen"
                                     : project.name}
@@ -333,7 +325,7 @@ export default function Header() {
             }}
             className="lg:hidden relative z-50 flex flex-col items-center justify-center w-10 h-10 rounded-lg transition-all duration-300 cursor-pointer"
             style={{
-              color: "var(--color-gray-50)",
+              color: "#1E293B",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = "rgba(223, 160, 68, 0.2)";
@@ -403,7 +395,7 @@ export default function Header() {
                   transition={{ type: "spring", damping: 30, stiffness: 300 }}
                   className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] lg:hidden overflow-y-auto flex flex-col"
                   style={{
-                    background: `${navyColor}`,
+                    background: "#90D5FF",
                     boxShadow: "-4px 0 32px rgba(0, 0, 0, 0.8)",
                     zIndex: 9999,
                   }}
@@ -422,7 +414,7 @@ export default function Header() {
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
-                        style={{ color: "var(--color-gray-50)" }}
+                        style={{ color: "#1E293B" }}
                       >
                         <path
                           strokeLinecap="round"
@@ -443,7 +435,7 @@ export default function Header() {
                           href="/"
                           className="block py-4 text-base font-bold uppercase tracking-wider transition-opacity hover:opacity-70"
                           style={{
-                            color: pathname === "/" ? accentColor : "var(--color-gray-50)",
+                            color: pathname === "/" ? accentColor : "#1E293B",
                             textDecoration: "underline",
                             textUnderlineOffset: "4px",
                             textDecorationThickness: pathname === "/" ? "2px" : "1px",
@@ -464,7 +456,7 @@ export default function Header() {
                           href="/about"
                           className="block py-4 text-base font-bold uppercase tracking-wider transition-opacity hover:opacity-70"
                           style={{
-                            color: pathname === "/about" ? accentColor : "var(--color-gray-50)",
+                            color: pathname === "/about" ? accentColor : "#1E293B",
                             textDecoration: "underline",
                             textUnderlineOffset: "4px",
                             textDecorationThickness: pathname === "/about" ? "2px" : "1px",
@@ -485,7 +477,7 @@ export default function Header() {
                           href="/investors"
                           className="block py-4 text-base font-bold uppercase tracking-wider transition-opacity hover:opacity-70"
                           style={{
-                            color: pathname === "/investors" ? accentColor : "var(--color-gray-50)",
+                            color: pathname === "/investors" ? accentColor : "#1E293B",
                             textDecoration: "underline",
                             textUnderlineOffset: "4px",
                             textDecorationThickness: pathname === "/investors" ? "2px" : "1px",
@@ -510,7 +502,7 @@ export default function Header() {
                               onClick={() => setMobileProjectsOpen(!mobileProjectsOpen)}
                               className="w-full flex items-center justify-between py-4 text-base font-bold uppercase tracking-wider transition-opacity hover:opacity-70"
                               style={{
-                                color: isProjectsActive ? accentColor : "var(--color-gray-50)",
+                                color: isProjectsActive ? accentColor : "#1E293B",
                                 textDecoration: "underline",
                                 textUnderlineOffset: "4px",
                                 textDecorationThickness: isProjectsActive ? "2px" : "1px",
@@ -550,10 +542,7 @@ export default function Header() {
                                   href="/projects"
                                   className="block text-sm font-medium transition-opacity hover:opacity-70"
                                   style={{
-                                    color:
-                                      pathname === "/projects"
-                                        ? accentColor
-                                        : "rgba(255, 255, 255, 0.8)",
+                                    color: pathname === "/projects" ? accentColor : "#1E293B",
                                   }}
                                   onClick={() => setMobileMenuOpen(false)}
                                 >
@@ -568,7 +557,7 @@ export default function Header() {
                                       color:
                                         pathname === `/projects/${project.slug}`
                                           ? accentColor
-                                          : "rgba(255, 255, 255, 0.8)",
+                                          : "#1E293B",
                                     }}
                                     onClick={() => setMobileMenuOpen(false)}
                                   >
@@ -594,7 +583,7 @@ export default function Header() {
                           href="/contact"
                           className="block py-4 text-base font-bold uppercase tracking-wider transition-opacity hover:opacity-70"
                           style={{
-                            color: pathname === "/contact" ? accentColor : "var(--color-gray-50)",
+                            color: pathname === "/contact" ? accentColor : "#1E293B",
                             textDecoration: "underline",
                             textUnderlineOffset: "4px",
                             textDecorationThickness: pathname === "/contact" ? "2px" : "1px",
@@ -612,7 +601,7 @@ export default function Header() {
                     className="px-6 py-6 border-t"
                     style={{ borderColor: "rgba(255, 255, 255, 0.1)" }}
                   >
-                    <p className="text-xs" style={{ color: "rgba(255, 255, 255, 0.6)" }}>
+                    <p className="text-xs" style={{ color: "#1E293B" }}>
                       © {new Date().getFullYear()} NORVEGE MINERALS AS
                     </p>
                   </div>

@@ -147,8 +147,7 @@ export default function ProjectsTeaser() {
     <section
       className="section relative overflow-hidden"
       style={{
-        background:
-          "linear-gradient(180deg, var(--color-charcoal-900) 0%, var(--color-charcoal-800) 50%, var(--color-charcoal-900) 100%)",
+        background: "#90D5FF",
       }}
     >
       {/* Enhanced decorative background elements */}
@@ -163,8 +162,7 @@ export default function ProjectsTeaser() {
       <div
         className="absolute inset-0"
         style={{
-          background:
-            "linear-gradient(135deg, color-mix(in srgb, var(--color-base-black) 98%, transparent) 0%, color-mix(in srgb, var(--color-base-black) 95%, transparent) 50%, color-mix(in srgb, var(--color-base-black) 98%, transparent) 100%)",
+          background: "#90D5FF",
         }}
       />
 
@@ -179,7 +177,7 @@ export default function ProjectsTeaser() {
                 transparent 70%
               ),
               radial-gradient(1200px 800px at 50% 110%,
-                rgba(0, 0, 0, 0.55) 0%,
+                color-mix(in srgb, var(--color-base-navy-900) 55%, transparent) 0%,
                 transparent 60%
               )
             `,
@@ -204,8 +202,8 @@ export default function ProjectsTeaser() {
           <span
             className="text-eyebrow inline-block px-5 py-2.5 rounded-full mb-8"
             style={{
-              background: "color-mix(in srgb, var(--color-accent-main) 15%, transparent)",
-              color: "var(--color-accent-main)",
+              background: "color-mix(in srgb, #1E293B 15%, transparent)",
+              color: "#1E293B",
               border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
               boxShadow: "none",
             }}
@@ -215,18 +213,31 @@ export default function ProjectsTeaser() {
           <h2
             className="text-display mb-6"
             style={{
-              color: "var(--color-text-on-dark)",
+              color: "#1E293B",
               fontFamily: "var(--font-family-heading)",
               fontWeight: "var(--font-weight-black)",
               letterSpacing: "-0.03em",
             }}
           >
-            {t("subtitle")}
+            {(() => {
+              const subtitle = t("subtitle");
+              const parts = subtitle.split("Mineral Potential");
+              if (parts.length === 2) {
+                return (
+                  <>
+                    {parts[0]}
+                    <span style={{ color: "#1E293B" }}>Mineral Potential</span>
+                    {parts[1]}
+                  </>
+                );
+              }
+              return subtitle;
+            })()}
           </h2>
           <p
             className="text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto text-center block"
             style={{
-              color: "color-mix(in srgb, var(--color-text-on-dark) 85%, transparent)",
+              color: "#1E293B",
               lineHeight: "var(--line-height-loose)",
               fontFamily: "var(--font-family-body)",
               fontWeight: "var(--font-weight-medium)",
@@ -247,7 +258,7 @@ export default function ProjectsTeaser() {
               <div key={project.slug} className="group">
                 <Link href={`/projects/${project.slug}`} className="block h-full">
                   <div
-                    className="relative bg-white rounded-3xl overflow-hidden transition-all duration-300 h-full flex flex-col"
+                    className="relative bg-white rounded-md overflow-hidden transition-all duration-300 h-full flex flex-col"
                     style={{
                       boxShadow: "none",
                       background: `linear-gradient(180deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
@@ -335,7 +346,7 @@ export default function ProjectsTeaser() {
                         <h3
                           className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
                           style={{
-                            color: "var(--color-text-on-dark)",
+                            color: "#1E293B",
                             fontFamily: "var(--font-family-heading)",
                             fontWeight: "var(--font-weight-black)",
                             letterSpacing: "-0.02em",
@@ -348,7 +359,7 @@ export default function ProjectsTeaser() {
                         <div
                           className="flex items-center gap-2"
                           style={{
-                            color: "color-mix(in srgb, var(--color-text-on-dark) 80%, transparent)",
+                            color: "#1E293B",
                             fontFamily: "var(--font-family-body)",
                           }}
                         >
@@ -398,7 +409,7 @@ export default function ProjectsTeaser() {
                           {project.minerals.slice(0, 5).map((mineral, idx) => (
                             <span
                               key={idx}
-                              className="px-4 py-2.5 rounded-lg text-sm font-bold"
+                              className="px-4 py-2.5 rounded-sm text-sm font-bold"
                               style={{
                                 background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 100%)`,
                                 color: "var(--color-accent-hover)",
@@ -413,7 +424,7 @@ export default function ProjectsTeaser() {
                           ))}
                           {project.minerals.length > 5 && (
                             <span
-                              className="px-4 py-2.5 rounded-lg text-sm font-bold"
+                              className="px-4 py-2.5 rounded-sm text-sm font-bold"
                               style={{
                                 background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 8%, transparent) 100%)`,
                                 color: "var(--color-text-secondary)",
@@ -487,9 +498,8 @@ export default function ProjectsTeaser() {
                       <div
                         className="flex items-center gap-3 mt-8 pt-8 border-t-2 group/cta"
                         style={{
-                          color: "var(--color-accent-main)",
-                          borderColor:
-                            "color-mix(in srgb, var(--color-accent-main) 20%, transparent)",
+                          color: "#1E293B",
+                          borderColor: "color-mix(in srgb, #1E293B 20%, transparent)",
                           fontFamily: "var(--font-family-body)",
                           fontWeight: "var(--font-weight-bold)",
                         }}
@@ -503,7 +513,7 @@ export default function ProjectsTeaser() {
                         <div
                           className="absolute left-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent opacity-0 group-hover/cta:opacity-100 transition-all duration-300 w-0 group-hover/cta:w-full"
                           style={{
-                            background: `linear-gradient(to right, transparent, var(--color-accent-main))`,
+                            background: `linear-gradient(to right, transparent, #1E293B)`,
                           }}
                         />
                       </div>
@@ -519,7 +529,7 @@ export default function ProjectsTeaser() {
         <div className="text-center">
           <Link
             href="/projects"
-            className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105 active:scale-95"
+            className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-sm font-bold text-lg transition-all duration-300 hover:scale-105 active:scale-95"
             style={{
               background: "var(--color-accent-main)",
               color: "var(--color-accent-contrast)",

@@ -70,13 +70,13 @@ const labelMap: Record<string, string> = {
 // Color schemes for each card - Deep Navy & Mustard Gold palette
 const cardStyles = [
   {
-    // Card 1: Deep Navy with Mustard Gold accent
-    bg: "linear-gradient(135deg, var(--color-primary-main) 0%, var(--color-navy-800) 100%)",
+    // Card 1: Navbar color scheme (#90D5FF background, #1E293B text)
+    bg: "#90D5FF",
     iconBg: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-hover) 10%, transparent) 100%)`,
-    iconColor: "var(--color-accent-main)",
-    numberColor: "var(--color-accent-main)",
-    textColor: "var(--color-text-on-dark)",
-    descriptionColor: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
+    iconColor: "#1E293B",
+    numberColor: "#1E293B",
+    textColor: "#1E293B",
+    descriptionColor: "#1E293B",
     border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
   },
   {
@@ -94,19 +94,19 @@ const cardStyles = [
     bg: `linear-gradient(135deg, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
     iconBg: "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)",
     iconColor: "var(--color-text-on-dark)",
-    numberColor: "var(--color-primary-main)",
+    numberColor: "var(--color-accent-main)",
     textColor: "var(--color-primary-main)",
     descriptionColor: "var(--color-text-secondary)",
     border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
   },
   {
-    // Card 4: Deep Navy with Mustard Gold accent
-    bg: "linear-gradient(135deg, var(--color-navy-800) 0%, var(--color-navy-700) 100%)",
+    // Card 4: Navbar color scheme (#90D5FF background, #1E293B text)
+    bg: "#90D5FF",
     iconBg: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-hover) 10%, transparent) 100%)`,
-    iconColor: "var(--color-accent-main)",
-    numberColor: "var(--color-accent-main)",
-    textColor: "var(--color-text-on-dark)",
-    descriptionColor: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
+    iconColor: "#1E293B",
+    numberColor: "#1E293B",
+    textColor: "#1E293B",
+    descriptionColor: "#1E293B",
     border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
   },
   {
@@ -114,7 +114,7 @@ const cardStyles = [
     bg: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
     iconBg: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 15%, transparent) 0%, color-mix(in srgb, var(--color-navy-800) 10%, transparent) 100%)`,
     iconColor: "var(--color-primary-main)",
-    numberColor: "var(--color-primary-main)",
+    numberColor: "var(--color-accent-main)",
     textColor: "var(--color-primary-main)",
     descriptionColor: "var(--color-text-secondary)",
     border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
@@ -122,9 +122,9 @@ const cardStyles = [
   {
     // Card 6: Mustard Gold with Deep Navy text
     bg: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-gold-400) 15%, transparent) 100%)`,
-    iconBg: "linear-gradient(135deg, var(--color-primary-main) 0%, var(--color-navy-800) 100%)",
+    iconBg: "transparent",
     iconColor: "var(--color-accent-main)",
-    numberColor: "var(--color-primary-main)",
+    numberColor: "var(--color-accent-main)",
     textColor: "var(--color-primary-main)",
     descriptionColor: "var(--color-text-secondary)",
     border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
@@ -204,7 +204,24 @@ export default function StatsSection() {
               marginBottom: "var(--space-8)",
             }}
           >
-            {t("heading")}
+            {t("heading")
+              .split(" ")
+              .map((word, index, array) => {
+                if (word === "Scale") {
+                  return (
+                    <span key={index} style={{ color: "var(--color-accent-main)" }}>
+                      {word}
+                      {index < array.length - 1 ? " " : ""}
+                    </span>
+                  );
+                }
+                return (
+                  <span key={index}>
+                    {word}
+                    {index < array.length - 1 ? " " : ""}
+                  </span>
+                );
+              })}
           </h2>
           <p
             className="text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto text-center block"
@@ -246,7 +263,7 @@ export default function StatsSection() {
               >
                 {/* Card */}
                 <div
-                  className="card relative p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl overflow-hidden h-full flex flex-col transition-all duration-300"
+                  className="card relative p-6 sm:p-8 lg:p-10 rounded-sm sm:rounded-md overflow-hidden h-full flex flex-col transition-all duration-300"
                   style={{
                     background: style.bg,
                     border: style.border,
@@ -265,7 +282,7 @@ export default function StatsSection() {
 
                   {/* Icon */}
                   <motion.div
-                    className="relative mb-4 sm:mb-6 inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl flex-shrink-0"
+                    className="relative mb-4 sm:mb-6 inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-sm sm:rounded-sm flex-shrink-0"
                     style={{
                       background: style.iconBg,
                     }}

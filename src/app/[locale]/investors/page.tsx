@@ -2,7 +2,6 @@
 
 import { Link } from "@/i18n/routing";
 import InvestorsHeroImage from "@/components/ui/InvestorsHeroImage";
-import { resourceValuationMethodology } from "@/content/company";
 import { useTranslations } from "next-intl";
 
 export default function InvestorsPage() {
@@ -184,23 +183,23 @@ export default function InvestorsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Left Column */}
             <div
-              className="group p-8 lg:p-10 rounded-3xl relative overflow-hidden"
+              className="group p-8 lg:p-10 rounded-md relative overflow-hidden"
               style={{
-                background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
+                background: `var(--color-bg-default)`,
                 border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                 boxShadow: "none",
               }}
             >
               {/* Enhanced border glow on hover */}
               <div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
                   border: `2px solid var(--color-primary-main)`,
                 }}
               />
               <div className="flex items-start gap-4 mb-6">
                 <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
+                  className="w-14 h-14 rounded-sm flex items-center justify-center flex-shrink-0"
                   style={{
                     background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
                     color: "var(--color-accent-main)",
@@ -239,23 +238,23 @@ export default function InvestorsPage() {
 
             {/* Right Column */}
             <div
-              className="group p-8 lg:p-10 rounded-3xl relative overflow-hidden"
+              className="group p-8 lg:p-10 rounded-md relative overflow-hidden"
               style={{
-                background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
+                background: `var(--color-bg-default)`,
                 border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                 boxShadow: "none",
               }}
             >
               {/* Enhanced border glow on hover */}
               <div
-                className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
                   border: `2px solid var(--color-primary-main)`,
                 }}
               />
               <div className="flex items-start gap-4 mb-6">
                 <div
-                  className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
+                  className="w-14 h-14 rounded-sm flex items-center justify-center flex-shrink-0"
                   style={{
                     background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 100%)`,
                     color: "var(--color-primary-main)",
@@ -340,16 +339,16 @@ export default function InvestorsPage() {
             {keyFacts.map((fact, index) => (
               <div
                 key={index}
-                className="group relative p-8 lg:p-10 rounded-3xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
+                className="group relative p-8 lg:p-10 rounded-md transition-all duration-300 hover:-translate-y-2 overflow-hidden"
                 style={{
-                  background: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
+                  background: `var(--color-bg-default)`,
                   border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                   boxShadow: "none",
                 }}
               >
                 {/* Enhanced border glow on hover */}
                 <div
-                  className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{
                     border: `2px solid var(--color-primary-main)`,
                   }}
@@ -358,7 +357,7 @@ export default function InvestorsPage() {
                 {/* Icon */}
                 <div className="text-center mb-6">
                   <div
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110"
+                    className="w-16 h-16 rounded-sm flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110"
                     style={{
                       background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
                       boxShadow: "none",
@@ -449,16 +448,16 @@ export default function InvestorsPage() {
           </div>
 
           <div
-            className="group p-8 lg:p-10 rounded-3xl relative overflow-hidden"
+            className="group p-8 lg:p-10 rounded-md relative overflow-hidden"
             style={{
-              background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
+              background: `var(--color-bg-default)`,
               border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
               boxShadow: "none",
             }}
           >
             {/* Enhanced border glow on hover */}
             <div
-              className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+              className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
               style={{
                 border: `2px solid var(--color-primary-main)`,
               }}
@@ -469,7 +468,7 @@ export default function InvestorsPage() {
                   className="text-base lg:text-lg leading-relaxed whitespace-pre-line"
                   style={{ color: "var(--color-text-body)" }}
                 >
-                  {resourceValuationMethodology}
+                  {t("methodology.description")}
                 </p>
               </div>
             </div>
@@ -522,16 +521,16 @@ export default function InvestorsPage() {
             {documents.map((doc, index) => (
               <div
                 key={index}
-                className="group relative p-6 lg:p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+                className="group relative p-6 lg:p-8 rounded-sm transition-all duration-300 hover:-translate-y-1 overflow-hidden"
                 style={{
-                  background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
+                  background: `var(--color-bg-default)`,
                   border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                   boxShadow: "none",
                 }}
               >
                 {/* Enhanced border glow on hover */}
                 <div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{
                     border: `2px solid var(--color-primary-main)`,
                   }}
@@ -541,7 +540,7 @@ export default function InvestorsPage() {
                   <div className="flex items-start gap-5 flex-1">
                     {/* PDF Icon */}
                     <div
-                      className="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+                      className="w-16 h-16 rounded-sm flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
                       style={{
                         background: `linear-gradient(135deg, color-mix(in srgb, var(--color-error) 20%, transparent) 0%, color-mix(in srgb, var(--color-error) 10%, transparent) 100%)`,
                         color: "var(--color-error)",
@@ -613,9 +612,9 @@ export default function InvestorsPage() {
 
                   {/* Download Button */}
                   <button
-                    className="group/btn flex items-center gap-3 px-6 py-3.5 rounded-xl font-bold text-base transition-all duration-300 hover:scale-105"
+                    className="group/btn flex items-center gap-3 px-6 py-3.5 rounded-sm font-bold text-base transition-all duration-300 hover:scale-105"
                     style={{
-                      background: `linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)`,
+                      background: "var(--color-accent-main)",
                       color: "var(--color-accent-contrast)",
                       boxShadow: "none",
                       fontFamily: "var(--font-family-body)",

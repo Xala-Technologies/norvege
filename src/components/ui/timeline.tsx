@@ -1,4 +1,7 @@
+"use client";
+
 import type { ITimelineItem } from "@/content/types";
+import { motion } from "framer-motion";
 
 interface TimelineProps {
   items: ITimelineItem[];
@@ -8,71 +11,75 @@ interface TimelineProps {
 /**
  * Timeline Component
  * Displays chronological events in a vertical timeline
- * Responsive: vertical on desktop, stacked on mobile
+ * Clean, modern structure with proper spacing and animations
  */
 export default function Timeline({ items, className = "" }: TimelineProps) {
   return (
     <div className={`relative ${className}`}>
       {/* Vertical line for desktop */}
       <div
-        className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 rounded-full"
+        className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5"
         style={{
           background: `linear-gradient(180deg, var(--color-accent-main) 0%, color-mix(in srgb, var(--color-accent-main) 60%, transparent) 100%)`,
         }}
         aria-hidden="true"
       />
 
-      <div className="space-y-6 md:space-y-8">
+      {/* Timeline Items */}
+      <div className="relative">
         {items.map((item, index) => (
-          <div key={index} className="relative flex gap-4 md:gap-6 group">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="relative flex gap-4 md:gap-6 group mb-8 last:mb-0"
+          >
             {/* Timeline dot */}
             <div className="flex-shrink-0 relative z-10">
               <div
-                className="w-16 h-16 md:w-18 md:h-18 rounded-full flex items-center justify-center font-bold text-sm md:text-base text-white transition-all duration-300 group-hover:scale-110"
+                className="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center font-bold text-xs md:text-sm text-white transition-all duration-300 group-hover:scale-110 shadow-lg"
                 style={{
                   background: `linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)`,
-                  boxShadow: "none",
                 }}
               >
-                {item.year}
+                <span className="text-center leading-tight px-1">{item.year}</span>
               </div>
             </div>
 
             {/* Content Card */}
-            <div className="flex-1 pt-0.5 pb-4">
+            <div className="flex-1 pt-1">
               <div
-                className="p-5 lg:p-6 rounded-xl transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-0.5 relative overflow-hidden"
+                className="p-6 lg:p-8 rounded-lg transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1 relative overflow-hidden"
                 style={{
                   background: `linear-gradient(135deg, var(--color-bg-default) 0%, var(--color-bg-subtle) 100%)`,
-                  border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
-                  boxShadow: "none",
+                  border: `2px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                 }}
               >
-                {/* Enhanced border glow on hover */}
-                <div
-                  className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{
-                    border: `2px solid var(--color-primary-main)`,
-                  }}
-                />
                 <h3
-                  className="text-lg md:text-xl lg:text-2xl font-bold mb-2"
+                  className="text-xl md:text-2xl font-bold mb-3"
                   style={{
-                    color: "var(--color-primary-main)",
+                    color: "var(--color-text-body)",
                     fontFamily: "var(--font-family-heading)",
+                    fontWeight: "var(--font-weight-bold)",
                   }}
                 >
                   {item.title}
                 </h3>
                 <p
-                  className="text-sm md:text-base leading-relaxed"
-                  style={{ color: "var(--color-text-body)" }}
+                  className="text-base md:text-lg leading-relaxed"
+                  style={{
+                    color: "var(--color-text-secondary)",
+                    fontFamily: "var(--font-family-body)",
+                    lineHeight: "var(--line-height-base)",
+                  }}
                 >
                   {item.description}
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

@@ -44,18 +44,47 @@ export const projects: IProject[] = [
   {
     slug: "killingdal",
     name: "Killingdal Mines",
-    region: "Norway",
+    region: "Killingdal-Holtålen",
     country: "Norway",
-    stage: "Early Exploration",
-    licenses: 0,
-    area: "TBD",
-    minerals: ["REE", "Fergusonite"],
+    stage: "Resource Definition",
+    licenses: 1,
+    area: "~10 km²",
+    minerals: ["Copper", "Zinc", "Silver", "Gold", "Lead", "Sulphur"],
     priority: "High",
-    description: "Update soon",
-    overview: "Update soon",
-    geology: "Update soon",
-    exploration: "Update soon",
-    coverage: "Update soon",
+    description:
+      "Polymetallic (Cu-Zn ± Ag-Au) VMS brownfield asset with ~2.96 Mt historic sulphide production (1972-1986). Proven Norwegian VMS system with underground access, existing infrastructure, and district-scale upside potential.",
+    overview:
+      "Killingdal is a proven Norwegian VMS (Volcanic Massive Sulphide) system with significant historic production. The mine operated from 1972-1986, producing approximately 2.96 million tonnes of Cu-Zn sulphide ore. As a brownfield restart project, Killingdal materially reduces geological, permitting, and development risk compared to greenfield exploration. The asset features existing underground mine access, established infrastructure including grid power and roads, and proximity to Nordic smelting capacity. Mineralisation remains open at depth and along strike, with interpreted stacked lenses typical of mature VMS camps. Licence No.: 0726/2225 – Killingdal 1, awarded 07 May 2025.",
+    geology:
+      "Killingdal is a Cu-led polymetallic VMS deposit with multi-metal historic assays including Cu, Zn, Ag, Au, Pb ± As, Sb, Bi. The Norwegian Geological Survey (NGU) datasets include approximately 70 boreholes and ~3.7 km of historic drilling. The deposit represents a large VMS system with historic production spanning from the 17th century to 1986, with multiple underground operations. The system is economically proven and remains open at depth and along strike, with conceptual remaining volume of ~9 million m³ and conceptual tonnage range of ~34–41 Mt. The deposit shows typical VMS characteristics with stacked lenses and district-scale potential.",
+    exploration:
+      "JORC-aligned drilling, QA/QC and data validation are underway to support maiden resource definition. The exploration strategy focuses on re-logging and re-sampling of archived NGU cores, structural reinterpretation of mined lenses, target ranking using existing geophysics, and decision-gated drilling once priority targets are validated. The integrated value development path combines mine restart feasibility with resource growth, targeting Year 1 restart feasibility confirmation, Year 2 resource growth confirmation, and Year 3 district potential demonstration. The project benefits from extensive NGU datasets, existing infrastructure, and a clear path to value creation through staged de-risking.",
+    coverage: "Licence No.: 0726/2225 – Killingdal 1 | ~10 km² | Awarded: 07 May 2025",
+    timeline: [
+      {
+        year: "17th Century",
+        title: "Historic Mining Begins",
+        description: "Early mining operations commence in the Killingdal-Holtålen district",
+      },
+      {
+        year: "1972-1986",
+        title: "Modern Production Period",
+        description:
+          "Approximately 2.96 million tonnes of Cu-Zn sulphide ore produced during this period",
+      },
+      {
+        year: "2025",
+        title: "Licence Awarded",
+        description:
+          "Licence No. 0726/2225 – Killingdal 1 awarded on 07 May 2025, covering ~10 km²",
+      },
+      {
+        year: "2026-2027",
+        title: "JORC Resource Definition",
+        description:
+          "JORC-aligned drilling, data validation, and maiden resource definition underway",
+      },
+    ],
   },
   {
     slug: "naustdal",

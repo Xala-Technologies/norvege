@@ -218,9 +218,9 @@ export default function BlockchainSection() {
                         benefit.title === "Sustainable"
                           ? "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)"
                           : benefit.title === "Efficient"
-                            ? "linear-gradient(135deg, var(--color-primary-main) 0%, var(--color-navy-800) 100%)"
+                            ? "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)"
                             : "linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-accent-hover) 100%)",
-                      color: "var(--color-text-on-dark)",
+                      color: "var(--color-accent-contrast)",
                       boxShadow: "none",
                     }}
                     whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}

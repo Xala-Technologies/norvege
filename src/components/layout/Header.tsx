@@ -38,7 +38,6 @@ export default function Header() {
   );
 
   const accentColor = "var(--color-accent-main)";
-  const navyColor = "var(--color-primary-main)";
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -168,143 +167,160 @@ export default function Header() {
 
               <AnimatePresence>
                 {projectsDropdownOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                    transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute top-full left-0 mt-1 w-80 shadow-2xl py-2 z-50 overflow-hidden"
-                    role="menu"
-                    aria-orientation="vertical"
-                    style={{
-                      background: "#90D5FF",
-                      backdropFilter: "blur(16px)",
-                      WebkitBackdropFilter: "blur(16px)",
-                      border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
-                      borderRadius: "0",
-                      boxShadow:
-                        "0 10px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px color-mix(in srgb, var(--color-accent-main) 20%, transparent)",
-                    }}
-                  >
-                    {/* Subtle background decoration */}
-                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-                      <div
-                        className="absolute top-0 right-0 w-32 h-32 rounded-full blur-2xl"
-                        style={{ background: "var(--color-accent-main)" }}
-                      />
-                    </div>
-
-                    <div className="relative">
-                      {/* Overview Link - More Prominent */}
-                      <Link
-                        href="/projects"
-                        className="block px-6 py-3.5 text-base font-bold transition-all duration-200 group/overview relative"
-                        style={{
-                          color: "#1E293B",
-                          background: "transparent",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background =
-                            "color-mix(in srgb, var(--color-accent-main) 15%, transparent)";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = "transparent";
-                        }}
-                        onClick={() => setProjectsDropdownOpen(false)}
-                        role="menuitem"
-                      >
-                        <span className="flex items-center gap-2.5 relative z-10">
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                            />
-                          </svg>
-                          Overview
-                        </span>
-                        {/* Hover indicator */}
+                  <>
+                    {/* Visual connector - small triangle/arrow pointing up */}
+                    <motion.div
+                      initial={{ opacity: 0, y: -5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -5 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute top-full left-8 w-0 h-0 z-50"
+                      style={{
+                        borderLeft: "8px solid transparent",
+                        borderRight: "8px solid transparent",
+                        borderBottom: "8px solid #90D5FF",
+                        filter: "drop-shadow(0 -2px 4px rgba(0, 0, 0, 0.1))",
+                      }}
+                    />
+                    <motion.div
+                      initial={{ opacity: 0, y: -5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -5 }}
+                      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                      className="absolute top-full left-0 w-80 py-2 z-50 overflow-hidden"
+                      role="menu"
+                      aria-orientation="vertical"
+                      style={{
+                        background: "#90D5FF",
+                        backdropFilter: "blur(16px)",
+                        WebkitBackdropFilter: "blur(16px)",
+                        border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                        borderTop: "none",
+                        borderRadius: "0 0 8px 8px",
+                        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.15)",
+                        marginTop: "0",
+                      }}
+                    >
+                      {/* Subtle background decoration */}
+                      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
                         <div
-                          className="absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover/overview:opacity-100 transition-opacity"
+                          className="absolute top-0 right-0 w-32 h-32 rounded-full blur-2xl"
                           style={{ background: "var(--color-accent-main)" }}
                         />
-                      </Link>
-
-                      {/* Divider */}
-                      <div
-                        className="mx-6 my-2 h-px"
-                        style={{
-                          background:
-                            "linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-accent-main) 30%, transparent) 50%, transparent 100%)",
-                        }}
-                      />
-
-                      {/* Project Links */}
-                      <div className="py-1">
-                        {projects.map((project, idx) => (
-                          <motion.div
-                            key={project.slug}
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: idx * 0.03 }}
-                          >
-                            <Link
-                              href={`/projects/${project.slug}`}
-                              className="block px-6 py-3 text-base transition-all duration-200 group/item relative"
-                              style={{
-                                color: "#1E293B",
-                                background: "transparent",
-                                fontFamily: "var(--font-family-body)",
-                              }}
-                              onMouseEnter={(e) => {
-                                e.currentTarget.style.background =
-                                  "color-mix(in srgb, var(--color-accent-main) 12%, transparent)";
-                                e.currentTarget.style.color = "#1E293B";
-                              }}
-                              onMouseLeave={(e) => {
-                                e.currentTarget.style.background = "transparent";
-                                e.currentTarget.style.color = "#1E293B";
-                              }}
-                              onClick={() => setProjectsDropdownOpen(false)}
-                              role="menuitem"
-                            >
-                              <span className="flex items-center justify-between relative z-10">
-                                <span>
-                                  {project.name === "Skrattås-Byafossen"
-                                    ? "Skrattåsen"
-                                    : project.name}
-                                </span>
-                                <motion.svg
-                                  className="w-4 h-4 opacity-0 group-hover/item:opacity-100 transition-opacity"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M9 5l7 7-7 7"
-                                  />
-                                </motion.svg>
-                              </span>
-                              {/* Hover indicator */}
-                              <div
-                                className="absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover/item:opacity-100 transition-opacity"
-                                style={{ background: "var(--color-accent-main)" }}
-                              />
-                            </Link>
-                          </motion.div>
-                        ))}
                       </div>
-                    </div>
-                  </motion.div>
+
+                      <div className="relative">
+                        {/* Overview Link - More Prominent */}
+                        <Link
+                          href="/projects"
+                          className="block px-6 py-3.5 text-base font-bold transition-all duration-200 group/overview relative"
+                          style={{
+                            color: "#1E293B",
+                            background: "transparent",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.background =
+                              "color-mix(in srgb, var(--color-accent-main) 15%, transparent)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.background = "transparent";
+                          }}
+                          onClick={() => setProjectsDropdownOpen(false)}
+                          role="menuitem"
+                        >
+                          <span className="flex items-center gap-2.5 relative z-10">
+                            <svg
+                              className="w-4 h-4"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                              />
+                            </svg>
+                            Overview
+                          </span>
+                          {/* Hover indicator */}
+                          <div
+                            className="absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover/overview:opacity-100 transition-opacity"
+                            style={{ background: "var(--color-accent-main)" }}
+                          />
+                        </Link>
+
+                        {/* Divider */}
+                        <div
+                          className="mx-6 my-2 h-px"
+                          style={{
+                            background:
+                              "linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-accent-main) 30%, transparent) 50%, transparent 100%)",
+                          }}
+                        />
+
+                        {/* Project Links */}
+                        <div className="py-1">
+                          {projects.map((project, idx) => (
+                            <motion.div
+                              key={project.slug}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: idx * 0.03 }}
+                            >
+                              <Link
+                                href={`/projects/${project.slug}`}
+                                className="block px-6 py-3 text-base transition-all duration-200 group/item relative"
+                                style={{
+                                  color: "#1E293B",
+                                  background: "transparent",
+                                  fontFamily: "var(--font-family-body)",
+                                }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.background =
+                                    "color-mix(in srgb, var(--color-accent-main) 12%, transparent)";
+                                  e.currentTarget.style.color = "#1E293B";
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.background = "transparent";
+                                  e.currentTarget.style.color = "#1E293B";
+                                }}
+                                onClick={() => setProjectsDropdownOpen(false)}
+                                role="menuitem"
+                              >
+                                <span className="flex items-center justify-between relative z-10">
+                                  <span>
+                                    {project.name === "Skrattås-Byafossen"
+                                      ? "Skrattåsen"
+                                      : project.name}
+                                  </span>
+                                  <motion.svg
+                                    className="w-4 h-4 opacity-0 group-hover/item:opacity-100 transition-opacity"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M9 5l7 7-7 7"
+                                    />
+                                  </motion.svg>
+                                </span>
+                                {/* Hover indicator */}
+                                <div
+                                  className="absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover/item:opacity-100 transition-opacity"
+                                  style={{ background: "var(--color-accent-main)" }}
+                                />
+                              </Link>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  </>
                 )}
               </AnimatePresence>
             </div>

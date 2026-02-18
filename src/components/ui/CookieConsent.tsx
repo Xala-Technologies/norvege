@@ -43,8 +43,8 @@ export default function CookieConsent() {
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         className="fixed bottom-0 left-0 right-0 z-[9999] p-4 sm:p-6"
         style={{
-          background: "var(--color-base-black)",
-          borderTop: `2px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+          background: "#90D5FF",
+          borderTop: `2px solid color-mix(in srgb, #1E293B 30%, transparent)`,
           boxShadow: "none",
         }}
       >
@@ -55,8 +55,8 @@ export default function CookieConsent() {
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center"
                 style={{
-                  background: "color-mix(in srgb, var(--color-accent-main) 20%, transparent)",
-                  border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                  background: "color-mix(in srgb, #1E293B 15%, transparent)",
+                  border: `1px solid color-mix(in srgb, #1E293B 30%, transparent)`,
                 }}
               >
                 <svg
@@ -64,7 +64,7 @@ export default function CookieConsent() {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  style={{ color: "var(--color-accent-main)" }}
+                  style={{ color: "#1E293B" }}
                 >
                   <path
                     strokeLinecap="round"
@@ -81,7 +81,7 @@ export default function CookieConsent() {
               <h3
                 className="text-lg font-bold mb-2"
                 style={{
-                  color: "var(--color-text-on-dark)",
+                  color: "#1E293B",
                   fontFamily: "var(--font-family-heading)",
                 }}
               >
@@ -90,7 +90,7 @@ export default function CookieConsent() {
               <p
                 className="text-sm lg:text-base leading-relaxed mb-2"
                 style={{
-                  color: "color-mix(in srgb, var(--color-text-on-dark) 85%, transparent)",
+                  color: "#1E293B",
                   fontFamily: "var(--font-family-body)",
                 }}
               >
@@ -100,7 +100,7 @@ export default function CookieConsent() {
                 <Link
                   href="/privacy"
                   className="underline hover:opacity-80 transition-opacity"
-                  style={{ color: "var(--color-accent-main)" }}
+                  style={{ color: "#1E293B" }}
                 >
                   Privacy Policy
                 </Link>
@@ -114,18 +114,17 @@ export default function CookieConsent() {
                 onClick={handleReject}
                 className="px-6 py-3 rounded-lg font-semibold text-sm lg:text-base transition-all duration-200 border-2"
                 style={{
-                  borderColor: "color-mix(in srgb, var(--color-text-on-dark) 40%, transparent)",
-                  color: "var(--color-text-on-dark)",
+                  borderColor: "color-mix(in srgb, #1E293B 40%, transparent)",
+                  color: "#1E293B",
                   background: "transparent",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "var(--color-text-on-dark)";
-                  e.currentTarget.style.background =
-                    "color-mix(in srgb, var(--color-text-on-dark) 10%, transparent)";
+                  e.currentTarget.style.borderColor = "#1E293B";
+                  e.currentTarget.style.background = "color-mix(in srgb, #1E293B 10%, transparent)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor =
-                    "color-mix(in srgb, var(--color-text-on-dark) 40%, transparent)";
+                    "color-mix(in srgb, #1E293B 40%, transparent)";
                   e.currentTarget.style.background = "transparent";
                 }}
               >
@@ -135,8 +134,8 @@ export default function CookieConsent() {
                 onClick={handleAccept}
                 className="px-6 py-3 rounded-lg font-semibold text-sm lg:text-base transition-all duration-200"
                 style={{
-                  background: "var(--color-accent-main)",
-                  color: "var(--color-accent-contrast)",
+                  background: "#ffffff",
+                  color: "#1E293B",
                   boxShadow: "none",
                 }}
                 onMouseEnter={(e) => {

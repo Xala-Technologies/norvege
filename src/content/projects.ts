@@ -52,7 +52,7 @@ export const projects: IProject[] = [
     minerals: ["Copper", "Zinc", "Silver", "Gold", "Lead", "Sulphur"],
     priority: "High",
     description:
-      "Polymetallic (Cu-Zn ± Ag-Au) VMS brownfield asset with ~2.96 Mt historic sulphide production (1972-1986). Proven Norwegian VMS system with underground access, existing infrastructure, and district-scale upside potential.",
+      "Onshore VMS system and deep-sea analogue. Validated cost-effective exploration target with existing infrastructure.",
     overview:
       "Killingdal is a proven Norwegian VMS (Volcanic Massive Sulphide) system with significant historic production. The mine operated from 1972-1986, producing approximately 2.96 million tonnes of Cu-Zn sulphide ore. As a brownfield restart project, Killingdal materially reduces geological, permitting, and development risk compared to greenfield exploration. The asset features existing underground mine access, established infrastructure including grid power and roads, and proximity to Nordic smelting capacity. Mineralisation remains open at depth and along strike, with interpreted stacked lenses typical of mature VMS camps. Licence No.: 0726/2225 – Killingdal 1, awarded 07 May 2025.",
     geology:
@@ -62,27 +62,30 @@ export const projects: IProject[] = [
     coverage: "Licence No.: 0726/2225 – Killingdal 1 | ~10 km² | Awarded: 07 May 2025",
     timeline: [
       {
-        year: "17th Century",
-        title: "Historic Mining Begins",
-        description: "Early mining operations commence in the Killingdal-Holtålen district",
-      },
-      {
         year: "1972-1986",
-        title: "Modern Production Period",
+        title: "Historic Production",
         description:
-          "Approximately 2.96 million tonnes of Cu-Zn sulphide ore produced during this period",
+          "Approximately 2.96 million tonnes of Cu-Zn sulphide ore produced (Source: NGU Malmdatabasen)",
       },
       {
         year: "2025",
         title: "Licence Awarded",
-        description:
-          "Licence No. 0726/2225 – Killingdal 1 awarded on 07 May 2025, covering ~10 km²",
+        description: "Licence No. 0726/2225 – Killingdal 1 awarded on 07 May 2025, covering 10 km²",
       },
       {
-        year: "2026-2027",
-        title: "JORC Resource Definition",
-        description:
-          "JORC-aligned drilling, data validation, and maiden resource definition underway",
+        year: "2026 H1",
+        title: "Data & Target Confidence",
+        description: "Historical data QA/QC, target ranking, and validation drilling",
+      },
+      {
+        year: "2026 H2",
+        title: "JORC Alignment & Validation",
+        description: "JORC-aligned drilling, QA/QC, and maiden resource definition",
+      },
+      {
+        year: "2027",
+        title: "Resource & Value Inflection",
+        description: "Resource growth confirmation and district potential demonstration",
       },
     ],
   },

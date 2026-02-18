@@ -1,9 +1,10 @@
 /**
  * Project Data Room Export Functions
- * Generates markdown exports (one-pager and full report) from project data room
+ * Generates markdown exports (one-pager and full report) from project data room.
+ * Also supports Strategy Deck export ("Onshore vs Deep-Sea VMS Exploration").
  */
 
-import type { IProjectDataRoom, IMetric } from "@/content/types";
+import type { IProjectDataRoom, IMetric, IStrategyDeck } from "@/content/types";
 
 /**
  * Format a metric value for display
@@ -477,6 +478,175 @@ export function generateFullReport(dataRoom: IProjectDataRoom): string {
   );
 
   return lines.join("\n");
+}
+
+/**
+ * Generate Strategy Deck markdown export.
+ * Title: "Strategy Rationale: Onshore vs Deep-Sea Exploration".
+ * Includes confidentiality note and PDF attachment reference.
+ */
+export function generateStrategyDeckExport(deck: IStrategyDeck): string {
+  const lines: string[] = [];
+
+  lines.push("# Strategy Rationale: Onshore vs Deep-Sea Exploration");
+  lines.push("");
+  lines.push(`**${deck.documentMeta.title}**`);
+  if (deck.documentMeta.subtitle) {
+    lines.push("");
+    lines.push(deck.documentMeta.subtitle);
+  }
+  lines.push("");
+  lines.push(`- **Company:** ${deck.companyName}`);
+  lines.push(`- **Author/Dept:** ${deck.documentMeta.authorOrDept}`);
+  lines.push(`- **Date:** ${deck.documentMeta.monthYear}`);
+  lines.push(`- **Related project:** ${deck.relatedProjectSlug}`);
+  lines.push(`- **Topic:** ${deck.topic}`);
+  if (deck.confidentiality) {
+    lines.push("");
+    lines.push("**CONFIDENTIAL** – This document and all slides are labeled Confidential.");
+    lines.push("");
+  }
+  lines.push("---");
+  lines.push("");
+
+  // Why shift away from DSM
+  const t1 = deck.thesisWhyShiftAway;
+  lines.push(`## ${t1.title} (p.${t1.pageRef})`);
+  if (t1.costDrivers?.length) {
+    lines.push(`Cost drivers: ${t1.costDrivers.join(", ")}`);
+  }
+  if (t1.locationReference) lines.push(`Location: ${t1.locationReference}`);
+  if (t1.depthReference) lines.push(`Depth: ${t1.depthReference}`);
+  if (t1.exampleSite) lines.push(`Example site: ${t1.exampleSite}`);
+  if (t1.bullets?.length) {
+    t1.bullets.forEach((b) => lines.push(`- ${b}`));
+  }
+  lines.push("");
+
+  // Why onshore
+  const t2 = deck.thesisWhyOnshore;
+  lines.push(`## ${t2.title} (p.${t2.pageRef})`);
+  if (t2.bullets?.length) {
+    t2.bullets.forEach((b) => lines.push(`- ${b}`));
+  }
+  lines.push("");
+
+  // Licensing
+  const lic = deck.licensePortfolioSummary;
+  lines.push(`## Licensing portfolio (p.${lic.pageRef ?? "—"})`);
+  lines.push(`Notes: ${lic.notes}`);
+  if (deck.licenseMapExplanation) {
+    lines.push("");
+    lines.push(deck.licenseMapExplanation);
+  }
+  lines.push("");
+
+  // Geology primer
+  const g = deck.geologyPrimer;
+  lines.push(`## Geology primer: Ophiolite & VMS genesis (p.${g.pageRef})`);
+  lines.push(g.ophioliteDefinition);
+  lines.push("");
+  g.timingRanges.forEach((t) => {
+    lines.push(`- **${t.label}:** ${t.range}`);
+  });
+  lines.push("");
+  lines.push(g.tectonicSetting);
+  lines.push("");
+  g.vmsFormationSteps.forEach((s) => {
+    lines.push(`- ${s.description}`);
+  });
+  lines.push("");
+  lines.push(
+    `Typical metals: ${g.typicalMetals.map((m) => `${m.element} (${m.category})`).join(", ")}`
+  );
+  lines.push("");
+
+  // Strategy alignment
+  const a = deck.strategyAlignment;
+  lines.push(`## Strategy alignment (p.${a.pageRef})`);
+  lines.push(`- Long-term: ${a.longTerm}`);
+  lines.push(`- Strategic bridge: ${a.strategicBridge}`);
+  lines.push(`- Near-term: ${a.nearTerm}`);
+  lines.push(`- Target metals: ${a.targetMetals.join(", ")}`);
+  lines.push("");
+
+  // Capital & timeline
+  const c = deck.comparison;
+  lines.push(`## Capital reality: DSM vs Onshore (p.${c.pageRef})`);
+  lines.push("The difference is not geology; it is capital rigidity vs capital flexibility.");
+  lines.push("");
+  lines.push("**DSM:**");
+  c.dsmTraits.forEach((t) => lines.push(`- ${t}`));
+  lines.push("");
+  lines.push("**Onshore:**");
+  c.onshoreTraits.forEach((t) => lines.push(`- ${t}`));
+  if (c.timelineYears?.length) {
+    lines.push("");
+    lines.push(
+      `Timeline: ${c.timelineYears.join(" ")}${c.indicativeLabel ? ` (${c.indicativeLabel})` : ""}`
+    );
+  }
+  lines.push("");
+
+  // Economics benchmark
+  const e = deck.economicsBenchmark;
+  lines.push(`## Economics benchmark (p.${e.pageRef})`);
+  e.narrativeBullets.forEach((b) => lines.push(`- ${b}`));
+  lines.push("");
+  lines.push("*Do not invent numeric CAPEX/OPEX values from charts.*");
+  lines.push("");
+
+  // Closing claims
+  const cl = deck.closingClaims;
+  lines.push(`## Onshore critical minerals: Market-led & proven (p.${cl.pageRef})`);
+  lines.push("**General:**");
+  cl.generalBullets.forEach((b) => lines.push(`- ${b}`));
+  lines.push("");
+  lines.push("**Norve'Ge:**");
+  cl.norvegeBullets.forEach((b) => lines.push(`- ${b}`));
+  lines.push("");
+
+  // Disclaimers
+  lines.push("## Disclaimers");
+  deck.disclaimers.forEach((d) => lines.push(`- ${d}`));
+  lines.push("");
+
+  // Source / PDF attachment
+  lines.push("## Source document (PDF attachment)");
+  const att = deck.attachment;
+  lines.push(`- **Name:** ${att.name ?? att.fileName}`);
+  lines.push(`- **File name:** ${att.fileName}`);
+  lines.push(`- **Uploaded:** ${new Date(att.uploadedAt).toLocaleDateString()}`);
+  if (att.versionTag) {
+    lines.push(`- **Version:** ${att.versionTag}`);
+  }
+  lines.push(`- **Source document:** ${att.isSourceDocument ? "Yes" : "No"}`);
+  if (att.filePath) {
+    lines.push(`- **Path:** ${att.filePath}`);
+  }
+  lines.push("");
+  lines.push("---");
+  lines.push("");
+  lines.push(
+    `*Strategy deck export generated on ${new Date().toLocaleDateString()}. Confidentiality and disclaimers apply.*`
+  );
+
+  return lines.join("\n");
+}
+
+/**
+ * Generate full project report with optional Strategy Deck section appended.
+ * Use when exporting Killingdal (or other project) data room and including strategy rationale.
+ */
+export function generateFullReportWithStrategyDeck(
+  dataRoom: IProjectDataRoom,
+  strategyDeck: IStrategyDeck | null
+): string {
+  const report = generateFullReport(dataRoom);
+  if (!strategyDeck) {
+    return report;
+  }
+  return report + "\n\n---\n\n" + generateStrategyDeckExport(strategyDeck);
 }
 
 /**

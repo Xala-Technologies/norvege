@@ -294,6 +294,237 @@ export default function InvestorsPage() {
         </div>
       </section>
 
+      {/* Why Onshore: Capital Reality */}
+      <section
+        className="section relative overflow-hidden"
+        style={{ background: "var(--color-bg-subtle)" }}
+      >
+        <div className="absolute inset-0 opacity-5">
+          <div
+            className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl"
+            style={{ background: "var(--color-primary-main)" }}
+          />
+          <div
+            className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl"
+            style={{ background: "var(--color-accent-main)" }}
+          />
+        </div>
+        <div className="container max-w-5xl relative z-10">
+          <div className="text-center mb-10">
+            <h2
+              className="text-display mb-2"
+              style={{
+                color: "var(--color-primary-main)",
+                fontFamily: "var(--font-family-heading)",
+                fontWeight: "var(--font-weight-black)",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              {t("whyOnshore.title")}{" "}
+              <span style={{ color: "var(--color-accent-main)" }}>{t("whyOnshore.subtitle")}</span>
+            </h2>
+            <p
+              className="text-lg max-w-2xl mx-auto mt-4"
+              style={{ color: "var(--color-text-body)" }}
+            >
+              {t("whyOnshore.intro")}
+            </p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+            <div
+              className="p-8 lg:p-10 rounded-md relative overflow-hidden"
+              style={{
+                background: "var(--color-bg-default)",
+                border: "1px solid color-mix(in srgb, var(--color-primary-main) 25%, transparent)",
+              }}
+            >
+              <div
+                className="text-sm font-bold uppercase tracking-wider mb-4"
+                style={{ color: "var(--color-text-secondary)" }}
+              >
+                {t("whyOnshore.dsm.label")}
+              </div>
+              <ul className="space-y-3" style={{ color: "var(--color-text-body)" }}>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-primary-main)" }}>•</span>
+                  {t("whyOnshore.dsm.point1")}
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-primary-main)" }}>•</span>
+                  {t("whyOnshore.dsm.point2")}
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-primary-main)" }}>•</span>
+                  {t("whyOnshore.dsm.point3")}
+                </li>
+              </ul>
+            </div>
+            <div
+              className="p-8 lg:p-10 rounded-md relative overflow-hidden"
+              style={{
+                background: "var(--color-bg-default)",
+                border: "2px solid color-mix(in srgb, var(--color-accent-main) 40%, transparent)",
+              }}
+            >
+              <div
+                className="text-sm font-bold uppercase tracking-wider mb-4"
+                style={{ color: "var(--color-accent-main)" }}
+              >
+                {t("whyOnshore.onshore.label")}
+              </div>
+              <ul className="space-y-3" style={{ color: "var(--color-text-body)" }}>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                  {t("whyOnshore.onshore.point1")}
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                  {t("whyOnshore.onshore.point2")}
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                  {t("whyOnshore.onshore.point3")}
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                  {t("whyOnshore.onshore.point4")}
+                </li>
+              </ul>
+              <div
+                className="mt-6 pt-6 border-t border-solid flex flex-wrap gap-4"
+                style={{
+                  borderColor: "color-mix(in srgb, var(--color-accent-main) 30%, transparent)",
+                }}
+              >
+                <span
+                  className="text-sm font-semibold"
+                  style={{ color: "var(--color-text-secondary)" }}
+                >
+                  {t("whyOnshore.timeline.y2026")}
+                </span>
+                <span
+                  className="text-sm font-semibold"
+                  style={{ color: "var(--color-text-secondary)" }}
+                >
+                  {t("whyOnshore.timeline.y2027")}
+                </span>
+                <span
+                  className="text-sm font-semibold"
+                  style={{ color: "var(--color-text-secondary)" }}
+                >
+                  {t("whyOnshore.timeline.y2028")}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Onshore Critical Minerals: Market-Led & Proven */}
+      <section
+        className="section relative overflow-hidden"
+        style={{ background: "var(--color-bg-default)" }}
+      >
+        <div className="absolute inset-0 opacity-5">
+          <div
+            className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl"
+            style={{ background: "var(--color-accent-main)" }}
+          />
+          <div
+            className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl"
+            style={{ background: "var(--color-primary-main)" }}
+          />
+        </div>
+        <div className="container max-w-5xl relative z-10">
+          <div className="text-center mb-12">
+            <h2
+              className="text-display mb-2"
+              style={{
+                color: "var(--color-primary-main)",
+                fontFamily: "var(--font-family-heading)",
+                fontWeight: "var(--font-weight-black)",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              {t("onshoreProven.title")}{" "}
+              <span style={{ color: "var(--color-accent-main)" }}>
+                {t("onshoreProven.subtitle")}
+              </span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+            <div
+              className="group p-8 lg:p-10 rounded-md relative overflow-hidden"
+              style={{
+                background: "var(--color-bg-default)",
+                border: "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
+              }}
+            >
+              <p
+                className="text-base lg:text-lg leading-relaxed mb-6"
+                style={{ color: "var(--color-text-body)" }}
+              >
+                {t("onshoreProven.column1.intro")}
+              </p>
+              <ul className="space-y-3" style={{ color: "var(--color-text-body)" }}>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                  {t("onshoreProven.column1.point1")}
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                  {t("onshoreProven.column1.point2")}
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                  {t("onshoreProven.column1.point3")}
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                  {t("onshoreProven.column1.point4")}
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                  {t("onshoreProven.column1.point5")}
+                </li>
+              </ul>
+            </div>
+            <div
+              className="group p-8 lg:p-10 rounded-md relative overflow-hidden"
+              style={{
+                background: "var(--color-bg-default)",
+                border: "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
+              }}
+            >
+              <p
+                className="text-base lg:text-lg leading-relaxed mb-6"
+                style={{ color: "var(--color-text-body)" }}
+              >
+                {t("onshoreProven.column2.intro")}
+              </p>
+              <ul className="space-y-3" style={{ color: "var(--color-text-body)" }}>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                  {t("onshoreProven.column2.point1")}
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                  {t("onshoreProven.column2.point2")}
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                  {t("onshoreProven.column2.point3")}
+                </li>
+                <li className="flex items-start gap-2">
+                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                  {t("onshoreProven.column2.point4")}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Key Facts */}
       <section
         className="section relative overflow-hidden"

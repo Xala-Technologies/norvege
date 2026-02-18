@@ -283,3 +283,161 @@ export interface IProjectDataRoom {
   lastUpdated: string; // ISO date string
   dataQualityNotes?: string; // Internal notes about data completeness
 }
+
+/**
+ * Strategy Deck Type Definitions
+ * For "Onshore vs Deep-Sea VMS Exploration" and similar company-level strategy documents
+ */
+
+export interface IDeckSection {
+  id: string;
+  title: string;
+  body?: string;
+  bullets?: string[];
+  citations?: string[];
+  pageRef: number;
+}
+
+export interface IGeologyPrimer {
+  pageRef: number;
+  ophioliteDefinition: string;
+  timingRanges: Array<{ label: string; range: string; pageRef?: number }>;
+  tectonicSetting: string;
+  vmsFormationSteps: Array<{ title?: string; description: string; pageRef?: number }>;
+  typicalMetals: Array<{
+    element: string;
+    category: "major" | "trace" | "minor" | "oftenEnriched";
+  }>;
+}
+
+export interface IComparison {
+  pageRef: number;
+  dsmTraits: string[];
+  onshoreTraits: string[];
+  dsmTimelineBands?: Array<{ label: string; description?: string }>;
+  onshoreTimelineBands?: Array<{ label: string; description?: string }>;
+  timelineYears?: string[];
+  indicativeLabel?: string;
+}
+
+export interface IChartAsset {
+  id: string;
+  imagePathOrRef: string;
+  caption?: string;
+  capexMin?: number;
+  capexMax?: number;
+  opexMin?: number;
+  opexMax?: number;
+  pageRef?: number;
+}
+
+export interface ILicensePortfolioSummary {
+  approvedCount: number | null;
+  pendingCount: number | null;
+  notes: string;
+  pageRef?: number;
+}
+
+/** Why shift away from Mid-Atlantic Ridge / why onshore Norway (thesis blocks) */
+export interface IThesisBlock {
+  id: string;
+  title: string;
+  pageRef: number;
+  costDrivers?: string[];
+  locationReference?: string;
+  depthReference?: string;
+  exampleSite?: string;
+  sameMineralSystemNote?: string;
+  knownDistricts?: string[];
+  infrastructurePermittingNote?: string;
+  jorcPercNote?: string;
+  bullets?: string[];
+}
+
+/** Strategy alignment: long-term / bridge / near-term + target metals */
+export interface IStrategyAlignment {
+  pageRef: number;
+  longTerm: string;
+  strategicBridge: string;
+  nearTerm: string;
+  targetMetals: string[];
+}
+
+/** Economics benchmark narrative (no invented numbers) */
+export interface IEconomicsBenchmark {
+  pageRef: number;
+  narrativeBullets: string[];
+  chartAssetId?: string;
+}
+
+/** Closing claims (onshore market-led & proven + NorveGe-specific) */
+export interface IClosingClaims {
+  pageRef: number;
+  generalBullets: string[];
+  norvegeBullets: string[];
+}
+
+export interface IStrategyDeck {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle?: string;
+  authorOrDept: string;
+  monthYear: string;
+  confidentiality: boolean;
+  companyName: string;
+  relatedProjectSlug: string;
+  topic: string;
+
+  /** Source PDF attachment */
+  attachment: {
+    fileName: string;
+    uploadedAt: string;
+    versionTag?: string;
+    name?: string;
+    filePath?: string;
+    isSourceDocument: boolean;
+  };
+
+  /** Document-level metadata */
+  documentMeta: {
+    title: string;
+    subtitle?: string;
+    authorOrDept: string;
+    monthYear: string;
+    confidentiality: boolean;
+  };
+
+  /** 1) Why shift away from Mid-Atlantic Ridge DSM */
+  thesisWhyShiftAway: IThesisBlock;
+
+  /** 2) Why onshore Norway is preferred */
+  thesisWhyOnshore: IThesisBlock;
+
+  /** 3) Licensing portfolio (map slide) */
+  licensePortfolioSummary: ILicensePortfolioSummary;
+  licenseMapExplanation?: string;
+
+  /** 4) Geology education (ophiolite + VMS genesis) */
+  geologyPrimer: IGeologyPrimer;
+
+  /** 5) Strategy alignment to Norway/EU critical minerals */
+  strategyAlignment: IStrategyAlignment;
+
+  /** 6) Capital & timeline comparison (DSM vs Onshore) */
+  comparison: IComparison;
+
+  /** 7) Economics benchmark (narrative + optional chart) */
+  economicsBenchmark: IEconomicsBenchmark;
+
+  /** 8) Closing claims */
+  closingClaims: IClosingClaims;
+
+  /** Disclaimers / confidentiality */
+  disclaimers: string[];
+
+  /** Optional chart assets (e.g. CAPEX/OPEX benchmark image) */
+  chartAssets: IChartAsset[];
+
+  lastUpdated: string;
+}

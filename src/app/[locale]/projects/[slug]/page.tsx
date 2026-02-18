@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Link } from "@/i18n/routing";
@@ -7,6 +8,7 @@ import Timeline from "@/components/ui/timeline";
 import { getTranslations } from "next-intl/server";
 import { getProjectDataRoomBySlug } from "@/content/killingdal-data-room";
 import ProjectDataRoom from "@/components/projects/ProjectDataRoom";
+import ProjectsHeroImage from "@/components/ui/ProjectsHeroImage";
 
 export async function generateStaticParams() {
   const slugs = getAllProjectSlugs();
@@ -26,8 +28,6 @@ export async function generateMetadata({
       title: "Project Not Found",
     };
   }
-
-  const t = await getTranslations({ locale, namespace: "projects" });
 
   return generateSEOMetadata({
     title: `${project.name} - NORVEGE MINERALS AS`,
@@ -50,285 +50,255 @@ export default async function ProjectDetailPage({
     notFound();
   }
 
+  // Helper to split project name for styling
+  const nameParts = project.name.split(" ");
+  const nameMain = nameParts.length > 1 ? nameParts.slice(0, -1).join(" ") : nameParts[0];
+  const nameHighlight = nameParts.length > 1 ? nameParts[nameParts.length - 1] : "";
+
+  const sectionEyebrowClass =
+    "block text-xs font-semibold uppercase tracking-widest mb-2 opacity-70";
+
+  const overviewImage =
+    project.slug === "killingdal"
+      ? "/images/projects/killingdal/overview.jpg"
+      : "/images/hero/02.jpg";
+  const geologyImage =
+    project.slug === "killingdal"
+      ? "/images/projects/killingdal/geology-ore.jpg"
+      : "/images/hero/01.jpg";
+  const explorationImage =
+    project.slug === "killingdal"
+      ? "/images/projects/killingdal/exploration.jpg"
+      : "/images/hero/03.jpg";
+  const licenseImage =
+    project.slug === "killingdal"
+      ? "/images/projects/killingdal/license.jpg"
+      : "/images/hero/05.jpg";
+  const heroImage =
+    project.slug === "killingdal" ? "/images/projects/killingdal/hero.jpg" : undefined;
+
   return (
     <div className="min-h-screen">
-      {/* Enhanced Hero Section */}
-      <section
-        className="relative min-h-[90vh] flex items-center overflow-hidden"
-        style={{
-          background: "var(--color-navy-900)",
-        }}
-      >
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div
-            className="absolute -top-40 -right-40 w-96 h-96 rounded-full blur-3xl opacity-20"
-            style={{ background: "var(--color-accent-main)" }}
-          />
-          <div
-            className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full blur-3xl opacity-15"
-            style={{ background: "var(--color-primary-main)" }}
-          />
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-3xl opacity-10"
-            style={{ background: "var(--color-accent-main)" }}
-          />
-        </div>
+      {/* Hero Section - Matching Investors Layout */}
+      <section className="relative overflow-hidden min-h-[600px] lg:min-h-[700px] flex items-center">
+        {/* Background Image */}
+        <ProjectsHeroImage src={heroImage} alt={`${project.name} Hero Image`} />
 
-        {/* Grid Pattern Overlay */}
+        {/* Subtle grid pattern overlay */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-5 pointer-events-none z-10"
           style={{
             backgroundImage: `
               linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
               linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
             `,
-            backgroundSize: "80px 80px",
+            backgroundSize: "60px 60px",
           }}
         />
 
-        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <div className="max-w-6xl mx-auto">
+        {/* Content */}
+        <div className="container relative z-20 pt-32 pb-20 lg:pt-36 lg:pb-28">
+          <div className="max-w-4xl mx-auto text-center">
             {/* Stage Badge */}
-            <div
-              className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full border"
-              style={{
-                background: "color-mix(in srgb, var(--color-accent-main) 15%, transparent)",
-                borderColor: "color-mix(in srgb, var(--color-accent-main) 40%, transparent)",
-              }}
-            >
-              <span
-                className="w-2 h-2 rounded-full"
-                style={{ background: "var(--color-accent-main)" }}
-              />
-              <span
-                className="text-sm font-semibold uppercase tracking-wider"
-                style={{ color: "var(--color-accent-main)" }}
+            <div className="flex justify-center mb-6">
+              <div
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm font-semibold uppercase tracking-wider"
+                style={{
+                  background: "color-mix(in srgb, var(--color-accent-main) 18%, transparent)",
+                  borderColor: "color-mix(in srgb, var(--color-accent-main) 50%, transparent)",
+                  color: "var(--color-accent-main)",
+                }}
               >
+                <span className="w-1.5 h-1.5 rounded-full bg-current" />
                 {project.stage}
-              </span>
+              </div>
             </div>
 
-            {/* Main Title */}
+            {/* Main Heading */}
             <h1
-              className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black mb-8 leading-[0.9] tracking-tight"
+              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 lg:mb-8 leading-tight"
               style={{
                 color: "var(--color-text-on-dark)",
                 fontFamily: "var(--font-family-heading)",
                 fontWeight: "var(--font-weight-black)",
-                letterSpacing: "-0.04em",
+                letterSpacing: "-0.03em",
               }}
             >
-              {project.name}
+              {nameHighlight ? (
+                <>
+                  {nameMain}{" "}
+                  <span style={{ color: "var(--color-accent-main)" }}>{nameHighlight}</span>
+                </>
+              ) : (
+                nameMain
+              )}
             </h1>
 
-            {/* Location & Description Row */}
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div
-                    className="p-2 rounded-lg"
-                    style={{
-                      background: "color-mix(in srgb, var(--color-accent-main) 20%, transparent)",
-                    }}
-                  >
-                    <svg
-                      className="w-6 h-6"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      style={{ color: "var(--color-accent-main)" }}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p
-                      className="text-sm uppercase tracking-wider opacity-70"
-                      style={{ color: "var(--color-text-on-dark)" }}
-                    >
-                      Location
-                    </p>
-                    <p
-                      className="text-2xl md:text-3xl font-bold"
-                      style={{ color: "var(--color-text-on-dark)" }}
-                    >
-                      {project.region}, {project.country}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <p
-                  className="text-xl md:text-2xl leading-relaxed"
-                  style={{
-                    color: "color-mix(in srgb, var(--color-text-on-dark) 90%, transparent)",
-                    fontFamily: "var(--font-family-body)",
-                    lineHeight: "var(--line-height-loose)",
-                  }}
-                >
-                  {project.description}
-                </p>
-              </div>
-            </div>
-
-            {/* Key Stats - Enhanced */}
-            <div
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 pt-8 border-t"
+            {/* Description */}
+            <p
+              className="text-xl md:text-2xl lg:text-3xl mb-8 lg:mb-12 max-w-3xl mx-auto leading-relaxed"
               style={{
-                borderColor: "color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
+                color: "color-mix(in srgb, var(--color-text-on-dark) 90%, transparent)",
+                fontFamily: "var(--font-family-body)",
+                lineHeight: "var(--line-height-loose)",
+                fontWeight: "var(--font-weight-medium)",
               }}
             >
-              <div className="text-center lg:text-left">
+              {project.description}
+            </p>
+
+            {/* Key Stats Row */}
+            <div className="flex flex-wrap justify-center gap-8 lg:gap-16 mt-12">
+              <div className="text-center">
                 <div
-                  className="text-4xl md:text-5xl lg:text-6xl font-black mb-2"
-                  style={{
-                    color: "var(--color-accent-main)",
-                    fontFamily: "var(--font-family-heading)",
-                  }}
+                  className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-2"
+                  style={{ color: "var(--color-accent-main)" }}
                 >
                   {project.licenses}
                 </div>
                 <div
-                  className="text-xs md:text-sm font-semibold uppercase tracking-wider opacity-80"
+                  className="text-sm md:text-base uppercase tracking-wider"
                   style={{
-                    color: "var(--color-text-on-dark)",
+                    color: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
                   }}
                 >
                   {t("licenses")}
                 </div>
               </div>
-              <div className="text-center lg:text-left">
+              <div className="text-center">
                 <div
-                  className="text-4xl md:text-5xl lg:text-6xl font-black mb-2"
-                  style={{
-                    color: "var(--color-accent-main)",
-                    fontFamily: "var(--font-family-heading)",
-                  }}
+                  className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-2"
+                  style={{ color: "var(--color-accent-main)" }}
                 >
                   {project.area}
                 </div>
                 <div
-                  className="text-xs md:text-sm font-semibold uppercase tracking-wider opacity-80"
+                  className="text-sm md:text-base uppercase tracking-wider"
                   style={{
-                    color: "var(--color-text-on-dark)",
+                    color: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
                   }}
                 >
                   {t("totalArea")}
                 </div>
               </div>
-              <div className="text-center lg:text-left">
+              <div className="text-center">
                 <div
-                  className="text-4xl md:text-5xl lg:text-6xl font-black mb-2"
-                  style={{
-                    color: "var(--color-accent-main)",
-                    fontFamily: "var(--font-family-heading)",
-                  }}
-                >
-                  {project.minerals.length}
-                </div>
-                <div
-                  className="text-xs md:text-sm font-semibold uppercase tracking-wider opacity-80"
-                  style={{
-                    color: "var(--color-text-on-dark)",
-                  }}
-                >
-                  Minerals
-                </div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div
-                  className="text-4xl md:text-5xl lg:text-6xl font-black mb-2"
-                  style={{
-                    color: "var(--color-accent-main)",
-                    fontFamily: "var(--font-family-heading)",
-                  }}
+                  className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-2"
+                  style={{ color: "var(--color-accent-main)" }}
                 >
                   {project.priority}
                 </div>
                 <div
-                  className="text-xs md:text-sm font-semibold uppercase tracking-wider opacity-80"
+                  className="text-sm md:text-base uppercase tracking-wider"
                   style={{
-                    color: "var(--color-text-on-dark)",
+                    color: "color-mix(in srgb, var(--color-text-on-dark) 70%, transparent)",
                   }}
                 >
                   {t("priority")}
                 </div>
               </div>
             </div>
+
+            {/* Minerals List (Optional addition to hero if space permits, or just keep stats clean) */}
+            {project.minerals.length > 0 && (
+              <div className="mt-12 flex flex-wrap justify-center gap-2">
+                {project.minerals.map((m) => (
+                  <span
+                    key={m}
+                    className="px-3 py-1 rounded-full text-sm font-medium border border-white/20 bg-white/5 text-white/90"
+                  >
+                    {t(`mineralNames.${m}`) || m}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
+
+        {/* Bottom decorative line */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-1"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent 0%, var(--color-accent-main) 50%, transparent 100%)",
+          }}
+        />
       </section>
 
-      {/* Project Overview - Split Layout */}
+      {/* Project Overview - Enhanced Layout with Image */}
       {project.overview && (
-        <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.02]">
+        <section
+          id="overview"
+          className="section relative overflow-hidden"
+          style={{ background: "var(--color-bg-default)" }}
+        >
+          {/* Subtle background decoration */}
+          <div className="absolute inset-0 opacity-5 pointer-events-none">
             <div
-              className="absolute top-20 right-0 w-[500px] h-[500px] rounded-full blur-3xl"
-              style={{ background: "var(--color-accent-main)" }}
+              className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl"
+              style={{ background: "var(--color-primary-main)" }}
             />
           </div>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-7xl mx-auto">
-              <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-                <div className="lg:col-span-5">
-                  <div className="sticky top-24">
-                    <span
-                      className="inline-block text-sm font-bold uppercase tracking-widest mb-4"
-                      style={{ color: "var(--color-accent-main)" }}
-                    >
-                      Overview
-                    </span>
-                    <h2
-                      className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight"
-                      style={{
-                        color: "var(--color-text-body)",
-                        fontFamily: "var(--font-family-heading)",
-                        fontWeight: "var(--font-weight-black)",
-                        letterSpacing: "-0.03em",
-                      }}
-                    >
-                      Project
-                      <br />
-                      <span style={{ color: "var(--color-accent-main)" }}>Overview</span>
-                    </h2>
-                    <div
-                      className="h-2 w-32 rounded-full"
-                      style={{ background: "var(--color-accent-main)" }}
-                    />
-                  </div>
-                </div>
-                <div className="lg:col-span-7">
-                  <div
-                    className="p-8 lg:p-12 rounded-2xl border-2"
-                    style={{
-                      background: "var(--color-bg-default)",
-                      borderColor: "color-mix(in srgb, var(--color-primary-main) 20%, transparent)",
-                    }}
-                  >
-                    <p
-                      className="text-lg md:text-xl lg:text-2xl leading-relaxed"
-                      style={{
-                        color: "var(--color-text-body)",
-                        fontFamily: "var(--font-family-body)",
-                        lineHeight: "var(--line-height-loose)",
-                      }}
-                    >
-                      {project.overview}
-                    </p>
-                  </div>
+
+          <div className="container max-w-6xl relative z-10">
+            <div className="text-center mb-12">
+              <span className={sectionEyebrowClass} style={{ color: "var(--color-primary-main)" }}>
+                Project
+              </span>
+              <h2
+                className="text-display mb-6"
+                style={{
+                  color: "var(--color-primary-main)",
+                  fontFamily: "var(--font-family-heading)",
+                  fontWeight: "var(--font-weight-black)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {t("projectOverview")}
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+              {/* Text Column */}
+              <div
+                className="group p-8 lg:p-12 rounded-md relative overflow-hidden flex flex-col justify-center"
+                style={{
+                  background: `var(--color-bg-default)`,
+                  border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                  boxShadow: "none",
+                }}
+              >
+                {/* Enhanced border glow on hover */}
+                <div
+                  className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    border: `2px solid var(--color-primary-main)`,
+                  }}
+                />
+                <p
+                  className="text-lg md:text-xl leading-relaxed whitespace-pre-line relative z-10"
+                  style={{
+                    color: "var(--color-text-body)",
+                    fontFamily: "var(--font-family-body)",
+                    lineHeight: "1.8",
+                  }}
+                >
+                  {project.overview}
+                </p>
+              </div>
+
+              {/* Image Column */}
+              <div className="relative min-h-[400px] lg:min-h-full rounded-md overflow-hidden group border border-gray-200 shadow-sm">
+                <Image
+                  src={overviewImage}
+                  alt="Killingdal Mines Overview"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
+                <div className="absolute bottom-6 left-6 right-6 text-white text-sm font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Historic Mining District in Trøndelag
                 </div>
               </div>
             </div>
@@ -336,311 +306,164 @@ export default async function ProjectDetailPage({
         </section>
       )}
 
-      {/* Key Metrics - Card Grid */}
-      <section
-        className="relative py-20 lg:py-28 overflow-hidden"
-        style={{
-          background: "var(--color-bg-subtle)",
-        }}
-      >
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div
-            className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full blur-3xl"
-            style={{ background: "var(--color-primary-main)" }}
-          />
-          <div
-            className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl"
-            style={{ background: "var(--color-accent-main)" }}
-          />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <span
-                className="inline-block text-sm font-bold uppercase tracking-widest mb-4"
-                style={{ color: "var(--color-accent-main)" }}
-              >
-                Metrics
+      {/* Geology - Enhanced Layout with Image */}
+      {project.geology && (
+        <section
+          id="geology"
+          className="section relative overflow-hidden"
+          style={{ background: "var(--color-bg-subtle)" }}
+        >
+          <div className="container max-w-6xl relative z-10">
+            <div className="text-center mb-12">
+              <span className={sectionEyebrowClass} style={{ color: "var(--color-primary-main)" }}>
+                Technical
               </span>
               <h2
-                className="text-4xl md:text-5xl lg:text-6xl font-black mb-4"
+                className="text-display mb-6"
                 style={{
-                  color: "var(--color-text-body)",
+                  color: "var(--color-primary-main)",
                   fontFamily: "var(--font-family-heading)",
                   fontWeight: "var(--font-weight-black)",
-                  letterSpacing: "-0.03em",
+                  letterSpacing: "-0.02em",
                 }}
               >
-                Key <span style={{ color: "var(--color-accent-main)" }}>Metrics</span>
+                {t("geology")}
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-              {/* Licenses Card */}
-              <div
-                className="group p-8 lg:p-10 rounded-2xl border-2 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
-                style={{
-                  background: "var(--color-bg-default)",
-                  borderColor: "color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
-                }}
-              >
-                <div
-                  className="w-20 h-20 rounded-xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
-                  style={{
-                    background: "var(--color-accent-main)",
-                  }}
-                >
-                  <svg
-                    className="w-10 h-10 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                </div>
-                <div
-                  className="text-6xl md:text-7xl font-black mb-4"
-                  style={{
-                    color: "var(--color-accent-main)",
-                    fontFamily: "var(--font-family-heading)",
-                  }}
-                >
-                  {project.licenses}
-                </div>
-                <div
-                  className="text-lg font-bold uppercase tracking-wider"
-                  style={{
-                    color: "var(--color-text-body)",
-                  }}
-                >
-                  {t("explorationLicenses")}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+              {/* Image Column */}
+              <div className="relative min-h-[400px] lg:min-h-full rounded-md overflow-hidden group border border-gray-200 order-2 lg:order-1 shadow-sm">
+                <Image
+                  src={geologyImage}
+                  alt="Geological Ore Sample"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
+                <div className="absolute bottom-6 left-6 right-6 text-white text-sm font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  High-Grade Copper-Zinc Sulphide Mineralization
                 </div>
               </div>
 
-              {/* Area Card */}
+              {/* Text Column */}
               <div
-                className="group p-8 lg:p-10 rounded-2xl border-2 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+                className="group p-8 lg:p-12 rounded-md relative overflow-hidden flex flex-col justify-center order-1 lg:order-2"
                 style={{
                   background: "var(--color-bg-default)",
-                  borderColor: "color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
+                  border:
+                    "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
                 }}
               >
+                {/* Enhanced border glow on hover */}
                 <div
-                  className="w-20 h-20 rounded-xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
+                  className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{
-                    background: "var(--color-primary-main)",
+                    border: `2px solid var(--color-primary-main)`,
                   }}
-                >
-                  <svg
-                    className="w-10 h-10 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <div
-                  className="text-6xl md:text-7xl font-black mb-4"
+                />
+                <h3
+                  className="text-2xl font-bold mb-6"
                   style={{
-                    color: "var(--color-accent-main)",
+                    color: "var(--color-primary-main)",
                     fontFamily: "var(--font-family-heading)",
                   }}
                 >
-                  {project.area}
-                </div>
-                <div
-                  className="text-lg font-bold uppercase tracking-wider"
+                  VMS System Characteristics
+                </h3>
+                <p
+                  className="text-lg md:text-xl leading-relaxed"
                   style={{
                     color: "var(--color-text-body)",
+                    fontFamily: "var(--font-family-body)",
+                    lineHeight: "1.7",
                   }}
                 >
-                  {t("totalArea")}
-                </div>
-              </div>
-
-              {/* Minerals Card */}
-              <div
-                className="group p-8 lg:p-10 rounded-2xl border-2 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
-                style={{
-                  background: "var(--color-bg-default)",
-                  borderColor: "color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
-                }}
-              >
-                <div
-                  className="w-20 h-20 rounded-xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
-                  style={{
-                    background: "var(--color-accent-main)",
-                  }}
-                >
-                  <svg
-                    className="w-10 h-10 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                    />
-                  </svg>
-                </div>
-                <div
-                  className="text-6xl md:text-7xl font-black mb-4"
-                  style={{
-                    color: "var(--color-accent-main)",
-                    fontFamily: "var(--font-family-heading)",
-                  }}
-                >
-                  {project.minerals.length}
-                </div>
-                <div
-                  className="text-lg font-bold uppercase tracking-wider mb-4"
-                  style={{
-                    color: "var(--color-text-body)",
-                  }}
-                >
-                  {t("targetMinerals")}
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {project.minerals.slice(0, 3).map((mineral, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1.5 rounded-lg text-sm font-semibold"
-                      style={{
-                        background: "color-mix(in srgb, var(--color-accent-main) 15%, transparent)",
-                        color: "var(--color-accent-main)",
-                      }}
-                    >
-                      {mineral}
-                    </span>
-                  ))}
-                  {project.minerals.length > 3 && (
-                    <span
-                      className="px-3 py-1.5 rounded-lg text-sm font-semibold"
-                      style={{
-                        background:
-                          "color-mix(in srgb, var(--color-primary-main) 15%, transparent)",
-                        color: "var(--color-primary-main)",
-                      }}
-                    >
-                      +{project.minerals.length - 3}
-                    </span>
-                  )}
-                </div>
+                  {project.geology}
+                </p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Geology & Exploration - Side by Side */}
-      {(project.geology || project.exploration) && (
-        <section className="relative py-20 lg:py-28 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto">
-              <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-                {/* Geology */}
-                {project.geology && (
-                  <div>
-                    <span
-                      className="inline-block text-sm font-bold uppercase tracking-widest mb-4"
-                      style={{ color: "var(--color-accent-main)" }}
-                    >
-                      Geology
-                    </span>
-                    <h2
-                      className="text-3xl md:text-4xl lg:text-5xl font-black mb-6"
-                      style={{
-                        color: "var(--color-text-body)",
-                        fontFamily: "var(--font-family-heading)",
-                        fontWeight: "var(--font-weight-black)",
-                        letterSpacing: "-0.03em",
-                      }}
-                    >
-                      Geological
-                      <br />
-                      <span style={{ color: "var(--color-accent-main)" }}>Context</span>
-                    </h2>
-                    <div
-                      className="p-8 lg:p-10 rounded-2xl border-2"
-                      style={{
-                        background: "var(--color-bg-default)",
-                        borderColor:
-                          "color-mix(in srgb, var(--color-primary-main) 20%, transparent)",
-                      }}
-                    >
-                      <p
-                        className="text-base md:text-lg leading-relaxed"
-                        style={{
-                          color: "var(--color-text-body)",
-                          fontFamily: "var(--font-family-body)",
-                          lineHeight: "var(--line-height-loose)",
-                        }}
-                      >
-                        {project.geology}
-                      </p>
-                    </div>
-                  </div>
-                )}
+      {/* Exploration - Enhanced Layout with Image */}
+      {project.exploration && (
+        <section
+          id="exploration"
+          className="section relative overflow-hidden"
+          style={{ background: "var(--color-bg-default)" }}
+        >
+          <div className="container max-w-6xl relative z-10">
+            <div className="text-center mb-12">
+              <span className={sectionEyebrowClass} style={{ color: "var(--color-primary-main)" }}>
+                Progress
+              </span>
+              <h2
+                className="text-display mb-6"
+                style={{
+                  color: "var(--color-primary-main)",
+                  fontFamily: "var(--font-family-heading)",
+                  fontWeight: "var(--font-weight-black)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {t("explorationActivities")}
+              </h2>
+            </div>
 
-                {/* Exploration */}
-                {project.exploration && (
-                  <div>
-                    <span
-                      className="inline-block text-sm font-bold uppercase tracking-widest mb-4"
-                      style={{ color: "var(--color-accent-main)" }}
-                    >
-                      Exploration
-                    </span>
-                    <h2
-                      className="text-3xl md:text-4xl lg:text-5xl font-black mb-6"
-                      style={{
-                        color: "var(--color-text-body)",
-                        fontFamily: "var(--font-family-heading)",
-                        fontWeight: "var(--font-weight-black)",
-                        letterSpacing: "-0.03em",
-                      }}
-                    >
-                      Exploration
-                      <br />
-                      <span style={{ color: "var(--color-accent-main)" }}>Strategy</span>
-                    </h2>
-                    <div
-                      className="p-8 lg:p-10 rounded-2xl border-2"
-                      style={{
-                        background: "var(--color-bg-default)",
-                        borderColor:
-                          "color-mix(in srgb, var(--color-primary-main) 20%, transparent)",
-                      }}
-                    >
-                      <p
-                        className="text-base md:text-lg leading-relaxed"
-                        style={{
-                          color: "var(--color-text-body)",
-                          fontFamily: "var(--font-family-body)",
-                          lineHeight: "var(--line-height-loose)",
-                        }}
-                      >
-                        {project.exploration}
-                      </p>
-                    </div>
-                  </div>
-                )}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+              {/* Text Column */}
+              <div
+                className="group p-8 lg:p-12 rounded-md relative overflow-hidden flex flex-col justify-center"
+                style={{
+                  background: "var(--color-bg-default)",
+                  border:
+                    "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
+                }}
+              >
+                {/* Enhanced border glow on hover */}
+                <div
+                  className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    border: `2px solid var(--color-primary-main)`,
+                  }}
+                />
+                <h3
+                  className="text-2xl font-bold mb-6"
+                  style={{
+                    color: "var(--color-primary-main)",
+                    fontFamily: "var(--font-family-heading)",
+                  }}
+                >
+                  Modern Exploration Strategy
+                </h3>
+                <p
+                  className="text-lg md:text-xl leading-relaxed"
+                  style={{
+                    color: "var(--color-text-body)",
+                    fontFamily: "var(--font-family-body)",
+                    lineHeight: "1.7",
+                  }}
+                >
+                  {project.exploration}
+                </p>
+              </div>
+
+              {/* Image Column */}
+              <div className="relative min-h-[400px] lg:min-h-full rounded-md overflow-hidden group border border-gray-200 shadow-sm">
+                <Image
+                  src={explorationImage}
+                  alt="Exploration Fieldwork"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
+                <div className="absolute bottom-6 left-6 right-6 text-white text-sm font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Advanced Field Validation & Sampling
+                </div>
               </div>
             </div>
           </div>
@@ -650,80 +473,140 @@ export default async function ProjectDetailPage({
       {/* Timeline */}
       {project.timeline && project.timeline.length > 0 && (
         <section
-          className="relative py-20 lg:py-28 overflow-hidden"
-          style={{
-            background: "var(--color-bg-subtle)",
-          }}
+          id="timeline"
+          className="section relative overflow-hidden"
+          style={{ background: "var(--color-bg-default)" }}
         >
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-16">
-                <span
-                  className="inline-block text-sm font-bold uppercase tracking-widest mb-4"
-                  style={{ color: "var(--color-accent-main)" }}
-                >
-                  History
-                </span>
-                <h2
-                  className="text-4xl md:text-5xl lg:text-6xl font-black mb-4"
-                  style={{
-                    color: "var(--color-text-body)",
-                    fontFamily: "var(--font-family-heading)",
-                    fontWeight: "var(--font-weight-black)",
-                    letterSpacing: "-0.03em",
-                  }}
-                >
-                  Project <span style={{ color: "var(--color-accent-main)" }}>Timeline</span>
-                </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                  Key milestones and historical development
-                </p>
-              </div>
-              <Timeline items={project.timeline} />
+          <div className="container max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <span className={sectionEyebrowClass} style={{ color: "var(--color-primary-main)" }}>
+                History
+              </span>
+              <h2
+                className="text-display mb-6"
+                style={{
+                  color: "var(--color-primary-main)",
+                  fontFamily: "var(--font-family-heading)",
+                  fontWeight: "var(--font-weight-black)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {t("projectTimeline")}
+              </h2>
             </div>
+            <Timeline items={project.timeline} />
           </div>
         </section>
       )}
 
       {/* License Coverage */}
       {project.coverage && (
-        <section className="relative py-20 lg:py-28 bg-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <span
-                className="inline-block text-sm font-bold uppercase tracking-widest mb-4"
-                style={{ color: "var(--color-accent-main)" }}
-              >
+        <section
+          id="license"
+          className="section relative overflow-hidden"
+          style={{ background: "var(--color-bg-subtle)" }}
+        >
+          <div className="absolute inset-0 opacity-5 pointer-events-none">
+            <div
+              className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl"
+              style={{ background: "var(--color-accent-main)" }}
+            />
+          </div>
+          <div className="container max-w-6xl mx-auto relative z-10">
+            <div className="text-center mb-12">
+              <span className={sectionEyebrowClass} style={{ color: "var(--color-primary-main)" }}>
                 License
               </span>
               <h2
-                className="text-4xl md:text-5xl lg:text-6xl font-black mb-8"
+                className="text-display mb-6"
                 style={{
-                  color: "var(--color-text-body)",
+                  color: "var(--color-primary-main)",
                   fontFamily: "var(--font-family-heading)",
                   fontWeight: "var(--font-weight-black)",
-                  letterSpacing: "-0.03em",
+                  letterSpacing: "-0.02em",
                 }}
               >
-                License <span style={{ color: "var(--color-accent-main)" }}>Coverage</span>
+                {t("licenseCoverage")}
               </h2>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+              {/* Image Column */}
+              <div className="relative min-h-[300px] lg:min-h-full rounded-md overflow-hidden group border border-gray-200 order-2 lg:order-1 shadow-sm">
+                <Image
+                  src={licenseImage}
+                  alt="License Area Map"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 pointer-events-none" />
+                <div className="absolute bottom-6 left-6 right-6 text-white text-sm font-medium tracking-wide flex items-center gap-2 pointer-events-none">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0121 18.382V7.618a1 1 0 01-.553-.894L15 4m0 13V4m0 0L9 7"
+                    />
+                  </svg>
+                  Geological Map View
+                </div>
+              </div>
+
+              {/* Text Column */}
               <div
-                className="p-8 lg:p-12 rounded-2xl border-2 inline-block"
+                className="group p-8 lg:p-12 rounded-md relative overflow-hidden text-center flex flex-col justify-center order-1 lg:order-2"
                 style={{
                   background: "var(--color-bg-default)",
-                  borderColor: "color-mix(in srgb, var(--color-primary-main) 20%, transparent)",
+                  border:
+                    "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
                 }}
               >
-                <p
-                  className="text-xl md:text-2xl leading-relaxed"
+                {/* Enhanced border glow on hover */}
+                <div
+                  className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{
-                    color: "var(--color-text-body)",
-                    fontFamily: "var(--font-family-body)",
-                    lineHeight: "var(--line-height-loose)",
+                    border: `2px solid var(--color-primary-main)`,
                   }}
-                >
-                  {project.coverage}
-                </p>
+                />
+                <div className="relative z-10">
+                  <p
+                    className="text-xl md:text-2xl leading-relaxed font-bold"
+                    style={{
+                      color: "var(--color-text-body)",
+                      fontFamily: "var(--font-family-heading)",
+                    }}
+                  >
+                    {project.coverage}
+                  </p>
+                  <div className="mt-8 flex justify-center">
+                    <span
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-sm"
+                      style={{
+                        background: "var(--color-bg-subtle)",
+                        color: "var(--color-success)",
+                        border:
+                          "1px solid color-mix(in srgb, var(--color-success) 20%, transparent)",
+                      }}
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      Active License
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -732,35 +615,55 @@ export default async function ProjectDetailPage({
 
       {/* Project Data Room */}
       {dataRoom && (
-        <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.02]">
+        <section
+          id="data-room"
+          aria-label="Project Data Room"
+          className="section relative overflow-hidden"
+          style={{
+            background: "var(--color-bg-default)",
+            borderTop: "1px solid color-mix(in srgb, var(--color-primary-main) 20%, transparent)",
+          }}
+        >
+          <div className="container max-w-6xl mx-auto">
+            <div className="text-center mb-10">
+              <span className={sectionEyebrowClass} style={{ color: "var(--color-accent-main)" }}>
+                Investor information
+              </span>
+            </div>
             <div
-              className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full blur-3xl"
-              style={{ background: "var(--color-accent-main)" }}
-            />
-          </div>
-          <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <ProjectDataRoom dataRoom={dataRoom} />
+              className="rounded-xl overflow-hidden"
+              style={{
+                background: "var(--color-bg-subtle)",
+                border: "1px solid color-mix(in srgb, var(--color-primary-main) 25%, transparent)",
+              }}
+            >
+              <div className="px-4 sm:px-6 lg:px-8 py-8">
+                <ProjectDataRoom dataRoom={dataRoom} />
+              </div>
+            </div>
           </div>
         </section>
       )}
 
-      {/* Back to Projects */}
-      <section
-        className="relative py-16 lg:py-20 bg-white border-t-2"
-        style={{ borderColor: "color-mix(in srgb, var(--color-primary-main) 20%, transparent)" }}
-      >
+      {/* Footer / Back to Projects */}
+      <footer className="py-16 bg-white border-t border-gray-200">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link
               href="/projects"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:gap-5"
+              className="group inline-flex items-center gap-3 px-8 py-4 rounded-sm font-bold text-lg transition-all hover:-translate-y-1 shadow-lg hover:shadow-xl"
               style={{
                 background: "var(--color-accent-main)",
                 color: "var(--color-accent-contrast)",
+                fontFamily: "var(--font-family-heading)",
               }}
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                className="w-5 h-5 shrink-0 transition-transform group-hover:-translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -772,7 +675,7 @@ export default async function ProjectDetailPage({
             </Link>
           </div>
         </div>
-      </section>
+      </footer>
     </div>
   );
 }

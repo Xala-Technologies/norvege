@@ -46,7 +46,10 @@ export default function VDRPage() {
               </a>
               . Access is granted on a case-by-case basis to qualified investors and partners.
             </p>
-            <div className="mt-8">
+            <div className="flex flex-wrap gap-4 mt-8">
+              <Link href="/data-room/decks/onshore-vs-dsm-feb2026" className="btn btn-primary">
+                Strategy Rationale: Onshore vs Deep-Sea Exploration
+              </Link>
               <Link href="/contact" className="btn btn-primary">
                 Request VDR Access
               </Link>

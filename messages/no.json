@@ -90,7 +90,7 @@
       "title": "Nøkkeltall",
       "eyebrow": "Vår Innvirkning",
       "heading": "Utforskning i Storskala",
-      "description": "Norve'Ge Minerals AS er et norsk oppdagelsesselskap fokusert på å frigjøre mineralverdi fra historiske gruver og fremtidige kritiske ressurser. Vi kombinerer tradisjonell gruvedrift med avansert vannbasert mineralutvinning, og gjenvinner sjeldne elementer direkte fra geotermisk gruvevann. Våre operasjoner drives av fornybar energi, inkludert proprietære geotermiske kraftløsninger og containeriserte turbinsystemer. Med et sterkt engasjement for miljøvern og innovasjon, støtter Norve'Ge Minerals overgangen mot en mer bærekraftig ressursøkonomi.",
+      "description": "Norve'Ge Minerals AS fokuserer på landbasert mineralutforskning i Norge—mer kostnadseffektivt enn dypvannsalternativer—med siktet inn på VMS-systemer (volkanogene massive sulfidforekomster) og ofiolittkomplekser. Vi frigjør mineralverdi fra historiske gruver og fremtidige kritiske ressurser, og kombinerer tradisjonell gruvedrift med avansert vannbasert mineralutvinning, og gjenvinner sjeldne elementer direkte fra geotermisk gruvevann. Våre operasjoner drives av fornybar energi, inkludert proprietære geotermiske kraftløsninger og containeriserte turbinsystemer. Med et sterkt engasjement for miljøvern og innovasjon, støtter Norve'Ge Minerals overgangen mot en mer bærekraftig ressursøkonomi.",
       "metrics": {
         "explorationLicenses": {
           "label": "Utforskningslisenser",
@@ -279,7 +279,7 @@
       "storyTitle": "Vår Historie",
       "storySubtitle": "Et norsk gruveselskap forpliktet til ansvarlig utforskning og bærekraftig utvikling",
       "missionTitle": "Vårt Oppdrag",
-      "description": "Norve'Ge Minerals AS er et norsk oppdagelsesselskap fokusert på å frigjøre mineralverdi fra historiske gruver og fremtidige kritiske ressurser. Vi kombinerer tradisjonell gruvedrift med avansert vannbasert mineralutvinning, og gjenvinner sjeldne elementer direkte fra geotermisk gruvevann. Våre operasjoner drives av fornybar energi, inkludert proprietære geotermiske kraftløsninger og containeriserte turbinsystemer. Med et sterkt engasjement for miljøvern og innovasjon, støtter Norve'Ge Minerals overgangen mot en mer bærekraftig ressursøkonomi.",
+      "description": "Norve'Ge Minerals AS er et norsk oppdagelsesselskap fokusert på å frigjøre mineralverdi fra historiske gruver og fremtidige kritiske ressurser. Vi fokuserer på mineralutforskning i VMS-systemer (volkanogene massive sulfidforekomster) på det norske fastlandet—i områder som Killingdal og kjente ofiolittkomplekser langs kysten—der utforskning er betydelig mer kostnadseffektiv enn i dypvannsmiljøer. Vi kombinerer tradisjonell gruvedrift med avansert vannbasert mineralutvinning, og gjenvinner sjeldne elementer direkte fra geotermisk gruvevann. Våre operasjoner drives av fornybar energi, inkludert proprietære geotermiske kraftløsninger og containeriserte turbinsystemer. Med et sterkt engasjement for miljøvern og innovasjon, støtter Norve'Ge Minerals overgangen mot en mer bærekraftig ressursøkonomi.",
       "richHeritage": {
         "title": "Rik Arv",
         "description": "Norge har en rik gruvearv som strekker seg tilbake århundrer. I dag står vi i fronten av en ny æra—en hvor kritiske mineraler som kobber, nikkel, kobolt og sjeldne jordarter er essensielle for batterier, fornybare energisystemer og elektrifiseringen av samfunnet."
@@ -443,7 +443,8 @@
       "Pyrite": "Pyritt",
       "REE": "REE",
       "Fergusonite": "Fergusonitt",
-      "Monazite": "Monazitt"
+      "Monazite": "Monazitt",
+      "Sulphur": "Svovel"
     },
     "viewProjectDetails": "Se Prosjektdetaljer",
     "overview": "Oversikt",
@@ -536,6 +537,48 @@
       "title": "Investorhenvendelser",
       "description": "For mer informasjon om investeringsmuligheter, vennligst kontakt vårt investorforholdsteam.",
       "cta": "Kontakt Oss"
+    },
+    "whyOnshore": {
+      "title": "Hvorfor landbasert",
+      "subtitle": "Kapitalvirkelighet",
+      "intro": "Forskjellen er ikke geologi; det er kapitalstivhet mot kapitalfleksibilitet.",
+      "dsm": {
+        "label": "Dypvannsgruvedrift (DSM)",
+        "point1": "Fler-mrd USD forhåndssystemer",
+        "point2": "Ingen trinnvis inngang",
+        "point3": "Ingen operative referansepunkter"
+      },
+      "onshore": {
+        "label": "Landbasert Norge",
+        "point1": "Trinnvis kapitalutsetting",
+        "point2": "Brownfield- og utvidelsesmuligheter",
+        "point3": "Kjente kostnadsstrukturer",
+        "point4": "Privat kapital foretrekker trinnvise, avrisikede veier"
+      },
+      "timeline": {
+        "y2026": "2026",
+        "y2027": "2027",
+        "y2028": "2028–2029"
+      }
+    },
+    "onshoreProven": {
+      "title": "Landbaserte kritiske mineraler",
+      "subtitle": "Markedsstyrt og bevist",
+      "column1": {
+        "intro": "Landbasert gruvedrift leverer reelle metaller, reell økonomi og reelle tidslinjer.",
+        "point1": "Bevist infrastruktur og tillatelsesveier",
+        "point2": "JORC / PERC-tilpasset utvikling",
+        "point3": "Gjentakbare CAPEX- og OPEX-referansepunkter",
+        "point4": "Forenlig med ESG og EUs forordning om kritiske råvarer",
+        "point5": "Leveringskapasitet på kort og mellomlang sikt"
+      },
+      "column2": {
+        "intro": "Norve'Ge har landbaserte analoger av dypvannssystemer, innenfor aktive lisenser, klare for gjennomføring.",
+        "point1": "Lisensporteføljen overlapper beviste VMS-distrikter",
+        "point2": "Siktet inn de samme kritiske metallene som dypvannsgruvedrift: Cu · Zn · Co · Ni · Au · Ag · REE",
+        "point3": "Stor landposisjon med distriktskala-muligheter",
+        "point4": "Fullt i tråd med Norges og EUs prioriteringer for kritiske mineraler"
+      }
     }
   },
   "contact": {

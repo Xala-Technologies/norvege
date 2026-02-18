@@ -3,7 +3,15 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export default function ProjectsHeroImage() {
+interface ProjectsHeroImageProps {
+  src?: string;
+  alt?: string;
+}
+
+export default function ProjectsHeroImage({
+  src = "/images/projects-page/hero.jpg",
+  alt = "Our Projects - NORVEGE MINERALS AS",
+}: ProjectsHeroImageProps) {
   const [imageError, setImageError] = useState(false);
 
   if (imageError) {
@@ -29,8 +37,8 @@ export default function ProjectsHeroImage() {
         }}
       />
       <Image
-        src="/images/projects-page/hero.jpg"
-        alt="Our Projects - NORVEGE MINERALS AS"
+        src={src}
+        alt={alt}
         fill
         className="object-cover"
         sizes="100vw"

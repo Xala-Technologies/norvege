@@ -90,7 +90,7 @@
       "title": "Key Metrics",
       "eyebrow": "Our Impact",
       "heading": "Exploration at Scale",
-      "description": "Norve'Ge Minerals AS is a Norwegian exploration company focused on unlocking mineral value from historic mines and future-critical resources. We combine traditional mining with advanced water-based mineral extraction, recovering rare elements directly from geothermal mine water. Our operations are powered by renewable energy, including proprietary geothermal power solutions and containerized turbine systems. With a strong commitment to environmental stewardship and innovation, Norve'Ge Minerals supports the shift toward a more sustainable resource economy.",
+      "description": "Norve'Ge Minerals AS focuses on onshore mineral exploration in Norway—more cost-effective than deep-sea alternatives—targeting VMS (Volcanogenic Massive Sulphide) systems and ophiolite complexes. We unlock mineral value from historic mines and future-critical resources, combining traditional mining with advanced water-based mineral extraction, recovering rare elements directly from geothermal mine water. Our operations are powered by renewable energy, including proprietary geothermal power solutions and containerized turbine systems. With a strong commitment to environmental stewardship and innovation, Norve'Ge Minerals supports the shift toward a more sustainable resource economy.",
       "metrics": {
         "explorationLicenses": {
           "label": "Exploration Licenses",
@@ -279,7 +279,7 @@
       "storyTitle": "Our Story",
       "storySubtitle": "A Norwegian mining company committed to responsible exploration and sustainable development",
       "missionTitle": "Our Mission",
-      "description": "Norve'Ge Minerals AS is a Norwegian exploration company focused on unlocking mineral value from historic mines and future-critical resources. We combine traditional mining with advanced water-based mineral extraction, recovering rare elements directly from geothermal mine water. Our operations are powered by renewable energy, including proprietary geothermal power solutions and containerized turbine systems. With a strong commitment to environmental stewardship and innovation, Norve'Ge Minerals supports the shift toward a more sustainable resource economy.",
+      "description": "Norve'Ge Minerals AS is a Norwegian exploration company focused on unlocking mineral value from historic mines and future-critical resources. We focus on mineral exploration in VMS (Volcanogenic Massive Sulphide) systems on the Norwegian mainland—in areas such as Killingdal and known ophiolite complexes along the coast—where exploration is significantly more cost-effective than in deep-sea settings. We combine traditional mining with advanced water-based mineral extraction, recovering rare elements directly from geothermal mine water. Our operations are powered by renewable energy, including proprietary geothermal power solutions and containerized turbine systems. With a strong commitment to environmental stewardship and innovation, Norve'Ge Minerals supports the shift toward a more sustainable resource economy.",
       "richHeritage": {
         "title": "Rich Heritage",
         "description": "Norway has a rich mining heritage dating back centuries. Today, we stand at the forefront of a new era—one where critical minerals like copper, nickel, cobalt, and rare earth elements are essential for batteries, renewable energy systems, and the electrification of society."
@@ -434,7 +434,8 @@
       "Pyrite": "Pyrite",
       "REE": "REE",
       "Fergusonite": "Fergusonite",
-      "Monazite": "Monazite"
+      "Monazite": "Monazite",
+      "Sulphur": "Sulphur"
     },
     "priority": "Priority",
     "high": "High",
@@ -522,6 +523,48 @@
       "title": "Investor Inquiries",
       "description": "For more information about investment opportunities, please contact our investor relations team.",
       "cta": "Contact Us"
+    },
+    "whyOnshore": {
+      "title": "Why Onshore",
+      "subtitle": "Capital Reality",
+      "intro": "The difference is not geology; it is capital rigidity vs capital flexibility.",
+      "dsm": {
+        "label": "Deep-sea mining (DSM)",
+        "point1": "Multi-$bn upfront systems",
+        "point2": "No staged entry",
+        "point3": "No operating benchmarks"
+      },
+      "onshore": {
+        "label": "Onshore Norway",
+        "point1": "Phased capital deployment",
+        "point2": "Brownfield and expansion optionality",
+        "point3": "Known cost structures",
+        "point4": "Private capital prefers staged, de-risked paths"
+      },
+      "timeline": {
+        "y2026": "2026",
+        "y2027": "2027",
+        "y2028": "2028–2029"
+      }
+    },
+    "onshoreProven": {
+      "title": "Onshore Critical Minerals",
+      "subtitle": "Market-Led & Proven",
+      "column1": {
+        "intro": "Onshore mining delivers real metals, real economics, and real timelines.",
+        "point1": "Proven infrastructure and permitting pathways",
+        "point2": "JORC / PERC-aligned development",
+        "point3": "Repeatable CAPEX and OPEX benchmarks",
+        "point4": "Compatible with ESG and EU Critical Raw Materials Act",
+        "point5": "Near- and medium-term supply capability"
+      },
+      "column2": {
+        "intro": "Norve'Ge holds onshore analogues of deep-sea systems, inside active licences, ready for execution.",
+        "point1": "Licence portfolio overlaps proven VMS districts",
+        "point2": "Targets the same critical metals as deep-sea mining: Cu · Zn · Co · Ni · Au · Ag · REEs",
+        "point3": "Large land position with district-scale optionality",
+        "point4": "Fully aligned with Norway & EU critical mineral priorities"
+      }
     }
   },
   "contact": {

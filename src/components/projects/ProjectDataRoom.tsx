@@ -373,7 +373,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
               sub: dataRoom.economics.inSituValuePerTonne.complianceTag,
             },
           ]
-            .filter(Boolean)
+            .filter((item): item is { value: string; label: string; sub: string } => !!item)
             .map((metric, idx) => (
               <motion.div
                 key={idx}

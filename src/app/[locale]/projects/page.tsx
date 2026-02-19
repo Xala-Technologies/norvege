@@ -210,7 +210,7 @@ export default function ProjectsPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {translatedProjects.map((project, index) => (
               <motion.div
                 key={project.slug}
@@ -219,202 +219,183 @@ export default function ProjectsPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
               >
-                <div className="card group flex flex-col h-full relative overflow-hidden">
-                  {/* Enhanced border glow on hover */}
+                <Link href={`/projects/${project.slug}`} className="block h-full group">
                   <div
-                    className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    className="h-full relative overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 bg-white/50 backdrop-blur-sm dark:bg-slate-900/50"
                     style={{
-                      border: `2px solid var(--color-primary-main)`,
-                      borderRadius: "var(--radius-lg)",
+                      border:
+                        "1px solid color-mix(in srgb, var(--color-primary-main) 15%, transparent)",
                     }}
-                  />
-                  <div className="flex-grow flex flex-col relative z-10">
-                    <div className="mb-4">
-                      <span
-                        className="inline-block px-3 py-1 rounded-full text-xs font-semibold"
+                  >
+                    {/* Enhanced border glow on hover */}
+                    <div
+                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{
+                        border: "2px solid var(--color-primary-main)",
+                        boxShadow:
+                          "0 0 20px color-mix(in srgb, var(--color-primary-main) 20%, transparent)",
+                      }}
+                    />
+
+                    <div className="p-8 lg:p-10 flex flex-col h-full relative z-10">
+                      {/* Header: Stage Badge & Location */}
+                      <div className="flex flex-wrap justify-between items-start gap-4 mb-8">
+                        <span
+                          className="px-4 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase shadow-sm"
+                          style={{
+                            background:
+                              project.priority === "High"
+                                ? "var(--color-accent-main)"
+                                : "var(--color-slate-500)",
+                            color: "white",
+                          }}
+                        >
+                          {project.stage === "Resource Definition"
+                            ? t("resourceDefinition")
+                            : project.stage === "Advanced Exploration"
+                              ? t("advancedExploration")
+                              : project.stage === "Early Exploration"
+                                ? t("earlyExploration")
+                                : project.stage === "Active Exploration"
+                                  ? t("activeExploration") || project.stage
+                                  : project.stage}
+                        </span>
+
+                        <div
+                          className="flex items-center text-sm font-medium"
+                          style={{ color: "var(--color-text-secondary)" }}
+                        >
+                          <svg
+                            className="w-4 h-4 mr-1.5 opacity-70"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                            />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                            />
+                          </svg>
+                          {project.region}, {project.country}
+                        </div>
+                      </div>
+
+                      {/* Project Title */}
+                      <h3
+                        className="text-3xl lg:text-4xl font-bold mb-4 group-hover:text-[var(--color-primary-main)] transition-colors duration-300"
                         style={{
-                          background:
-                            project.priority === "High"
-                              ? "var(--color-accent-main)"
-                              : "var(--color-slate-500)",
-                          color: "white",
+                          color: "var(--color-text-body)",
+                          fontFamily: "var(--font-family-heading)",
                         }}
                       >
-                        {project.stage === "Resource Definition"
-                          ? t("resourceDefinition")
-                          : project.stage === "Advanced Exploration"
-                            ? t("advancedExploration")
-                            : project.stage === "Early Exploration"
-                              ? t("earlyExploration")
-                              : project.stage === "Active Exploration"
-                                ? t("activeExploration") || project.stage
-                                : project.stage}
-                      </span>
-                    </div>
+                        {project.name}
+                      </h3>
 
-                    <h2
-                      className="text-3xl mb-2"
-                      style={{
-                        color: "var(--color-text-body)",
-                        fontFamily: "var(--font-family-heading)",
-                        fontWeight: "var(--font-weight-black)",
-                      }}
-                    >
-                      {project.name}
-                    </h2>
-
-                    <p
-                      className="text-lg mb-4"
-                      style={{
-                        color: "var(--color-text-secondary)",
-                        fontFamily: "var(--font-family-body)",
-                      }}
-                    >
-                      {project.region}, {project.country}
-                    </p>
-
-                    <p
-                      className="mb-4"
-                      style={{
-                        color: "var(--color-text-secondary)",
-                        fontFamily: "var(--font-family-body)",
-                        lineHeight: "var(--line-height-loose)",
-                      }}
-                    >
-                      {project.description}
-                    </p>
-
-                    {/* Overview preview if available */}
-                    {project.overview && (
+                      {/* Description */}
                       <p
-                        className="text-sm mb-6 line-clamp-3"
+                        className="text-lg mb-8 line-clamp-3 leading-relaxed"
                         style={{
                           color: "var(--color-text-secondary)",
                           fontFamily: "var(--font-family-body)",
                         }}
                       >
-                        {project.overview}
+                        {project.description}
                       </p>
-                    )}
 
-                    <div className="grid grid-cols-2 gap-4 mb-6">
-                      <div>
-                        <p
-                          className="text-sm"
-                          style={{
-                            color: "var(--color-text-secondary)",
-                            fontFamily: "var(--font-family-body)",
-                          }}
-                        >
-                          {t("licenses")}
-                        </p>
-                        <p
-                          className="text-lg"
-                          style={{
-                            color: "var(--color-text-body)",
-                            fontFamily: "var(--font-family-body)",
-                            fontWeight: "var(--font-weight-bold)",
-                          }}
-                        >
-                          {project.licenses}
-                        </p>
-                      </div>
-                      <div>
-                        <p
-                          className="text-sm"
-                          style={{
-                            color: "var(--color-text-secondary)",
-                            fontFamily: "var(--font-family-body)",
-                          }}
-                        >
-                          {t("area")}
-                        </p>
-                        <p
-                          className="text-lg"
-                          style={{
-                            color: "var(--color-text-body)",
-                            fontFamily: "var(--font-family-body)",
-                            fontWeight: "var(--font-weight-bold)",
-                          }}
-                        >
-                          {project.area}
-                        </p>
-                      </div>
-                      <div className="col-span-2">
-                        <p
-                          className="text-sm"
-                          style={{
-                            color: "var(--color-text-secondary)",
-                            fontFamily: "var(--font-family-body)",
-                          }}
-                        >
-                          {t("targetMinerals")}
-                        </p>
-                        <p
-                          className="text-lg"
-                          style={{
-                            color: "var(--color-accent-main)",
-                            fontFamily: "var(--font-family-body)",
-                            fontWeight: "var(--font-weight-bold)",
-                          }}
-                        >
-                          {project.minerals
-                            .map((mineral) => t(`mineralNames.${mineral}`) || mineral)
-                            .join(", ")}
-                        </p>
-                      </div>
-                      {project.coverage && (
+                      {/* Metrics Grid */}
+                      <div
+                        className="grid grid-cols-2 gap-y-6 gap-x-8 mt-auto pt-8 border-t"
+                        style={{
+                          borderColor:
+                            "color-mix(in srgb, var(--color-text-body) 10%, transparent)",
+                        }}
+                      >
+                        {/* Target Minerals - Full width if needed or spanning col */}
                         <div className="col-span-2">
-                          <p
-                            className="text-sm"
-                            style={{
-                              color: "var(--color-text-secondary)",
-                              fontFamily: "var(--font-family-body)",
-                            }}
+                          <span
+                            className="text-xs font-bold uppercase tracking-wider block mb-2 opacity-70"
+                            style={{ color: "var(--color-text-secondary)" }}
                           >
-                            {t("coverage")}
-                          </p>
-                          <p
-                            className="text-base"
-                            style={{
-                              color: "var(--color-text-body)",
-                              fontFamily: "var(--font-family-body)",
-                              fontWeight: "var(--font-weight-medium)",
-                            }}
-                          >
-                            {project.coverage}
-                          </p>
+                            {t("targetMinerals")}
+                          </span>
+                          <div className="flex flex-wrap gap-2">
+                            {project.minerals.map((mineral) => (
+                              <span
+                                key={mineral}
+                                className="inline-block px-3 py-1 rounded-md text-sm font-semibold bg-[var(--color-bg-subtle)] text-[var(--color-accent-main)]"
+                              >
+                                {t(`mineralNames.${mineral}`) || mineral}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      )}
+
+                        {/* Licenses */}
+                        <div>
+                          <span
+                            className="text-xs font-bold uppercase tracking-wider block mb-1 opacity-70"
+                            style={{ color: "var(--color-text-secondary)" }}
+                          >
+                            {t("licenses")}
+                          </span>
+                          <span
+                            className="text-lg font-bold"
+                            style={{ color: "var(--color-text-body)" }}
+                          >
+                            {project.licenses}
+                          </span>
+                        </div>
+
+                        {/* Area */}
+                        <div>
+                          <span
+                            className="text-xs font-bold uppercase tracking-wider block mb-1 opacity-70"
+                            style={{ color: "var(--color-text-secondary)" }}
+                          >
+                            {t("area")}
+                          </span>
+                          <span
+                            className="text-lg font-bold"
+                            style={{ color: "var(--color-text-body)" }}
+                          >
+                            {project.area}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* View Details Indicator */}
+                      <div
+                        className="mt-8 flex items-center text-sm font-bold group/link"
+                        style={{ color: "var(--color-accent-main)" }}
+                      >
+                        <span className="group-hover:underline underline-offset-4">
+                          {t("viewProjectDetails")}
+                        </span>
+                        <svg
+                          className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          />
+                        </svg>
+                      </div>
                     </div>
                   </div>
-
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className="inline-flex items-center text-sm group-hover:translate-x-1 transition-transform focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-main)] focus:ring-offset-2 rounded mt-auto relative z-10"
-                    style={{
-                      color: "var(--color-accent-main)",
-                      fontFamily: "var(--font-family-body)",
-                      fontWeight: "var(--font-weight-bold)",
-                    }}
-                  >
-                    {t("viewProjectDetails")}
-                    <svg
-                      className="w-4 h-4 ml-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </Link>
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>

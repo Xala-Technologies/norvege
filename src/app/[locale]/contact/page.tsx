@@ -1,17 +1,18 @@
-"use client";
-
 import Script from "next/script";
 import { companyInfo } from "@/content/company";
 import Accordion from "@/components/ui/accordion";
 import { generateFAQSchema } from "@/lib/seo";
 import ContactForm from "@/components/contact/ContactForm";
 import ContactHeroImage from "@/components/ui/ContactHeroImage";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
-export default function ContactPage() {
-  const t = useTranslations("contact");
-  const tCommon = useTranslations("common.labels");
-  const tFAQ = useTranslations("contact.faq.items");
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const t = await getTranslations("contact");
+  const tCommon = await getTranslations("common.labels");
+  const tFAQ = await getTranslations("contact.faq.items");
 
   // Create translated FAQs
   const faqKeys = ["investment", "location", "minerals", "sustainability", "visits", "updates"];

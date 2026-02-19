@@ -29,7 +29,7 @@ export default function ContactHeroImage() {
         }}
       />
       <Image
-        src="/images/contact/hero.jpg"
+        src="/images/contact/hero-v2.jpg"
         alt="Contact Us - NORVEGE MINERALS AS"
         fill
         className="object-cover"

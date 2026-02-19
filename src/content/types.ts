@@ -166,7 +166,7 @@ export interface IFundingProgram {
   fundingType: "grant" | "loan" | "guarantee" | "debt";
   description: string;
   eligibilityCriteria?: string[];
-  applicationStatus?: "eligible" | "applied" | "approved" | "pending";
+  applicationStatus?: "eligible" | "applied" | "approved" | "pending" | "submitted";
 }
 
 export interface IDisclaimer {

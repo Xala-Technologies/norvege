@@ -18,6 +18,7 @@ export interface ITimelineItem {
 export interface IProject {
   slug: string;
   name: string;
+  name_no?: string;
   region: string;
   country: string;
   stage:
@@ -31,11 +32,17 @@ export interface IProject {
   minerals: string[];
   priority: "High" | "Medium" | "Low";
   description: string;
+  description_no?: string;
   overview?: string;
+  overview_no?: string;
   geology?: string;
+  geology_no?: string;
   exploration?: string;
+  exploration_no?: string;
   timeline?: ITimelineItem[];
+  timeline_no?: ITimelineItem[];
   coverage?: string;
+  coverage_no?: string;
 }
 
 export interface IResourceLink {

@@ -8,11 +8,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { projects } from "@/content/projects";
 import Logo from "@/components/ui/Logo";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 export default function Header() {
   // All hooks must be called unconditionally at the top level in the same order
   const t = useTranslations("common.nav");
+  const locale = useLocale();
   const nextPathname = useNextPathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false);
@@ -131,7 +132,7 @@ export default function Header() {
                     style={{
                       color: "#1E293B",
                     }}
-                    aria-expanded={projectsDropdownOpen ? "true" : "false"}
+                    aria-expanded={projectsDropdownOpen}
                     aria-haspopup="true"
                     onClick={() => setProjectsDropdownOpen(!projectsDropdownOpen)}
                   >
@@ -264,6 +265,9 @@ export default function Header() {
                         <div className="py-1">
                           {projects.map((project, idx) => {
                             const isActive = pathname === `/projects/${project.slug}`;
+                            const isKillingdal = project.slug === "killingdal";
+                            const projectName =
+                              locale === "no" && project.name_no ? project.name_no : project.name;
                             return (
                               <motion.div
                                 key={project.slug}
@@ -275,56 +279,93 @@ export default function Header() {
                                   href={`/projects/${project.slug}`}
                                   className="block px-6 py-3 text-base transition-all duration-200 group/item relative"
                                   style={{
-                                    color: isActive ? "var(--color-accent-main)" : "#1E293B",
-                                    background: isActive
-                                      ? "color-mix(in srgb, var(--color-accent-main) 10%, transparent)"
-                                      : "transparent",
+                                    color: isKillingdal
+                                      ? "white"
+                                      : isActive
+                                        ? "var(--color-accent-main)"
+                                        : "#1E293B",
+                                    background: isKillingdal
+                                      ? "var(--color-accent-main)"
+                                      : isActive
+                                        ? "color-mix(in srgb, var(--color-accent-main) 10%, transparent)"
+                                        : "transparent",
                                     fontFamily: "var(--font-family-body)",
-                                    fontWeight: isActive ? 700 : undefined,
+                                    fontWeight: isKillingdal || isActive ? 700 : undefined,
                                   }}
                                   onMouseEnter={(e) => {
-                                    e.currentTarget.style.background =
-                                      "color-mix(in srgb, var(--color-accent-main) 12%, transparent)";
-                                    e.currentTarget.style.color = isActive
-                                      ? "var(--color-accent-main)"
-                                      : "#1E293B";
+                                    if (isKillingdal) {
+                                      e.currentTarget.style.background = "var(--color-accent-main)"; // Keep solid on hover
+                                      e.currentTarget.style.opacity = "0.9";
+                                    } else {
+                                      e.currentTarget.style.background =
+                                        "color-mix(in srgb, var(--color-accent-main) 12%, transparent)";
+                                      e.currentTarget.style.color = isActive
+                                        ? "var(--color-accent-main)"
+                                        : "#1E293B";
+                                    }
                                   }}
                                   onMouseLeave={(e) => {
-                                    e.currentTarget.style.background = isActive
-                                      ? "color-mix(in srgb, var(--color-accent-main) 10%, transparent)"
-                                      : "transparent";
-                                    e.currentTarget.style.color = isActive
-                                      ? "var(--color-accent-main)"
-                                      : "#1E293B";
+                                    if (isKillingdal) {
+                                      e.currentTarget.style.background = "var(--color-accent-main)";
+                                      e.currentTarget.style.opacity = "1";
+                                    } else {
+                                      e.currentTarget.style.background = isActive
+                                        ? "color-mix(in srgb, var(--color-accent-main) 10%, transparent)"
+                                        : "transparent";
+                                      e.currentTarget.style.color = isActive
+                                        ? "var(--color-accent-main)"
+                                        : "#1E293B";
+                                    }
                                   }}
                                   onClick={() => setProjectsDropdownOpen(false)}
                                   role="menuitem"
                                 >
                                   <span className="flex items-center justify-between relative z-10">
                                     <span>
-                                      {project.name === "Skrattås-Byafossen"
+                                      {projectName === "Skrattås-Byafossen"
                                         ? "Skrattåsen"
-                                        : project.name}
+                                        : projectName}
                                     </span>
-                                    <motion.svg
-                                      className="w-4 h-4 opacity-0 group-hover/item:opacity-100 transition-opacity"
-                                      fill="none"
-                                      stroke="currentColor"
-                                      viewBox="0 0 24 24"
-                                    >
-                                      <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M9 5l7 7-7 7"
-                                      />
-                                    </motion.svg>
+                                    {(isKillingdal || isActive) && (
+                                      <motion.svg
+                                        className="w-4 h-4"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        initial={{ opacity: 0, x: -5 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                      >
+                                        <path
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                          strokeWidth={2}
+                                          d="M9 5l7 7-7 7"
+                                        />
+                                      </motion.svg>
+                                    )}
+                                    {!isKillingdal && !isActive && (
+                                      <motion.svg
+                                        className="w-4 h-4 opacity-0 group-hover/item:opacity-100 transition-opacity"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                          strokeWidth={2}
+                                          d="M9 5l7 7-7 7"
+                                        />
+                                      </motion.svg>
+                                    )}
                                   </span>
-                                  {/* Hover indicator */}
-                                  <div
-                                    className="absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover/item:opacity-100 transition-opacity"
-                                    style={{ background: "var(--color-accent-main)" }}
-                                  />
+                                  {/* Hover indicator - Hide for Killingdal as it has bg */}
+                                  {!isKillingdal && (
+                                    <div
+                                      className="absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover/item:opacity-100 transition-opacity"
+                                      style={{ background: "var(--color-accent-main)" }}
+                                    />
+                                  )}
                                 </Link>
                               </motion.div>
                             );

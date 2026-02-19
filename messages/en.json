@@ -7,7 +7,8 @@
       "investors": "Investors",
       "contact": "Contact",
       "esg": "ESG",
-      "partners": "Partners"
+      "partners": "Partners",
+      "overview": "Overview"
     },
     "footer": {
       "company": "Company",
@@ -446,6 +447,28 @@
     "resourceDefinition": "Resource Definition",
     "earlyExploration": "Early Exploration",
     "activeExploration": "Active Exploration",
+    "stages": {
+      "Early Exploration": "Early Exploration",
+      "Active Exploration": "Active Exploration",
+      "Advanced Exploration": "Advanced Exploration",
+      "Resource Definition": "Resource Definition",
+      "Development": "Development"
+    },
+    "eyebrow": {
+      "project": "Project",
+      "technical": "Technical",
+      "progress": "Progress",
+      "history": "History",
+      "license": "License",
+      "investor": "Investor information"
+    },
+    "captions": {
+      "overview": "Historic Mining District",
+      "geology": "High-Grade Mineralization",
+      "exploration": "Advanced Field Validation",
+      "license": "Geological Map View"
+    },
+    "activeLicense": "Active License",
     "projectOverview": "Project Overview",
     "keyMetrics": "Key Metrics",
     "geology": "Geology",

@@ -50,6 +50,17 @@ export default async function ProjectDetailPage({
     notFound();
   }
 
+  const isNo = locale === "no";
+  const description = isNo && project.description_no ? project.description_no : project.description;
+  const overview = isNo && project.overview_no ? project.overview_no : project.overview;
+  const geology = isNo && project.geology_no ? project.geology_no : project.geology;
+  const exploration = isNo && project.exploration_no ? project.exploration_no : project.exploration;
+  const coverage = isNo && project.coverage_no ? project.coverage_no : project.coverage;
+  const timeline =
+    isNo && project.timeline_no && project.timeline_no.length > 0
+      ? project.timeline_no
+      : project.timeline;
+
   // Helper to split project name for styling
   const nameParts = project.name.split(" ");
   const nameMain = nameParts.length > 1 ? nameParts.slice(0, -1).join(" ") : nameParts[0];
@@ -110,7 +121,7 @@ export default async function ProjectDetailPage({
                 }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-current" />
-                {project.stage}
+                {t(`stages.${project.stage}`)}
               </div>
             </div>
 
@@ -144,7 +155,7 @@ export default async function ProjectDetailPage({
                 fontWeight: "var(--font-weight-medium)",
               }}
             >
-              {project.description}
+              {description}
             </p>
 
             {/* Key Stats Row */}
@@ -226,7 +237,7 @@ export default async function ProjectDetailPage({
       </section>
 
       {/* Project Overview - Enhanced Layout with Image */}
-      {project.overview && (
+      {overview && (
         <section
           id="overview"
           className="section relative overflow-hidden"
@@ -243,7 +254,7 @@ export default async function ProjectDetailPage({
           <div className="container max-w-6xl relative z-10">
             <div className="text-center mb-12">
               <span className={sectionEyebrowClass} style={{ color: "var(--color-primary-main)" }}>
-                Project
+                {t("eyebrow.project")}
               </span>
               <h2
                 className="text-display mb-6"
@@ -283,7 +294,7 @@ export default async function ProjectDetailPage({
                     lineHeight: "1.8",
                   }}
                 >
-                  {project.overview}
+                  {overview}
                 </p>
               </div>
 
@@ -298,7 +309,7 @@ export default async function ProjectDetailPage({
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
                 <div className="absolute bottom-6 left-6 right-6 text-white text-sm font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  Historic Mining District in Trøndelag
+                  {t("captions.overview")}
                 </div>
               </div>
             </div>
@@ -307,7 +318,7 @@ export default async function ProjectDetailPage({
       )}
 
       {/* Geology - Enhanced Layout with Image */}
-      {project.geology && (
+      {geology && (
         <section
           id="geology"
           className="section relative overflow-hidden"
@@ -316,7 +327,7 @@ export default async function ProjectDetailPage({
           <div className="container max-w-6xl relative z-10">
             <div className="text-center mb-12">
               <span className={sectionEyebrowClass} style={{ color: "var(--color-primary-main)" }}>
-                Technical
+                {t("eyebrow.technical")}
               </span>
               <h2
                 className="text-display mb-6"
@@ -343,7 +354,7 @@ export default async function ProjectDetailPage({
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
                 <div className="absolute bottom-6 left-6 right-6 text-white text-sm font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  High-Grade Copper-Zinc Sulphide Mineralization
+                  {t("captions.geology")}
                 </div>
               </div>
 
@@ -380,7 +391,7 @@ export default async function ProjectDetailPage({
                     lineHeight: "1.7",
                   }}
                 >
-                  {project.geology}
+                  {geology}
                 </p>
               </div>
             </div>
@@ -389,7 +400,7 @@ export default async function ProjectDetailPage({
       )}
 
       {/* Exploration - Enhanced Layout with Image */}
-      {project.exploration && (
+      {exploration && (
         <section
           id="exploration"
           className="section relative overflow-hidden"
@@ -398,7 +409,7 @@ export default async function ProjectDetailPage({
           <div className="container max-w-6xl relative z-10">
             <div className="text-center mb-12">
               <span className={sectionEyebrowClass} style={{ color: "var(--color-primary-main)" }}>
-                Progress
+                {t("eyebrow.progress")}
               </span>
               <h2
                 className="text-display mb-6"
@@ -447,7 +458,7 @@ export default async function ProjectDetailPage({
                     lineHeight: "1.7",
                   }}
                 >
-                  {project.exploration}
+                  {exploration}
                 </p>
               </div>
 
@@ -462,7 +473,7 @@ export default async function ProjectDetailPage({
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
                 <div className="absolute bottom-6 left-6 right-6 text-white text-sm font-medium tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  Advanced Field Validation & Sampling
+                  {t("captions.exploration")}
                 </div>
               </div>
             </div>
@@ -471,7 +482,7 @@ export default async function ProjectDetailPage({
       )}
 
       {/* Timeline */}
-      {project.timeline && project.timeline.length > 0 && (
+      {timeline && timeline.length > 0 && (
         <section
           id="timeline"
           className="section relative overflow-hidden"
@@ -480,7 +491,7 @@ export default async function ProjectDetailPage({
           <div className="container max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <span className={sectionEyebrowClass} style={{ color: "var(--color-primary-main)" }}>
-                History
+                {t("eyebrow.history")}
               </span>
               <h2
                 className="text-display mb-6"
@@ -494,13 +505,13 @@ export default async function ProjectDetailPage({
                 {t("projectTimeline")}
               </h2>
             </div>
-            <Timeline items={project.timeline} />
+            <Timeline items={timeline} />
           </div>
         </section>
       )}
 
       {/* License Coverage */}
-      {project.coverage && (
+      {coverage && (
         <section
           id="license"
           className="section relative overflow-hidden"
@@ -515,7 +526,7 @@ export default async function ProjectDetailPage({
           <div className="container max-w-6xl mx-auto relative z-10">
             <div className="text-center mb-12">
               <span className={sectionEyebrowClass} style={{ color: "var(--color-primary-main)" }}>
-                License
+                {t("eyebrow.license")}
               </span>
               <h2
                 className="text-display mb-6"
@@ -550,7 +561,7 @@ export default async function ProjectDetailPage({
                       d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0121 18.382V7.618a1 1 0 01-.553-.894L15 4m0 13V4m0 0L9 7"
                     />
                   </svg>
-                  Geological Map View
+                  {t("captions.license")}
                 </div>
               </div>
 
@@ -578,7 +589,7 @@ export default async function ProjectDetailPage({
                       fontFamily: "var(--font-family-heading)",
                     }}
                   >
-                    {project.coverage}
+                    {coverage}
                   </p>
                   <div className="mt-8 flex justify-center">
                     <span
@@ -603,7 +614,7 @@ export default async function ProjectDetailPage({
                           d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
                       </svg>
-                      Active License
+                      {t("activeLicense")}
                     </span>
                   </div>
                 </div>
@@ -627,7 +638,7 @@ export default async function ProjectDetailPage({
           <div className="container max-w-6xl mx-auto">
             <div className="text-center mb-10">
               <span className={sectionEyebrowClass} style={{ color: "var(--color-accent-main)" }}>
-                Investor information
+                {t("eyebrow.investor")}
               </span>
             </div>
             <div

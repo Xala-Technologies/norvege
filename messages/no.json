@@ -7,7 +7,8 @@
       "investors": "Investorer",
       "contact": "Kontakt",
       "esg": "ESG",
-      "partners": "Partnere"
+      "partners": "Partnere",
+      "overview": "Oversikt"
     },
     "footer": {
       "company": "Selskap",
@@ -460,6 +461,28 @@
     "resourceDefinition": "Ressursdefinisjon",
     "earlyExploration": "Tidlig Utforskning",
     "activeExploration": "Aktiv Utforskning",
+    "stages": {
+      "Early Exploration": "Tidlig utforskning",
+      "Active Exploration": "Aktiv utforskning",
+      "Advanced Exploration": "Avansert utforskning",
+      "Resource Definition": "Ressursdefinisjon",
+      "Development": "Utvikling"
+    },
+    "eyebrow": {
+      "project": "Prosjekt",
+      "technical": "Teknisk",
+      "progress": "Fremdrift",
+      "history": "Historikk",
+      "license": "Lisens",
+      "investor": "Investorinformasjon"
+    },
+    "captions": {
+      "overview": "Historisk gruvedistrikt",
+      "geology": "Høyverdig mineralisering",
+      "exploration": "Avansert feltvalidering",
+      "license": "Geologisk kartvisning"
+    },
+    "activeLicense": "Aktiv lisens",
     "projectOverview": "Prosjektoversikt",
     "keyMetrics": "Nøkkeltall",
     "geology": "Geologi",

@@ -148,24 +148,24 @@ export default function InvestorsPage() {
 
       {/* Investment Summary */}
       <section
-        className="relative w-full overflow-hidden"
+        className="section relative overflow-hidden"
         style={{ background: "var(--color-bg-default)" }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2">
-          {/* Image Side */}
-          <div className="relative h-[400px] lg:h-auto min-h-[500px]">
-            <Image
-              src="/images/investors/investment-summary.jpg"
-              alt="Investment Opportunity"
-              fill
-              className="object-cover"
-              quality={90}
-            />
-          </div>
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
+            {/* Image Side */}
+            <div className="relative min-h-[400px] w-full rounded-sm overflow-hidden shadow-lg h-full">
+              <Image
+                src="/images/investors/investment-summary.jpg"
+                alt="Investment Opportunity"
+                fill
+                className="object-cover"
+                quality={90}
+              />
+            </div>
 
-          {/* Content Side */}
-          <div className="flex flex-col justify-center p-8 lg:p-20 relative z-10">
-            <div className="max-w-xl mx-auto lg:mx-0">
+            {/* Content Side */}
+            <div className="flex flex-col justify-center">
               <h2
                 className="text-display mb-8"
                 style={{
@@ -283,13 +283,13 @@ export default function InvestorsPage() {
 
       {/* Why Onshore: Capital Reality */}
       <section
-        className="relative w-full overflow-hidden"
+        className="section relative overflow-hidden"
         style={{ background: "var(--color-bg-subtle)" }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2">
-          {/* Content Side (Left) */}
-          <div className="flex flex-col justify-center p-8 lg:p-20 relative z-10 order-2 lg:order-1">
-            <div className="max-w-xl mx-auto lg:mx-0">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
+            {/* Content Side (Left) */}
+            <div className="flex flex-col justify-center order-2 lg:order-1">
               <h2
                 className="text-display mb-6"
                 style={{
@@ -401,41 +401,41 @@ export default function InvestorsPage() {
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Image Side (Right) */}
-          <div className="relative h-[400px] lg:h-auto min-h-[500px] order-1 lg:order-2">
-            <Image
-              src="/images/investors/why-onshore.jpg"
-              alt="Why Onshore"
-              fill
-              className="object-cover"
-              quality={90}
-            />
+            {/* Image Side (Right) */}
+            <div className="relative min-h-[400px] w-full rounded-sm overflow-hidden shadow-lg h-full order-1 lg:order-2">
+              <Image
+                src="/images/investors/why-onshore.jpg"
+                alt="Why Onshore"
+                fill
+                className="object-cover"
+                quality={90}
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Onshore Critical Minerals: Market-Led & Proven */}
       <section
-        className="relative w-full overflow-hidden"
+        className="section relative overflow-hidden"
         style={{ background: "var(--color-bg-default)" }}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2">
-          {/* Image Side (Left) */}
-          <div className="relative h-[400px] lg:h-auto min-h-[500px]">
-            <Image
-              src="/images/investors/critical-minerals.jpg"
-              alt="Critical Minerals"
-              fill
-              className="object-cover"
-              quality={90}
-            />
-          </div>
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
+            {/* Image Side (Left) */}
+            <div className="relative min-h-[400px] w-full rounded-sm overflow-hidden shadow-lg h-full">
+              <Image
+                src="/images/investors/critical-minerals.jpg"
+                alt="Critical Minerals"
+                fill
+                className="object-cover"
+                quality={90}
+              />
+            </div>
 
-          {/* Content Side (Right) */}
-          <div className="flex flex-col justify-center p-8 lg:p-20 relative z-10">
-            <div className="max-w-xl mx-auto lg:mx-0">
+            {/* Content Side (Right) */}
+            <div className="flex flex-col justify-center">
               <h2
                 className="text-display mb-2"
                 style={{

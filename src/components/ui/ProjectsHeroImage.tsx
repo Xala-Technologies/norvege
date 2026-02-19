@@ -9,7 +9,7 @@ interface ProjectsHeroImageProps {
 }
 
 export default function ProjectsHeroImage({
-  src = "/images/projects-page/hero.jpg",
+  src = "/images/projects-page/hero-v2.jpg",
   alt = "Our Projects - NORVEGE MINERALS AS",
 }: ProjectsHeroImageProps) {
   const [imageError, setImageError] = useState(false);
@@ -51,7 +51,7 @@ export default function ProjectsHeroImage({
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, color-mix(in srgb, var(--color-primary-main) 75%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 60%, transparent) 100%)",
+            "linear-gradient(to bottom, color-mix(in srgb, var(--color-primary-main) 50%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 30%, transparent) 100%)",
         }}
       />
     </>

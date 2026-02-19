@@ -29,7 +29,7 @@ export default function AboutHeroImage() {
         }}
       />
       <Image
-        src="/images/about/hero.jpg"
+        src="/images/about/hero-v2.jpg"
         alt="About NORVEGE MINERALS AS - Norwegian mineral exploration"
         fill
         className="object-cover"
@@ -43,7 +43,7 @@ export default function AboutHeroImage() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, color-mix(in srgb, var(--color-primary-main) 75%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 60%, transparent) 100%)",
+            "linear-gradient(to bottom, color-mix(in srgb, var(--color-primary-main) 50%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 30%, transparent) 100%)",
         }}
       />
     </>

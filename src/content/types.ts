@@ -208,7 +208,7 @@ export interface IMetalExposure {
   unit: MetricUnit;
   gradeMin?: number;
   gradeMax?: number;
-  gradeUnit: "g/t" | "%" | "ppm";
+  gradeUnit?: "g/t" | "%" | "ppm";
   confidenceTag: ConfidenceTag;
   complianceTag: ComplianceTag;
   notes?: string;

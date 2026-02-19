@@ -1,6 +1,7 @@
 "use client";
 
 import { Link } from "@/i18n/routing";
+import Image from "next/image";
 import InvestorsHeroImage from "@/components/ui/InvestorsHeroImage";
 import { useTranslations } from "next-intl";
 
@@ -150,8 +151,22 @@ export default function InvestorsPage() {
         className="section relative overflow-hidden"
         style={{ background: "var(--color-bg-default)" }}
       >
+        <Image
+          src="/images/investors/investment-summary.jpg"
+          alt="Investment Opportunity"
+          fill
+          className="object-cover"
+          quality={90}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "color-mix(in srgb, var(--color-bg-default) 92%, transparent)",
+          }}
+        />
+
         {/* Subtle background decoration */}
-        <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div
             className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl"
             style={{ background: "var(--color-primary-main)" }}
@@ -299,7 +314,20 @@ export default function InvestorsPage() {
         className="section relative overflow-hidden"
         style={{ background: "var(--color-bg-subtle)" }}
       >
-        <div className="absolute inset-0 opacity-5">
+        <Image
+          src="/images/investors/why-onshore.jpg"
+          alt="Why Onshore"
+          fill
+          className="object-cover"
+          quality={90}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "color-mix(in srgb, var(--color-bg-subtle) 92%, transparent)",
+          }}
+        />
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div
             className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl"
             style={{ background: "var(--color-primary-main)" }}
@@ -425,7 +453,20 @@ export default function InvestorsPage() {
         className="section relative overflow-hidden"
         style={{ background: "var(--color-bg-default)" }}
       >
-        <div className="absolute inset-0 opacity-5">
+        <Image
+          src="/images/investors/critical-minerals.jpg"
+          alt="Critical Minerals"
+          fill
+          className="object-cover"
+          quality={90}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "color-mix(in srgb, var(--color-bg-default) 92%, transparent)",
+          }}
+        />
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div
             className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl"
             style={{ background: "var(--color-accent-main)" }}

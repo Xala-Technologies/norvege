@@ -1,11 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 export default function ContactForm() {
   const t = useTranslations("contact.form");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   const subjects = [
     t("subjects.investmentInquiry"),
@@ -75,6 +81,8 @@ export default function ContactForm() {
       setErrors({ ...errors, [name]: "" });
     }
   };
+
+  if (!mounted) return null;
 
   return (
     <div

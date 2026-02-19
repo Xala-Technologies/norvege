@@ -4,20 +4,29 @@ import { Link } from "@/i18n/routing";
 import { projects } from "@/content/projects";
 import ProjectsHeroImage from "@/components/ui/ProjectsHeroImage";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 export default function ProjectsPage() {
   const t = useTranslations("projects");
   const tProjects = useTranslations("projects.items");
+  const locale = useLocale();
 
   // Create translated projects
   const translatedProjects = projects.map((project) => {
     const projectKey = project.slug.replace(/-/g, "");
+    const isNo = locale === "no";
+
     return {
       ...project,
-      description: tProjects(`${projectKey}.description`) || project.description,
-      overview: tProjects(`${projectKey}.overview`) || project.overview,
-      coverage: tProjects(`${projectKey}.coverage`) || project.coverage,
+      name: (isNo && project.name_no) || project.name,
+      description:
+        (isNo && project.description_no) ||
+        tProjects(`${projectKey}.description`) ||
+        project.description,
+      overview:
+        (isNo && project.overview_no) || tProjects(`${projectKey}.overview`) || project.overview,
+      coverage:
+        (isNo && project.coverage_no) || tProjects(`${projectKey}.coverage`) || project.coverage,
     };
   });
 

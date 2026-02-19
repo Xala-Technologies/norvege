@@ -221,7 +221,7 @@ export default function ProjectsPage() {
               >
                 <Link href={`/projects/${project.slug}`} className="block h-full group">
                   <div
-                    className="h-full relative overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 bg-white/50 backdrop-blur-sm dark:bg-slate-900/50"
+                    className="h-full relative overflow-hidden rounded-sm transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 bg-white/50 backdrop-blur-sm dark:bg-slate-900/50"
                     style={{
                       border:
                         "1px solid color-mix(in srgb, var(--color-primary-main) 15%, transparent)",
@@ -229,7 +229,7 @@ export default function ProjectsPage() {
                   >
                     {/* Enhanced border glow on hover */}
                     <div
-                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                       style={{
                         border: "2px solid var(--color-primary-main)",
                         boxShadow:

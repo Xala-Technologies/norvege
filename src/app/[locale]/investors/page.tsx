@@ -148,160 +148,132 @@ export default function InvestorsPage() {
 
       {/* Investment Summary */}
       <section
-        className="section relative overflow-hidden"
+        className="relative w-full overflow-hidden"
         style={{ background: "var(--color-bg-default)" }}
       >
-        <Image
-          src="/images/investors/investment-summary.jpg"
-          alt="Investment Opportunity"
-          fill
-          className="object-cover"
-          quality={90}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "color-mix(in srgb, var(--color-bg-default) 92%, transparent)",
-          }}
-        />
-
-        {/* Subtle background decoration */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <div
-            className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl"
-            style={{ background: "var(--color-primary-main)" }}
-          />
-          <div
-            className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl"
-            style={{ background: "var(--color-accent-main)" }}
-          />
-        </div>
-
-        <div className="container max-w-5xl relative z-10">
-          <div className="text-center mb-12">
-            <h2
-              className="text-display mb-6"
-              style={{
-                color: "var(--color-primary-main)",
-                fontFamily: "var(--font-family-heading)",
-                fontWeight: "var(--font-weight-black)",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              {t("investmentOpportunity").split(" ")[0]}{" "}
-              <span style={{ color: "var(--color-accent-main)" }}>
-                {t("investmentOpportunity").split(" ")[1]}
-              </span>
-            </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+          {/* Image Side */}
+          <div className="relative h-[400px] lg:h-auto min-h-[500px]">
+            <Image
+              src="/images/investors/investment-summary.jpg"
+              alt="Investment Opportunity"
+              fill
+              className="object-cover"
+              quality={90}
+            />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Left Column */}
-            <div
-              className="group p-8 lg:p-10 rounded-md relative overflow-hidden"
-              style={{
-                background: `var(--color-bg-default)`,
-                border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
-                boxShadow: "none",
-              }}
-            >
-              {/* Enhanced border glow on hover */}
-              <div
-                className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+          {/* Content Side */}
+          <div className="flex flex-col justify-center p-8 lg:p-20 relative z-10">
+            <div className="max-w-xl mx-auto lg:mx-0">
+              <h2
+                className="text-display mb-8"
                 style={{
-                  border: `2px solid var(--color-primary-main)`,
+                  color: "var(--color-primary-main)",
+                  fontFamily: "var(--font-family-heading)",
+                  fontWeight: "var(--font-weight-black)",
+                  letterSpacing: "-0.02em",
                 }}
-              />
-              <div className="flex items-start gap-4 mb-6">
-                <div
-                  className="w-14 h-14 rounded-sm flex items-center justify-center flex-shrink-0"
-                  style={{
-                    background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
-                    color: "var(--color-accent-main)",
-                    boxShadow: "none",
-                  }}
-                >
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3
-                    className="text-2xl mb-4"
-                    style={{
-                      color: "var(--color-text-body)",
-                      fontFamily: "var(--font-family-heading)",
-                      fontWeight: "var(--font-weight-black)",
-                    }}
-                  >
-                    {t("strategicPosition.title")}
-                  </h3>
-                  <p
-                    className="text-base lg:text-lg leading-relaxed"
-                    style={{ color: "var(--color-text-body)" }}
-                  >
-                    {t("strategicPosition.description")}
-                  </p>
-                </div>
-              </div>
-            </div>
+              >
+                {t("investmentOpportunity").split(" ")[0]}{" "}
+                <span style={{ color: "var(--color-accent-main)" }}>
+                  {t("investmentOpportunity").split(" ")[1]}
+                </span>
+              </h2>
 
-            {/* Right Column */}
-            <div
-              className="group p-8 lg:p-10 rounded-md relative overflow-hidden"
-              style={{
-                background: `var(--color-bg-default)`,
-                border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
-                boxShadow: "none",
-              }}
-            >
-              {/* Enhanced border glow on hover */}
-              <div
-                className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{
-                  border: `2px solid var(--color-primary-main)`,
-                }}
-              />
-              <div className="flex items-start gap-4 mb-6">
+              <div className="grid gap-6">
+                {/* Strategic Position Card */}
                 <div
-                  className="w-14 h-14 rounded-sm flex items-center justify-center flex-shrink-0"
+                  className="group p-6 lg:p-8 rounded-sm transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
                   style={{
-                    background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 100%)`,
-                    color: "var(--color-primary-main)",
-                    boxShadow: "none",
+                    background: `var(--color-bg-subtle)`,
+                    border: `1px solid color-mix(in srgb, var(--color-primary-main) 10%, transparent)`,
                   }}
                 >
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                    />
-                  </svg>
+                  <div className="flex items-start gap-4">
+                    <div
+                      className="w-12 h-12 rounded-sm flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
+                        color: "var(--color-accent-main)",
+                      }}
+                    >
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3
+                        className="text-xl mb-2 font-bold"
+                        style={{ color: "var(--color-text-body)" }}
+                      >
+                        {t("strategicPosition.title")}
+                      </h3>
+                      <p
+                        className="text-base leading-relaxed"
+                        style={{ color: "var(--color-text-secondary)" }}
+                      >
+                        {t("strategicPosition.description")}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h3
-                    className="text-2xl mb-4"
-                    style={{
-                      color: "var(--color-text-body)",
-                      fontFamily: "var(--font-family-heading)",
-                      fontWeight: "var(--font-weight-black)",
-                    }}
-                  >
-                    {t("valueCreation.title")}
-                  </h3>
-                  <p
-                    className="text-base lg:text-lg leading-relaxed"
-                    style={{ color: "var(--color-text-body)" }}
-                  >
-                    {t("valueCreation.description")}
-                  </p>
+
+                {/* Value Creation Card */}
+                <div
+                  className="group p-6 lg:p-8 rounded-sm transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
+                  style={{
+                    background: `var(--color-bg-subtle)`,
+                    border: `1px solid color-mix(in srgb, var(--color-primary-main) 10%, transparent)`,
+                  }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className="w-12 h-12 rounded-sm flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background: `linear-gradient(135deg, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 10%, transparent) 100%)`,
+                        color: "var(--color-primary-main)",
+                      }}
+                    >
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3
+                        className="text-xl mb-2 font-bold"
+                        style={{ color: "var(--color-text-body)" }}
+                      >
+                        {t("valueCreation.title")}
+                      </h3>
+                      <p
+                        className="text-base leading-relaxed"
+                        style={{ color: "var(--color-text-secondary)" }}
+                      >
+                        {t("valueCreation.description")}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -311,256 +283,247 @@ export default function InvestorsPage() {
 
       {/* Why Onshore: Capital Reality */}
       <section
-        className="section relative overflow-hidden"
+        className="relative w-full overflow-hidden"
         style={{ background: "var(--color-bg-subtle)" }}
       >
-        <Image
-          src="/images/investors/why-onshore.jpg"
-          alt="Why Onshore"
-          fill
-          className="object-cover"
-          quality={90}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "color-mix(in srgb, var(--color-bg-subtle) 92%, transparent)",
-          }}
-        />
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <div
-            className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl"
-            style={{ background: "var(--color-primary-main)" }}
-          />
-          <div
-            className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl"
-            style={{ background: "var(--color-accent-main)" }}
-          />
-        </div>
-        <div className="container max-w-5xl relative z-10">
-          <div className="text-center mb-10">
-            <h2
-              className="text-display mb-2"
-              style={{
-                color: "var(--color-primary-main)",
-                fontFamily: "var(--font-family-heading)",
-                fontWeight: "var(--font-weight-black)",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              {t("whyOnshore.title")}{" "}
-              <span style={{ color: "var(--color-accent-main)" }}>{t("whyOnshore.subtitle")}</span>
-            </h2>
-            <p
-              className="text-lg max-w-2xl mx-auto mt-4"
-              style={{ color: "var(--color-text-body)" }}
-            >
-              {t("whyOnshore.intro")}
-            </p>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
-            <div
-              className="p-8 lg:p-10 rounded-md relative overflow-hidden"
-              style={{
-                background: "var(--color-bg-default)",
-                border: "1px solid color-mix(in srgb, var(--color-primary-main) 25%, transparent)",
-              }}
-            >
-              <div
-                className="text-sm font-bold uppercase tracking-wider mb-4"
-                style={{ color: "var(--color-text-secondary)" }}
-              >
-                {t("whyOnshore.dsm.label")}
-              </div>
-              <ul className="space-y-3" style={{ color: "var(--color-text-body)" }}>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-primary-main)" }}>•</span>
-                  {t("whyOnshore.dsm.point1")}
-                </li>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-primary-main)" }}>•</span>
-                  {t("whyOnshore.dsm.point2")}
-                </li>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-primary-main)" }}>•</span>
-                  {t("whyOnshore.dsm.point3")}
-                </li>
-              </ul>
-            </div>
-            <div
-              className="p-8 lg:p-10 rounded-md relative overflow-hidden"
-              style={{
-                background: "var(--color-bg-default)",
-                border: "2px solid color-mix(in srgb, var(--color-accent-main) 40%, transparent)",
-              }}
-            >
-              <div
-                className="text-sm font-bold uppercase tracking-wider mb-4"
-                style={{ color: "var(--color-accent-main)" }}
-              >
-                {t("whyOnshore.onshore.label")}
-              </div>
-              <ul className="space-y-3" style={{ color: "var(--color-text-body)" }}>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
-                  {t("whyOnshore.onshore.point1")}
-                </li>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
-                  {t("whyOnshore.onshore.point2")}
-                </li>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
-                  {t("whyOnshore.onshore.point3")}
-                </li>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
-                  {t("whyOnshore.onshore.point4")}
-                </li>
-              </ul>
-              <div
-                className="mt-6 pt-6 border-t border-solid flex flex-wrap gap-4"
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+          {/* Content Side (Left) */}
+          <div className="flex flex-col justify-center p-8 lg:p-20 relative z-10 order-2 lg:order-1">
+            <div className="max-w-xl mx-auto lg:mx-0">
+              <h2
+                className="text-display mb-6"
                 style={{
-                  borderColor: "color-mix(in srgb, var(--color-accent-main) 30%, transparent)",
+                  color: "var(--color-primary-main)",
+                  fontFamily: "var(--font-family-heading)",
+                  fontWeight: "var(--font-weight-black)",
+                  letterSpacing: "-0.02em",
                 }}
               >
-                <span
-                  className="text-sm font-semibold"
-                  style={{ color: "var(--color-text-secondary)" }}
-                >
-                  {t("whyOnshore.timeline.y2026")}
+                {t("whyOnshore.title")}{" "}
+                <span style={{ color: "var(--color-accent-main)" }}>
+                  {t("whyOnshore.subtitle")}
                 </span>
-                <span
-                  className="text-sm font-semibold"
-                  style={{ color: "var(--color-text-secondary)" }}
+              </h2>
+              <p className="text-lg mb-8" style={{ color: "var(--color-text-body)" }}>
+                {t("whyOnshore.intro")}
+              </p>
+
+              <div className="space-y-6">
+                {/* DSM Card */}
+                <div
+                  className="p-6 lg:p-8 rounded-sm overflow-hidden"
+                  style={{
+                    background: "var(--color-bg-default)",
+                    border:
+                      "1px solid color-mix(in srgb, var(--color-primary-main) 25%, transparent)",
+                  }}
                 >
-                  {t("whyOnshore.timeline.y2027")}
-                </span>
-                <span
-                  className="text-sm font-semibold"
-                  style={{ color: "var(--color-text-secondary)" }}
+                  <div
+                    className="text-sm font-bold uppercase tracking-wider mb-4"
+                    style={{ color: "var(--color-text-secondary)" }}
+                  >
+                    {t("whyOnshore.dsm.label")}
+                  </div>
+                  <ul className="space-y-3" style={{ color: "var(--color-text-body)" }}>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-primary-main)" }}>•</span>
+                      {t("whyOnshore.dsm.point1")}
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-primary-main)" }}>•</span>
+                      {t("whyOnshore.dsm.point2")}
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-primary-main)" }}>•</span>
+                      {t("whyOnshore.dsm.point3")}
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Onshore Card */}
+                <div
+                  className="p-6 lg:p-8 rounded-sm overflow-hidden"
+                  style={{
+                    background: "var(--color-bg-default)",
+                    border:
+                      "2px solid color-mix(in srgb, var(--color-accent-main) 40%, transparent)",
+                  }}
                 >
-                  {t("whyOnshore.timeline.y2028")}
-                </span>
+                  <div
+                    className="text-sm font-bold uppercase tracking-wider mb-4"
+                    style={{ color: "var(--color-accent-main)" }}
+                  >
+                    {t("whyOnshore.onshore.label")}
+                  </div>
+                  <ul className="space-y-3" style={{ color: "var(--color-text-body)" }}>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                      {t("whyOnshore.onshore.point1")}
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                      {t("whyOnshore.onshore.point2")}
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                      {t("whyOnshore.onshore.point3")}
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                      {t("whyOnshore.onshore.point4")}
+                    </li>
+                  </ul>
+                  <div
+                    className="mt-6 pt-6 border-t border-solid flex flex-wrap gap-4"
+                    style={{
+                      borderColor: "color-mix(in srgb, var(--color-accent-main) 30%, transparent)",
+                    }}
+                  >
+                    <span
+                      className="text-sm font-semibold"
+                      style={{ color: "var(--color-text-secondary)" }}
+                    >
+                      {t("whyOnshore.timeline.y2026")}
+                    </span>
+                    <span
+                      className="text-sm font-semibold"
+                      style={{ color: "var(--color-text-secondary)" }}
+                    >
+                      {t("whyOnshore.timeline.y2027")}
+                    </span>
+                    <span
+                      className="text-sm font-semibold"
+                      style={{ color: "var(--color-text-secondary)" }}
+                    >
+                      {t("whyOnshore.timeline.y2028")}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+
+          {/* Image Side (Right) */}
+          <div className="relative h-[400px] lg:h-auto min-h-[500px] order-1 lg:order-2">
+            <Image
+              src="/images/investors/why-onshore.jpg"
+              alt="Why Onshore"
+              fill
+              className="object-cover"
+              quality={90}
+            />
           </div>
         </div>
       </section>
 
       {/* Onshore Critical Minerals: Market-Led & Proven */}
       <section
-        className="section relative overflow-hidden"
+        className="relative w-full overflow-hidden"
         style={{ background: "var(--color-bg-default)" }}
       >
-        <Image
-          src="/images/investors/critical-minerals.jpg"
-          alt="Critical Minerals"
-          fill
-          className="object-cover"
-          quality={90}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "color-mix(in srgb, var(--color-bg-default) 92%, transparent)",
-          }}
-        />
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <div
-            className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl"
-            style={{ background: "var(--color-accent-main)" }}
-          />
-          <div
-            className="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl"
-            style={{ background: "var(--color-primary-main)" }}
-          />
-        </div>
-        <div className="container max-w-5xl relative z-10">
-          <div className="text-center mb-12">
-            <h2
-              className="text-display mb-2"
-              style={{
-                color: "var(--color-primary-main)",
-                fontFamily: "var(--font-family-heading)",
-                fontWeight: "var(--font-weight-black)",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              {t("onshoreProven.title")}{" "}
-              <span style={{ color: "var(--color-accent-main)" }}>
-                {t("onshoreProven.subtitle")}
-              </span>
-            </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+          {/* Image Side (Left) */}
+          <div className="relative h-[400px] lg:h-auto min-h-[500px]">
+            <Image
+              src="/images/investors/critical-minerals.jpg"
+              alt="Critical Minerals"
+              fill
+              className="object-cover"
+              quality={90}
+            />
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
-            <div
-              className="group p-8 lg:p-10 rounded-md relative overflow-hidden"
-              style={{
-                background: "var(--color-bg-default)",
-                border: "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
-              }}
-            >
-              <p
-                className="text-base lg:text-lg leading-relaxed mb-6"
-                style={{ color: "var(--color-text-body)" }}
+
+          {/* Content Side (Right) */}
+          <div className="flex flex-col justify-center p-8 lg:p-20 relative z-10">
+            <div className="max-w-xl mx-auto lg:mx-0">
+              <h2
+                className="text-display mb-2"
+                style={{
+                  color: "var(--color-primary-main)",
+                  fontFamily: "var(--font-family-heading)",
+                  fontWeight: "var(--font-weight-black)",
+                  letterSpacing: "-0.02em",
+                }}
               >
-                {t("onshoreProven.column1.intro")}
-              </p>
-              <ul className="space-y-3" style={{ color: "var(--color-text-body)" }}>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
-                  {t("onshoreProven.column1.point1")}
-                </li>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
-                  {t("onshoreProven.column1.point2")}
-                </li>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
-                  {t("onshoreProven.column1.point3")}
-                </li>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
-                  {t("onshoreProven.column1.point4")}
-                </li>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
-                  {t("onshoreProven.column1.point5")}
-                </li>
-              </ul>
-            </div>
-            <div
-              className="group p-8 lg:p-10 rounded-md relative overflow-hidden"
-              style={{
-                background: "var(--color-bg-default)",
-                border: "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
-              }}
-            >
-              <p
-                className="text-base lg:text-lg leading-relaxed mb-6"
-                style={{ color: "var(--color-text-body)" }}
-              >
-                {t("onshoreProven.column2.intro")}
-              </p>
-              <ul className="space-y-3" style={{ color: "var(--color-text-body)" }}>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
-                  {t("onshoreProven.column2.point1")}
-                </li>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
-                  {t("onshoreProven.column2.point2")}
-                </li>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
-                  {t("onshoreProven.column2.point3")}
-                </li>
-                <li className="flex items-start gap-2">
-                  <span style={{ color: "var(--color-accent-main)" }}>•</span>
-                  {t("onshoreProven.column2.point4")}
-                </li>
-              </ul>
+                {t("onshoreProven.title")}{" "}
+                <span style={{ color: "var(--color-accent-main)" }}>
+                  {t("onshoreProven.subtitle")}
+                </span>
+              </h2>
+
+              <div className="space-y-6 mt-8">
+                <div
+                  className="group p-6 lg:p-8 rounded-sm overflow-hidden"
+                  style={{
+                    background: "var(--color-bg-default)",
+                    border:
+                      "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
+                  }}
+                >
+                  <p
+                    className="text-base lg:text-lg leading-relaxed mb-6"
+                    style={{ color: "var(--color-text-body)" }}
+                  >
+                    {t("onshoreProven.column1.intro")}
+                  </p>
+                  <ul className="space-y-3" style={{ color: "var(--color-text-body)" }}>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                      {t("onshoreProven.column1.point1")}
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                      {t("onshoreProven.column1.point2")}
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                      {t("onshoreProven.column1.point3")}
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                      {t("onshoreProven.column1.point4")}
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                      {t("onshoreProven.column1.point5")}
+                    </li>
+                  </ul>
+                </div>
+
+                <div
+                  className="group p-6 lg:p-8 rounded-sm overflow-hidden"
+                  style={{
+                    background: "var(--color-bg-default)",
+                    border:
+                      "1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)",
+                  }}
+                >
+                  <p
+                    className="text-base lg:text-lg leading-relaxed mb-6"
+                    style={{ color: "var(--color-text-body)" }}
+                  >
+                    {t("onshoreProven.column2.intro")}
+                  </p>
+                  <ul className="space-y-3" style={{ color: "var(--color-text-body)" }}>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                      {t("onshoreProven.column2.point1")}
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                      {t("onshoreProven.column2.point2")}
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                      {t("onshoreProven.column2.point3")}
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span style={{ color: "var(--color-accent-main)" }}>•</span>
+                      {t("onshoreProven.column2.point4")}
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>

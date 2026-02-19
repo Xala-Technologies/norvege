@@ -296,6 +296,10 @@
     },
     "futurePlans": {
       "title": "Fremtidige Planer og Strategisk Visjon",
+      "strategy": {
+        "title": "Vår",
+        "highlight": "Strategi"
+      },
       "subtitle": "2025-2029 Veikart",
       "intro": "En omfattende tilnærming til ansvarlig gruvedrift og bærekraftig utvikling",
       "greenMining": {
@@ -367,6 +371,10 @@
     },
     "futurePlans": {
       "title": "Fremtidige Planer og Strategisk Visjon",
+      "strategy": {
+        "title": "Vår",
+        "highlight": "Strategi"
+      },
       "subtitle": "2025-2029 Veikart",
       "intro": "En omfattende tilnærming til ansvarlig gruvedrift og bærekraftig utvikling",
       "greenMining": {

@@ -353,6 +353,10 @@
     },
     "futurePlans": {
       "title": "Future Plans & Strategic Vision",
+      "strategy": {
+        "title": "Our",
+        "highlight": "Strategy"
+      },
       "subtitle": "2025-2029 Roadmap",
       "intro": "A comprehensive approach to responsible mining and sustainable development",
       "greenMining": {

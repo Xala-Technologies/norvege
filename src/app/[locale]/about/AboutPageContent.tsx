@@ -466,7 +466,10 @@ export default function AboutPageContent() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Our <span style={{ color: "var(--color-accent-main)" }}>Strategy</span>
+              {t("futurePlans.strategy.title")}{" "}
+              <span style={{ color: "var(--color-accent-main)" }}>
+                {t("futurePlans.strategy.highlight")}
+              </span>
             </h2>
             <p
               className="text-base md:text-lg max-w-2xl mx-auto"

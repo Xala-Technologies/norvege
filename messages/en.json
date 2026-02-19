@@ -736,5 +736,87 @@
     ],
     "ctaDescription": "We are always interested in exploring new partnership opportunities that align with our values and strategic objectives. If you are interested in partnering with us, please contact us through our contact form.",
     "cta": "Become a Partner"
+  },
+  "dataRoom": {
+    "title": "Project Data Room",
+    "subtitle": "Comprehensive investment information and technical data for {projectName}",
+    "labels": {
+      "type": "Type",
+      "project": "Project",
+      "license": "License",
+      "organization": "Organization",
+      "stage": "Stage",
+      "status": "Status",
+      "source": "Source",
+      "uploaded": "Uploaded",
+      "grade": "Grade",
+      "contained": "Contained"
+    },
+    "status": {
+      "planned": "Planned",
+      "in-progress": "In Progress",
+      "completed": "Completed",
+      "on-hold": "On Hold",
+      "eligible": "Eligible",
+      "applied": "Applied",
+      "approved": "Approved",
+      "pending": "Pending"
+    },
+    "fundingType": {
+      "grant": "Grant",
+      "loan": "Loan",
+      "guarantee": "Guarantee",
+      "debt": "Debt"
+    },
+    "fundingStage": {
+      "exploration": "Exploration",
+      "pilot": "Pilot",
+      "demonstration": "Demonstration",
+      "development": "Development",
+      "construction": "Construction"
+    },
+    "disclaimers": {
+      "title": "Important Disclaimers"
+    },
+    "thesis": {
+      "title": "Investment Thesis",
+      "subtitle": "Five key pillars supporting the {projectName} investment opportunity",
+      "provenAsset": "Proven Asset",
+      "growthPotential": "Growth Potential",
+      "deRiskedFoundation": "De-Risked Foundation",
+      "deRiskedDesc": "Historic production data materially reduces geological uncertainty.",
+      "districtUpside": "District Upside",
+      "districtUpsideDesc": "Modern exploration techniques unlocking new value in historic districts."
+    },
+    "metrics": {
+      "title": "Key Metrics",
+      "subtitle": "Historic production and conceptual resource estimates",
+      "historicProduction": "Historic Production",
+      "remainingConceptual": "Remaining (Conceptual)",
+      "inSituValue": "In-Situ Value/Tonne"
+    },
+    "development": {
+      "title": "Development Plan",
+      "subtitle": "Stage-gated execution plan with clear milestones",
+      "keyActions": "Key Actions",
+      "deliverables": "Deliverables"
+    },
+    "funding": {
+      "title": "Public Funding Pathway",
+      "subtitle": "Norwegian public funding programs supporting project development"
+    },
+    "metalExposure": {
+      "title": "Metal Exposure (Conceptual)",
+      "warning": "All metal exposure estimates are conceptual and non-JORC compliant."
+    },
+    "downloads": {
+      "title": "Downloads & Export",
+      "subtitle": "Source documents and comprehensive reports",
+      "confidential": "Confidential",
+      "reportTitle": "Project Resource Statement & Technical Report",
+      "downloadPdf": "Download PDF",
+      "exportOnePager": "Export One-Pager (Markdown)",
+      "exportFullReport": "Export Full Report (Markdown)"
+    }
   }
 }

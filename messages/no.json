@@ -750,5 +750,87 @@
     ],
     "ctaDescription": "Vi er alltid interessert i å utforske nye partnerskapsmuligheter som samsvarer med våre verdier og strategiske mål. Hvis du er interessert i å samarbeide med oss, vennligst kontakt oss gjennom vårt kontaktskjema.",
     "cta": "Bli en Partner"
+  },
+  "dataRoom": {
+    "title": "Prosjekt datarom",
+    "subtitle": "Omfattende investeringsinformasjon og tekniske data for {projectName}",
+    "labels": {
+      "type": "Type",
+      "project": "Prosjekt",
+      "license": "Lisens",
+      "organization": "Organisasjon",
+      "stage": "Fase",
+      "status": "Status",
+      "source": "Kilde",
+      "uploaded": "Lastet opp",
+      "grade": "Gehalt",
+      "contained": "Inneholdt"
+    },
+    "status": {
+      "planned": "Planlagt",
+      "in-progress": "Pågående",
+      "completed": "Fullført",
+      "on-hold": "På vent",
+      "eligible": "Kvalifisert",
+      "applied": "Søkt",
+      "approved": "Godkjent",
+      "pending": "Avventende"
+    },
+    "fundingType": {
+      "grant": "Tilskudd",
+      "loan": "Lån",
+      "guarantee": "Garanti",
+      "debt": "Gjeld"
+    },
+    "fundingStage": {
+      "exploration": "Leting",
+      "pilot": "Pilot",
+      "demonstration": "Demonstrasjon",
+      "development": "Utvikling",
+      "construction": "Konstruksjon"
+    },
+    "disclaimers": {
+      "title": "Viktige ansvarsfraskrivelser"
+    },
+    "thesis": {
+      "title": "Investeringstese",
+      "subtitle": "Fem nøkkelpilarer som støtter investeringsmuligheten i {projectName}",
+      "provenAsset": "Bevist eiendel",
+      "growthPotential": "Vekstpotensial",
+      "deRiskedFoundation": "Avrisikert fundament",
+      "deRiskedDesc": "Historiske produksjonsdata reduserer geologisk usikkerhet vesentlig.",
+      "districtUpside": "Distriktsoppside",
+      "districtUpsideDesc": "Moderne utforskningsteknikker frigjør ny verdi i historiske distrikter."
+    },
+    "metrics": {
+      "title": "Nøkkeltall",
+      "subtitle": "Historisk produksjon og konseptuelle ressursestimater",
+      "historicProduction": "Historisk produksjon",
+      "remainingConceptual": "Gjenværende (Konseptuelt)",
+      "inSituValue": "In-situ verdi/tonn"
+    },
+    "development": {
+      "title": "Utviklingsplan",
+      "subtitle": "Trinnvis gjennomføringsplan med klare milepæler",
+      "keyActions": "Nøkkelhandlinger",
+      "deliverables": "Leveranser"
+    },
+    "funding": {
+      "title": "Offentlig finansieringsvei",
+      "subtitle": "Norske offentlige finansieringsprogrammer som støtter prosjektutvikling"
+    },
+    "metalExposure": {
+      "title": "Metalleksponering (Konseptuell)",
+      "warning": "Alle metalleksponeringsestimater er konseptuelle og ikke JORC-kompatible."
+    },
+    "downloads": {
+      "title": "Nedlastinger og eksport",
+      "subtitle": "Kildedokumenter og omfattende rapporter",
+      "confidential": "Konfidensielt",
+      "reportTitle": "Prosjektressurserklæring og teknisk rapport",
+      "downloadPdf": "Last ned PDF",
+      "exportOnePager": "Eksporter sammendrag (Markdown)",
+      "exportFullReport": "Eksporter full rapport (Markdown)"
+    }
   }
 }

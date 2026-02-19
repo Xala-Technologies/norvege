@@ -43,7 +43,7 @@ export default function ContactHeroImage() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, color-mix(in srgb, var(--color-primary-main) 75%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 60%, transparent) 100%)",
+            "linear-gradient(to bottom, color-mix(in srgb, var(--color-primary-main) 40%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 20%, transparent) 100%)",
         }}
       />
     </>

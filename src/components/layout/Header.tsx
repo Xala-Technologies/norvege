@@ -279,22 +279,23 @@ export default function Header() {
                                   href={`/projects/${project.slug}`}
                                   className="block px-6 py-3 text-base transition-all duration-200 group/item relative"
                                   style={{
-                                    color: isKillingdal
-                                      ? "white"
-                                      : isActive
+                                    color:
+                                      isKillingdal && isActive
+                                        ? "white"
+                                        : isActive
+                                          ? "var(--color-accent-main)"
+                                          : "#1E293B",
+                                    background:
+                                      isKillingdal && isActive
                                         ? "var(--color-accent-main)"
-                                        : "#1E293B",
-                                    background: isKillingdal
-                                      ? "var(--color-accent-main)"
-                                      : isActive
-                                        ? "color-mix(in srgb, var(--color-accent-main) 10%, transparent)"
-                                        : "transparent",
+                                        : isActive
+                                          ? "color-mix(in srgb, var(--color-accent-main) 10%, transparent)"
+                                          : "transparent",
                                     fontFamily: "var(--font-family-body)",
-                                    fontWeight: isKillingdal || isActive ? 700 : undefined,
+                                    fontWeight: isActive ? 700 : undefined,
                                   }}
                                   onMouseEnter={(e) => {
-                                    if (isKillingdal) {
-                                      e.currentTarget.style.background = "var(--color-accent-main)"; // Keep solid on hover
+                                    if (isKillingdal && isActive) {
                                       e.currentTarget.style.opacity = "0.9";
                                     } else {
                                       e.currentTarget.style.background =
@@ -305,16 +306,17 @@ export default function Header() {
                                     }
                                   }}
                                   onMouseLeave={(e) => {
-                                    if (isKillingdal) {
+                                    e.currentTarget.style.opacity = "1";
+                                    if (isKillingdal && isActive) {
                                       e.currentTarget.style.background = "var(--color-accent-main)";
-                                      e.currentTarget.style.opacity = "1";
+                                      e.currentTarget.style.color = "white";
+                                    } else if (isActive) {
+                                      e.currentTarget.style.background =
+                                        "color-mix(in srgb, var(--color-accent-main) 10%, transparent)";
+                                      e.currentTarget.style.color = "var(--color-accent-main)";
                                     } else {
-                                      e.currentTarget.style.background = isActive
-                                        ? "color-mix(in srgb, var(--color-accent-main) 10%, transparent)"
-                                        : "transparent";
-                                      e.currentTarget.style.color = isActive
-                                        ? "var(--color-accent-main)"
-                                        : "#1E293B";
+                                      e.currentTarget.style.background = "transparent";
+                                      e.currentTarget.style.color = "#1E293B";
                                     }
                                   }}
                                   onClick={() => setProjectsDropdownOpen(false)}
@@ -326,7 +328,7 @@ export default function Header() {
                                         ? "Skrattåsen"
                                         : projectName}
                                     </span>
-                                    {(isKillingdal || isActive) && (
+                                    {isActive && (
                                       <motion.svg
                                         className="w-4 h-4"
                                         fill="none"
@@ -343,7 +345,7 @@ export default function Header() {
                                         />
                                       </motion.svg>
                                     )}
-                                    {!isKillingdal && !isActive && (
+                                    {!isActive && (
                                       <motion.svg
                                         className="w-4 h-4 opacity-0 group-hover/item:opacity-100 transition-opacity"
                                         fill="none"
@@ -359,13 +361,11 @@ export default function Header() {
                                       </motion.svg>
                                     )}
                                   </span>
-                                  {/* Hover indicator - Hide for Killingdal as it has bg */}
-                                  {!isKillingdal && (
-                                    <div
-                                      className="absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover/item:opacity-100 transition-opacity"
-                                      style={{ background: "var(--color-accent-main)" }}
-                                    />
-                                  )}
+                                  {/* Hover indicator */}
+                                  <div
+                                    className="absolute left-0 top-0 bottom-0 w-1 opacity-0 group-hover/item:opacity-100 transition-opacity"
+                                    style={{ background: "var(--color-accent-main)" }}
+                                  />
                                 </Link>
                               </motion.div>
                             );

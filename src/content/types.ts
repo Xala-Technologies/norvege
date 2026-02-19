@@ -16,6 +16,7 @@ export interface ITimelineItem {
 }
 
 export interface IProject {
+  // IMPORTANT: When adding or updating content, ensure all language-specific fields (_no) are populated
   slug: string;
   name: string;
   name_no?: string;
@@ -143,12 +144,17 @@ export interface ITimelineGate {
   id: string;
   gateNumber: number;
   gateName: string;
+  gateName_no?: string;
   targetDate: string; // e.g., "2026 H1", "2026 H2", "2027"
   status: "planned" | "in-progress" | "completed" | "on-hold";
   description: string;
+  description_no?: string;
   keyActions: string[];
+  keyActions_no?: string[];
   deliverables: string[];
+  deliverables_no?: string[];
   decisionCriteria?: string[];
+  decisionCriteria_no?: string[];
 }
 
 export interface IFundingProgram {
@@ -187,8 +193,11 @@ export interface IAttachment {
 export interface IInvestmentThesis {
   id: string;
   title: string;
+  title_no?: string;
   description: string;
+  description_no?: string;
   keyPoints: string[];
+  keyPoints_no?: string[];
   order: number;
 }
 

@@ -40,60 +40,100 @@ export const killingdalDataRoom: IProjectDataRoom = {
     {
       id: "thesis-1",
       title: "De-Risked Brownfield VMS Anchor",
+      title_no: "Avrisikert Brownfield VMS-anker",
       description:
         "Proven system, not a theory. Killingdal is a Cu-led polymetallic VMS with ~2.96 Mt of historic sulphide production, materially reducing geological uncertainty versus greenfield exploration and establishing immediate system validation.",
+      description_no:
+        "Bevist system, ikke en teori. Killingdal er en Cu-ledet polymetallisk VMS med ~2,96 Mt historisk sulfidproduksjon, som reduserer geologisk usikkerhet vesentlig sammenlignet med greenfield-leting og etablerer umiddelbar systemvalidering.",
       keyPoints: [
         "Proven Norwegian VMS system with historic production",
         "Brownfield restart materially reduces geological, permitting, and development risk",
         "Underground access and established infrastructure in place",
+      ],
+      keyPoints_no: [
+        "Bevist norsk VMS-system med historisk produksjon",
+        "Brownfield-gjenstart reduserer vesentlig geologisk, tillatelses- og utviklingsrisiko",
+        "Underjordisk tilgang og etablert infrastruktur på plass",
       ],
       order: 1,
     },
     {
       id: "thesis-2",
       title: "Copper-Anchored, Multi-Metal Value Stack",
+      title_no: "Kobberforankret, verdiøkning med flere metaller",
       description:
         "Copper drives value, credits protect margins. Copper underpins valuation, with Zn and Ag-Au acting as margin-enhancing by-products, providing diversified revenue exposure and downside resilience without adding processing or operational complexity.",
+      description_no:
+        "Kobber driver verdien, biprodukter beskytter marginene. Kobber underbygger verdivurderingen, mens sink og sølv-gull fungerer som marginforbedrende biprodukter, noe som gir diversifisert inntektseksponering og nedsiderobusthet uten å tilføre prosesserings- eller operasjonell kompleksitet.",
       keyPoints: [
         "Copper underpins valuation",
         "Zn and Ag-Au as margin-enhancing by-products",
         "Diversified revenue exposure without operational complexity",
+      ],
+      keyPoints_no: [
+        "Kobber underbygger verdivurderingen",
+        "Sink og sølv-gull som marginforbedrende biprodukter",
+        "Diversifisert inntektseksponering uten operasjonell kompleksitet",
       ],
       order: 2,
     },
     {
       id: "thesis-3",
       title: "Scalable Upside with Disciplined Risk Framing",
+      title_no: "Skalerbar oppside med disiplinert risikorammeverk",
       description:
         "Growth optionality, clearly defined. Mineralisation remains open at depth and along strike, with interpreted stacked lenses typical of mature VMS camps; upside positioned as conceptual and non-JORC.",
+      description_no:
+        "Vekstopsjonalitet, klart definert. Mineralisering forblir åpen i dybden og langs strøket, med tolkede stablede linser typisk for modne VMS-felt; oppside posisjonert som konseptuell og ikke-JORC.",
       keyPoints: [
         "Mineralisation open at depth and along strike",
         "Interpreted stacked lenses typical of mature VMS camps",
         "Upside clearly positioned as conceptual and non-JORC",
+      ],
+      keyPoints_no: [
+        "Mineralisering åpen i dybden og langs strøket",
+        "Tolkede stablede linser typisk for modne VMS-felt",
+        "Oppside klart posisjonert som konseptuell og ikke-JORC",
       ],
       order: 3,
     },
     {
       id: "thesis-4",
       title: "Capital-Efficient Re-Rating Strategy",
+      title_no: "Kapitaleffektiv omvurderingsstrategi",
       description:
         "A phased, JORC-aligned execution plan prioritises data integrity, target vectoring and validation drilling. Risk compression before capital deployment.",
+      description_no:
+        "En trinnvis, JORC-tilpasset gjennomføringsplan prioriterer dataintegritet, målretting og valideringsboring. Risikokomprimering før kapitalplassering.",
       keyPoints: [
         "Phased, JORC-aligned execution plan",
         "Prioritises data integrity and validation",
         "Risk compression before capital deployment",
+      ],
+      keyPoints_no: [
+        "Trinnvis, JORC-tilpasset gjennomføringsplan",
+        "Prioriterer dataintegritet og validering",
+        "Risikokomprimering før kapitalplassering",
       ],
       order: 4,
     },
     {
       id: "thesis-5",
       title: "Tier-1 Jurisdiction with Multiple Monetisation",
+      title_no: "Tier-1 jurisdiksjon med flere inntektsmuligheter",
       description:
         "Norway's stable regulatory regime, transparent permitting and ESG-aligned framework. Proven geology + disciplined execution + jurisdictional premium → multiple value crystallisation points.",
+      description_no:
+        "Norges stabile regulatoriske regime, transparente tillatelser og ESG-tilpassede rammeverk. Bevist geologi + disiplinert gjennomføring + jurisdiksjonspremie → flere verdirealiseringspunkter.",
       keyPoints: [
         "Tier-1 jurisdiction (Norway)",
         "Stable regulatory regime and transparent permitting",
         "Multiple value crystallisation points",
+      ],
+      keyPoints_no: [
+        "Tier-1 jurisdiksjon (Norge)",
+        "Stabilt regulatorisk regime og transparente tillatelser",
+        "Flere verdirealiseringspunkter",
       ],
       order: 5,
     },
@@ -142,9 +182,11 @@ export const killingdalDataRoom: IProjectDataRoom = {
       id: "gate-1",
       gateNumber: 1,
       gateName: "Data & Target Confidence",
+      gateName_no: "Data- og målsikkerhet",
       targetDate: "2026 H1",
       status: "planned",
       description: "Historical data QA/QC, target ranking, and validation drilling",
+      description_no: "Historisk data QA/QC, målrangering og valideringsboring",
       keyActions: [
         "Database, relogging & historical assays",
         "Geological Field Work & Sampling",
@@ -152,62 +194,114 @@ export const killingdalDataRoom: IProjectDataRoom = {
         "Soil & surface geochemistry",
         "Target ranking & step-out drilling",
       ],
+      keyActions_no: [
+        "Database, relogging og historiske analyser",
+        "Geologisk feltarbeid og prøvetaking",
+        "Luftbåren, bakkegeofysikk og fjernmåling",
+        "Jord- og overflategeokjemi",
+        "Målrangering og utvidelsesboring",
+      ],
       deliverables: [
         "Validated historical database",
         "Ranked target list",
         "Initial drill targets confirmed",
+      ],
+      deliverables_no: [
+        "Validert historisk database",
+        "Rangert målliste",
+        "Innledende boremål bekreftet",
       ],
       decisionCriteria: [
         "Target confidence validated",
         "Data quality confirmed",
         "Drill targets prioritized",
       ],
+      decisionCriteria_no: [
+        "Målsikkerhet validert",
+        "Datakvalitet bekreftet",
+        "Boremål prioritert",
+      ],
     },
     {
       id: "gate-2",
       gateNumber: 2,
       gateName: "JORC Alignment & Validation",
+      gateName_no: "JORC-tilpasning og validering",
       targetDate: "2026 H2",
       status: "planned",
       description: "JORC-aligned drilling, QA/QC, and resource definition",
+      description_no: "JORC-tilpasset boring, QA/QC og ressursdefinering",
       keyActions: [
         "Resource infill drilling & modelling",
         "JORC estimation & CP sign-off",
         "Technical studies and data integration",
+      ],
+      keyActions_no: [
+        "Ressursutfyllingsboring og modellering",
+        "JORC-estimering og CP-godkjenning",
+        "Tekniske studier og dataintegrasjon",
       ],
       deliverables: [
         "Maiden JORC resource estimate",
         "JORC-compliant data package",
         "Technical validation complete",
       ],
+      deliverables_no: [
+        "Første JORC-ressursestimat",
+        "JORC-kompatibel datapakke",
+        "Teknisk validering fullført",
+      ],
       decisionCriteria: [
         "JORC resource declared",
         "Data compliance confirmed",
         "Technical validation passed",
+      ],
+      decisionCriteria_no: [
+        "JORC-ressurs erklært",
+        "Dataoverholdelse bekreftet",
+        "Teknisk validering bestått",
       ],
     },
     {
       id: "gate-3",
       gateNumber: 3,
       gateName: "Resource & Value Inflection",
+      gateName_no: "Ressurs- og verdiinfleksjon",
       targetDate: "2027",
       status: "planned",
       description:
         "Resource growth confirmed, district potential demonstrated, capital allocation decision",
+      description_no:
+        "Ressursvekst bekreftet, distriktspotensial demonstrert, kapitalallokeringsbeslutning",
       keyActions: [
         "District-scale upside evaluation",
         "Monetization readiness preparation",
         "Strategic optionality assessment",
+      ],
+      keyActions_no: [
+        "Evaluering av oppside i distriktsskala",
+        "Forberedelse for inntektsrealisering",
+        "Vurdering av strategiske opsjoner",
       ],
       deliverables: [
         "Expanded resource estimate",
         "District potential assessment",
         "Transaction readiness package",
       ],
+      deliverables_no: [
+        "Utvidet ressursestimat",
+        "Vurdering av distriktspotensial",
+        "Transaksjonsklarhetspakke",
+      ],
       decisionCriteria: [
         "Resource growth confirmed",
         "Value inflection achieved",
         "Monetization path clear",
+      ],
+      decisionCriteria_no: [
+        "Ressursvekst bekreftet",
+        "Verdiinfleksjon oppnådd",
+        "Inntektsrealiseringsvei klar",
       ],
     },
   ],

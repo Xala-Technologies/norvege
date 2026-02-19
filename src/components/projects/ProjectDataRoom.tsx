@@ -9,12 +9,17 @@ import {
   downloadMarkdown,
 } from "@/lib/project-data-room-export";
 import { formatDateDisplay } from "@/lib/date-utils";
+import { useTranslations, useLocale } from "next-intl";
 
 interface ProjectDataRoomProps {
   dataRoom: IProjectDataRoom;
 }
 
 export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
+  const t = useTranslations("dataRoom");
+  const locale = useLocale();
+  const isNo = locale === "no";
+
   const formatMetric = (metric: {
     value?: number;
     valueMin?: number;
@@ -52,13 +57,13 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
             letterSpacing: "-0.03em",
           }}
         >
-          Project Data Room
+          {t("title")}
         </h2>
         <p
           className="text-lg md:text-xl mb-8 leading-relaxed"
           style={{ color: "var(--color-text-secondary)" }}
         >
-          Comprehensive investment information and technical data for {dataRoom.projectName}
+          {t("subtitle", { projectName: dataRoom.projectName })}
         </p>
 
         <div
@@ -70,7 +75,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
         >
           <div className="flex items-center gap-2">
             <span className="text-sm font-semibold uppercase tracking-wider text-gray-500">
-              Type
+              {t("labels.type")}
             </span>
             <span className="font-bold" style={{ color: "var(--color-text-body)" }}>
               {dataRoom.depositType}
@@ -79,7 +84,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
           <span className="text-gray-300">|</span>
           <div className="flex items-center gap-2">
             <span className="text-sm font-semibold uppercase tracking-wider text-gray-500">
-              Project
+              {t("labels.project")}
             </span>
             <span className="font-bold" style={{ color: "var(--color-text-body)" }}>
               {dataRoom.projectType}
@@ -90,7 +95,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
               <span className="text-gray-300">|</span>
               <div className="flex items-center gap-2">
                 <span className="text-sm font-semibold uppercase tracking-wider text-gray-500">
-                  License
+                  {t("labels.license")}
                 </span>
                 <span className="font-bold" style={{ color: "var(--color-text-body)" }}>
                   {dataRoom.licenseInfo.licenseNumber}
@@ -130,7 +135,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
           </div>
           <div>
             <h3 className="text-xl font-bold mb-3" style={{ color: "var(--color-text-body)" }}>
-              Important Disclaimers
+              {t("disclaimers.title")}
             </h3>
             <ul className="space-y-2">
               {dataRoom.disclaimers
@@ -163,10 +168,10 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                 fontFamily: "var(--font-family-heading)",
               }}
             >
-              Investment Thesis
+              {t("thesis.title")}
             </h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Five key pillars supporting the {dataRoom.projectName} investment opportunity
+              {t("thesis.subtitle", { projectName: dataRoom.projectName })}
             </p>
           </div>
 
@@ -196,30 +201,32 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                       0{thesis.order}
                     </span>
                     <h3 className="text-xl font-bold" style={{ color: "var(--color-text-body)" }}>
-                      {thesis.title}
+                      {(isNo && thesis.title_no) || thesis.title}
                     </h3>
                   </div>
                   <p
                     className="text-base leading-relaxed mb-4 pl-10"
                     style={{ color: "var(--color-text-secondary)" }}
                   >
-                    {thesis.description}
+                    {(isNo && thesis.description_no) || thesis.description}
                   </p>
                   {thesis.keyPoints.length > 0 && (
                     <ul className="space-y-2 pl-10">
-                      {thesis.keyPoints.map((point, pointIdx) => (
-                        <li
-                          key={pointIdx}
-                          className="text-sm flex items-start gap-2.5"
-                          style={{ color: "var(--color-text-body)" }}
-                        >
-                          <span
-                            className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0"
-                            style={{ background: "var(--color-accent-main)" }}
-                          />
-                          <span>{point}</span>
-                        </li>
-                      ))}
+                      {((isNo && thesis.keyPoints_no) || thesis.keyPoints).map(
+                        (point, pointIdx) => (
+                          <li
+                            key={pointIdx}
+                            className="text-sm flex items-start gap-2.5"
+                            style={{ color: "var(--color-text-body)" }}
+                          >
+                            <span
+                              className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0"
+                              style={{ background: "var(--color-accent-main)" }}
+                            />
+                            <span>{point}</span>
+                          </li>
+                        )
+                      )}
                     </ul>
                   )}
                 </motion.div>
@@ -237,17 +244,15 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
               <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 text-white">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold uppercase tracking-wider mb-2 border border-white/30">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                  Proven Asset
+                  {t("thesis.provenAsset")}
                 </div>
                 <h3
                   className="text-3xl font-bold mb-2 leading-tight"
                   style={{ fontFamily: "var(--font-family-heading)" }}
                 >
-                  De-Risked Foundation
+                  {t("thesis.deRiskedFoundation")}
                 </h3>
-                <p className="text-lg opacity-90">
-                  Historic production data materially reduces geological uncertainty.
-                </p>
+                <p className="text-lg opacity-90">{t("thesis.deRiskedDesc")}</p>
               </div>
             </div>
           </div>
@@ -265,17 +270,15 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
               <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 text-white">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold uppercase tracking-wider mb-2 border border-white/30">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
-                  Growth Potential
+                  {t("thesis.growthPotential")}
                 </div>
                 <h3
                   className="text-3xl font-bold mb-2 leading-tight"
                   style={{ fontFamily: "var(--font-family-heading)" }}
                 >
-                  District Upside
+                  {t("thesis.districtUpside")}
                 </h3>
-                <p className="text-lg opacity-90">
-                  Modern exploration techniques unlocking new value in historic districts.
-                </p>
+                <p className="text-lg opacity-90">{t("thesis.districtUpsideDesc")}</p>
               </div>
             </div>
 
@@ -303,30 +306,32 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                       0{thesis.order}
                     </span>
                     <h3 className="text-xl font-bold" style={{ color: "var(--color-text-body)" }}>
-                      {thesis.title}
+                      {(isNo && thesis.title_no) || thesis.title}
                     </h3>
                   </div>
                   <p
                     className="text-base leading-relaxed mb-4 pl-10"
                     style={{ color: "var(--color-text-secondary)" }}
                   >
-                    {thesis.description}
+                    {(isNo && thesis.description_no) || thesis.description}
                   </p>
                   {thesis.keyPoints.length > 0 && (
                     <ul className="space-y-2 pl-10">
-                      {thesis.keyPoints.map((point, pointIdx) => (
-                        <li
-                          key={pointIdx}
-                          className="text-sm flex items-start gap-2.5"
-                          style={{ color: "var(--color-text-body)" }}
-                        >
-                          <span
-                            className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0"
-                            style={{ background: "var(--color-accent-main)" }}
-                          />
-                          <span>{point}</span>
-                        </li>
-                      ))}
+                      {((isNo && thesis.keyPoints_no) || thesis.keyPoints).map(
+                        (point, pointIdx) => (
+                          <li
+                            key={pointIdx}
+                            className="text-sm flex items-start gap-2.5"
+                            style={{ color: "var(--color-text-body)" }}
+                          >
+                            <span
+                              className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0"
+                              style={{ background: "var(--color-accent-main)" }}
+                            />
+                            <span>{point}</span>
+                          </li>
+                        )
+                      )}
                     </ul>
                   )}
                 </motion.div>
@@ -346,27 +351,25 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
               fontFamily: "var(--font-family-heading)",
             }}
           >
-            Key Metrics
+            {t("metrics.title")}
           </h2>
-          <p className="text-lg text-gray-500">
-            Historic production and conceptual resource estimates
-          </p>
+          <p className="text-lg text-gray-500">{t("metrics.subtitle")}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {[
             dataRoom.historicMinedTonnes && {
               value: formatMetric(dataRoom.historicMinedTonnes),
-              label: "Historic Production",
+              label: t("metrics.historicProduction"),
               sub: `${dataRoom.historicProductionPeriod} • ${dataRoom.historicMinedTonnes.complianceTag}`,
             },
             dataRoom.economics.remainingTonnesConceptual && {
               value: formatMetric(dataRoom.economics.remainingTonnesConceptual),
-              label: "Remaining (Conceptual)",
+              label: t("metrics.remainingConceptual"),
               sub: dataRoom.economics.remainingTonnesConceptual.complianceTag,
             },
             dataRoom.economics.inSituValuePerTonne && {
               value: `US$${formatMetric(dataRoom.economics.inSituValuePerTonne)}`,
-              label: "In-Situ Value/Tonne",
+              label: t("metrics.inSituValue"),
               sub: dataRoom.economics.inSituValuePerTonne.complianceTag,
             },
           ]
@@ -423,9 +426,9 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
               fontFamily: "var(--font-family-heading)",
             }}
           >
-            Development Plan
+            {t("development.title")}
           </h2>
-          <p className="text-lg text-gray-500">Stage-gated execution plan with clear milestones</p>
+          <p className="text-lg text-gray-500">{t("development.subtitle")}</p>
         </div>
         <div className="space-y-6">
           {dataRoom.developmentGates.map((gate, idx) => (
@@ -471,9 +474,11 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                         className="text-2xl font-bold"
                         style={{ color: "var(--color-text-body)" }}
                       >
-                        {gate.gateName}
+                        {(isNo && gate.gateName_no) || gate.gateName}
                       </h3>
-                      <p style={{ color: "var(--color-text-secondary)" }}>{gate.description}</p>
+                      <p style={{ color: "var(--color-text-secondary)" }}>
+                        {(isNo && gate.description_no) || gate.description}
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4 pl-22 lg:pl-0">
@@ -494,7 +499,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                               : "var(--color-text-secondary)",
                       }}
                     >
-                      {gate.status.replace("-", " ")}
+                      {t(`status.${gate.status}`)}
                     </span>
                     <span className="font-bold" style={{ color: "var(--color-text-body)" }}>
                       {gate.targetDate}
@@ -509,10 +514,10 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                         className="font-bold mb-3 uppercase text-xs tracking-wider"
                         style={{ color: "var(--color-text-secondary)" }}
                       >
-                        Key Actions
+                        {t("development.keyActions")}
                       </h4>
                       <ul className="space-y-2">
-                        {gate.keyActions.map((action, i) => (
+                        {((isNo && gate.keyActions_no) || gate.keyActions).map((action, i) => (
                           <li
                             key={i}
                             className="text-sm flex items-start gap-3"
@@ -531,10 +536,10 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                         className="font-bold mb-3 uppercase text-xs tracking-wider"
                         style={{ color: "var(--color-text-secondary)" }}
                       >
-                        Deliverables
+                        {t("development.deliverables")}
                       </h4>
                       <ul className="space-y-2">
-                        {gate.deliverables.map((del, i) => (
+                        {((isNo && gate.deliverables_no) || gate.deliverables).map((del, i) => (
                           <li
                             key={i}
                             className="text-sm flex items-start gap-3"
@@ -576,11 +581,9 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
               fontFamily: "var(--font-family-heading)",
             }}
           >
-            Public Funding Pathway
+            {t("funding.title")}
           </h2>
-          <p className="text-lg text-gray-500">
-            Norwegian public funding programs supporting project development
-          </p>
+          <p className="text-lg text-gray-500">{t("funding.subtitle")}</p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {dataRoom.fundingPrograms.map((program, idx) => (
@@ -618,17 +621,19 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                   style={{ color: "var(--color-text-secondary)" }}
                 >
                   <div className="flex justify-between border-b pb-2 border-dashed border-gray-200">
-                    <span>Organization</span>
+                    <span>{t("labels.organization")}</span>
                     <span className="font-medium text-gray-900">{program.organization}</span>
                   </div>
                   <div className="flex justify-between border-b pb-2 border-dashed border-gray-200">
-                    <span>Stage</span>
-                    <span className="font-medium text-gray-900 capitalize">{program.stage}</span>
+                    <span>{t("labels.stage")}</span>
+                    <span className="font-medium text-gray-900 capitalize">
+                      {t(`fundingStage.${program.stage}`)}
+                    </span>
                   </div>
                   <div className="flex justify-between border-b pb-2 border-dashed border-gray-200">
-                    <span>Type</span>
+                    <span>{t("labels.type")}</span>
                     <span className="font-medium text-gray-900 capitalize">
-                      {program.fundingType}
+                      {t(`fundingType.${program.fundingType}`)}
                     </span>
                   </div>
                 </div>
@@ -659,7 +664,10 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                         className="text-sm font-medium capitalize"
                         style={{ color: "var(--color-text-body)" }}
                       >
-                        Status: {program.applicationStatus}
+                        {t("labels.status")}:{" "}
+                        {program.applicationStatus
+                          ? t(`status.${program.applicationStatus}`)
+                          : program.applicationStatus}
                       </span>
                     </div>
                   </div>
@@ -680,10 +688,10 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
               fontFamily: "var(--font-family-heading)",
             }}
           >
-            Metal Exposure (Conceptual)
+            {t("metalExposure.title")}
           </h2>
           <div className="inline-block px-4 py-2 rounded-lg bg-yellow-50 border border-yellow-200 text-yellow-800 text-sm font-medium">
-            ⚠️ All metal exposure estimates are conceptual and non-JORC compliant.
+            ⚠️ {t("metalExposure.warning")}
           </div>
         </div>
         <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
@@ -756,7 +764,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                         className="text-sm uppercase tracking-wider font-semibold"
                         style={{ color: bgImage ? "rgba(255,255,255,0.7)" : "gray" }}
                       >
-                        Contained
+                        {t("labels.contained")}
                       </div>
                     </div>
                   )}
@@ -771,7 +779,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                         className="text-sm font-medium"
                         style={{ color: bgImage ? "white" : "var(--color-text-body)" }}
                       >
-                        Grade: {metal.gradeMin}–{metal.gradeMax} {metal.gradeUnit}
+                        {t("labels.grade")}: {metal.gradeMin}–{metal.gradeMax} {metal.gradeUnit}
                       </div>
                     </div>
                   )}
@@ -801,9 +809,9 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
               fontFamily: "var(--font-family-heading)",
             }}
           >
-            Downloads & Export
+            {t("downloads.title")}
           </h2>
-          <p className="text-lg text-gray-500">Source documents and comprehensive reports</p>
+          <p className="text-lg text-gray-500">{t("downloads.subtitle")}</p>
         </div>
 
         <div
@@ -824,11 +832,9 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8 text-white">
               <div className="text-sm font-bold uppercase tracking-wider mb-2 opacity-80">
-                Confidential
+                {t("downloads.confidential")}
               </div>
-              <div className="text-2xl font-bold leading-tight">
-                Project Resource Statement & Technical Report
-              </div>
+              <div className="text-2xl font-bold leading-tight">{t("downloads.reportTitle")}</div>
             </div>
           </div>
 
@@ -870,12 +876,12 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                         </h3>
                         {attachment.isSourceDocument && (
                           <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs rounded font-bold uppercase tracking-wider">
-                            Source
+                            {t("labels.source")}
                           </span>
                         )}
                       </div>
                       <div className="text-sm text-gray-500">
-                        Uploaded: {formatDateDisplay(attachment.uploadedAt)}
+                        {t("labels.uploaded")}: {formatDateDisplay(attachment.uploadedAt)}
                         {attachment.version && ` • v${attachment.version}`}
                       </div>
                     </div>
@@ -887,7 +893,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                     className="w-full md:w-auto px-6 py-3 rounded-md font-bold text-sm text-center transition-all hover:translate-x-1 flex items-center justify-center gap-2"
                     style={{ background: "var(--color-primary-main)", color: "white" }}
                   >
-                    Download PDF
+                    {t("downloads.downloadPdf")}
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
@@ -922,7 +928,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                   color: "var(--color-accent-contrast)",
                 }}
               >
-                Export One-Pager (Markdown)
+                {t("downloads.exportOnePager")}
               </button>
               <button
                 onClick={() => {
@@ -939,7 +945,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                   color: "var(--color-accent-main)",
                 }}
               >
-                Export Full Report (Markdown)
+                {t("downloads.exportFullReport")}
               </button>
             </div>
           </div>

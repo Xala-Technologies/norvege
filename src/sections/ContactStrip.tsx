@@ -326,7 +326,7 @@ export default function ContactStrip() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.4, duration: 0.6 }}
-                  className="relative h-64 lg:h-80 rounded-sm overflow-hidden"
+                  className="relative h-96 lg:h-[600px] rounded-sm overflow-hidden"
                   style={{
                     border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
                     boxShadow: "none",

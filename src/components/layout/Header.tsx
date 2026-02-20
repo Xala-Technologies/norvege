@@ -77,11 +77,11 @@ export default function Header() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: "#90D5FF",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
-        boxShadow: "none",
-        borderBottom: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+        background: "rgba(255, 255, 255, 0.85)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        boxShadow: "0 1px 2px rgba(0, 0, 0, 0.05)",
+        borderBottom: `1px solid color-mix(in srgb, var(--color-primary-main) 10%, transparent)`,
       }}
     >
       <nav className="container-wide mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -179,8 +179,8 @@ export default function Header() {
                       style={{
                         borderLeft: "8px solid transparent",
                         borderRight: "8px solid transparent",
-                        borderBottom: "8px solid #90D5FF",
-                        filter: "drop-shadow(0 -2px 4px rgba(0, 0, 0, 0.1))",
+                        borderBottom: "8px solid white",
+                        filter: "drop-shadow(0 -2px 4px rgba(0, 0, 0, 0.05))",
                       }}
                     />
                     <motion.div
@@ -192,13 +192,13 @@ export default function Header() {
                       role="menu"
                       aria-orientation="vertical"
                       style={{
-                        background: "#90D5FF",
+                        background: "white",
                         backdropFilter: "blur(16px)",
                         WebkitBackdropFilter: "blur(16px)",
-                        border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
+                        border: `1px solid color-mix(in srgb, var(--color-primary-main) 10%, transparent)`,
                         borderTop: "none",
                         borderRadius: "0 0 8px 8px",
-                        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.15)",
+                        boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
                         marginTop: "0",
                       }}
                     >
@@ -464,8 +464,8 @@ export default function Header() {
                   transition={{ type: "spring", damping: 30, stiffness: 300 }}
                   className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] lg:hidden overflow-y-auto flex flex-col"
                   style={{
-                    background: "#90D5FF",
-                    boxShadow: "-4px 0 32px rgba(0, 0, 0, 0.8)",
+                    background: "white",
+                    boxShadow: "-4px 0 32px rgba(0, 0, 0, 0.15)",
                     zIndex: 9999,
                   }}
                   onClick={(e) => e.stopPropagation()}

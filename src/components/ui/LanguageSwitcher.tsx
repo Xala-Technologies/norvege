@@ -26,8 +26,8 @@ export default function LanguageSwitcher() {
       <div
         className="relative inline-flex items-center rounded-full p-1"
         style={{
-          background: "#90D5FF",
-          border: `1px solid color-mix(in srgb, #1E293B 30%, transparent)`,
+          background: "var(--color-bg-subtle)",
+          border: `1px solid color-mix(in srgb, var(--color-primary-main) 20%, transparent)`,
         }}
         role="group"
         aria-label="Language switcher"
@@ -36,7 +36,7 @@ export default function LanguageSwitcher() {
         <motion.div
           className="absolute rounded-full"
           style={{
-            background: `#1E293B`,
+            background: `var(--color-primary-main)`,
             height: "calc(100% - 8px)",
             width: "calc(50% - 4px)",
             left: "4px",
@@ -57,7 +57,7 @@ export default function LanguageSwitcher() {
           onClick={() => switchLocale("en")}
           className="relative z-10 px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 min-w-[60px] flex items-center justify-center"
           style={{
-            color: isEnglish ? "var(--color-accent-main)" : "#1E293B",
+            color: isEnglish ? "white" : "var(--color-text-body)",
           }}
           aria-pressed={isEnglish}
           aria-label="Switch to English"
@@ -70,7 +70,7 @@ export default function LanguageSwitcher() {
           onClick={() => switchLocale("no")}
           className="relative z-10 px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 min-w-[60px] flex items-center justify-center"
           style={{
-            color: !isEnglish ? "var(--color-text-on-dark)" : "#1E293B",
+            color: !isEnglish ? "white" : "var(--color-text-body)",
           }}
           aria-pressed={!isEnglish}
           aria-label="Switch to Norwegian"

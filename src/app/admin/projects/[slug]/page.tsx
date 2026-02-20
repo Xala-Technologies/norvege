@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { getProjectDataRoomBySlug } from "@/content/killingdal-data-room";
 import type { IProjectDataRoom } from "@/content/types";
 import {
@@ -226,7 +226,7 @@ function OverviewTab({ dataRoom, isEditing }: { dataRoom: IProjectDataRoom; isEd
   );
 }
 
-function GeologyTab({ dataRoom, isEditing }: { dataRoom: IProjectDataRoom; isEditing: boolean }) {
+function GeologyTab({ dataRoom }: { dataRoom: IProjectDataRoom; isEditing: boolean }) {
   return (
     <div className="bg-white rounded-lg shadow p-6">
       <h2 className="text-xl font-bold mb-4">Geology & Deposit Information</h2>
@@ -261,7 +261,7 @@ function GeologyTab({ dataRoom, isEditing }: { dataRoom: IProjectDataRoom; isEdi
   );
 }
 
-function HistoryTab({ dataRoom, isEditing }: { dataRoom: IProjectDataRoom; isEditing: boolean }) {
+function HistoryTab({ dataRoom }: { dataRoom: IProjectDataRoom; isEditing: boolean }) {
   return (
     <div className="bg-white rounded-lg shadow p-6">
       <h2 className="text-xl font-bold mb-4">History & Infrastructure</h2>
@@ -289,7 +289,7 @@ function HistoryTab({ dataRoom, isEditing }: { dataRoom: IProjectDataRoom; isEdi
   );
 }
 
-function FundingTab({ dataRoom, isEditing }: { dataRoom: IProjectDataRoom; isEditing: boolean }) {
+function FundingTab({ dataRoom }: { dataRoom: IProjectDataRoom; isEditing: boolean }) {
   return (
     <div className="bg-white rounded-lg shadow p-6">
       <h2 className="text-xl font-bold mb-4">Funding & Permitting</h2>
@@ -341,13 +341,7 @@ function FundingTab({ dataRoom, isEditing }: { dataRoom: IProjectDataRoom; isEdi
   );
 }
 
-function WorkProgramTab({
-  dataRoom,
-  isEditing,
-}: {
-  dataRoom: IProjectDataRoom;
-  isEditing: boolean;
-}) {
+function WorkProgramTab({ dataRoom }: { dataRoom: IProjectDataRoom; isEditing: boolean }) {
   return (
     <div className="bg-white rounded-lg shadow p-6">
       <h2 className="text-xl font-bold mb-4">Work Program & Gates</h2>
@@ -411,7 +405,7 @@ function WorkProgramTab({
   );
 }
 
-function EconomicsTab({ dataRoom, isEditing }: { dataRoom: IProjectDataRoom; isEditing: boolean }) {
+function EconomicsTab({ dataRoom }: { dataRoom: IProjectDataRoom; isEditing: boolean }) {
   return (
     <div className="bg-white rounded-lg shadow p-6">
       <div className="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
@@ -474,7 +468,7 @@ function EconomicsTab({ dataRoom, isEditing }: { dataRoom: IProjectDataRoom; isE
   );
 }
 
-function MetalsTab({ dataRoom, isEditing }: { dataRoom: IProjectDataRoom; isEditing: boolean }) {
+function MetalsTab({ dataRoom }: { dataRoom: IProjectDataRoom; isEditing: boolean }) {
   return (
     <div className="bg-white rounded-lg shadow p-6">
       <h2 className="text-xl font-bold mb-4">Metals & By-products</h2>
@@ -553,13 +547,7 @@ function MetalsTab({ dataRoom, isEditing }: { dataRoom: IProjectDataRoom; isEdit
   );
 }
 
-function ComparablesTab({
-  dataRoom,
-  isEditing,
-}: {
-  dataRoom: IProjectDataRoom;
-  isEditing: boolean;
-}) {
+function ComparablesTab({ dataRoom }: { dataRoom: IProjectDataRoom; isEditing: boolean }) {
   if (!dataRoom.comparables) return null;
 
   return (
@@ -593,13 +581,7 @@ function ComparablesTab({
   );
 }
 
-function DisclaimersTab({
-  dataRoom,
-  isEditing,
-}: {
-  dataRoom: IProjectDataRoom;
-  isEditing: boolean;
-}) {
+function DisclaimersTab({ dataRoom }: { dataRoom: IProjectDataRoom; isEditing: boolean }) {
   return (
     <div className="bg-white rounded-lg shadow p-6">
       <h2 className="text-xl font-bold mb-4">Disclaimers & Sources</h2>

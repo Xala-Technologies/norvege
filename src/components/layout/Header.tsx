@@ -665,10 +665,24 @@ export default function Header() {
                     </nav>
                   </div>
 
+                  {/* Language Switcher */}
+                  <div
+                    className="px-6 pt-6 pb-4 border-t"
+                    style={{ borderColor: "color-mix(in srgb, #1E293B 15%, transparent)" }}
+                  >
+                    <p
+                      className="text-xs font-bold uppercase tracking-wider mb-3"
+                      style={{ color: "#1E293B", opacity: 0.6 }}
+                    >
+                      {t("language")}
+                    </p>
+                    <LanguageSwitcher />
+                  </div>
+
                   {/* Copyright Footer */}
                   <div
                     className="px-6 py-6 border-t"
-                    style={{ borderColor: "rgba(255, 255, 255, 0.1)" }}
+                    style={{ borderColor: "color-mix(in srgb, #1E293B 15%, transparent)" }}
                   >
                     <p className="text-xs" style={{ color: "#1E293B" }}>
                       © {new Date().getFullYear()} NORVEGE MINERALS AS

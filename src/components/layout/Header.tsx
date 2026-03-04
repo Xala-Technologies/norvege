@@ -379,64 +379,69 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Language Switcher - Right Side */}
+          {/* Language Switcher - Desktop */}
           <div className="hidden lg:flex items-center">
             <LanguageSwitcher />
           </div>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setMobileMenuOpen(!mobileMenuOpen);
-            }}
-            className="lg:hidden relative z-50 flex flex-col items-center justify-center w-10 h-10 rounded-lg transition-all duration-300 cursor-pointer"
-            style={{
-              color: "#1E293B",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(223, 160, 68, 0.2)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-            }}
-            aria-label="Toggle menu"
-            aria-expanded={mobileMenuOpen}
-            whileTap={{ scale: 0.9 }}
-          >
-            <span className="sr-only">{mobileMenuOpen ? "Close menu" : "Open menu"}</span>
-            <div className="relative w-6 h-5 flex flex-col justify-between">
-              <motion.span
-                className="block w-full h-0.5 rounded-full origin-center"
-                style={{ background: "currentColor" }}
-                animate={{
-                  rotate: mobileMenuOpen ? 45 : 0,
-                  y: mobileMenuOpen ? 8 : 0,
-                }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              />
-              <motion.span
-                className="block w-full h-0.5 rounded-full origin-center"
-                style={{ background: "currentColor" }}
-                animate={{
-                  opacity: mobileMenuOpen ? 0 : 1,
-                  x: mobileMenuOpen ? 10 : 0,
-                }}
-                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              />
-              <motion.span
-                className="block w-full h-0.5 rounded-full origin-center"
-                style={{ background: "currentColor" }}
-                animate={{
-                  rotate: mobileMenuOpen ? -45 : 0,
-                  y: mobileMenuOpen ? -8 : 0,
-                }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              />
+          {/* Mobile: Language Switcher + Hamburger */}
+          <div className="lg:hidden flex items-center gap-2">
+            <div className="w-[72px] flex-shrink-0">
+              <LanguageSwitcher variant="dropdown" />
             </div>
-          </motion.button>
+            <motion.button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setMobileMenuOpen(!mobileMenuOpen);
+              }}
+              className="lg:hidden relative z-50 flex flex-col items-center justify-center w-10 h-10 rounded-lg transition-all duration-300 cursor-pointer"
+              style={{
+                color: "#1E293B",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(223, 160, 68, 0.2)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+              }}
+              aria-label="Toggle menu"
+              aria-expanded={mobileMenuOpen}
+              whileTap={{ scale: 0.9 }}
+            >
+              <span className="sr-only">{mobileMenuOpen ? "Close menu" : "Open menu"}</span>
+              <div className="relative w-6 h-5 flex flex-col justify-between">
+                <motion.span
+                  className="block w-full h-0.5 rounded-full origin-center"
+                  style={{ background: "currentColor" }}
+                  animate={{
+                    rotate: mobileMenuOpen ? 45 : 0,
+                    y: mobileMenuOpen ? 8 : 0,
+                  }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                />
+                <motion.span
+                  className="block w-full h-0.5 rounded-full origin-center"
+                  style={{ background: "currentColor" }}
+                  animate={{
+                    opacity: mobileMenuOpen ? 0 : 1,
+                    x: mobileMenuOpen ? 10 : 0,
+                  }}
+                  transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                />
+                <motion.span
+                  className="block w-full h-0.5 rounded-full origin-center"
+                  style={{ background: "currentColor" }}
+                  animate={{
+                    rotate: mobileMenuOpen ? -45 : 0,
+                    y: mobileMenuOpen ? -8 : 0,
+                  }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                />
+              </div>
+            </motion.button>
+          </div>
         </div>
       </nav>
 
@@ -663,20 +668,6 @@ export default function Header() {
                         </Link>
                       </div>
                     </nav>
-                  </div>
-
-                  {/* Language Switcher */}
-                  <div
-                    className="px-6 pt-6 pb-4 border-t"
-                    style={{ borderColor: "color-mix(in srgb, #1E293B 15%, transparent)" }}
-                  >
-                    <p
-                      className="text-xs font-bold uppercase tracking-wider mb-3"
-                      style={{ color: "#1E293B", opacity: 0.6 }}
-                    >
-                      {t("language")}
-                    </p>
-                    <LanguageSwitcher />
                   </div>
 
                   {/* Copyright Footer */}

@@ -163,19 +163,6 @@ export default function Header() {
                       boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
                     }}
                   >
-                    <Link
-                      href="/projects"
-                      className="block px-5 py-2.5 text-sm font-medium transition-colors hover:bg-gray-50"
-                      style={{ color: pathname === "/projects" ? NAVY : "rgba(27, 42, 74, 0.8)" }}
-                      onClick={() => setProjectsDropdownOpen(false)}
-                      role="menuitem"
-                    >
-                      Overview
-                    </Link>
-                    <div
-                      className="mx-4 my-1 h-px"
-                      style={{ background: "rgba(27, 42, 74, 0.08)" }}
-                    />
                     {[...projects]
                       .sort((a, b) =>
                         a.slug === "killingdal" ? -1 : b.slug === "killingdal" ? 1 : 0
@@ -391,17 +378,6 @@ export default function Header() {
                               className="overflow-hidden"
                             >
                               <div className="pl-4 pb-2 space-y-2">
-                                <Link
-                                  href="/projects"
-                                  className="block py-1.5 text-sm transition-colors"
-                                  style={{
-                                    color:
-                                      pathname === "/projects" ? NAVY : "rgba(27, 42, 74, 0.6)",
-                                  }}
-                                  onClick={() => setMobileMenuOpen(false)}
-                                >
-                                  Overview
-                                </Link>
                                 {projects.map((project) => {
                                   const isKillingdal = project.slug === "killingdal";
 

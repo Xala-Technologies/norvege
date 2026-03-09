@@ -3,7 +3,6 @@ import { companyInfo } from "@/content/company";
 import Accordion from "@/components/ui/accordion";
 import { generateFAQSchema } from "@/lib/seo";
 import ContactForm from "@/components/contact/ContactForm";
-import ContactHeroImage from "@/components/ui/ContactHeroImage";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -14,7 +13,6 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   const tCommon = await getTranslations("common.labels");
   const tFAQ = await getTranslations("contact.faq.items");
 
-  // Create translated FAQs
   const faqKeys = ["investment", "location", "minerals", "sustainability", "visits", "updates"];
   const translatedFAQs = faqKeys.map((key) => ({
     question: tFAQ(`${key}.question`),
@@ -30,202 +28,108 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-[600px] lg:min-h-[700px] flex items-center">
-        {/* Background Image */}
-        <ContactHeroImage />
 
-        {/* Subtle grid pattern overlay */}
+      {/* Hero */}
+      <section
+        className="relative pt-32 pb-20 lg:pt-44 lg:pb-28 overflow-hidden"
+        style={{ background: "#1B2A4A" }}
+      >
         <div
-          className="absolute inset-0 opacity-5 pointer-events-none z-10"
+          className="absolute inset-0"
           style={{
-            backgroundImage: `
-              linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: "60px 60px",
+            background:
+              "radial-gradient(ellipse at 30% 80%, rgba(227, 161, 66, 0.08) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%)",
           }}
         />
 
-        {/* Content */}
-        <div className="container relative z-20 pt-32 pb-20 lg:pt-36 lg:pb-28">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Main Heading */}
-            <h1
-              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 lg:mb-8 leading-tight"
+        <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.04]">
+          <svg viewBox="0 0 400 600" fill="none" className="w-full h-full">
+            <circle cx="300" cy="200" r="200" stroke="white" strokeWidth="0.5" />
+            <circle cx="300" cy="200" r="150" stroke="white" strokeWidth="0.5" />
+            <circle cx="300" cy="200" r="100" stroke="white" strokeWidth="0.5" />
+            <line x1="100" y1="400" x2="400" y2="100" stroke="white" strokeWidth="0.5" />
+            <line x1="200" y1="500" x2="400" y2="200" stroke="white" strokeWidth="0.5" />
+          </svg>
+        </div>
+
+        <div className="relative z-10 container-wide mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <div
+              className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.15em]"
               style={{
-                color: "var(--color-text-on-dark)",
-                fontFamily: "var(--font-family-heading)",
-                fontWeight: "var(--font-weight-black)",
-                letterSpacing: "-0.03em",
+                background: "rgba(227, 161, 66, 0.12)",
+                color: "#e3a142",
+                border: "1px solid rgba(227, 161, 66, 0.2)",
               }}
             >
-              {t("title").split(" ")[0]}{" "}
-              <span
-                style={{
-                  color: "var(--color-accent-main)",
-                }}
-              >
-                {t("title").split(" ")[1]}
-              </span>
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#e3a142" }} />
+              {t("getInTouch")}
+            </div>
+
+            <h1
+              className="text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-6"
+              style={{
+                color: "white",
+                fontFamily: "var(--font-family-heading)",
+                fontWeight: 700,
+                fontStyle: "italic",
+              }}
+            >
+              {t("title")}
             </h1>
 
-            {/* Description */}
+            <div className="w-16 h-[2px] mb-6" style={{ background: "#e3a142" }} />
+
             <p
-              className="text-xl md:text-2xl lg:text-3xl mb-8 lg:mb-12 max-w-3xl mx-auto leading-relaxed"
-              style={{
-                color: "color-mix(in srgb, var(--color-text-on-dark) 90%, transparent)",
-                fontFamily: "var(--font-family-body)",
-                lineHeight: "var(--line-height-loose)",
-                fontWeight: "var(--font-weight-medium)",
-              }}
+              className="text-lg sm:text-xl leading-relaxed max-w-2xl"
+              style={{ color: "rgba(255, 255, 255, 0.7)" }}
             >
               {t("subtitle")}
             </p>
-
-            {/* Quick Contact Info */}
-            <div className="flex flex-wrap justify-center gap-8 lg:gap-12 mt-12">
-              <div className="text-center">
-                <div
-                  className="text-lg md:text-xl font-semibold mb-2"
-                  style={{ color: "var(--color-accent-main)" }}
-                >
-                  {tCommon("email")}
-                </div>
-                <a
-                  href={`mailto:${companyInfo.contact.email}`}
-                  className="text-base md:text-lg hover:opacity-80 transition-opacity"
-                  style={{
-                    color: "color-mix(in srgb, var(--color-text-on-dark) 85%, transparent)",
-                  }}
-                >
-                  {companyInfo.contact.email}
-                </a>
-              </div>
-              {companyInfo.address.city && (
-                <div className="text-center">
-                  <div
-                    className="text-lg md:text-xl font-semibold mb-2"
-                    style={{ color: "var(--color-accent-main)" }}
-                  >
-                    {tCommon("address")}
-                  </div>
-                  <div
-                    className="text-base md:text-lg"
-                    style={{
-                      color: "color-mix(in srgb, var(--color-text-on-dark) 85%, transparent)",
-                    }}
-                  >
-                    {companyInfo.address.city}, {companyInfo.address.country}
-                  </div>
-                </div>
-              )}
-            </div>
           </div>
         </div>
-
-        {/* Bottom decorative line */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-1"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent 0%, var(--color-accent-main) 50%, transparent 100%)",
-          }}
-        />
       </section>
 
-      {/* Contact Form & Info */}
-      <section
-        className="section relative overflow-hidden"
-        style={{ background: "var(--color-bg-default)" }}
-      >
-        {/* Refined background decoration */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div
-            className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl opacity-[0.03]"
-            style={{ background: "var(--color-primary-main)" }}
-          />
-          <div
-            className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full blur-3xl opacity-[0.03]"
-            style={{ background: "var(--color-accent-main)" }}
-          />
-          <div
-            className="absolute inset-0 opacity-[0.02]"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.08) 1px, transparent 0)",
-              backgroundSize: "32px 32px",
-            }}
-          />
-        </div>
-
-        <div className="container max-w-7xl relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-16 lg:mb-20">
-            <h2
-              className="text-display mb-6"
-              style={{
-                color: "var(--color-primary-main)",
-                fontFamily: "var(--font-family-heading)",
-              }}
-            >
-              {t("getInTouch").split(" ")[0]}{" "}
-              <span style={{ color: "var(--color-accent-main)" }}>
-                {t("getInTouch").split(" ").slice(1).join(" ")}
-              </span>
-            </h2>
-            <p
-              className="text-lg md:text-xl max-w-3xl mx-auto"
-              style={{
-                color: "var(--color-text-secondary)",
-                fontFamily: "var(--font-family-body)",
-                lineHeight: "var(--line-height-loose)",
-              }}
-            >
-              {t("getInTouchDescription")}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+      {/* Contact Info + Form */}
+      <section className="py-20 lg:py-28" style={{ background: "white" }}>
+        <div className="container-wide mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
             {/* Contact Information */}
-            <div className="lg:col-span-1">
-              <h3
-                className="text-xl md:text-2xl font-bold mb-6"
+            <div className="lg:col-span-4">
+              <h2
+                className="text-2xl lg:text-3xl mb-3"
                 style={{
-                  color: "var(--color-primary-main)",
                   fontFamily: "var(--font-family-heading)",
+                  fontWeight: 700,
+                  color: "#1B2A4A",
                 }}
               >
                 {t("contactInfo")}
-              </h3>
-              <div className="space-y-4">
+              </h2>
+              <p
+                className="text-base leading-relaxed mb-10"
+                style={{ color: "rgba(27, 42, 74, 0.6)" }}
+              >
+                {t("getInTouchDescription")}
+              </p>
+
+              <div className="space-y-6">
                 {/* Company Details Card */}
                 <div
-                  className="group p-4 lg:p-5 rounded-sm transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
+                  className="p-5 rounded-md transition-all duration-200 group"
                   style={{
-                    background: `var(--color-bg-default)`,
-                    border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
-                    boxShadow: "none",
+                    background: "rgba(27, 42, 74, 0.02)",
+                    border: "1px solid rgba(27, 42, 74, 0.06)",
                   }}
                 >
-                  {/* Enhanced border glow on hover */}
-                  <div
-                    className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    style={{
-                      border: `2px solid var(--color-primary-main)`,
-                    }}
-                  />
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-4">
                     <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
-                      style={{
-                        background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
-                        color: "var(--color-accent-main)",
-                        boxShadow: "none",
-                      }}
+                      className="w-10 h-10 rounded-md flex items-center justify-center shrink-0"
+                      style={{ background: "rgba(27, 42, 74, 0.06)" }}
                     >
                       <svg
                         className="w-5 h-5"
+                        style={{ color: "#1B2A4A" }}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -233,66 +137,87 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          strokeWidth={2}
+                          strokeWidth={1.5}
                           d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
                         />
                       </svg>
                     </div>
-                    <div className="flex-1">
+                    <div>
                       <h3
-                        className="text-base mb-2"
-                        style={{
-                          color: "var(--color-text-body)",
-                          fontFamily: "var(--font-family-heading)",
-                          fontWeight: "var(--font-weight-black)",
-                        }}
+                        className="text-xs font-bold uppercase tracking-[0.15em] mb-1.5"
+                        style={{ color: "rgba(27, 42, 74, 0.4)" }}
                       >
                         {tCommon("companyDetails")}
                       </h3>
-                      <p
-                        className="text-sm mb-1"
-                        style={{
-                          color: "var(--color-text-body)",
-                          fontFamily: "var(--font-family-body)",
-                          fontWeight: "var(--font-weight-medium)",
-                        }}
-                      >
+                      <p className="text-base font-semibold" style={{ color: "#1B2A4A" }}>
                         {companyInfo.legalName}
                       </p>
-                      <p className="text-xs" style={{ color: "var(--color-text-secondary)" }}>
-                        {tCommon("orgNumber")}: {companyInfo.orgNumber}
-                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Email Card */}
+                <div
+                  className="p-5 rounded-md transition-all duration-200 group"
+                  style={{
+                    background: "rgba(27, 42, 74, 0.02)",
+                    border: "1px solid rgba(27, 42, 74, 0.06)",
+                  }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className="w-10 h-10 rounded-md flex items-center justify-center shrink-0"
+                      style={{ background: "rgba(227, 161, 66, 0.1)" }}
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        style={{ color: "#e3a142" }}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={1.5}
+                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3
+                        className="text-xs font-bold uppercase tracking-[0.15em] mb-1.5"
+                        style={{ color: "rgba(27, 42, 74, 0.4)" }}
+                      >
+                        {tCommon("email")}
+                      </h3>
+                      <a
+                        href={`mailto:${companyInfo.contact.email}`}
+                        className="text-base font-semibold transition-colors duration-200 hover:text-gold-mustard"
+                        style={{ color: "#1B2A4A" }}
+                      >
+                        {companyInfo.contact.email}
+                      </a>
                     </div>
                   </div>
                 </div>
 
                 {/* Address Card */}
                 <div
-                  className="group p-4 lg:p-5 rounded-sm transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
+                  className="p-5 rounded-md transition-all duration-200 group"
                   style={{
-                    background: `var(--color-bg-default)`,
-                    border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
-                    boxShadow: "none",
+                    background: "rgba(27, 42, 74, 0.02)",
+                    border: "1px solid rgba(27, 42, 74, 0.06)",
                   }}
                 >
-                  {/* Enhanced border glow on hover */}
-                  <div
-                    className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                    style={{
-                      border: `2px solid var(--color-primary-main)`,
-                    }}
-                  />
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-4">
                     <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
-                      style={{
-                        background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
-                        color: "var(--color-accent-main)",
-                        boxShadow: "none",
-                      }}
+                      className="w-10 h-10 rounded-md flex items-center justify-center shrink-0"
+                      style={{ background: "rgba(27, 42, 74, 0.06)" }}
                     >
                       <svg
                         className="w-5 h-5"
+                        style={{ color: "#1B2A4A" }}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -300,137 +225,75 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          strokeWidth={2}
+                          strokeWidth={1.5}
                           d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
                         />
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          strokeWidth={2}
+                          strokeWidth={1.5}
                           d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                         />
                       </svg>
                     </div>
-                    <div className="flex-1">
+                    <div>
                       <h3
-                        className="text-base mb-2"
-                        style={{
-                          color: "var(--color-text-body)",
-                          fontFamily: "var(--font-family-heading)",
-                          fontWeight: "var(--font-weight-black)",
-                        }}
+                        className="text-xs font-bold uppercase tracking-[0.15em] mb-1.5"
+                        style={{ color: "rgba(27, 42, 74, 0.4)" }}
                       >
                         {tCommon("address")}
                       </h3>
-                      <p
-                        className="text-sm mb-1"
-                        style={{
-                          color: "var(--color-text-body)",
-                          fontFamily: "var(--font-family-body)",
-                          fontWeight: "var(--font-weight-medium)",
-                        }}
-                      >
-                        {companyInfo.address.street}
-                      </p>
-                      <p className="text-sm mb-1" style={{ color: "var(--color-text-body)" }}>
-                        {companyInfo.address.postalCode} {companyInfo.address.city}
-                      </p>
-                      <p className="text-sm" style={{ color: "var(--color-text-body)" }}>
-                        {companyInfo.address.country}
+                      <p className="text-base font-semibold" style={{ color: "#1B2A4A" }}>
+                        {companyInfo.address.city}, {companyInfo.address.country}
                       </p>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Phone Card */}
-                {companyInfo.contact.phone && (
-                  <div
-                    className="group p-4 lg:p-5 rounded-sm transition-all duration-300 hover:-translate-y-1 relative overflow-hidden"
-                    style={{
-                      background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
-                      border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
-                      boxShadow: "none",
-                    }}
-                  >
-                    {/* Enhanced border glow on hover */}
-                    <div
-                      className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                      style={{
-                        border: `2px solid var(--color-primary-main)`,
-                      }}
-                    />
-                    <div className="flex items-start gap-3">
-                      <div
-                        className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
-                        style={{
-                          background: `linear-gradient(135deg, color-mix(in srgb, var(--color-accent-main) 20%, transparent) 0%, color-mix(in srgb, var(--color-accent-main) 10%, transparent) 100%)`,
-                          color: "var(--color-accent-main)",
-                          boxShadow: "none",
-                        }}
-                      >
-                        <svg
-                          className="w-5 h-5"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                          />
-                        </svg>
-                      </div>
-                      <div className="flex-1">
-                        <h3
-                          className="text-base mb-2"
-                          style={{
-                            color: "var(--color-text-body)",
-                            fontFamily: "var(--font-family-heading)",
-                            fontWeight: "var(--font-weight-black)",
-                          }}
-                        >
-                          {tCommon("phone")}
-                        </h3>
-                        <a
-                          href={`tel:${companyInfo.contact.phone}`}
-                          className="text-sm font-medium hover:opacity-80 transition-opacity inline-flex items-center gap-2 group/link"
-                          style={{ color: "var(--color-accent-main)" }}
-                        >
-                          {companyInfo.contact.phone}
-                          <svg
-                            className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                            />
-                          </svg>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                )}
+              {/* Response time indicator */}
+              <div
+                className="mt-8 p-4 rounded-md flex items-center gap-3"
+                style={{
+                  background: "rgba(227, 161, 66, 0.06)",
+                  border: "1px solid rgba(227, 161, 66, 0.12)",
+                }}
+              >
+                <svg
+                  className="w-5 h-5 shrink-0"
+                  style={{ color: "#e3a142" }}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <p className="text-sm" style={{ color: "rgba(27, 42, 74, 0.7)" }}>
+                  {t("responseTime")}
+                </p>
               </div>
             </div>
 
             {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <h3
-                className="text-2xl md:text-3xl font-bold mb-8"
-                style={{
-                  color: "var(--color-primary-main)",
-                  fontFamily: "var(--font-family-heading)",
-                }}
-              >
-                {t("sendMessage")}
-              </h3>
+            <div className="lg:col-span-8">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-10 h-[2px]" style={{ background: "#e3a142" }} />
+                <h2
+                  className="text-2xl lg:text-3xl"
+                  style={{
+                    fontFamily: "var(--font-family-heading)",
+                    fontWeight: 700,
+                    color: "#1B2A4A",
+                  }}
+                >
+                  {t("sendMessage")}
+                </h2>
+              </div>
               <ContactForm />
             </div>
           </div>
@@ -438,14 +301,32 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       </section>
 
       {/* FAQ Section */}
-      <section className="section" style={{ background: "var(--color-sand-50)" }}>
-        <div className="container max-w-4xl">
-          <h2
-            className="text-display mb-8 text-center"
-            style={{ color: "var(--color-primary-main)" }}
-          >
-            {t("faq.title")}
-          </h2>
+      <section className="py-20 lg:py-28" style={{ background: "var(--color-bg-default)" }}>
+        <div className="container-wide mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+          <div className="text-center mb-12">
+            <div
+              className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.15em]"
+              style={{
+                background: "rgba(27, 42, 74, 0.05)",
+                color: "rgba(27, 42, 74, 0.5)",
+              }}
+            >
+              {t("faq.eyebrow")}
+            </div>
+            <h2
+              className="text-3xl lg:text-4xl mb-4"
+              style={{
+                fontFamily: "var(--font-family-heading)",
+                fontWeight: 700,
+                color: "#1B2A4A",
+              }}
+            >
+              {t("faq.title")}
+            </h2>
+            <p className="text-base max-w-2xl mx-auto" style={{ color: "rgba(27, 42, 74, 0.6)" }}>
+              {t("faq.subtitle")}
+            </p>
+          </div>
           <Accordion items={translatedFAQs} />
         </div>
       </section>

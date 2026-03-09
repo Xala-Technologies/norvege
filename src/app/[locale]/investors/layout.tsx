@@ -11,7 +11,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "investors" });
 
   return generateSEOMetadata({
-    title: t("title") + " - NORVEGE MINERALS AS",
+    title: t("title") + " - Norvegen Group",
     description: t("subtitle"),
     path: `/${locale}/investors`,
   });

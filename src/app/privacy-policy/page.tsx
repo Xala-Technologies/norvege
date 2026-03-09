@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Privacy Policy - NORVEGE MINERALS AS",
-  description: "Privacy policy and data protection information for NORVEGE MINERALS AS.",
+  title: "Privacy Policy - Norvegen Group",
+  description: "Privacy policy and data protection information for Norvegen Group.",
   path: "/privacy-policy",
 });
 
@@ -37,7 +37,7 @@ export default function PrivacyPolicyPage() {
         <div className="container max-w-4xl prose prose-lg">
           <h2 style={{ color: "var(--color-primary-main)" }}>Introduction</h2>
           <p className="text-gray-600">
-            NORVEGE MINERALS AS (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to
+            Norvegen Group (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to
             protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and
             safeguard your information when you visit our website.
           </p>
@@ -107,10 +107,10 @@ export default function PrivacyPolicyPage() {
           <p className="text-gray-600">
             Email:{" "}
             <a
-              href="mailto:privacy@norvegeminerals.no"
+              href="mailto:privacy@norvegengroup.com"
               style={{ color: "var(--color-accent-main)" }}
             >
-              privacy@norvegeminerals.no
+              privacy@norvegengroup.com
             </a>
           </p>
         </div>

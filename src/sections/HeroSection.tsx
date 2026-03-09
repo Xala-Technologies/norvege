@@ -1,417 +1,103 @@
 "use client";
 
-import { Link } from "@/i18n/routing";
 import Image from "next/image";
-import { useState, useEffect, useRef, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import HeroVideo from "@/components/ui/HeroVideo";
-import Logo from "@/components/ui/Logo";
+import { Link } from "@/i18n/routing";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+const NAVY = "#1B2A4A";
+
 export default function HeroSection() {
-  const t = useTranslations();
-
-  // Hero slides with different content and project links
-  // Use useMemo to ensure translations are loaded before creating the array
-  const heroSlides = useMemo(
-    () => [
-      {
-        src: "/videos/mining.mp4",
-        type: "video",
-        alt: "Minerals inside mountains - mining exploration",
-        gradient:
-          "linear-gradient(135deg, rgba(10, 14, 20, 0.85) 0%, rgba(15, 20, 25, 0.8) 50%, rgba(26, 31, 38, 0.85) 100%)",
-        badge: t("home.hero.slide1.badge"),
-        title: t("home.hero.slide1.title"),
-        highlight: t("home.hero.slide1.highlight"),
-        description: t("home.hero.slide1.description"),
-        projectSlug: "projects",
-        ctaText: t("home.hero.slide1.cta"),
-        secondaryCtaText: t("home.hero.slide1.secondaryCta"),
-      },
-      {
-        src: "/images/hero/01.jpg",
-        type: "image",
-        alt: "Mineral exploration site with geological formations",
-        gradient:
-          "linear-gradient(135deg, rgba(10, 14, 20, 0.85) 0%, rgba(15, 20, 25, 0.8) 50%, rgba(26, 31, 38, 0.85) 100%)",
-        badge: t("home.hero.slide2.badge"),
-        title: t("home.hero.slide2.title"),
-        highlight: t("home.hero.slide2.highlight"),
-        description: t("home.hero.slide2.description"),
-        projectSlug: "projects",
-        ctaText: t("home.hero.slide2.cta"),
-        secondaryCtaText: t("home.hero.slide2.secondaryCta"),
-      },
-      {
-        src: "/images/hero/03.jpg",
-        type: "image",
-        alt: "Rare earth minerals and geological samples",
-        gradient:
-          "linear-gradient(135deg, rgba(26, 31, 38, 0.85) 0%, rgba(10, 14, 20, 0.8) 50%, rgba(15, 20, 25, 0.85) 100%)",
-        badge: t("home.hero.slide3.badge"),
-        title: t("home.hero.slide3.title"),
-        highlight: t("home.hero.slide3.highlight"),
-        description: t("home.hero.slide3.description"),
-        projectSlug: "projects",
-        ctaText: t("home.hero.slide3.cta"),
-      },
-      {
-        src: "/images/hero/05.jpg",
-        type: "image",
-        alt: "Underground mining tunnel and mineral deposits",
-        gradient:
-          "linear-gradient(135deg, rgba(15, 31, 58, 0.7) 0%, rgba(26, 47, 77, 0.6) 50%, rgba(20, 35, 60, 0.7) 100%)",
-        badge: t("home.hero.slide4.badge"),
-        title: t("home.hero.slide4.title"),
-        highlight: t("home.hero.slide4.highlight"),
-        description: t("home.hero.slide4.description"),
-        projectSlug: "investors",
-        ctaText: t("home.hero.slide4.cta"),
-      },
-    ],
-    [t]
-  );
-
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [showLogoOverlay, setShowLogoOverlay] = useState(false);
-  const currentSlide = heroSlides[currentSlideIndex];
-  const isVideoSlide = currentSlide.type === "video";
-
-  useEffect(() => {
-    // Use 8 seconds for video slides, 6 seconds for image slides
-    const slideDuration = isVideoSlide ? 8000 : 6000;
-
-    const interval = setInterval(() => {
-      setCurrentSlideIndex((prev) => (prev + 1) % heroSlides.length);
-    }, slideDuration);
-
-    return () => clearInterval(interval);
-  }, [currentSlideIndex, isVideoSlide, heroSlides.length]);
-
-  // Handle video time updates to show logo at the end
-  const handleVideoTimeUpdate = (currentTime: number) => {
-    // Video is 8 seconds long, show logo in the last 1.5 seconds (6.5s to 8s)
-    // Also handle video looping - check if we're near the end
-    if (isVideoSlide) {
-      // Show logo when we're in the last 1.5 seconds
-      // Use >= 6.5 to catch the end of the video before it loops
-      if (currentTime >= 6.5) {
-        setShowLogoOverlay(true);
-      } else if (currentTime < 1.0) {
-        // Hide logo at the start of video (after loop or initial load)
-        setShowLogoOverlay(false);
-      }
-    }
-  };
-
-  // Reset logo overlay when slide changes - track previous slide index
-  const prevSlideIndexRef = useRef(currentSlideIndex);
-  const prevIsVideoSlideRef = useRef(isVideoSlide);
-
-  useEffect(() => {
-    const slideChanged = prevSlideIndexRef.current !== currentSlideIndex;
-    const videoStateChanged = prevIsVideoSlideRef.current !== isVideoSlide;
-
-    if (slideChanged || videoStateChanged) {
-      prevSlideIndexRef.current = currentSlideIndex;
-      prevIsVideoSlideRef.current = isVideoSlide;
-
-      // Always reset logo overlay when slide changes
-      // It will be shown again by handleVideoTimeUpdate when video reaches the right time
-      // Use setTimeout to avoid synchronous setState in effect
-      setTimeout(() => {
-        setShowLogoOverlay(false);
-      }, 0);
-    }
-  }, [currentSlideIndex, isVideoSlide]);
+  const t = useTranslations("home.newHero");
 
   return (
-    <section
-      className="relative h-screen w-full flex items-center justify-center overflow-hidden"
-      style={{
-        background: "var(--color-base-black)",
-      }}
-    >
-      {/* Background Media Carousel (Images and Videos) */}
-      <div className="absolute inset-0 w-full h-full z-[1]">
-        {/* Dark background to prevent white flash during transitions */}
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(10, 14, 20, 1) 0%, rgba(15, 20, 25, 1) 50%, rgba(26, 31, 38, 1) 100%)",
-          }}
-        />
-        <AnimatePresence mode="wait">
-          {heroSlides.map((slide, index) => {
-            if (index !== currentSlideIndex) return null;
-            return (
-              <motion.div
-                key={`${slide.src}-${index}`}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.05 }}
-                transition={{ duration: 1.2, ease: "easeInOut" }}
-                className="absolute inset-0 z-10"
+    <section className="relative w-full overflow-hidden min-h-[85vh]" style={{ background: NAVY }}>
+      <Image
+        src="/images/hero/background.jpg"
+        alt="Norwegian mountain landscape"
+        fill
+        className="object-cover"
+        priority
+        quality={90}
+        style={{ opacity: 0.18 }}
+      />
+
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(27, 42, 74, 0.6) 0%, rgba(27, 42, 74, 0.2) 50%, rgba(27, 42, 74, 0.5) 100%)",
+        }}
+      />
+
+      <div className="relative z-10 container-wide mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-24 lg:pt-44 lg:pb-32">
+        <div className="max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9 }}
+          >
+            <h1
+              className="text-3xl sm:text-4xl lg:text-[2.9rem] xl:text-5xl leading-[1.15] mb-10"
+              style={{
+                color: "white",
+                fontFamily: "var(--font-family-heading)",
+                fontWeight: 700,
+                fontStyle: "italic",
+              }}
+            >
+              {t("title")}
+            </h1>
+
+            <div className="space-y-5 max-w-xl">
+              <p
+                className="text-base sm:text-lg leading-relaxed"
+                style={{ color: "rgba(255, 255, 255, 0.8)" }}
+              >
+                {t("description1")}
+              </p>
+
+              <div className="w-16 h-px" style={{ background: "rgba(255, 255, 255, 0.2)" }} />
+
+              <p
+                className="text-base sm:text-lg leading-relaxed"
+                style={{ color: "rgba(255, 255, 255, 0.6)" }}
+              >
+                {t("description2")}
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-4 mt-10">
+              <Link
+                href="/projects"
+                className="inline-flex items-center px-7 py-3 text-sm font-semibold uppercase tracking-wider rounded-sm transition-all duration-200 hover:opacity-90"
+                style={{ background: "white", color: NAVY }}
+              >
+                {t("ctaProjects")}
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center px-7 py-3 text-sm font-semibold uppercase tracking-wider rounded-sm transition-all duration-200 hover:bg-white/10"
                 style={{
-                  backgroundColor: "transparent",
+                  background: "transparent",
+                  color: "white",
+                  border: "1.5px solid rgba(255, 255, 255, 0.35)",
                 }}
               >
-                {/* Fallback gradient background */}
-                <div
-                  className="absolute inset-0 bg-gradient-to-br from-charcoal-950 via-charcoal-900 to-charcoal-950"
-                  style={{
-                    backgroundImage: slide.gradient,
-                  }}
-                />
-
-                {/* Render Video or Image based on slide type */}
-                {slide.type === "video" ? (
-                  <div className="absolute inset-0 overflow-hidden">
-                    <HeroVideo
-                      src={slide.src}
-                      className="object-cover"
-                      style={{
-                        objectPosition: "center top",
-                        transform: "scale(1.15)",
-                      }}
-                      onTimeUpdate={handleVideoTimeUpdate}
-                    />
-                  </div>
-                ) : (
-                  <Image
-                    src={slide.src}
-                    alt={slide.alt}
-                    fill
-                    priority={index === 0}
-                    className="object-cover"
-                    sizes="100vw"
-                    quality={90}
-                    onError={(e) => {
-                      // Hide image if it fails to load, show gradient fallback
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = "none";
-                    }}
-                  />
-                )}
-
-                {/* Deep Navy Overlay for better text readability - only show on image slides */}
-                {slide.type === "image" && (
-                  <>
-                    <div
-                      className="absolute inset-0 hero-overlay"
-                      style={{
-                        background: `linear-gradient(to bottom, color-mix(in srgb, var(--color-primary-main) 75%, transparent) 0%, color-mix(in srgb, var(--color-primary-main) 55%, transparent) 100%)`,
-                      }}
-                    />
-                    {/* Subtle pattern overlay */}
-                    <div
-                      className="absolute inset-0 opacity-20"
-                      style={{
-                        backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)`,
-                        backgroundSize: "40px 40px",
-                      }}
-                    />
-                  </>
-                )}
-              </motion.div>
-            );
-          })}
-        </AnimatePresence>
-      </div>
-
-      {/* SEO: Always present H1 for accessibility and SEO */}
-      {isVideoSlide ? (
-        <h1
-          className="sr-only"
-          style={{
-            position: "absolute",
-            width: "1px",
-            height: "1px",
-            padding: "0",
-            margin: "-1px",
-            overflow: "hidden",
-            clip: "rect(0, 0, 0, 0)",
-            whiteSpace: "nowrap",
-            borderWidth: "0",
-          }}
-        >
-          {currentSlide.title} {currentSlide.highlight} - {currentSlide.description}
-        </h1>
-      ) : null}
-
-      {/* Content - Changes with each slide - Hide on video slides */}
-      {!isVideoSlide ? (
-        <div className="container relative z-10 px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-6xl mx-auto">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlideIndex}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.6 }}
-                className="text-center lg:text-left"
-              >
-                {/* Badge */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                  className="inline-block mb-6 lg:mb-8"
-                >
-                  <span
-                    className="text-eyebrow px-5 py-2.5 rounded-full backdrop-blur-sm"
-                    style={{
-                      background: "color-mix(in srgb, var(--color-accent-main) 15%, transparent)",
-                      color: "var(--color-accent-main)",
-                      border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
-                      boxShadow: "none",
-                    }}
-                  >
-                    {currentSlide.badge}
-                  </span>
-                </motion.div>
-
-                {/* Main Heading */}
-                <motion.h1
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                  className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 lg:mb-6 leading-tight"
-                  style={{ color: "var(--color-gray-50)" }}
-                >
-                  {currentSlide.title}{" "}
-                  <span
-                    style={{
-                      color: "var(--color-accent-main)",
-                    }}
-                  >
-                    {currentSlide.highlight}
-                  </span>
-                </motion.h1>
-
-                {/* Description */}
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                  className="text-xl md:text-2xl lg:text-3xl mb-10 lg:mb-12 max-w-4xl mx-auto lg:mx-0 leading-relaxed"
-                  style={{
-                    color: "var(--color-text-on-dark)",
-                    fontFamily: "var(--font-family-body)",
-                    lineHeight: "var(--line-height-loose)",
-                  }}
-                >
-                  {currentSlide.description}
-                </motion.p>
-
-                {/* CTA - Links to specific project */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                  className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center lg:justify-start"
-                >
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Link
-                      href={`/${currentSlide.projectSlug}`}
-                      className="inline-block px-10 py-5 rounded-sm font-bold text-lg lg:text-xl transition-all duration-300"
-                      style={{
-                        background: "var(--color-accent-main)",
-                        color: "var(--color-accent-contrast)",
-                        boxShadow: "none",
-                        fontFamily: "var(--font-family-heading)",
-                      }}
-                    >
-                      {currentSlide.ctaText}
-                    </Link>
-                  </motion.div>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Link
-                      href={currentSlide.secondaryCtaText ? "/about" : "/projects"}
-                      className="inline-block px-10 py-5 rounded-sm font-bold text-lg lg:text-xl border-2 transition-all duration-300 backdrop-blur-sm"
-                      style={{
-                        borderColor: "var(--color-gray-200)",
-                        color: "var(--color-gray-50)",
-                        background: "rgba(255, 255, 255, 0.08)",
-                        boxShadow: "none",
-                      }}
-                    >
-                      {currentSlide.secondaryCtaText || "View All Projects"}
-                    </Link>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
-      ) : null}
-
-      {/* Image Carousel Indicators */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
-        {heroSlides.map((_, index) => (
-          <button
-            key={index}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              index === currentSlideIndex ? "w-10 shadow-lg" : "w-2 bg-white/40 hover:bg-white/60"
-            }`}
-            style={index === currentSlideIndex ? { background: "var(--color-accent-main)" } : {}}
-            onClick={() => setCurrentSlideIndex(index)}
-            aria-label={`View slide ${index + 1}: ${heroSlides[index].title}`}
-          />
-        ))}
-      </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.8, duration: 0.8 }}
-        className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20"
-      >
-        <div className="flex flex-col items-center gap-3">
-          <span
-            className="text-sm font-medium uppercase tracking-wider"
-            style={{ color: "var(--color-gray-300)" }}
-          >
-            {t("home.hero.scrollToExplore")}
-          </span>
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          >
-            <svg className="w-8 h-8" fill="none" stroke="var(--color-gray-300)" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2.5}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
+                {t("ctaContact")}
+              </Link>
+            </div>
           </motion.div>
         </div>
-      </motion.div>
-
-      {/* Logo Overlay - Shows at the end of video */}
-      {isVideoSlide && (
-        <AnimatePresence>
-          {showLogoOverlay && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none"
-            >
-              <div className="relative">
-                <Logo className="text-white" />
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      )}
+      </div>
     </section>
   );
 }

@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import HeroSection from "@/sections/HeroSection";
+import LeadershipSection from "@/sections/LeadershipSection";
 import StatsSection from "@/sections/StatsSection";
 import ProjectsTeaser from "@/sections/ProjectsTeaser";
-import RareEarthSection from "@/sections/RareEarthSection";
-import BlockchainSection from "@/sections/BlockchainSection";
-import NorChainSection from "@/sections/NorChainSection";
-import ContactStrip from "@/sections/ContactStrip";
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo";
-import { getMessages } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -16,29 +12,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
 
-  try {
-    const messages = await getMessages({ locale });
-    const home = messages.home as {
-      hero?: { slide4?: { title?: string; highlight?: string; description?: string } };
-    };
-    const slide4 = home?.hero?.slide4;
-
-    if (slide4?.title && slide4?.highlight && slide4?.description) {
-      return generateSEOMetadata({
-        title: `${slide4.title} - ${slide4.highlight} - NORVEGE MINERALS AS`,
-        description: slide4.description,
-        path: `/${locale}`,
-      });
-    }
-  } catch {
-    // Fallback if translations fail
-  }
-
-  // Fallback metadata
   return generateSEOMetadata({
-    title: "Science-Driven Discovery - Innovation - NORVEGE MINERALS AS",
+    title: "Building Norway's Critical Minerals & Subsurface Energy Platform - NORVEGEN GROUP",
     description:
-      "Pioneering a new era of mineral exploration in Europe with cutting-edge technology and proven expertise.",
+      "Developing one of Norway's largest critical mineral exploration portfolios to support electrification and renewable energy systems.",
     path: `/${locale}`,
   });
 }
@@ -47,12 +24,9 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
+      <LeadershipSection />
       <StatsSection />
-      <RareEarthSection />
       <ProjectsTeaser />
-      <BlockchainSection />
-      <NorChainSection />
-      <ContactStrip />
     </>
   );
 }

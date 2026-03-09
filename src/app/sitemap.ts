@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { getAllProjectSlugs } from "@/content/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://norvegeminerals.no";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://norvegengroup.com";
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {

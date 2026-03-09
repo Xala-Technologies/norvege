@@ -9,7 +9,8 @@
       "esg": "ESG",
       "partners": "Partners",
       "overview": "Overview",
-      "language": "Language"
+      "language": "Language",
+      "strategy": "Strategy"
     },
     "footer": {
       "company": "Company",
@@ -22,7 +23,8 @@
       "partners": "Partners",
       "contact": "Contact",
       "description": "Norwegian exploration company focused on sustainable mineral development in the Trøndelag region.",
-      "copyright": "© {year} NORVEGE MINERALS AS",
+      "tagline": "Critical Minerals | Energy | Resource Development | Trondheim | Norway",
+      "copyright": "© {year} NORVEGEN GROUP",
       "allRightsReserved": "All rights reserved.",
       "norchain": {
         "title": "Assets Tokenized on NorChain",
@@ -244,6 +246,45 @@
         }
       }
     },
+    "newHero": {
+      "title": "Building Norway's Critical Minerals & Subsurface Energy Platform",
+      "description1": "Norvegen Group is building a Norwegian platform focused on critical minerals exploration, brownfield mine redevelopment and subsurface energy solutions including geothermal and mine-water resource systems.",
+      "description2": "Positioned to support Europe's secure supply of critical minerals and low-carbon energy solutions from Norway's geological resources.",
+      "ctaProjects": "Explore Projects",
+      "ctaContact": "Contact Us"
+    },
+    "leadership": {
+      "title": "Leadership",
+      "boardTitle": "Board & Governance",
+      "executiveChairman": "Executive Chairman",
+      "executiveChairmanDesc": "Provides strategic leadership of Norvegen Group, overseeing corporate development, partnerships, financing strategy and long-term value creation.",
+      "technicalDirector": "Technical Director",
+      "technicalDirectorDesc": "Leads geological strategy, exploration programs and technical evaluation across Norvegen's mineral portfolio, supporting profitable exploration.",
+      "energyAdvisor": "Energy Advisor",
+      "energyAdvisorDesc": "Advises on geothermal and subsurface energy development opportunities, including mine-water energy systems and integrated Norvegen Energy.",
+      "esgAdvisor": "ESG Advisor",
+      "esgAdvisorDesc": "Advises on environmental stewardship, sustainability and regulatory compliance, aligned with Norvegen and international best-practice standards.",
+      "nonExecDirector": "Non-Executive Director",
+      "nonExecDirector1Desc": "Provides independent oversight of Norvegen Group's strategy, corporate governance and capital markets activities, supporting long-term shareholder value creation.",
+      "nonExecDirector2Desc": "Supports board-level governance on project development, risk management and strategic partnerships across Norvegen Group's mineral and energy platform."
+    },
+    "portfolio": {
+      "title": "Portfolio Highlights",
+      "licences": "Exploration Licences",
+      "area": "Exploration & Development Area",
+      "minerals": "Copper | Zinc | Beryllium | Rare Earth Elements | Titanium | Silver | Gold",
+      "updateTitle": "Website Update in Progress.",
+      "updateText": "Norvegen Group is currently updating its website as the company expands its critical minerals and subsurface energy platform. Full website will be published shortly."
+    },
+    "keyProjects": {
+      "title": "Key Projects",
+      "killingdalTitle": "Killingdal District",
+      "killingdalSubtitle": "Brownfield Copper Zinc Opportunity",
+      "portfolioTitle": "Norwegian Mineral Portfolio",
+      "portfolioSubtitle": "140 Exploration Licences Across Norway",
+      "geothermalTitle": "Geothermal Energy",
+      "geothermalSubtitle": "Developing geothermal, sustainable energy and mineral extraction from Norway's geological resources"
+    },
     "contactStrip": {
       "heading": "Ready to Explore",
       "headingHighlight": "Opportunities?",
@@ -444,6 +485,7 @@
       "Sulphur": "Sulphur"
     },
     "priority": "Priority",
+    "location": "Location",
     "high": "High",
     "medium": "Medium",
     "low": "Low",
@@ -602,6 +644,7 @@
     "getInTouchDescription": "Reach out to our team for inquiries, partnerships, or investment opportunities. We're here to help.",
     "contactInfo": "Contact Information",
     "sendMessage": "Send us a Message",
+    "responseTime": "We typically respond within 24-48 business hours.",
     "form": {
       "fullName": "Full Name",
       "email": "Email",
@@ -644,6 +687,8 @@
     },
     "faq": {
       "title": "Frequently Asked Questions",
+      "eyebrow": "Support",
+      "subtitle": "Find answers to common questions about our exploration projects, investment opportunities, and operations.",
       "items": {
         "investment": {
           "question": "How can I invest in NORVEGE MINERALS AS?",
@@ -822,6 +867,33 @@
       "downloadPdf": "Download PDF",
       "exportOnePager": "Export One-Pager (Markdown)",
       "exportFullReport": "Export Full Report (Markdown)"
+    }
+  },
+  "strategy": {
+    "hero": {
+      "title": "Our Strategy",
+      "description": "District-scale exploration combined with brownfield mine restart opportunities in historic Norwegian mining regions."
+    },
+    "introduction": {
+      "title": "Introduction",
+      "paragraph1": "Norvegen Group is developing one of Norway's largest critical mineral exploration portfolios supporting the global energy transition.",
+      "paragraph2": "The company holds 140 exploration licences covering approximately 1,400 km² across Norway, targeting copper, zinc, rare earth elements, beryllium, titanium and iron — minerals essential for electrification, renewable energy systems and modern infrastructure.",
+      "paragraph3": "Norvegen is supported by a team with extensive experience in natural resource exploration and development in Norway and internationally."
+    },
+    "detail": {
+      "title": "Strategy",
+      "paragraph1": "Norvegen's strategy combines district-scale exploration with brownfield mine restart opportunities in historic Norwegian mining regions, including the Killingdal copper–zinc district.",
+      "paragraph2": "Development will be guided by responsible and sustainable practices aligned with ESG principles, contributing to a secure supply of critical minerals from a stable Nordic jurisdiction."
+    },
+    "portfolio": {
+      "title": "Portfolio Highlights",
+      "item1": "140 licences across Norway, the second largest license portfolio",
+      "item2": "~1,400 km² exploration and development land position in multiple mining and mineral deposit districts",
+      "item3": "Critical minerals supporting electrification and the energy transition"
+    },
+    "cta": {
+      "title": "Interested in learning more?",
+      "button": "Contact Us"
     }
   }
 }

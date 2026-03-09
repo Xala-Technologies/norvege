@@ -9,7 +9,8 @@
       "esg": "ESG",
       "partners": "Partnere",
       "overview": "Oversikt",
-      "language": "Språk"
+      "language": "Språk",
+      "strategy": "Strategi"
     },
     "footer": {
       "company": "Selskap",
@@ -22,7 +23,8 @@
       "partners": "Partnere",
       "contact": "Kontakt",
       "description": "Norsk oppdagelsesselskap fokusert på bærekraftig mineralutvikling i Trøndelag-regionen.",
-      "copyright": "© {year} NORVEGE MINERALS AS",
+      "tagline": "Kritiske mineraler | Energi | Ressursutvikling | Trondheim | Norge",
+      "copyright": "© {year} NORVEGEN GROUP",
       "allRightsReserved": "Alle rettigheter forbeholdt.",
       "norchain": {
         "title": "Eiendeler Tokenisert på NorChain",
@@ -244,6 +246,45 @@
         }
       }
     },
+    "newHero": {
+      "title": "Bygger Norges plattform for kritiske mineraler og undergrunnsenergi",
+      "description1": "Norvegen Group bygger en norsk plattform med fokus på leting etter kritiske mineraler, gjenåpning av nedlagte gruver og energiløsninger i undergrunnen, inkludert geotermiske og gruvevann-ressurssystemer.",
+      "description2": "Posisjonert for å støtte Europas sikre forsyning av kritiske mineraler og lavkarbonløsninger fra Norges geologiske ressurser.",
+      "ctaProjects": "Utforsk prosjekter",
+      "ctaContact": "Kontakt oss"
+    },
+    "leadership": {
+      "title": "Ledelse",
+      "boardTitle": "Styre og eierstyring",
+      "executiveChairman": "Styreleder",
+      "executiveChairmanDesc": "Gir strategisk ledelse av Norvegen Group, med ansvar for selskapets utvikling, partnerskap, finansieringsstrategi og langsiktig verdiskaping.",
+      "technicalDirector": "Teknisk direktør",
+      "technicalDirectorDesc": "Leder geologisk strategi, leteprogrammer og teknisk evaluering på tvers av Norvegens mineralportefølje, for å støtte lønnsom leting.",
+      "energyAdvisor": "Energirådgiver",
+      "energyAdvisorDesc": "Rådgiver om geotermiske og undergrunns energiutviklingsmuligheter, inkludert gruvevann-energisystemer og integrert Norvegen Energy.",
+      "esgAdvisor": "ESG-rådgiver",
+      "esgAdvisorDesc": "Rådgiver om miljøvern, bærekraft og regulatorisk etterlevelse, i tråd med Norvegen og internasjonale standarder.",
+      "nonExecDirector": "Ikke-utøvende styremedlem",
+      "nonExecDirector1Desc": "Gir uavhengig tilsyn med Norvegen Groups strategi, eierstyring og kapitalmarkedsaktiviteter, for å støtte langsiktig aksjonærverdiskaping.",
+      "nonExecDirector2Desc": "Støtter styrenivåets eierstyring om prosjektutvikling, risikostyring og strategiske partnerskap på tvers av Norvegen Groups mineral- og energiplattform."
+    },
+    "portfolio": {
+      "title": "Porteføljehøydepunkter",
+      "licences": "Letelisenser",
+      "area": "Lete- og utviklingsområde",
+      "minerals": "Kobber | Sink | Beryllium | Sjeldne jordarter | Titan | Sølv | Gull",
+      "updateTitle": "Nettstedsoppdatering pågår.",
+      "updateText": "Norvegen Group oppdaterer for tiden sitt nettsted etter hvert som selskapet utvider sin plattform for kritiske mineraler og undergrunnsenergi. Fullstendig nettsted publiseres snart."
+    },
+    "keyProjects": {
+      "title": "Nøkkelprosjekter",
+      "killingdalTitle": "Killingdal-distriktet",
+      "killingdalSubtitle": "Brownfield kobber-sink-mulighet",
+      "portfolioTitle": "Norsk mineralportefølje",
+      "portfolioSubtitle": "140 letelisenser over hele Norge",
+      "geothermalTitle": "Geotermisk energi",
+      "geothermalSubtitle": "Utvikling av geotermisk, bærekraftig energi og mineralutvinning fra Norges geologiske ressurser"
+    },
     "contactStrip": {
       "heading": "Klar til å Utforske",
       "headingHighlight": "Muligheter?",
@@ -463,6 +504,7 @@
     "area": "Område",
     "minerals": "Mineraler",
     "priority": "Prioritet",
+    "location": "Beliggenhet",
     "high": "Høy",
     "medium": "Middels",
     "low": "Lav",
@@ -620,6 +662,7 @@
     "getInTouchDescription": "Ta kontakt med vårt team for henvendelser, partnerskap eller investeringsmuligheter. Vi er her for å hjelpe.",
     "contactInfo": "Kontaktinformasjon",
     "sendMessage": "Send oss en Melding",
+    "responseTime": "Vi svarer vanligvis innen 24-48 virkedager.",
     "form": {
       "fullName": "Fullt Navn",
       "email": "E-post",
@@ -662,6 +705,8 @@
     },
     "faq": {
       "title": "Ofte Stilte Spørsmål",
+      "eyebrow": "Hjelp",
+      "subtitle": "Finn svar på vanlige spørsmål om våre utforskningsprosjekter, investeringsmuligheter og drift.",
       "items": {
         "investment": {
           "question": "Hvordan kan jeg investere i NORVEGE MINERALS AS?",
@@ -840,6 +885,33 @@
       "downloadPdf": "Last ned PDF",
       "exportOnePager": "Eksporter sammendrag (Markdown)",
       "exportFullReport": "Eksporter full rapport (Markdown)"
+    }
+  },
+  "strategy": {
+    "hero": {
+      "title": "Vår strategi",
+      "description": "Distriktskala leting kombinert med muligheter for gjenåpning av nedlagte gruver i historiske norske gruveregioner."
+    },
+    "introduction": {
+      "title": "Introduksjon",
+      "paragraph1": "Norvegen Group utvikler en av Norges største porteføljer for leting etter kritiske mineraler som støtter den globale energiomstillingen.",
+      "paragraph2": "Selskapet har 140 letelisenser som dekker omtrent 1 400 km² over hele Norge, med fokus på kobber, sink, sjeldne jordarter, beryllium, titan og jern — mineraler som er essensielle for elektrifisering, fornybare energisystemer og moderne infrastruktur.",
+      "paragraph3": "Norvegen støttes av et team med omfattende erfaring innen naturressursutforskning og -utvikling i Norge og internasjonalt."
+    },
+    "detail": {
+      "title": "Strategi",
+      "paragraph1": "Norvegens strategi kombinerer distriktskala leting med muligheter for gjenåpning av nedlagte gruver i historiske norske gruveregioner, inkludert Killingdal kobber-sink-distriktet.",
+      "paragraph2": "Utviklingen vil bli styrt av ansvarlig og bærekraftig praksis i tråd med ESG-prinsipper, og bidra til en sikker forsyning av kritiske mineraler fra en stabil nordisk jurisdiksjon."
+    },
+    "portfolio": {
+      "title": "Porteføljehøydepunkter",
+      "item1": "140 lisenser over hele Norge, den nest største lisensporteføljen",
+      "item2": "~1 400 km² lete- og utviklingsareal i flere gruve- og mineraldepositdistrikter",
+      "item3": "Kritiske mineraler som støtter elektrifisering og energiomstillingen"
+    },
+    "cta": {
+      "title": "Interessert i å vite mer?",
+      "button": "Kontakt oss"
     }
   }
 }

@@ -11,7 +11,7 @@ export const legalPages: ILegalPage[] = [
 
 ## 1. Introduction
 
-NORVEGE MINERALS AS ("we," "our," or "us") is committed to protecting your privacy and personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at norvegeminerals.no (the "Website").
+NORVEGEN GROUP ("we," "our," or "us") is committed to protecting your privacy and personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at norvegengroup.com (the "Website").
 
 This policy complies with the General Data Protection Regulation (GDPR) (EU) 2016/679 and Norwegian data protection laws, including the Personal Data Act (Personopplysningsloven).
 
@@ -103,7 +103,7 @@ As a data subject, you have the following rights:
 - **Right to Object**: Object to processing of your data for legitimate interests or direct marketing
 - **Right to Withdraw Consent**: Withdraw consent at any time where processing is based on consent
 
-To exercise these rights, please contact us at contact@norvegeminerals.no. We will respond to your request within one month.
+To exercise these rights, please contact us at contact@norvegengroup.com. We will respond to your request within one month.
 
 ## 9. International Data Transfers
 
@@ -138,10 +138,9 @@ You can control and manage cookies through your browser settings. However, disab
 
 If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:
 
-**NORVEGE MINERALS AS**  
-Morellveien 26B  
-3228 SANDEFJORD, Norway  
-Email: contact@norvegeminerals.no
+**NORVEGEN GROUP**  
+Trondheim, Norway  
+Email: contact@norvegengroup.com
 
 For data protection inquiries, you also have the right to lodge a complaint with the Norwegian Data Protection Authority (Datatilsynet).
     `.trim(),
@@ -157,13 +156,13 @@ For data protection inquiries, you also have the right to lodge a complaint with
 
 ## 1. Acceptance of Terms
 
-By accessing and using the website norvegeminerals.no (the "Website"), you accept and agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this Website.
+By accessing and using the website norvegengroup.com (the "Website"), you accept and agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this Website.
 
 ## 2. Use License
 
 ### 2.1 Permission to Use
 
-Permission is granted to temporarily access the materials on NORVEGE MINERALS AS's Website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+Permission is granted to temporarily access the materials on NORVEGEN GROUP's Website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
 
 - Modify or copy the materials
 - Use the materials for any commercial purpose or for any public display (commercial or non-commercial)
@@ -173,17 +172,17 @@ Permission is granted to temporarily access the materials on NORVEGE MINERALS AS
 
 ### 2.2 Termination
 
-This license shall automatically terminate if you violate any of these restrictions and may be terminated by NORVEGE MINERALS AS at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.
+This license shall automatically terminate if you violate any of these restrictions and may be terminated by NORVEGEN GROUP at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.
 
 ## 3. Intellectual Property Rights
 
-All content on this Website, including but not limited to text, graphics, logos, images, audio clips, digital downloads, and software, is the property of NORVEGE MINERALS AS or its content suppliers and is protected by Norwegian and international copyright, trademark, and other intellectual property laws.
+All content on this Website, including but not limited to text, graphics, logos, images, audio clips, digital downloads, and software, is the property of NORVEGEN GROUP or its content suppliers and is protected by Norwegian and international copyright, trademark, and other intellectual property laws.
 
 ## 4. Disclaimer
 
 ### 4.1 No Warranties
 
-The materials on NORVEGE MINERALS AS's Website are provided on an "as is" basis. NORVEGE MINERALS AS makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation:
+The materials on NORVEGEN GROUP's Website are provided on an "as is" basis. NORVEGEN GROUP makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation:
 
 - Implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property
 - Any warranty that the Website will be uninterrupted, secure, or error-free
@@ -195,17 +194,17 @@ This Website may contain forward-looking statements regarding future events, pla
 
 ## 5. Limitations of Liability
 
-In no event shall NORVEGE MINERALS AS or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on NORVEGE MINERALS AS's Website, even if NORVEGE MINERALS AS or a NORVEGE MINERALS AS authorized representative has been notified orally or in writing of the possibility of such damage.
+In no event shall NORVEGEN GROUP or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on NORVEGEN GROUP's Website, even if NORVEGEN GROUP or a NORVEGEN GROUP authorized representative has been notified orally or in writing of the possibility of such damage.
 
 Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
 
 ## 6. Accuracy of Materials
 
-The materials appearing on NORVEGE MINERALS AS's Website could include technical, typographical, or photographic errors. NORVEGE MINERALS AS does not warrant that any of the materials on its Website are accurate, complete, or current. NORVEGE MINERALS AS may make changes to the materials contained on its Website at any time without notice.
+The materials appearing on NORVEGEN GROUP's Website could include technical, typographical, or photographic errors. NORVEGEN GROUP does not warrant that any of the materials on its Website are accurate, complete, or current. NORVEGEN GROUP may make changes to the materials contained on its Website at any time without notice.
 
 ## 7. Links to Third-Party Websites
 
-The Website may contain links to third-party websites that are not owned or controlled by NORVEGE MINERALS AS. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites. You acknowledge and agree that NORVEGE MINERALS AS shall not be responsible or liable for any damage or loss caused by or in connection with the use of any such content, goods, or services available on or through any such websites.
+The Website may contain links to third-party websites that are not owned or controlled by NORVEGEN GROUP. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites. You acknowledge and agree that NORVEGEN GROUP shall not be responsible or liable for any damage or loss caused by or in connection with the use of any such content, goods, or services available on or through any such websites.
 
 ## 8. User Conduct
 
@@ -230,7 +229,7 @@ Prospective investors should consult with qualified financial, legal, and tax ad
 
 ## 10. Revisions and Errata
 
-NORVEGE MINERALS AS may revise these Terms of Service at any time without notice. By using this Website, you are agreeing to be bound by the then-current version of these Terms of Service.
+NORVEGEN GROUP may revise these Terms of Service at any time without notice. By using this Website, you are agreeing to be bound by the then-current version of these Terms of Service.
 
 ## 11. Governing Law
 
@@ -242,16 +241,15 @@ If any provision of these Terms of Service is found to be unenforceable or inval
 
 ## 13. Entire Agreement
 
-These Terms of Service, together with our Privacy Policy, constitute the entire agreement between you and NORVEGE MINERALS AS regarding your use of the Website and supersede all prior or contemporaneous communications and proposals.
+These Terms of Service, together with our Privacy Policy, constitute the entire agreement between you and NORVEGEN GROUP regarding your use of the Website and supersede all prior or contemporaneous communications and proposals.
 
 ## 14. Contact Information
 
 For questions about these Terms of Service, please contact us:
 
-**NORVEGE MINERALS AS**  
-Morellveien 26B  
-3228 SANDEFJORD, Norway  
-Email: contact@norvegeminerals.no
+**NORVEGEN GROUP**  
+Trondheim, Norway  
+Email: contact@norvegengroup.com
     `.trim(),
     lastUpdated: new Date().toISOString(),
   },
@@ -259,9 +257,9 @@ Email: contact@norvegeminerals.no
 
 export const contactFAQs: IFAQItem[] = [
   {
-    question: "How can I invest in NORVEGE MINERALS AS?",
+    question: "How can I invest in Norvegen Group?",
     answer:
-      "Please contact us through the contact form or email us directly at contact@norvegeminerals.no. Our investor relations team will provide you with detailed information about investment opportunities.",
+      "Please contact us through the contact form or email us directly at contact@norvegengroup.com. Our team will provide you with detailed information about partnership and investment opportunities.",
   },
   {
     question: "Where are your exploration projects located?",

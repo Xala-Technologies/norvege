@@ -3,7 +3,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
-import { Source_Sans_3 } from "next/font/google";
+import { Source_Sans_3, Playfair_Display } from "next/font/google";
 import "../globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -17,13 +17,20 @@ const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
 });
 
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-playfair",
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "Norvege Minerals - Science-Driven Discovery",
-    template: "%s | Norvege Minerals",
+    default: "Norvegen Group - Critical Minerals & Energy Platform",
+    template: "%s | Norvegen Group",
   },
   description:
-    "Norwegian exploration company focused on sustainable mineral development and critical minerals for the energy transition.",
+    "Building Norway's next-generation minerals and energy platform. Critical minerals exploration, brownfield mine redevelopment, and subsurface energy solutions.",
   keywords: [
     "mining",
     "minerals",
@@ -33,8 +40,10 @@ export const metadata: Metadata = {
     "zinc",
     "copper",
     "exploration",
+    "geothermal",
+    "energy transition",
   ],
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://norvegeminerals.no"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://norvegengroup.com"),
 };
 
 export function generateStaticParams() {
@@ -50,13 +59,10 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     notFound();
   }
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages({ locale });
 
   const organizationSchema = generateOrganizationSchema();
@@ -74,7 +80,9 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className={`antialiased ${sourceSans.className}`}>
+      <body
+        className={`antialiased ${sourceSans.variable} ${playfairDisplay.variable} ${sourceSans.className}`}
+      >
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main>{children}</main>

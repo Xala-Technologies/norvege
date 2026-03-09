@@ -7,9 +7,10 @@ import { usePathname } from "next/navigation";
 
 interface LogoProps {
   className?: string;
+  size?: "default" | "large";
 }
 
-export default function Logo({ className = "" }: LogoProps) {
+export default function Logo({ className = "", size = "default" }: LogoProps) {
   const [isActive, setIsActive] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
@@ -24,11 +25,9 @@ export default function Logo({ className = "" }: LogoProps) {
   return (
     <Link
       href="/"
-      className={`relative flex items-center gap-3 transition-all duration-200 ${className}`}
-      aria-label="Norvege Minerals Home"
-      style={{
-        WebkitTapHighlightColor: "transparent",
-      }}
+      className={`relative flex items-center transition-all duration-200 ${className}`}
+      aria-label="Norvegen Group Home"
+      style={{ WebkitTapHighlightColor: "transparent" }}
       onClick={handleClick}
       scroll={!isHomePage}
       onMouseDown={() => setIsActive(true)}
@@ -36,22 +35,19 @@ export default function Logo({ className = "" }: LogoProps) {
       onMouseLeave={() => setIsActive(false)}
     >
       <div
-        className="relative h-28 md:h-32 lg:h-40 w-auto flex items-center transition-all duration-200"
+        className="relative flex items-center transition-all duration-200"
         style={{
-          filter: isActive ? "drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))" : "none",
+          filter: isActive ? "drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15))" : "none",
         }}
       >
-        <div className="relative w-full h-full flex items-center">
-          <Image
-            src="/images/logo.png"
-            alt="Norvege Minerals"
-            width={0}
-            height={0}
-            sizes="100vw"
-            className="h-full w-auto object-contain"
-            priority
-          />
-        </div>
+        <Image
+          src="/images/logo.png"
+          alt="Norvegen Group"
+          width={200}
+          height={51}
+          className={`w-auto object-contain ${size === "large" ? "h-14 sm:h-16 md:h-18" : "h-10 sm:h-11 md:h-12"}`}
+          priority
+        />
       </div>
     </Link>
   );

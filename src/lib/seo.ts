@@ -14,7 +14,7 @@ export interface SEOConfig {
  * Generate SEO metadata for pages
  */
 export function generateMetadata(config: SEOConfig): Metadata {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://norvegeminerals.no";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://norvegengroup.com";
   const fullUrl = config.path ? `${siteUrl}${config.path}` : siteUrl;
   const imageUrl = config.image ? `${siteUrl}${config.image}` : `${siteUrl}/og-image.jpg`;
 
@@ -25,7 +25,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
       title: config.title,
       description: config.description,
       url: fullUrl,
-      siteName: "Norvege Minerals",
+      siteName: "Norvegen Group",
       images: [
         {
           url: imageUrl,
@@ -58,13 +58,13 @@ export function generateOrganizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "NORVEGE MINERALS AS",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "https://norvegeminerals.no",
-    logo: `${process.env.NEXT_PUBLIC_SITE_URL || "https://norvegeminerals.no"}/images/logo.png`,
+    name: "NORVEGEN GROUP",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://norvegengroup.com",
+    logo: `${process.env.NEXT_PUBLIC_SITE_URL || "https://norvegengroup.com"}/images/logo.png`,
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "Customer Service",
-      email: "contact@norvegeminerals.no",
+      email: "contact@norvegengroup.com",
     },
     sameAs: [],
   };
@@ -77,13 +77,13 @@ export function generateWebSiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Norvege Minerals",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "https://norvegeminerals.no",
+    name: "Norvegen Group",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://norvegengroup.com",
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL || "https://pureminerals.no"}/search?q={search_term_string}`,
+        urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL || "https://norvegengroup.com"}/search?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     },

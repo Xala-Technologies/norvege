@@ -8,35 +8,35 @@ import type {
 } from "./types";
 
 export const companyInfo: ICompanyInfo = {
-  name: "Norve'Ge Minerals",
-  legalName: "NORVEGE MINERALS AS",
+  name: "Norvegen Group",
+  legalName: "NORVEGEN GROUP",
   orgNumber: "[Company Number]",
   address: {
-    street: "Morellveien 26B",
-    postalCode: "3228",
-    city: "SANDEFJORD",
+    street: "Trondheim",
+    postalCode: "",
+    city: "Trondheim",
     country: "Norway",
   },
   contact: {
-    email: "contact@norvegeminerals.no",
+    email: "contact@norvegengroup.com",
     phone: "[Phone Number]",
   },
   description:
-    "Norve'Ge Minerals AS is a Norwegian exploration company focused on unlocking mineral value from historic mines and future-critical resources. We combine traditional mining with advanced water-based mineral extraction, recovering rare elements directly from geothermal mine water. Our operations are powered by renewable energy, including proprietary geothermal power solutions and containerized turbine systems. With a strong commitment to environmental stewardship and innovation, Norve'Ge Minerals supports the shift toward a more sustainable resource economy.",
+    "Norvegen Group is advancing a strategic portfolio of critical minerals, brownfield mining opportunities, and geothermal energy solutions to support Europe's energy transition and industrial resilience.",
 };
 
 export const companyMetrics: ICompanyMetrics[] = [
   {
-    number: "74",
-    label: "Exploration Licenses",
+    number: "140",
+    label: "Exploration Licences",
     description:
-      "Norve'Ge Minerals currently holds 74 mineral rights. This includes 15 mines with Adterra and 2 with Nordveg'r, for a total of 23 mines.",
+      "Norvegen Group holds 140 exploration licences across Norway, the second largest license portfolio in the country.",
   },
   {
-    number: "1,690",
-    label: "km² Licensed Area",
+    number: "~1,400",
+    label: "km² Exploration Area",
     description:
-      "Norve'Ge Minerals has a total licensed area of 1,600 km², plus an additional 90 km² through Adterra and Nordveg'r.",
+      "Approximately 1,400 km² exploration and development land position in multiple mining and mineral deposit districts.",
   },
   {
     number: "31",

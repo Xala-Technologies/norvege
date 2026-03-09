@@ -37,7 +37,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
 
   const cardStyle = {
     background: "var(--color-bg-default)",
-    border: "1px solid color-mix(in srgb, var(--color-primary-main) 20%, transparent)",
+    border: "1.5px solid color-mix(in srgb, var(--color-primary-main) 40%, transparent)",
     boxShadow: "none",
   };
 
@@ -50,7 +50,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
       {/* Header Section */}
       <div className="text-center max-w-4xl mx-auto">
         <h2
-          className="text-4xl md:text-5xl lg:text-6xl font-black mb-6"
+          className="text-4xl md:text-5xl lg:text-6xl font-black mb-2"
           style={{
             color: "var(--color-text-body)",
             fontFamily: "var(--font-family-heading)",
@@ -59,6 +59,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
         >
           {t("title")}
         </h2>
+        <div className="w-20 h-px mx-auto mb-6" style={{ background: "rgba(27, 42, 74, 0.25)" }} />
         <p
           className="text-lg md:text-xl mb-8 leading-relaxed"
           style={{ color: "var(--color-text-secondary)" }}
@@ -106,63 +107,12 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
         </div>
       </div>
 
-      {/* Disclaimers */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="rounded-lg p-6 md:p-8"
-        style={{
-          background: "color-mix(in srgb, var(--color-accent-main) 5%, transparent)",
-        }}
-      >
-        <div className="flex items-start gap-4">
-          <div
-            className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-            style={{
-              background: "color-mix(in srgb, var(--color-accent-main) 20%, transparent)",
-              color: "var(--color-accent-main)",
-            }}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-              />
-            </svg>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold mb-3" style={{ color: "var(--color-text-body)" }}>
-              {t("disclaimers.title")}
-            </h3>
-            <ul className="space-y-2">
-              {dataRoom.disclaimers
-                .filter((d) => d.isRequired)
-                .map((disclaimer) => (
-                  <li
-                    key={disclaimer.id}
-                    className="text-sm md:text-base"
-                    style={{ color: "var(--color-text-secondary)" }}
-                  >
-                    <strong className="font-semibold" style={{ color: "var(--color-text-body)" }}>
-                      {disclaimer.title}:
-                    </strong>{" "}
-                    {disclaimer.text}
-                  </li>
-                ))}
-            </ul>
-          </div>
-        </div>
-      </motion.div>
-
       {/* Investment Thesis - Alternating Layout */}
       <section>
         <div className="space-y-16 lg:space-y-24">
           <div className="text-center mb-12">
             <h2
-              className="text-3xl md:text-4xl font-bold mb-4"
+              className="text-3xl md:text-4xl font-bold"
               style={{
                 color: "var(--color-primary-main)",
                 fontFamily: "var(--font-family-heading)",
@@ -170,6 +120,10 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
             >
               {t("thesis.title")}
             </h2>
+            <div
+              className="w-20 h-px mx-auto mt-4 mb-4"
+              style={{ background: "rgba(27, 42, 74, 0.25)" }}
+            />
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
               {t("thesis.subtitle", { projectName: dataRoom.projectName })}
             </p>
@@ -189,7 +143,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                   style={{
                     background: "var(--color-bg-default)",
                     border:
-                      "1px solid color-mix(in srgb, var(--color-primary-main) 15%, transparent)",
+                      "1.5px solid color-mix(in srgb, var(--color-primary-main) 40%, transparent)",
                     boxShadow: "var(--shadow-sm)",
                   }}
                 >
@@ -233,7 +187,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
               ))}
             </div>
 
-            <div className="relative h-full min-h-[500px] rounded-xl overflow-hidden shadow-2xl border border-gray-200 order-1 lg:order-2">
+            <div className="relative h-full min-h-[500px] rounded-xl overflow-hidden shadow-2xl border-2 border-gray-300 order-1 lg:order-2">
               <Image
                 src="/images/data-room/mine-tunnel.jpg"
                 alt="Historic Mine Tunnel"
@@ -259,7 +213,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
 
           {/* Row 2: Image Left | Remaining Cards Right */}
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
-            <div className="relative h-full min-h-[400px] rounded-xl overflow-hidden shadow-2xl border border-gray-200 order-1">
+            <div className="relative h-full min-h-[400px] rounded-xl overflow-hidden shadow-2xl border-2 border-gray-300 order-1">
               <Image
                 src="/images/data-room/drilling.jpg"
                 alt="Modern Exploration"
@@ -294,7 +248,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
                   style={{
                     background: "var(--color-bg-default)",
                     border:
-                      "1px solid color-mix(in srgb, var(--color-primary-main) 15%, transparent)",
+                      "1.5px solid color-mix(in srgb, var(--color-primary-main) 40%, transparent)",
                     boxShadow: "var(--shadow-sm)",
                   }}
                 >
@@ -345,7 +299,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
       <section>
         <div className="text-center mb-12">
           <h2
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-4xl font-bold"
             style={{
               color: "var(--color-primary-main)",
               fontFamily: "var(--font-family-heading)",
@@ -353,6 +307,10 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
           >
             {t("metrics.title")}
           </h2>
+          <div
+            className="w-20 h-px mx-auto mt-4 mb-4"
+            style={{ background: "rgba(27, 42, 74, 0.25)" }}
+          />
           <p className="text-lg text-gray-500">{t("metrics.subtitle")}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -420,7 +378,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
       <section>
         <div className="text-center mb-12">
           <h2
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-4xl font-bold"
             style={{
               color: "var(--color-primary-main)",
               fontFamily: "var(--font-family-heading)",
@@ -428,6 +386,10 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
           >
             {t("development.title")}
           </h2>
+          <div
+            className="w-20 h-px mx-auto mt-4 mb-4"
+            style={{ background: "rgba(27, 42, 74, 0.25)" }}
+          />
           <p className="text-lg text-gray-500">{t("development.subtitle")}</p>
         </div>
         <div className="space-y-6">
@@ -575,7 +537,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
       <section>
         <div className="text-center mb-12">
           <h2
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-4xl font-bold"
             style={{
               color: "var(--color-primary-main)",
               fontFamily: "var(--font-family-heading)",
@@ -583,6 +545,10 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
           >
             {t("funding.title")}
           </h2>
+          <div
+            className="w-20 h-px mx-auto mt-4 mb-4"
+            style={{ background: "rgba(27, 42, 74, 0.25)" }}
+          />
           <p className="text-lg text-gray-500">{t("funding.subtitle")}</p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -682,7 +648,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
       <section>
         <div className="text-center mb-12">
           <h2
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-4xl font-bold"
             style={{
               color: "var(--color-primary-main)",
               fontFamily: "var(--font-family-heading)",
@@ -690,6 +656,10 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
           >
             {t("metalExposure.title")}
           </h2>
+          <div
+            className="w-20 h-px mx-auto mt-4 mb-4"
+            style={{ background: "rgba(27, 42, 74, 0.25)" }}
+          />
           <div className="inline-block px-4 py-2 rounded-lg bg-yellow-50 border border-yellow-200 text-yellow-800 text-sm font-medium">
             ⚠️ {t("metalExposure.warning")}
           </div>
@@ -803,7 +773,7 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
       <section>
         <div className="text-center mb-12">
           <h2
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-4xl font-bold"
             style={{
               color: "var(--color-primary-main)",
               fontFamily: "var(--font-family-heading)",
@@ -811,11 +781,15 @@ export default function ProjectDataRoom({ dataRoom }: ProjectDataRoomProps) {
           >
             {t("downloads.title")}
           </h2>
+          <div
+            className="w-20 h-px mx-auto mt-4 mb-4"
+            style={{ background: "rgba(27, 42, 74, 0.25)" }}
+          />
           <p className="text-lg text-gray-500">{t("downloads.subtitle")}</p>
         </div>
 
         <div
-          className="rounded-xl overflow-hidden grid grid-cols-1 lg:grid-cols-3 border"
+          className="rounded-xl overflow-hidden grid grid-cols-1 lg:grid-cols-3 border-2"
           style={{
             background: "var(--color-bg-default)",
             borderColor: "var(--color-border-light)",

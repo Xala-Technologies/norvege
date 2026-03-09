@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+const NAVY = "#1B2A4A";
+const GOLD = "#e3a142";
+
 export default function ContactForm() {
   const t = useTranslations("contact.form");
   const [mounted, setMounted] = useState(false);
@@ -35,7 +38,6 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validation
     const newErrors: Record<string, string> = {};
     if (!formData.name.trim()) newErrors.name = t("errors.nameRequired");
     if (!formData.email.trim()) newErrors.email = t("errors.emailRequired");
@@ -54,16 +56,9 @@ export default function ContactForm() {
     setErrors({});
     setStatus("submitting");
 
-    // Simulate form submission
     setTimeout(() => {
       setStatus("success");
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        subject: "",
-        message: "",
-      });
+      setFormData({ name: "", email: "", company: "", subject: "", message: "" });
       setTimeout(() => setStatus("idle"), 5000);
     }, 1500);
   };
@@ -72,11 +67,7 @@ export default function ContactForm() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-    // Clear error when user starts typing
+    setFormData({ ...formData, [name]: value });
     if (errors[name]) {
       setErrors({ ...errors, [name]: "" });
     }
@@ -84,238 +75,213 @@ export default function ContactForm() {
 
   if (!mounted) return null;
 
+  const inputBaseClass = "w-full px-4 py-3.5 rounded-md text-base transition-all duration-200";
+
+  const inputStyle = (field: string) => ({
+    background: focusedField === field ? "white" : "rgba(27, 42, 74, 0.02)",
+    border: errors[field]
+      ? "2px solid #dc2626"
+      : focusedField === field
+        ? `2px solid ${GOLD}`
+        : "1px solid rgba(27, 42, 74, 0.1)",
+    color: NAVY,
+    outline: "none",
+    boxShadow: focusedField === field ? `0 0 0 3px rgba(227, 161, 66, 0.1)` : "none",
+  });
+
   return (
     <div
-      className="group p-8 lg:p-10 rounded-md transition-all duration-300 relative overflow-hidden"
+      className="p-8 lg:p-10 rounded-lg"
       style={{
-        background: `linear-gradient(135deg, var(--color-bg-subtle) 0%, var(--color-bg-default) 100%)`,
-        border: `1px solid color-mix(in srgb, var(--color-primary-main) 30%, transparent)`,
-        boxShadow: "none",
+        background: "white",
+        border: "1px solid rgba(27, 42, 74, 0.08)",
+        boxShadow: "0 1px 3px rgba(27, 42, 74, 0.04), 0 8px 32px rgba(27, 42, 74, 0.06)",
       }}
     >
-      {/* Enhanced border glow on hover */}
-      <div
-        className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-        style={{
-          border: `2px solid var(--color-primary-main)`,
-        }}
-      />
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Full Name Field */}
-        <div>
-          <label
-            htmlFor="name"
-            className="block text-base font-bold mb-3"
-            style={{ color: "var(--color-primary-main)" }}
-          >
-            {t("fullName")} <span style={{ color: "var(--color-accent-main)" }}>*</span>
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            value={formData.name}
-            onChange={handleChange}
-            onFocus={() => setFocusedField("name")}
-            onBlur={() => setFocusedField(null)}
-            className={`w-full px-5 py-4 rounded-sm transition-all duration-300 text-base ${
-              errors.name ? "border-2 border-red-400" : ""
-            }`}
-            style={{
-              background:
-                focusedField === "name" ? "var(--color-bg-default)" : "var(--color-bg-default)",
-              border:
-                focusedField === "name"
-                  ? "2px solid var(--color-primary-main)"
-                  : errors.name
-                    ? "2px solid var(--color-error)"
-                    : `2px solid color-mix(in srgb, var(--color-border-light) 60%, transparent)`,
-              color: "var(--color-text-body)",
-              outline: "none",
-              boxShadow: "none",
-            }}
-            placeholder={t("placeholders.fullName")}
-            aria-required="true"
-            aria-invalid={!!errors.name}
-          />
-          {errors.name && (
-            <motion.p
-              initial={{ opacity: 0, y: -5 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-xs text-red-500 mt-1.5"
-              role="alert"
+        {/* Name + Email row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label
+              htmlFor="name"
+              className="block text-sm font-semibold mb-2"
+              style={{ color: NAVY }}
             >
-              {errors.name}
-            </motion.p>
-          )}
-        </div>
-
-        {/* Email Field */}
-        <div>
-          <label
-            htmlFor="email"
-            className="block text-base font-bold mb-3"
-            style={{ color: "var(--color-primary-main)" }}
-          >
-            {t("email")} <span style={{ color: "var(--color-accent-main)" }}>*</span>
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            onFocus={() => setFocusedField("email")}
-            onBlur={() => setFocusedField(null)}
-            className={`w-full px-5 py-4 rounded-sm transition-all duration-300 text-base ${
-              errors.email ? "border-2 border-red-400" : ""
-            }`}
-            style={{
-              background:
-                focusedField === "email" ? "var(--color-bg-default)" : "var(--color-bg-default)",
-              border:
-                focusedField === "email"
-                  ? "2px solid var(--color-primary-main)"
-                  : errors.email
-                    ? "2px solid var(--color-error)"
-                    : `2px solid color-mix(in srgb, var(--color-border-light) 60%, transparent)`,
-              color: "var(--color-text-body)",
-              outline: "none",
-              boxShadow: "none",
-            }}
-            placeholder={t("placeholders.email")}
-            aria-required="true"
-            aria-invalid={!!errors.email}
-          />
-          {errors.email && (
-            <motion.p
-              initial={{ opacity: 0, y: -5 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-xs text-red-500 mt-1.5"
-              role="alert"
-            >
-              {errors.email}
-            </motion.p>
-          )}
-        </div>
-
-        {/* Company Field */}
-        <div>
-          <label
-            htmlFor="company"
-            className="block text-base font-bold mb-3"
-            style={{ color: "var(--color-primary-main)" }}
-          >
-            {t("company")}
-          </label>
-          <input
-            type="text"
-            id="company"
-            name="company"
-            value={formData.company}
-            onChange={handleChange}
-            onFocus={() => setFocusedField("company")}
-            onBlur={() => setFocusedField(null)}
-            className="w-full px-5 py-4 rounded-sm transition-all duration-300 text-base"
-            style={{
-              background: "var(--color-bg-default)",
-              border:
-                focusedField === "company"
-                  ? "2px solid var(--color-primary-main)"
-                  : `2px solid color-mix(in srgb, var(--color-border-light) 60%, transparent)`,
-              color: "var(--color-text-body)",
-              outline: "none",
-              boxShadow: "none",
-            }}
-            placeholder={t("placeholders.company")}
-          />
-        </div>
-
-        {/* Subject Field */}
-        <div>
-          <label
-            htmlFor="subject"
-            className="block text-base font-bold mb-3"
-            style={{ color: "var(--color-primary-main)" }}
-          >
-            {t("subject")} <span style={{ color: "var(--color-accent-main)" }}>*</span>
-          </label>
-          <div className="relative">
-            <select
-              id="subject"
-              name="subject"
+              {t("fullName")} <span style={{ color: GOLD }}>*</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
               required
-              value={formData.subject}
+              value={formData.name}
               onChange={handleChange}
-              onFocus={() => setFocusedField("subject")}
+              onFocus={() => setFocusedField("name")}
               onBlur={() => setFocusedField(null)}
-              className={`w-full px-5 py-4 rounded-sm transition-all duration-300 appearance-none cursor-pointer pr-12 text-base ${
-                errors.subject ? "border-2 border-red-400" : ""
-              }`}
-              style={{
-                background: "var(--color-bg-default)",
-                border:
-                  focusedField === "subject"
-                    ? "2px solid var(--color-primary-main)"
-                    : errors.subject
-                      ? "2px solid var(--color-error)"
-                      : `2px solid color-mix(in srgb, var(--color-border-light) 60%, transparent)`,
-                color: formData.subject ? "var(--color-text-body)" : "var(--color-text-secondary)",
-                outline: "none",
-                boxShadow: "none",
-              }}
+              className={inputBaseClass}
+              style={inputStyle("name")}
+              placeholder={t("placeholders.fullName")}
               aria-required="true"
-            >
-              <option value="" disabled style={{ color: "var(--color-text-muted)" }}>
-                {t("selectSubject")}
-              </option>
-              {subjects.map((subject) => (
-                <option
-                  key={subject}
-                  value={subject}
-                  style={{ background: "white", color: "var(--color-navy-900)" }}
-                >
-                  {subject}
-                </option>
-              ))}
-            </select>
-            {/* Custom dropdown arrow */}
-            <div
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none"
-              style={{ color: "var(--color-accent-main)" }}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2.5}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
+              aria-invalid={!!errors.name}
+            />
+            {errors.name && (
+              <p
+                className="text-xs mt-1.5 flex items-center gap-1"
+                style={{ color: "#dc2626" }}
+                role="alert"
+              >
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                {errors.name}
+              </p>
+            )}
           </div>
-          {errors.subject && (
-            <motion.p
-              initial={{ opacity: 0, y: -5 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-xs text-red-500 mt-1.5"
-              role="alert"
+
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-semibold mb-2"
+              style={{ color: NAVY }}
             >
-              {errors.subject}
-            </motion.p>
-          )}
+              {t("email")} <span style={{ color: GOLD }}>*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              value={formData.email}
+              onChange={handleChange}
+              onFocus={() => setFocusedField("email")}
+              onBlur={() => setFocusedField(null)}
+              className={inputBaseClass}
+              style={inputStyle("email")}
+              placeholder={t("placeholders.email")}
+              aria-required="true"
+              aria-invalid={!!errors.email}
+            />
+            {errors.email && (
+              <p
+                className="text-xs mt-1.5 flex items-center gap-1"
+                style={{ color: "#dc2626" }}
+                role="alert"
+              >
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                {errors.email}
+              </p>
+            )}
+          </div>
         </div>
 
-        {/* Message Field */}
+        {/* Company + Subject row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label
+              htmlFor="company"
+              className="block text-sm font-semibold mb-2"
+              style={{ color: NAVY }}
+            >
+              {t("company")}
+            </label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+              onFocus={() => setFocusedField("company")}
+              onBlur={() => setFocusedField(null)}
+              className={inputBaseClass}
+              style={inputStyle("company")}
+              placeholder={t("placeholders.company")}
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="subject"
+              className="block text-sm font-semibold mb-2"
+              style={{ color: NAVY }}
+            >
+              {t("subject")} <span style={{ color: GOLD }}>*</span>
+            </label>
+            <div className="relative">
+              <select
+                id="subject"
+                name="subject"
+                required
+                value={formData.subject}
+                onChange={handleChange}
+                onFocus={() => setFocusedField("subject")}
+                onBlur={() => setFocusedField(null)}
+                className={`${inputBaseClass} appearance-none cursor-pointer pr-10`}
+                style={{
+                  ...inputStyle("subject"),
+                  color: formData.subject ? NAVY : "rgba(27, 42, 74, 0.35)",
+                }}
+                aria-required="true"
+              >
+                <option value="" disabled>
+                  {t("selectSubject")}
+                </option>
+                {subjects.map((subject) => (
+                  <option key={subject} value={subject}>
+                    {subject}
+                  </option>
+                ))}
+              </select>
+              <div
+                className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
+                style={{ color: NAVY }}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
+            </div>
+            {errors.subject && (
+              <p
+                className="text-xs mt-1.5 flex items-center gap-1"
+                style={{ color: "#dc2626" }}
+                role="alert"
+              >
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                {errors.subject}
+              </p>
+            )}
+          </div>
+        </div>
+
+        {/* Message */}
         <div>
           <label
             htmlFor="message"
-            className="block text-base font-bold mb-3"
-            style={{ color: "var(--color-primary-main)" }}
+            className="block text-sm font-semibold mb-2"
+            style={{ color: NAVY }}
           >
-            {t("message")} <span style={{ color: "var(--color-accent-main)" }}>*</span>
+            {t("message")} <span style={{ color: GOLD }}>*</span>
           </label>
           <textarea
             id="message"
@@ -326,34 +292,27 @@ export default function ContactForm() {
             onChange={handleChange}
             onFocus={() => setFocusedField("message")}
             onBlur={() => setFocusedField(null)}
-            className={`w-full px-5 py-4 rounded-sm transition-all duration-300 resize-none text-base ${
-              errors.message ? "border-2 border-red-400" : ""
-            }`}
-            style={{
-              background: "var(--color-bg-default)",
-              border:
-                focusedField === "message"
-                  ? "2px solid var(--color-primary-main)"
-                  : errors.message
-                    ? "2px solid var(--color-error)"
-                    : `2px solid color-mix(in srgb, var(--color-border-light) 60%, transparent)`,
-              color: "var(--color-text-body)",
-              outline: "none",
-              boxShadow: "none",
-            }}
+            className={`${inputBaseClass} resize-none`}
+            style={inputStyle("message")}
             placeholder={t("placeholders.message")}
             aria-required="true"
             aria-invalid={!!errors.message}
           />
           {errors.message && (
-            <motion.p
-              initial={{ opacity: 0, y: -5 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-xs text-red-500 mt-1.5"
+            <p
+              className="text-xs mt-1.5 flex items-center gap-1"
+              style={{ color: "#dc2626" }}
               role="alert"
             >
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fillRule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                  clipRule="evenodd"
+                />
+              </svg>
               {errors.message}
-            </motion.p>
+            </p>
           )}
         </div>
 
@@ -361,18 +320,18 @@ export default function ContactForm() {
         <AnimatePresence mode="wait">
           {status === "success" && (
             <motion.div
-              initial={{ opacity: 0, y: -10, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.95 }}
-              className="p-4 rounded-sm border-2 flex items-start gap-3"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              className="p-5 rounded-md flex items-start gap-3"
               style={{
-                background: "color-mix(in srgb, var(--color-success) 10%, transparent)",
-                borderColor: "color-mix(in srgb, var(--color-success) 30%, transparent)",
-                color: "var(--color-success)",
+                background: "rgba(22, 163, 74, 0.06)",
+                border: "1px solid rgba(22, 163, 74, 0.15)",
+                color: "#16a34a",
               }}
               role="alert"
             >
-              <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"
                   d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
@@ -380,26 +339,26 @@ export default function ContactForm() {
                 />
               </svg>
               <div>
-                <p className="font-semibold mb-1">{t("success.title")}</p>
-                <p className="text-sm opacity-90">{t("success.description")}</p>
+                <p className="font-semibold mb-0.5">{t("success.title")}</p>
+                <p className="text-sm opacity-80">{t("success.description")}</p>
               </div>
             </motion.div>
           )}
 
           {status === "error" && Object.keys(errors).length > 0 && (
             <motion.div
-              initial={{ opacity: 0, y: -10, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.95 }}
-              className="p-4 rounded-sm border-2 flex items-start gap-3"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              className="p-5 rounded-md flex items-start gap-3"
               style={{
-                background: "color-mix(in srgb, var(--color-error) 10%, transparent)",
-                borderColor: "color-mix(in srgb, var(--color-error) 30%, transparent)",
-                color: "var(--color-error)",
+                background: "rgba(220, 38, 38, 0.04)",
+                border: "1px solid rgba(220, 38, 38, 0.12)",
+                color: "#dc2626",
               }}
               role="alert"
             >
-              <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-5 h-5 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path
                   fillRule="evenodd"
                   d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
@@ -407,38 +366,36 @@ export default function ContactForm() {
                 />
               </svg>
               <div>
-                <p className="font-semibold mb-1">{t("error.title")}</p>
-                <p className="text-sm opacity-90">{t("error.description")}</p>
+                <p className="font-semibold mb-0.5">{t("error.title")}</p>
+                <p className="text-sm opacity-80">{t("error.description")}</p>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Submit Button and Required Note */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-4 gap-4">
-          <p className="text-sm" style={{ color: "var(--color-text-secondary)" }}>
-            <span style={{ color: "var(--color-accent-main)" }}>*</span> {t("requiredFields")}
+        {/* Divider */}
+        <div className="w-full h-px" style={{ background: "rgba(27, 42, 74, 0.06)" }} />
+
+        {/* Footer */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <p className="text-sm" style={{ color: "rgba(27, 42, 74, 0.45)" }}>
+            <span style={{ color: GOLD }}>*</span> {t("requiredFields")}
           </p>
           <motion.button
             type="submit"
             disabled={status === "submitting"}
-            whileHover={status !== "submitting" ? { scale: 1.05, y: -2 } : {}}
+            whileHover={status !== "submitting" ? { y: -2 } : {}}
             whileTap={status !== "submitting" ? { scale: 0.98 } : {}}
-            className="px-10 py-4 rounded-sm font-bold text-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group flex items-center gap-3 w-full sm:w-auto justify-center"
+            className="px-8 py-3.5 rounded-md text-sm font-bold uppercase tracking-wider transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2.5 w-full sm:w-auto justify-center"
             style={{
-              background:
-                status === "submitting"
-                  ? "color-mix(in srgb, var(--color-accent-main) 50%, transparent)"
-                  : `linear-gradient(135deg, var(--color-accent-main) 0%, var(--color-gold-400) 100%)`,
-              color: "var(--color-accent-contrast)",
-              boxShadow: "none",
-              fontFamily: "var(--font-family-body)",
-              fontWeight: "var(--font-weight-bold)",
+              background: NAVY,
+              color: "white",
+              boxShadow: "0 2px 8px rgba(27, 42, 74, 0.2)",
             }}
             aria-disabled={status === "submitting"}
           >
             {status === "submitting" ? (
-              <span className="flex items-center justify-center gap-2 relative z-10">
+              <span className="flex items-center gap-2">
                 <motion.span
                   animate={{ rotate: 360 }}
                   transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -448,18 +405,13 @@ export default function ContactForm() {
               </span>
             ) : (
               <>
-                <span className="relative z-10">{t("sendMessage")}</span>
-                <svg
-                  className="w-5 h-5 relative z-10"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <span>{t("sendMessage")}</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
                   />
                 </svg>
               </>

@@ -4,14 +4,15 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
+const NAVY = "#1B2A4A";
+const GOLD = "#e3a142";
+
 export default function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
-    // Check if user has already accepted/rejected cookies
     const cookieConsent = localStorage.getItem("cookieConsent");
     if (!cookieConsent) {
-      // Show banner after a short delay for better UX
       const timer = setTimeout(() => {
         setShowBanner(true);
       }, 1000);
@@ -23,7 +24,6 @@ export default function CookieConsent() {
     localStorage.setItem("cookieConsent", "accepted");
     localStorage.setItem("cookieConsentDate", new Date().toISOString());
     setShowBanner(false);
-    // Here you can initialize analytics or other tracking scripts
   };
 
   const handleReject = () => {
@@ -43,20 +43,20 @@ export default function CookieConsent() {
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         className="fixed bottom-0 left-0 right-0 z-[9999] p-4 sm:p-6"
         style={{
-          background: "#90D5FF",
-          borderTop: `2px solid color-mix(in srgb, #1E293B 30%, transparent)`,
-          boxShadow: "none",
+          background: NAVY,
+          borderTop: `2px solid ${GOLD}`,
+          boxShadow: "0 -4px 24px rgba(27, 42, 74, 0.3)",
         }}
       >
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-6">
             {/* Cookie Icon */}
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center"
                 style={{
-                  background: "color-mix(in srgb, #1E293B 15%, transparent)",
-                  border: `1px solid color-mix(in srgb, #1E293B 30%, transparent)`,
+                  background: `rgba(227, 161, 66, 0.15)`,
+                  border: `1px solid rgba(227, 161, 66, 0.25)`,
                 }}
               >
                 <svg
@@ -64,7 +64,7 @@ export default function CookieConsent() {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  style={{ color: "#1E293B" }}
+                  style={{ color: GOLD }}
                 >
                   <path
                     strokeLinecap="round"
@@ -81,7 +81,7 @@ export default function CookieConsent() {
               <h3
                 className="text-lg font-bold mb-2"
                 style={{
-                  color: "#1E293B",
+                  color: "white",
                   fontFamily: "var(--font-family-heading)",
                 }}
               >
@@ -90,7 +90,7 @@ export default function CookieConsent() {
               <p
                 className="text-sm lg:text-base leading-relaxed mb-2"
                 style={{
-                  color: "#1E293B",
+                  color: "rgba(255, 255, 255, 0.7)",
                   fontFamily: "var(--font-family-body)",
                 }}
               >
@@ -100,7 +100,7 @@ export default function CookieConsent() {
                 <Link
                   href="/privacy"
                   className="underline hover:opacity-80 transition-opacity"
-                  style={{ color: "#1E293B" }}
+                  style={{ color: GOLD }}
                 >
                   Privacy Policy
                 </Link>
@@ -109,42 +109,24 @@ export default function CookieConsent() {
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto lg:flex-shrink-0">
+            <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto lg:shrink-0">
               <button
                 onClick={handleReject}
-                className="px-6 py-3 rounded-lg font-semibold text-sm lg:text-base transition-all duration-200 border-2"
+                className="px-6 py-3 rounded-lg font-semibold text-sm lg:text-base transition-all duration-200 border-2 hover:bg-white/10"
                 style={{
-                  borderColor: "color-mix(in srgb, #1E293B 40%, transparent)",
-                  color: "#1E293B",
+                  borderColor: "rgba(255, 255, 255, 0.25)",
+                  color: "white",
                   background: "transparent",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "#1E293B";
-                  e.currentTarget.style.background = "color-mix(in srgb, #1E293B 10%, transparent)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor =
-                    "color-mix(in srgb, #1E293B 40%, transparent)";
-                  e.currentTarget.style.background = "transparent";
                 }}
               >
                 Reject All
               </button>
               <button
                 onClick={handleAccept}
-                className="px-6 py-3 rounded-lg font-semibold text-sm lg:text-base transition-all duration-200"
+                className="px-6 py-3 rounded-lg font-semibold text-sm lg:text-base transition-all duration-200 hover:opacity-90"
                 style={{
-                  background: "#ffffff",
-                  color: "#1E293B",
-                  boxShadow: "none",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
+                  background: GOLD,
+                  color: NAVY,
                 }}
               >
                 Accept All
